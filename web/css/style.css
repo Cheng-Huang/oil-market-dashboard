@@ -1,0 +1,72 @@
+/* ── Oil Dashboard Custom Styles ── */
+
+/* Cards */
+.card {
+  background: #131720;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  border: 1px solid rgba(55, 65, 81, 0.4);
+}
+.card-label {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+/* Panels */
+.panel {
+  background: #131720;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(55, 65, 81, 0.4);
+  overflow: hidden;
+}
+.panel-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(55, 65, 81, 0.3);
+  color: #d1d5db;
+}
+
+/* Chart container */
+.chart-box {
+  width: 100%;
+  height: 340px;
+  padding: 8px;
+}
+
+/* Signal dots */
+.signal-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+.signal-dot.bullish  { background: #22c55e; box-shadow: 0 0 6px #22c55e88; }
+.signal-dot.bearish  { background: #ef4444; box-shadow: 0 0 6px #ef444488; }
+.signal-dot.warning  { background: #f59e0b; box-shadow: 0 0 6px #f59e0b88; }
+.signal-dot.neutral  { background: #6b7280; }
+
+/* Change badges */
+.change-up   { background: rgba(34, 197, 94, 0.15); color: #4ade80; }
+.change-down { background: rgba(239, 68, 68, 0.15); color: #f87171; }
+.change-flat { background: rgba(107, 114, 128, 0.2); color: #9ca3af; }
+
+/* Curve label */
+.label-back    { background: rgba(34, 197, 94, 0.15); color: #4ade80; }
+.label-contango { background: rgba(239, 68, 68, 0.15); color: #f87171; }
+.label-flat    { background: rgba(107, 114, 128, 0.2); color: #9ca3af; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .chart-box { height: 260px; }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #131720; }
+::-webkit-scrollbar-thumb { background: #374151; border-radius: 3px; }

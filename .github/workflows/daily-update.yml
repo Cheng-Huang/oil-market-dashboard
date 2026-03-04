@@ -1,0 +1,80 @@
+name: Daily Oil Data Update & Deploy
+
+on:
+  # 每天 UTC 14:00（北京时间 22:00）运行
+  # EIA 周报通常在美东周三 10:30 发布，CFTC 周五发布
+  schedule:
+    - cron: '0 14 * * *'
+  # 手动触发
+  workflow_dispatch:
+  # 推送 main 也触发（首次部署 + 代码变更）
+  push:
+    branches: [main]
+
+# 权限：需要写入 GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同一时间只允许一个部署
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  update-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: etl/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r etl/requirements.txt
+
+      - name: Run ETL (fetch real data)
+        env:
+          EIA_API_KEY: ${{ secrets.EIA_API_KEY }}
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+        run: |
+          cd etl
+          python run_all.py
+        # 如果 API 失败，继续部署（使用已有数据或 mock）
+        continue-on-error: true
+
+      - name: Fallback to mock if no data
+        run: |
+          # 如果真实数据获取完全失败（signals.json 不存在），用 mock 兜底
+          if [ ! -f data/signals.json ]; then
+            echo "⚠️ Real data not available, generating mock data..."
+            cd etl && python run_all.py --mock
+          fi
+
+      - name: Assemble site
+        run: |
+          mkdir -p _site
+          cp -r web/* _site/
+          cp -r data _site/data
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

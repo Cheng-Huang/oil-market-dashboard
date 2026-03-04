@@ -1,0 +1,82 @@
+"""
+从 FRED API 拉取金融条件数据：DXY、实际利率、OVX、WTI/Brent 价格
+"""
+import json
+import requests
+from datetime import datetime, timedelta
+from config import FRED_BASE, FRED_API_KEY, FRED_SERIES, DATA_DIR
+
+
+def fetch_fred_series(series_id: str, days_back: int = 730) -> list[dict]:
+    """拉取单个 FRED series 的观测值"""
+    start = (datetime.now() - timedelta(days=days_back)).strftime("%Y-%m-%d")
+    params = {
+        "series_id": series_id,
+        "api_key": FRED_API_KEY,
+        "file_type": "json",
+        "observation_start": start,
+        "sort_order": "asc",
+    }
+    resp = requests.get(FRED_BASE, params=params, timeout=30)
+    resp.raise_for_status()
+    observations = resp.json().get("observations", [])
+    # 清洗：过滤 "." 缺失值，转 float
+    return [
+        {"date": o["date"], "value": float(o["value"])}
+        for o in observations
+        if o["value"] != "."
+    ]
+
+
+def fetch_all_fred() -> dict:
+    """拉取所有 FRED 指标，返回 {key: [{date, value}, ...]}"""
+    result = {}
+    for key, sid in FRED_SERIES.items():
+        print(f"  FRED: {key} ({sid}) ...")
+        try:
+            result[key] = fetch_fred_series(sid)
+            print(f"    → {len(result[key])} observations")
+        except Exception as e:
+            print(f"    ✗ 失败: {e}")
+            result[key] = []
+    return result
+
+
+def save_fred_data(data: dict):
+    """拆分存储：价格 → price.json，金融条件 → financial.json"""
+    # ── 价格 ──
+    price = {
+        "wti": data.get("wti_price", []),
+        "brent": data.get("brent_price", []),
+    }
+    # 计算价差
+    if price["wti"] and price["brent"]:
+        brent_map = {d["date"]: d["value"] for d in price["brent"]}
+        price["spread"] = [
+            {"date": d["date"], "value": round(d["value"] - brent_map[d["date"]], 4)}
+            for d in price["wti"]
+            if d["date"] in brent_map
+        ]
+    else:
+        price["spread"] = []
+
+    with open(DATA_DIR / "price.json", "w") as f:
+        json.dump(price, f, indent=2)
+
+    # ── 金融条件 ──
+    financial = {
+        "dxy": data.get("dxy", []),
+        "real_rate": data.get("real_rate", []),
+        "ovx": data.get("ovx", []),
+    }
+    with open(DATA_DIR / "financial.json", "w") as f:
+        json.dump(financial, f, indent=2)
+
+
+if __name__ == "__main__":
+    if not FRED_API_KEY:
+        print("⚠ FRED_API_KEY 未设置，跳过 FRED 拉取")
+    else:
+        data = fetch_all_fred()
+        save_fred_data(data)
+        print("✓ FRED 数据已保存")

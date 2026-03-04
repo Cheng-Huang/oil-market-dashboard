@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🛢️ Oil Market Dashboard</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            oil: { 900: '#0c0f14', 800: '#131720', 700: '#1a1f2e', 600: '#232a3b' },
+            bull: '#22c55e',
+            bear: '#ef4444',
+            warn: '#f59e0b',
+          }
+        }
+      }
+    }
+  </script>
+  <!-- ECharts -->
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="bg-oil-900 text-gray-200 min-h-screen">
+
+  <!-- ═══════════════ HEADER ═══════════════ -->
+  <header class="bg-oil-800 border-b border-gray-700/50 px-6 py-4 flex items-center justify-between sticky top-0 z-50">
+    <div class="flex items-center gap-3">
+      <span class="text-3xl">🛢️</span>
+      <h1 class="text-xl font-bold tracking-wide">Oil Market Dashboard</h1>
+    </div>
+    <div id="header-meta" class="text-sm text-gray-500">加载中...</div>
+  </header>
+
+  <!-- ═══════════════ TOP CARDS: 价格 + 信号 ═══════════════ -->
+  <section id="price-banner" class="px-6 py-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <!-- WTI -->
+      <div class="card">
+        <div class="card-label">WTI Crude</div>
+        <div class="flex items-end gap-2">
+          <span id="wti-price" class="text-3xl font-bold text-white">--</span>
+          <span id="wti-change" class="text-sm font-medium px-2 py-0.5 rounded">--</span>
+        </div>
+        <div id="wti-spark" class="h-12 mt-2"></div>
+      </div>
+      <!-- Brent -->
+      <div class="card">
+        <div class="card-label">Brent Crude</div>
+        <div class="flex items-end gap-2">
+          <span id="brent-price" class="text-3xl font-bold text-white">--</span>
+          <span id="brent-change" class="text-sm font-medium px-2 py-0.5 rounded">--</span>
+        </div>
+        <div id="brent-spark" class="h-12 mt-2"></div>
+      </div>
+      <!-- WTI-Brent Spread / M1-M2 Futures Spread -->
+      <div class="card">
+        <div class="flex items-center justify-between">
+          <div id="spread-type-label" class="card-label">WTI − Brent 价差</div>
+          <span id="curve-label" class="text-xs font-medium px-2 py-1 rounded">--</span>
+        </div>
+        <div class="flex items-end gap-2">
+          <span id="spread-val" class="text-3xl font-bold text-white">--</span>
+        </div>
+        <div id="spread-source" class="text-xs text-gray-500 mt-1"></div>
+        <div id="spread-spark" class="h-12 mt-1"></div>
+      </div>
+      <!-- Signal Summary -->
+      <div class="card" id="signal-card">
+        <div class="card-label">综合信号面板</div>
+        <div id="signal-grid" class="grid grid-cols-2 gap-x-4 gap-y-1 mt-1 text-sm"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ MAIN CHARTS: 2-COL GRID ═══════════════ -->
+  <main class="px-6 pb-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+      <!-- ── 左上: 库存 ── -->
+      <div class="panel">
+        <h2 class="panel-title">📦 美国原油库存</h2>
+        <div id="chart-inventory" class="chart-box"></div>
+      </div>
+
+      <!-- ── 右上: 价格走势 ── -->
+      <div class="panel">
+        <h2 class="panel-title">📈 WTI / Brent 价格走势</h2>
+        <div id="chart-price" class="chart-box"></div>
+      </div>
+
+      <!-- ── 左中: Cushing + 汽油库存 ── -->
+      <div class="panel">
+        <h2 class="panel-title">📦 库欣 & 汽油 & 馏分油库存</h2>
+        <div id="chart-sub-inventory" class="chart-box"></div>
+      </div>
+
+      <!-- ── 右中: 价差走势 ── -->
+      <div class="panel">
+        <h2 class="panel-title">📈 WTI − Brent 价差走势</h2>
+        <div id="chart-spread" class="chart-box"></div>
+      </div>
+
+      <!-- ── 期货曲线快照 ── -->
+      <div class="panel">
+        <h2 class="panel-title">📉 WTI 期货曲线 (Term Structure)</h2>
+        <div id="chart-futures-curve" class="chart-box"></div>
+      </div>
+
+      <!-- ── 左下: 产量 + 开工率 ── -->
+      <div class="panel">
+        <h2 class="panel-title">🏭 产量 & 炼厂开工率</h2>
+        <div id="chart-production" class="chart-box"></div>
+      </div>
+
+      <!-- ── 右下: 金融条件 ── -->
+      <div class="panel">
+        <h2 class="panel-title">💰 金融条件 (DXY / 实际利率 / OVX)</h2>
+        <div id="chart-financial" class="chart-box"></div>
+      </div>
+
+      <!-- ── 需求 ── -->
+      <div class="panel">
+        <h2 class="panel-title">⛽ 成品油隐含需求</h2>
+        <div id="chart-demand" class="chart-box"></div>
+      </div>
+
+      <!-- ── CFTC 持仓 ── -->
+      <div class="panel">
+        <h2 class="panel-title">📊 CFTC 投机净多头</h2>
+        <div id="chart-cftc" class="chart-box"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer class="text-center text-gray-600 text-xs py-4 border-t border-gray-800">
+    数据来源: EIA / FRED / CFTC / Yahoo Finance · 仅供参考，不构成投资建议
+  </footer>
+
+  <script src="js/charts.js"></script>
+  <script src="js/signals.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
