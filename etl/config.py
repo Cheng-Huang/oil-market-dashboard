@@ -32,6 +32,7 @@ EIA_WEEKLY_SERIES = {
 EIA_DAILY_SERIES = {
     "wti_price":   "PET.RWTC.D",    # WTI 现货
     "brent_price": "PET.RBRTE.D",   # Brent 现货
+    "gasoline_spot_price": "PET.EER_EPMRU_PF4_RGC_DPG.D",  # NY Harbor 汽油现货 $/gal
 }
 
 # ── FRED ──────────────────────────────────────────────
@@ -43,6 +44,8 @@ FRED_SERIES = {
     "ovx":        "OVXCLS",     # OVX 原油波动率
     "wti_price":  "DCOILWTICO", # WTI 日度价格（FRED 也有）
     "brent_price":"DCOILBRENTEU",# Brent 日度价格
+    "gasoline_price": "DRGASNYH",  # NY Harbor 常规汽油现货 $/gal
+    "heating_oil_price": "DHOILNYH",  # NY Harbor 2号取暖油现货 $/gal
 }
 
 # ── CFTC ──────────────────────────────────────────────

@@ -174,25 +174,80 @@ def demand_signal(demand: dict) -> dict:
     }
 
 
-def drilling_signal(production: dict) -> dict:
-    prod = production.get("crude_production", [])
-    if len(prod) >= 5:
+def drilling_signal(production: dict, drilling: dict) -> dict:
+    """钻井活动信号：优先用钻机数（领先指标），回退到产量"""
+    rig = drilling.get("rig_count", []) if drilling else []
+
+    if len(rig) >= 4:
+        # 用钻机数（更好的领先指标）
+        recent = [d["value"] for d in rig[-3:]]
+        prev = [d["value"] for d in rig[-6:-3]] if len(rig) >= 6 else recent
+        avg_recent = sum(recent) / len(recent)
+        avg_prev = sum(prev) / len(prev)
+        source = "rig_count"
+    else:
+        # 回退到产量
+        prod = production.get("crude_production", [])
+        if len(prod) < 5:
+            return {"name": "钻井活动", "signal": "neutral", "source": "none"}
         recent = [d["value"] for d in prod[-4:]]
         prev = [d["value"] for d in prod[-8:-4]] if len(prod) >= 8 else recent
         avg_recent = sum(recent) / len(recent)
         avg_prev = sum(prev) / len(prev)
-        if avg_recent > avg_prev * 1.01:
-            signal = "bearish"  # 产量增加 → 利空
-        elif avg_recent < avg_prev * 0.99:
-            signal = "bullish"  # 产量减少 → 利多
-        else:
-            signal = "neutral"
+        source = "production_proxy"
+
+    if avg_prev == 0:
+        signal = "neutral"
+    elif avg_recent > avg_prev * 1.01:
+        signal = "bearish"  # 钻机增加/产量增加 → 利空
+    elif avg_recent < avg_prev * 0.99:
+        signal = "bullish"  # 钻机减少/产量减少 → 利多
     else:
         signal = "neutral"
 
     return {
         "name": "钻井活动",
         "signal": signal,
+        "source": source,
+        "recent_avg": round(avg_recent, 1),
+        "prev_avg": round(avg_prev, 1),
+    }
+
+
+def opec_signal(global_bal: dict) -> dict:
+    """OPEC/全球供需平衡信号：基于隐含库存变化趋势"""
+    balance = global_bal.get("balance", []) if global_bal else []
+    if len(balance) < 3:
+        return {"name": "全球供需", "signal": "neutral", "source": "none"}
+
+    # 最近 3 个月的供需平衡
+    recent = [d["value"] for d in balance[-3:]]
+    avg = sum(recent) / len(recent)
+
+    if avg < -0.3:
+        signal = "bullish"   # 持续去库 → 供不应求 → 利多
+    elif avg > 0.3:
+        signal = "bearish"   # 持续累库 → 供过于求 → 利空
+    else:
+        signal = "neutral"
+
+    # OPEC 产量趋势
+    opec = global_bal.get("opec_production", [])
+    opec_trend = "stable"
+    if len(opec) >= 3:
+        r = [d["value"] for d in opec[-3:]]
+        p = [d["value"] for d in opec[-6:-3]] if len(opec) >= 6 else r
+        if sum(r) / len(r) > sum(p) / len(p) * 1.01:
+            opec_trend = "increasing"
+        elif sum(r) / len(r) < sum(p) / len(p) * 0.99:
+            opec_trend = "decreasing"
+
+    return {
+        "name": "全球供需",
+        "signal": signal,
+        "balance_avg_3m": round(avg, 3),
+        "opec_trend": opec_trend,
+        "detail": f"近3月平均平衡: {avg:+.3f} 百万桶/日",
     }
 
 
@@ -268,6 +323,8 @@ def compute_all_signals():
     prod = _load("production.json")
     fin = _load("financial.json")
     futures = _load("futures.json")
+    global_bal = _load("global_balance.json")
+    drill = _load("drilling.json")
 
     cftc_path = DATA_DIR / "cftc.json"
     if cftc_path.exists():
@@ -280,7 +337,8 @@ def compute_all_signals():
         "inventory": inventory_signal(inv),
         "curve": curve_signal(price, futures),
         "demand": demand_signal(demand),
-        "drilling": drilling_signal(prod),
+        "drilling": drilling_signal(prod, drill),
+        "opec": opec_signal(global_bal),
         "financial": financial_signal(fin),
         "positioning": positioning_signal(cftc),
     }

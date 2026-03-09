@@ -290,7 +290,57 @@ function renderCFTCChart(cftc) {
   if (!chart) return;
   chart.setOption(barChart(cftc, '投机净多头 (合约数)'));
 }
+// ── 裂解价差 ─────────────────────────────────────
+function renderCrackSpreadChart(crackSpread) {
+  if (!crackSpread) {
+    const panel = document.getElementById('chart-crack-spread')?.closest('.panel');
+    if (panel) panel.style.display = 'none';
+    return;
+  }
+  const chart = initChart('chart-crack-spread');
+  if (!chart) return;
+  chart.setOption(crackSpreadChart(crackSpread));
+}
 
+// ── 净进口 ───────────────────────────────────────────
+function renderNetImportChart(production) {
+  if (!production?.net_import) {
+    const panel = document.getElementById('chart-net-import')?.closest('.panel');
+    if (panel) panel.style.display = 'none';
+    return;
+  }
+  const chart = initChart('chart-net-import');
+  if (!chart) return;
+  const opt = lineChart(
+    [{ name: '原油净进口 (千桶/日)', data: production.net_import, color: COLORS.purple }],
+    { dataZoom: true, zoomStart: 50, yAxisName: '千桶/日' }
+  );
+  chart.setOption(opt);
+}
+
+// ── OPEC / 全球供需平衡 ─────────────────────────────
+function renderGlobalBalanceChart(globalBalance) {
+  if (!globalBalance || !globalBalance.balance?.length) {
+    const panel = document.getElementById('chart-global-balance')?.closest('.panel');
+    if (panel) panel.style.display = 'none';
+    return;
+  }
+  const chart = initChart('chart-global-balance');
+  if (!chart) return;
+  chart.setOption(globalBalanceChart(globalBalance));
+}
+
+// ── 钻机数 ───────────────────────────────────────────
+function renderDrillingChart(drilling) {
+  if (!drilling || !drilling.rig_count?.length) {
+    const panel = document.getElementById('chart-drilling')?.closest('.panel');
+    if (panel) panel.style.display = 'none';
+    return;
+  }
+  const chart = initChart('chart-drilling');
+  if (!chart) return;
+  chart.setOption(rigCountChart(drilling));
+}
 // ── 元信息 ───────────────────────────────────────────
 function renderMeta(meta) {
   const el = document.getElementById('header-meta');
@@ -311,7 +361,7 @@ function handleResize() {
 // ── 主入口 ───────────────────────────────────────────
 async function main() {
   // 并行加载所有 JSON
-  const [price, inventory, production, demand, financial, cftc, signals, meta, futures] = await Promise.all([
+  const [price, inventory, production, demand, financial, cftc, signals, meta, futures, crackSpread, globalBalance, drilling] = await Promise.all([
     loadJSON('price.json'),
     loadJSON('inventory.json'),
     loadJSON('production.json'),
@@ -321,6 +371,9 @@ async function main() {
     loadJSON('signals.json'),
     loadJSON('meta.json'),
     loadJSON('futures.json'),
+    loadJSON('crack_spread.json'),
+    loadJSON('global_balance.json'),
+    loadJSON('drilling.json'),
   ]);
 
   // 渲染
@@ -336,6 +389,10 @@ async function main() {
   renderFinancialChart(financial);
   renderDemandChart(demand);
   renderCFTCChart(cftc);
+  renderCrackSpreadChart(crackSpread);
+  renderNetImportChart(production);
+  renderGlobalBalanceChart(globalBalance);
+  renderDrillingChart(drilling);
   renderMeta(meta);
 
   // 响应式

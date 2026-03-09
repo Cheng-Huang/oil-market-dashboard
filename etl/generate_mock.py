@@ -189,6 +189,57 @@ def generate_mock_data():
         "updated": now_str,
     }
 
+    # ── 裂解价差 (日度, 与价格对齐) ─────────────────────
+    # 3-2-1 Crack Spread 历史约 $20-35/bbl
+    crack_321 = _walk(25.0, n_daily, vol=0.02, trend=0.0001)
+    # 汽油裂解略高于柴油
+    gasoline_crack = [round(v * 1.1 + random.gauss(0, 1.0), 4) for v in crack_321]
+    diesel_crack = [round(v * 0.8 + random.gauss(0, 1.0), 4) for v in crack_321]
+    crack_spread = {
+        "crack_321":      [{"date": d, "value": round(v, 4)} for d, v in zip(daily_dates, crack_321)],
+        "gasoline_crack": [{"date": d, "value": v} for d, v in zip(daily_dates, gasoline_crack)],
+        "diesel_crack":   [{"date": d, "value": v} for d, v in zip(daily_dates, diesel_crack)],
+    }
+
+    # ── 全球供需平衡 (月度, 5年=60月) ─────────────────
+    n_monthly = 60
+    monthly_dates = []
+    md = datetime(2026, 3, 1)
+    for i in range(n_monthly):
+        m = md.month - n_monthly + i
+        y_offset = m // 12 if m > 0 else (m - 11) // 12
+        m_adj = m - 12 * y_offset
+        if m_adj <= 0:
+            m_adj += 12
+            y_offset -= 1
+        monthly_dates.append(f"{md.year + y_offset}-{m_adj:02d}")
+
+    # 全球产量约 101-103 百万桶/日
+    world_prod_vals = _walk(101.5, n_monthly, vol=0.005, trend=0.0002)
+    # 全球消费约 100-103 百万桶/日（与产量接近）
+    world_cons_vals = [round(p - random.gauss(0.2, 0.3), 3) for p in world_prod_vals]
+    # OPEC 约 33-35 百万桶/日
+    opec_vals = _walk(33.5, n_monthly, vol=0.008, trend=0.0)
+    # 非 OPEC 约 67-69 百万桶/日
+    non_opec_vals = [round(wp - op + random.gauss(0, 0.2), 3) for wp, op in zip(world_prod_vals, opec_vals)]
+    # 供需平衡 = 产量 - 消费
+    balance_vals = [round(p - c, 3) for p, c in zip(world_prod_vals, world_cons_vals)]
+
+    global_balance = {
+        "world_production":    [{"date": d, "value": round(v, 3)} for d, v in zip(monthly_dates, world_prod_vals)],
+        "world_consumption":   [{"date": d, "value": round(v, 3)} for d, v in zip(monthly_dates, world_cons_vals)],
+        "opec_production":     [{"date": d, "value": round(v, 3)} for d, v in zip(monthly_dates, opec_vals)],
+        "non_opec_production": [{"date": d, "value": round(v, 3)} for d, v in zip(monthly_dates, non_opec_vals)],
+        "balance":             [{"date": d, "value": v} for d, v in zip(monthly_dates, balance_vals)],
+    }
+
+    # ── 钻井数据 (月度, 5年) ──────────────────────────
+    # 美国原油钻机数约 400-600 座
+    rig_vals = _walk(500, n_monthly, vol=0.015, trend=-0.001)
+    drilling = {
+        "rig_count": [{"date": d, "value": round(v, 0)} for d, v in zip(monthly_dates, rig_vals)],
+    }
+
     # ── Meta ──────────────────────────────────────────
     meta = {
         "last_updated": now_str,
@@ -200,6 +251,9 @@ def generate_mock_data():
             "financial": {"source": "MOCK", "updated": now_str},
             "cftc": {"source": "MOCK", "updated": now_str},
             "futures": {"source": "MOCK", "updated": now_str},
+            "crack_spread": {"source": "MOCK", "updated": now_str},
+            "global_balance": {"source": "MOCK", "updated": now_str},
+            "drilling": {"source": "MOCK", "updated": now_str},
         },
     }
 
@@ -212,6 +266,9 @@ def generate_mock_data():
         "financial.json": financial,
         "cftc.json": cftc,
         "futures.json": futures,
+        "crack_spread.json": crack_spread,
+        "global_balance.json": global_balance,
+        "drilling.json": drilling,
         "meta.json": meta,
     }
     for fname, data in files.items():

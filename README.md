@@ -15,11 +15,16 @@
   - [需求数据 (demand.json)](#4-需求数据-demandjson)
   - [金融条件 (financial.json)](#5-金融条件-financialjson)
   - [CFTC 持仓 (cftc.json)](#6-cftc-持仓-cftcjson)
-  - [综合信号 (signals.json)](#7-综合信号-signalsjson)
+  - [期货曲线 (futures.json)](#7-期货曲线-futuresjson)
+  - [裂解价差 (crack_spread.json)](#8-裂解价差-crack_spreadjson)
+  - [全球供需平衡 (global_balance.json)](#9-全球供需平衡-global_balancejson)
+  - [钻井数据 (drilling.json)](#10-钻井数据-drillingjson)
+  - [综合信号 (signals.json)](#11-综合信号-signalsjson)
 - [Hard-coded 参数一览](#hard-coded-参数一览)
 - [信号计算逻辑详解](#信号计算逻辑详解)
 - [如何使用 / 如何看数据](#如何使用--如何看数据)
 - [项目欠缺与改进方向](#项目欠缺与改进方向)
+- [更新日志](#更新日志)
 
 ---
 
@@ -39,18 +44,22 @@ oil/
 │   ├── demand.json          # 汽油/馏分油隐含需求
 │   ├── financial.json       # DXY、实际利率、OVX
 │   ├── cftc.json            # CFTC 投机持仓
-│   ├── signals.json         # 综合信号计算结果
+│   ├── crack_spread.json     # 裂解价差（3-2-1 + 汽油 + 柴油）
+│   ├── global_balance.json   # 全球供需平衡（STEO）
+│   ├── drilling.json         # 美国钻机数（STEO）
+│   ├── signals.json         # 综合信号计算结果（7 维）
 │   └── meta.json            # 更新时间戳 + 数据源状态
 ├── etl/                     # Python 数据获取 & 计算脚本
 │   ├── config.py            # API 端点、Series ID、信号阈值
 │   ├── run_all.py           # ETL 入口（--mock 生成模拟数据）
 │   ├── fetch_eia.py         # EIA API v2 数据拉取
-│   ├── fetch_fred.py        # FRED API 数据拉取
+│   ├── fetch_fred.py        # FRED API 数据拉取 + 裂解价差计算
 │   ├── fetch_cftc.py        # CFTC Socrata API 数据拉取
 │   ├── fetch_futures.py     # Yahoo Finance 期货曲线数据
-│   ├── compute_signals.py   # 信号计算引擎
+│   ├── fetch_steo.py        # EIA STEO 全球供需 + 钻机数据
+│   ├── compute_signals.py   # 信号计算引擎（7 维信号）
 │   ├── generate_mock.py     # 模拟数据生成器
-│   └── requirements.txt     # Python 依赖
+│   └── requirements.txt     # Python 依赖（含 scipy）
 └── web/                     # 前端 Dashboard（纯静态）
     ├── index.html
     ├── css/style.css
@@ -85,7 +94,15 @@ oil/
 | `cftc.json` | WTI 投机持仓 | **CFTC** Socrata API | ⭐⭐⭐⭐⭐ 监管机构官方 | 周度（周五发布） | ❌ 直接拉取；净多头由脚本计算 `long - short` |
 | `futures.json` — curve | WTI 期货曲线快照 (12 个合约) | **Yahoo Finance** | ⭐⭐⭐⭐ 市场数据 | 日度（工作日） | ❌ 直接拉取 |
 | `futures.json` — spread_history | M1-M2 近远月价差历史 | **计算** (Yahoo Finance) | ⭐⭐⭐⭐ 市场数据计算 | 日度 | ✅ 从合约价格计算 `M1 - M2` |
-| `signals.json` | 6 维综合信号 | **计算** | ⭐⭐⭐ 规则简化 | 随 ETL 运行 | ✅ 完全由 `compute_signals.py` 计算 |
+| `crack_spread.json` — crack_321 | 3-2-1 裂解价差 $/bbl | **计算** (FRED 数据) | ⭐⭐⭐⭐ 标准行业算法 | 日度 | ✅ `(2×汽油×42 + 柴油×42)/3 - WTI` |
+| `crack_spread.json` — gasoline_crack | 汽油裂解价差 | **计算** | ⭐⭐⭐⭐ | 日度 | ✅ `汽油×42 - WTI` |
+| `crack_spread.json` — diesel_crack | 柴油裂解价差 | **计算** | ⭐⭐⭐⭐ | 日度 | ✅ `柴油×42 - WTI` |
+| `global_balance.json` — world_production | 全球液体燃料产量 百万桶/日 | **EIA STEO** `STEO.PAPR_WORLD.M` | ⭐⭐⭐⭐ 官方预测 | 月度 | ❌ 直接拉取 |
+| `global_balance.json` — world_consumption | 全球液体燃料消费 百万桶/日 | **EIA STEO** `STEO.PATC_WORLD.M` | ⭐⭐⭐⭐ 官方预测 | 月度 | ❌ 直接拉取 |
+| `global_balance.json` — opec_production | OPEC 液体燃料产量 百万桶/日 | **EIA STEO** `STEO.PAPR_OPEC.M` | ⭐⭐⭐⭐ 官方预测 | 月度 | ❌ 直接拉取 |
+| `global_balance.json` — balance | 全球供需平衡（隐含库存变化）| **计算** | ⭐⭐⭐⭐ | 月度 | ✅ `产量 - 消费`，>0累库 <0去库 |
+| `drilling.json` — rig_count | 美国原油钻机数 (座) | **EIA STEO** `STEO.CORIPUS.M` | ⭐⭐⭐⭐ 官方预测 | 月度 | ❌ 直接拉取 |
+| `signals.json` | 7 维综合信号 | **计算** | ⭐⭐⭐ 规则简化 | 随 ETL 运行 | ✅ 完全由 `compute_signals.py` 计算 |
 | `meta.json` | 更新时间戳 | **系统** | — | 随 ETL 运行 | ✅ ETL 运行时生成 |
 
 ### 可信度说明
@@ -178,7 +195,33 @@ oil/
 - 无需 API Key，免费使用
 - 历史价差采用累积模式：每次 ETL 运行追加当天数据，首次运行时尝试从合约历史回填
 
-### 8. 综合信号 (signals.json)
+### 8. 裂解价差 (crack_spread.json)
+
+| 字段 | 含义 | 计算公式 | 为什么需要 | 如何看 |
+|------|------|----------|-----------|--------|
+| `crack_321` | 3-2-1 裂解价差 $/bbl | `(2×汽油价×42 + 柴油价×42)/3 − WTI` | 衡量炼厂利润，反映成品油需求强度 | > $20 = 高利润/需求强；< $10 = 低利润/需求弱 |
+| `gasoline_crack` | 汽油裂解价差 | `汽油价($/gal) × 42 − WTI` | 汽油端炼厂利润 | 夏季驾车高峰前通常走高 |
+| `diesel_crack` | 柴油裂解价差 | `柴油价($/gal) × 42 − WTI` | 柴油端炼厂利润 | 柴油与工业/运输相关性高 |
+
+**数据源**：WTI 价格 FRED `DCOILWTICO`，汽油价格 FRED `DRGASNYH`（纽约港常规汽油现货），柴油价格 FRED `DHOILNYH`（纽约港二号取暖油现货）。42 为每桶加仑数。
+
+### 9. 全球供需平衡 (global_balance.json)
+
+| 字段 | 含义 | EIA STEO Series | 为什么需要 | 如何看 |
+|------|------|-----------------|-----------|--------|
+| `world_production` | 全球液体燃料产量，百万桶/日 | `STEO.PAPR_WORLD.M` | 观察全球供给总量及趋势 | 持续上升 → 供给压力 |
+| `world_consumption` | 全球液体燃料消费，百万桶/日 | `STEO.PATC_WORLD.M` | 观察全球需求总量及趋势 | 与产量对比判断供需松紧 |
+| `opec_production` | OPEC 液体燃料产量，百万桶/日 | `STEO.PAPR_OPEC.M` | OPEC 主导全球边际供给 | 减产 → 利多；增产 → 利空 |
+| `non_opec_production` | 非 OPEC 产量，百万桶/日 | `STEO.PAPR_NONOPEC.M` | 页岩油等非OPEC供给增量 | — |
+| `balance` | 供需平衡（产量−消费），百万桶/日 | **计算** | 最核心的全球供需松紧指标 | > 0 = 累库（供过于求）；< 0 = 去库（供不应求）|
+
+### 10. 钻井数据 (drilling.json)
+
+| 字段 | 含义 | EIA STEO Series | 为什么需要 | 如何看 |
+|------|------|-----------------|-----------|--------|
+| `rig_count` | 美国原油钻机数（座）| `STEO.CORIPUS.M` | 钻机数是产量的**领先指标**（6-9个月），比产量本身更能预判供给拐点 | 钻机减少 → 未来产量下降 → 利多；增加 → 利空 |
+
+### 11. 综合信号 (signals.json)
 
 这是**完全由 `compute_signals.py` 计算出来的衍生数据**，不来自任何外部 API。信号系统基于简化规则，详见下文。
 
@@ -261,14 +304,23 @@ oil/
 - **综合**：汽油看多 + 馏分油不看空 → 🟢; 两者都看空 → 🔴; 其余 → ⚪
 
 ### 信号 4：钻井活动 (`drilling`)
-- **输入**：`production.json` → crude_production 产量序列（代替钻机数）
-- **逻辑**：比较最近 4 周均值 vs 再前 4 周均值
-  - 最近均值 > 前期 × 1.01（增产 1%+）→ 🔴 bearish（供给增加利空）
-  - 最近均值 < 前期 × 0.99（减产 1%+）→ 🟢 bullish（供给减少利多）
+- **输入**：优先 `drilling.json` → rig_count 钻机数序列；无钻机数据时回退到 `production.json` → crude_production
+- **逻辑**：比较最近 3 个月（或 4 周）均值 vs 再前 3 个月（或 4 周）均值
+  - 最近均值 > 前期 × 1.01（钻机增加 1%+）→ 🔴 bearish（未来供给增加利空）
+  - 最近均值 < 前期 × 0.99（钻机减少 1%+）→ 🟢 bullish（未来供给减少利多）
   - 其余 → ⚪ neutral
-- **⚠️ 已知简化**：用"产量"代替了"钻机数 + DUC"作指标
+- **数据源**：EIA STEO `STEO.CORIPUS.M`（美国原油钻机数），产量回退模式标注 `source: production_proxy`
 
-### 信号 5：金融条件 (`financial`)
+### 信号 5：全球供需 (`opec`) — *新增*
+- **输入**：`global_balance.json` → balance（全球供需平衡序列）+ opec_production（OPEC 产量）
+- **逻辑**：取最近 3 个月平衡值均值
+  - 均值 < -0.3 百万桶/日（持续去库）→ 🟢 bullish（供不应求）
+  - 均值 > +0.3 百万桶/日（持续累库）→ 🔴 bearish（供过于求）
+  - 其余 → ⚪ neutral
+- **附加**：同时跟踪 OPEC 产量趋势（increasing / decreasing / stable）
+- **数据源**：EIA STEO 月度全球液体燃料产量/消费预测
+
+### 信号 6：金融条件 (`financial`)
 - **输入**：`financial.json` → dxy, real_rate, ovx
 - **逻辑**：积分制，初始 score = 0
   - DXY > 200 日均线 → score -= 1
@@ -276,7 +328,7 @@ oil/
   - OVX > 40 → score -= 1
 - **综合**：score ≤ -2 → 🔴 bearish; score ≥ 0 → 🟢 bullish; 其余 → ⚪ neutral
 
-### 信号 6：持仓拥挤度 (`positioning`)
+### 信号 7：持仓拥挤度 (`positioning`)
 - **输入**：`cftc.json` → net_long 序列
 - **逻辑**：计算当前值在历史序列中的百分位
   - > 90 分位 → ⚠️ warning（多头拥挤，回撤风险）
@@ -348,8 +400,8 @@ cd web && python -m http.server 8080
 | 问题 | 说明 | 改进方案 |
 |------|------|----------|
 | **~~无真正期货曲线数据~~** ✅ 已修复 | 已通过 Yahoo Finance (`yfinance`) 接入 WTI CL 期货各月合约价格，曲线结构信号现使用真实 M1-M2 近远月价差。无期货数据时自动回退到 WTI-Brent 价差近似 | Dashboard 新增期货曲线图 + M1-M2 价差走势图 |
-| **无 OPEC 数据** | 需求文档规划了 OPEC 产量/配额/全球供需平衡模块，但未实现 | OPEC MOMR 为 PDF 格式，需要 PDF 解析管线；或引用 EIA STEO 中的全球供需平衡预测 |
-| **无钻机数据** | Baker Hughes 钻机数是产量的领先指标，当前用 EIA 产量代替 | 接入 Baker Hughes 网站数据（需要爬虫），或使用第三方 API |
+| **~~无 OPEC 数据~~** ✅ 已修复 | 通过 EIA STEO 接入全球供需平衡数据（世界产量/消费、OPEC/非OPEC 产量）。新增 `fetch_steo.py` + `global_balance.json`，Dashboard 新增“全球供需平衡”面板和 `opec` 信号 | 可进一步接入 OPEC MOMR PDF 解析获取配额数据 |
+| **~~无钻机数据~~** ✅ 已修复 | 通过 EIA STEO `STEO.CORIPUS.M` 接入美国原油钻机数。新增 `drilling.json`，Dashboard 新增“美国原油钻机数”面板，钻井活动信号优先使用钻机数 | 可进一步接入 Baker Hughes 周度数据获取更高频更新 |
 | **无 DUC 和页岩盆地数据** | EIA Drilling Productivity Report 数据未接入 | 向 EIA API 扩展获取 DPR 系列 |
 
 ### 🟡 逻辑简化
@@ -357,7 +409,7 @@ cd web && python -m http.server 8080
 | 问题 | 说明 | 改进方案 |
 |------|------|----------|
 | **信号阈值全部 hard-coded** | 阈值是经验值，不随数据自适应 | 改用动态分位数（如用过去 N 年数据计算 Z-score 或百分位）替代固定阈值 |
-| **5 年区间只用均值±标准差模拟** | 库存图的 5 年区间是用全序列统计量模拟，不是真正按"同周历史"计算 | 按周序号（week-of-year）分组，计算每周的 5 年 min-max 或分位数，画出真正的季节性区间带 |
+| **~~5 年区间只用均值±标准差模拟~~** ✅ 已修复 | 库存图现按 ISO 周序号（week-of-year）分组历史数据，计算每周的 min/max 区间带，当前年份与真正的季节性历史区间对比。数据不足时回退到邻近周或均值±标准差 | 可进一步优化为分位数带（如 10%-90%）|
 | **CFTC 百分位基于有限历史** | 仅用拉取的约 3 年数据计算百分位，如果数据窗口短则不够稳健 | 拉取更长历史（CFTC 有 2006 年起全量 CSV），或使用全量历史来计算 |
 | **需求信号过于简化** | 仅比较最近一周 vs 4 周均值，缺乏季节性调整 | 加入同比（YoY）比较，或与 5 年同期对比 |
 | **~~曲线结构信号用错数据源~~** ✅ | 已修复：优先使用真实期货 M1-M2 价差，回退到 WTI-Brent | 可进一步接入 CME 付费数据提高精度 |
@@ -366,7 +418,7 @@ cd web && python -m http.server 8080
 
 | 方向 | 说明 |
 |-------|------|
-| **裂解价差 (Crack Spread)** | 3-2-1 裂解价差 = 2/3 × 汽油价 + 1/3 × 柴油价 − 原油价，可用 EIA/FRED 数据计算，反映炼厂利润 |
+| **~~裂解价差 (Crack Spread)~~** ✅ 已实现 | 3-2-1 Crack Spread + 汽油/柴油分别裂解价差，使用 FRED 汽油(`DRGASNYH`)/柴油(`DHOILNYH`)/WTI 价格计算，新增 `crack_spread.json` + Dashboard 面板 |
 | **自动化调度** | 接入 GitHub Actions cron 或本地 crontab，实现每日/每周自动更新 |
 | **历史数据补全** | 当前 EIA 只拉 5 年，FRED 拉 2 年；可扩展到 10 年以上，提供更完整的历史视角 |
 | **移动端适配** | 当前 Dashboard 在手机上可用但体验一般，图表需要更好的响应式设计 |
@@ -398,6 +450,53 @@ cd web && python -m http.server 8080
 | 前端 | HTML + Vanilla JS | 纯静态，fetch 加载 JSON |
 | 图表 | ECharts 5 | 深色主题，支持交互缩放 |
 | 样式 | Tailwind CSS (CDN) | 快速搭建深色 Dashboard |
+
+---
+
+## 更新日志
+
+### v1.2 — 2026-03-09 (P1 修复)
+
+**新增数据源**
+- 接入 EIA STEO (Short-Term Energy Outlook) 月度数据，新增 `fetch_steo.py`
+  - 全球供需平衡：世界产量/消费、OPEC/非OPEC 产量 → `global_balance.json`
+  - 美国原油钻机数 (`STEO.CORIPUS.M`) → `drilling.json`
+
+**新增前端面板**
+- 🌍 全球供需平衡 (STEO)：双轴图展示产量/消费折线 + 供需平衡柱状
+- 🔧 美国原油钻机数：折线图展示历史钻机数趋势
+
+**信号引擎升级（6 维 → 7 维）**
+- 新增 `opec` 信号（全球供需）：基于近 3 月供需平衡均值判断利多/利空
+- `drilling` 信号升级：优先使用钻机数（领先指标），回退到产量代理
+- 信号面板 UI 同步更新，显示 7 个信号维度
+
+**图表修复**
+- 修复库存图 5 年季节性区间带：从简单均值±标准差改为按 ISO 周序号分组的历史 min/max 计算，支持邻近周回退
+
+**ETL 管线**
+- `run_all.py` 新增 STEO 步骤（[3/6]），总步骤从 5 增至 6
+- `generate_mock.py` 新增 `global_balance.json` 和 `drilling.json` 模拟数据
+
+### v1.1 — 2026-03-08 (P0 修复)
+
+**新增功能**
+- 裂解价差 (Crack Spread)：3-2-1 + 汽油/柴油分别裂解价差
+  - 新增 FRED 数据源：`DRGASNYH`（汽油）、`DHOILNYH`（柴油）
+  - `fetch_fred.py` 新增 `_compute_crack_spread()` → `crack_spread.json`
+  - 前端新增 🔥 裂解价差面板
+- 原油净进口图表：`production.json` 中已有 `net_import` 数据，新增前端渲染
+  - 前端新增 🚢 原油净进口面板
+
+**修复**
+- `requirements.txt` 补充 `scipy>=1.11` 依赖（`compute_signals.py` 中使用）
+
+### v1.0 — 2026-03-04 (初始版本)
+
+- 项目初始化：7 大指标模块 + 6 维信号系统
+- 数据源：EIA API v2、FRED API、CFTC Socrata、Yahoo Finance
+- 前端：ECharts 5 + Tailwind CSS 深色主题 Dashboard
+- ETL：支持真实 API 拉取和 `--mock` 模拟数据模式
 | 部署 | 静态文件 | 可部署到 GitHub Pages / Vercel / 任意静态服务 |
 
 ---

@@ -7,6 +7,7 @@ const SIGNAL_NAMES = {
   curve:       '曲线结构',
   demand:      '需求强度',
   drilling:    '钻井活动',
+  opec:        '全球供需',
   financial:   '金融条件',
   positioning: '持仓拥挤',
 };
