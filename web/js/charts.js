@@ -78,22 +78,29 @@ function sparkOption(data, color) {
 function lineChart(series, opts = {}) {
   const opt = baseOption();
   // 取第一个 series 的日期作为 x 轴
-  const dates = series[0]?.data?.map(d => d.date) || [];
+  // ── 合并所有 series 的日期为统一 x 轴，按日期对齐值 ──
+  const dateSet = new Set();
+  series.forEach(s => s.data.forEach(d => dateSet.add(d.date)));
+  const dates = Array.from(dateSet).sort();
   opt.xAxis.data = dates;
 
   if (opts.yAxisName) opt.yAxis.name = opts.yAxisName;
   if (opts.yMin !== undefined) opt.yAxis.min = opts.yMin;
 
-  opt.series = series.map((s, i) => ({
-    name: s.name,
-    type: 'line',
-    data: s.data.map(d => d.value),
-    showSymbol: false,
-    lineStyle: { width: 1.8 },
-    itemStyle: { color: s.color || PALETTE[i % PALETTE.length] },
-    ...(s.areaStyle ? { areaStyle: s.areaStyle } : {}),
-    ...(s.yAxisIndex !== undefined ? { yAxisIndex: s.yAxisIndex } : {}),
-  }));
+  opt.series = series.map((s, i) => {
+    const dateMap = new Map(s.data.map(d => [d.date, d.value]));
+    return {
+      name: s.name,
+      type: 'line',
+      data: dates.map(d => dateMap.get(d) ?? null),
+      showSymbol: false,
+      lineStyle: { width: 1.8 },
+      itemStyle: { color: s.color || PALETTE[i % PALETTE.length] },
+      ...(s.areaStyle ? { areaStyle: s.areaStyle } : {}),
+      ...(s.yAxisIndex !== undefined ? { yAxisIndex: s.yAxisIndex } : {}),
+      connectNulls: true,
+    };
+  });
 
   // 双 Y 轴支持
   if (opts.dualAxis) {

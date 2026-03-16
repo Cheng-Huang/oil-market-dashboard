@@ -158,16 +158,37 @@
         <h2 class="panel-title">🔧 美国原油钻机数</h2>
         <div id="chart-drilling" class="chart-box"></div>
       </div>
+
+      <!-- ── 航运要道监控 (Full Width) ── -->
+      <div class="panel lg:col-span-2" id="maritime-panel" style="display:none;">
+        <h2 class="panel-title">🚢 石油航运要道监控 (IMF PortWatch)</h2>
+        <p class="text-xs text-gray-500 mb-3">基于卫星AIS数据追踪全球关键咽喉要道油轮通行量 · 数据源: IMF PortWatch</p>
+        <!-- 风险信号 -->
+        <div id="maritime-alerts" class="mb-4"></div>
+        <!-- 咽喉要道卡片 -->
+        <div id="maritime-chokepoints" class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4"></div>
+        <!-- 油轮通行量图表 -->
+        <div id="chart-hormuz-tanker" class="w-full" style="height: 300px;"></div>
+        <!-- 油轮运价指标 -->
+        <div id="maritime-tanker-stocks" class="mt-4"></div>
+      </div>
+
+      <!-- ── Polymarket 预测市场 (Full Width) ── -->
+      <div class="panel lg:col-span-2" id="polymarket-panel" style="display:none;">
+        <h2 class="panel-title">🎯 预测市场情绪 (Polymarket)</h2>
+        <p class="text-xs text-gray-500 mb-3">影响油价的地缘政治与宏观事件 · 概率来自 Polymarket 真实资金下注</p>
+        <div id="polymarket-content" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+      </div>
     </div>
   </main>
 
   <!-- ═══════════════ FOOTER ═══════════════ -->
   <footer class="text-center text-gray-600 text-xs py-4 border-t border-gray-800">
-    数据来源: EIA / FRED / CFTC / Yahoo Finance · 仅供参考，不构成投资建议
+    数据来源: EIA / FRED / CFTC / Yahoo Finance / Polymarket / IMF PortWatch · 仅供参考，不构成投资建议
   </footer>
 
-  <script src="js/charts.js"></script>
-  <script src="js/signals.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/charts.js?v=20260316"></script>
+  <script src="js/signals.js?v=20260316"></script>
+  <script src="js/app.js?v=20260316"></script>
 </body>
 </html>

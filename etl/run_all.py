@@ -76,29 +76,29 @@ def run_real():
     # FRED
     fred_data = {}
     if config.FRED_API_KEY:
-        print("\n[1/6] FRED ...")
+        print("\n[1/9] FRED ...")
         from fetch_fred import fetch_all_fred, save_fred_data
         fred_data = fetch_all_fred()
         save_fred_data(fred_data)
     else:
-        print("\n[1/6] FRED — ⚠ 跳过（无 API Key）")
+        print("\n[1/9] FRED — ⚠ 跳过（无 API Key）")
 
     # EIA
     eia_data = {}
     if config.EIA_API_KEY:
-        print("\n[2/6] EIA ...")
+        print("\n[2/9] EIA ...")
         from fetch_eia import fetch_all_eia, save_eia_data
         eia_data = fetch_all_eia()
         save_eia_data(eia_data)
     else:
-        print("\n[2/6] EIA — ⚠ 跳过（无 API Key）")
+        print("\n[2/9] EIA — ⚠ 跳过（无 API Key）")
 
     # ── 裂解价差补救：FRED 汽油价格失效时，用 EIA 汽油现货替代 ──
     _fix_crack_spread(fred_data, eia_data)
 
     # STEO (OPEC/全球供需 + 钻机数)
     if config.EIA_API_KEY:
-        print("\n[3/6] STEO (全球供需 & 钻井) ...")
+        print("\n[3/9] STEO (全球供需 & 钻井) ...")
         try:
             from fetch_steo import fetch_all_steo, save_steo_data
             steo_data = fetch_all_steo()
@@ -106,10 +106,10 @@ def run_real():
         except Exception as e:
             print(f"  ✗ STEO 数据获取失败: {e}")
     else:
-        print("\n[3/6] STEO — ⚠ 跳过（无 EIA API Key）")
+        print("\n[3/9] STEO — ⚠ 跳过（无 EIA API Key）")
 
     # CFTC
-    print("\n[4/6] CFTC ...")
+    print("\n[4/9] CFTC ...")
     try:
         from fetch_cftc import fetch_cftc_positioning, save_cftc_data
         cftc_data = fetch_cftc_positioning()
@@ -119,7 +119,7 @@ def run_real():
         print(f"  ✗ {e}")
 
     # 期货曲线（Yahoo Finance，无需 API Key）
-    print("\n[5/6] 期货曲线 ...")
+    print("\n[5/9] 期货曲线 ...")
     try:
         from fetch_futures import fetch_futures_data
         futures_data = fetch_futures_data()
@@ -129,8 +129,26 @@ def run_real():
     except Exception as e:
         print(f"  ✗ 期货数据获取失败: {e}")
 
+    # Polymarket 预测市场（免费，无需 API Key）
+    print("\n[6/9] Polymarket 预测市场 ...")
+    try:
+        from fetch_polymarket import fetch_polymarket_data, save_polymarket_data
+        poly_data = fetch_polymarket_data()
+        save_polymarket_data(poly_data)
+    except Exception as e:
+        print(f"  ✗ Polymarket 数据获取失败: {e}")
+
+    # 航运数据（IMF PortWatch + Yahoo Finance，免费，无需 API Key）
+    print("\n[7/9] 航运数据 (IMF PortWatch) ...")
+    try:
+        from fetch_maritime import fetch_maritime_data, save_maritime_data
+        maritime_data = fetch_maritime_data()
+        save_maritime_data(maritime_data)
+    except Exception as e:
+        print(f"  ✗ 航运数据获取失败: {e}")
+
     # 信号
-    print("\n[6/6] 计算信号 ...")
+    print("\n[8/9] 计算信号 ...")
     from compute_signals import compute_all_signals
     signals = compute_all_signals()
     for k, v in signals.items():
@@ -138,6 +156,7 @@ def run_real():
         print(f"  {emoji} {v['name']}: {v['signal']}")
 
     # Meta
+    print("\n[9/9] 写入元信息 ...")
     import json
     meta = {
         "last_updated": datetime.now().isoformat(),
@@ -147,6 +166,8 @@ def run_real():
             "cftc": "ok",
             "futures": "ok",
             "steo": "ok" if config.EIA_API_KEY else "skipped",
+            "polymarket": "ok",
+            "maritime": "ok",
         },
     }
     with open(config.DATA_DIR / "meta.json", "w") as f:
