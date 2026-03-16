@@ -455,49 +455,7 @@ cd web && python -m http.server 8080
 
 ## 更新日志
 
-### v1.2 — 2026-03-09 (P1 修复)
-
-**新增数据源**
-- 接入 EIA STEO (Short-Term Energy Outlook) 月度数据，新增 `fetch_steo.py`
-  - 全球供需平衡：世界产量/消费、OPEC/非OPEC 产量 → `global_balance.json`
-  - 美国原油钻机数 (`STEO.CORIPUS.M`) → `drilling.json`
-
-**新增前端面板**
-- 🌍 全球供需平衡 (STEO)：双轴图展示产量/消费折线 + 供需平衡柱状
-- 🔧 美国原油钻机数：折线图展示历史钻机数趋势
-
-**信号引擎升级（6 维 → 7 维）**
-- 新增 `opec` 信号（全球供需）：基于近 3 月供需平衡均值判断利多/利空
-- `drilling` 信号升级：优先使用钻机数（领先指标），回退到产量代理
-- 信号面板 UI 同步更新，显示 7 个信号维度
-
-**图表修复**
-- 修复库存图 5 年季节性区间带：从简单均值±标准差改为按 ISO 周序号分组的历史 min/max 计算，支持邻近周回退
-
-**ETL 管线**
-- `run_all.py` 新增 STEO 步骤（[3/6]），总步骤从 5 增至 6
-- `generate_mock.py` 新增 `global_balance.json` 和 `drilling.json` 模拟数据
-
-### v1.1 — 2026-03-08 (P0 修复)
-
-**新增功能**
-- 裂解价差 (Crack Spread)：3-2-1 + 汽油/柴油分别裂解价差
-  - 新增 FRED 数据源：`DRGASNYH`（汽油）、`DHOILNYH`（柴油）
-  - `fetch_fred.py` 新增 `_compute_crack_spread()` → `crack_spread.json`
-  - 前端新增 🔥 裂解价差面板
-- 原油净进口图表：`production.json` 中已有 `net_import` 数据，新增前端渲染
-  - 前端新增 🚢 原油净进口面板
-
-**修复**
-- `requirements.txt` 补充 `scipy>=1.11` 依赖（`compute_signals.py` 中使用）
-
-### v1.0 — 2026-03-04 (初始版本)
-
-- 项目初始化：7 大指标模块 + 6 维信号系统
-- 数据源：EIA API v2、FRED API、CFTC Socrata、Yahoo Finance
-- 前端：ECharts 5 + Tailwind CSS 深色主题 Dashboard
-- ETL：支持真实 API 拉取和 `--mock` 模拟数据模式
-| 部署 | 静态文件 | 可部署到 GitHub Pages / Vercel / 任意静态服务 |
+详见 [CHANGELOG.md](CHANGELOG.md)。
 
 ---
 
