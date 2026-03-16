@@ -1,0 +1,127 @@
+{
+  "inventory": {
+    "name": "库存趋势",
+    "signal": "bearish",
+    "detail": "最近3周变化: [15989.0, 3475.0, 3824.0]",
+    "last_change_mbbl": 3824.0,
+    "cushing_warning": false
+  },
+  "curve": {
+    "name": "曲线结构",
+    "signal": "bullish",
+    "label": "Backwardation",
+    "source": "futures",
+    "m1_m2_spread": 1.6,
+    "m1_m6_spread": 17.08,
+    "curve_front": 100.31,
+    "curve_back": 72.78,
+    "n_contracts": 12
+  },
+  "demand": {
+    "name": "需求强度",
+    "signal": "neutral",
+    "gasoline_trend": "bullish",
+    "distillate_trend": "bearish"
+  },
+  "crack_spread": {
+    "name": "裂解价差",
+    "signal": "neutral",
+    "crack_321": 18.53,
+    "crack_321_20d_avg": 24.97,
+    "crack_321_60d_avg": 24.58,
+    "gasoline_crack": 7.7,
+    "diesel_crack": 40.17,
+    "trend": "flat",
+    "level": "normal",
+    "cross_validation": "裂解价差处于正常范围",
+    "detail": "3-2-1: $18.5 (20d均: $25.0, 60d均: $24.6), 趋势: flat"
+  },
+  "drilling": {
+    "name": "钻井活动",
+    "signal": "bullish",
+    "source": "rig_count",
+    "recent_avg": 16.0,
+    "prev_avg": 16.5
+  },
+  "opec": {
+    "name": "全球供需",
+    "signal": "bearish",
+    "balance_avg_3m": 1.245,
+    "opec_trend": "stable",
+    "data_source": "actual",
+    "supply_demand_detail": [
+      {
+        "date": "2026-01",
+        "balance": 2.875,
+        "supply": 105.988,
+        "demand": 103.112,
+        "type": "actual"
+      },
+      {
+        "date": "2026-02",
+        "balance": 2.741,
+        "supply": 107.879,
+        "demand": 105.139,
+        "type": "actual"
+      },
+      {
+        "date": "2026-03",
+        "balance": -1.88,
+        "supply": 101.817,
+        "demand": 103.697,
+        "type": "actual"
+      }
+    ],
+    "detail": "近3月平均平衡: +1.245 百万桶/日 (来源: actual)"
+  },
+  "financial": {
+    "name": "金融条件",
+    "signal": "neutral",
+    "dxy_vs_ma200": -0.68,
+    "real_rate": 1.89,
+    "ovx": 120.22
+  },
+  "positioning": {
+    "name": "持仓拥挤度",
+    "signal": "neutral",
+    "net_long": 92122.0,
+    "percentile": 26.0
+  },
+  "cross_analysis": {
+    "findings": [
+      {
+        "type": "price_futures_gap",
+        "spot_date": "2026-03-09",
+        "spot_price": 94.65,
+        "futures_date": "2026-03-16",
+        "futures_price": 100.31,
+        "gap": 5.66,
+        "detail": "现货(2026-03-09)$94.65 vs 近月期货(2026-03-16)$100.31，差距$5.66。含数据时间差+地缘溢价，需区分两者贡献。"
+      },
+      {
+        "type": "hormuz_critical",
+        "severity": "critical",
+        "detail": "霍尔木兹油轮通行量周环比-97.6%，属极端事件。"
+      }
+    ],
+    "contradictions": [
+      {
+        "type": "curve_vs_balance",
+        "severity": "high",
+        "detail": "深度Backwardation理论上意味着现货紧张，但全球供需过剩+1.2百万桶/日。两者不能同时为真——Backwardation可能完全由地缘风险溢价驱动，而非基本面紧张。"
+      },
+      {
+        "type": "tanker_stock_vs_maritime",
+        "severity": "medium",
+        "avg_5d_change": -12.4,
+        "detail": "霍尔木兹封锁理论上利好油轮运费，但油轮股5日均跌-12.4%。可能因封锁导致货源消失比运费上涨更快，即\"无货可运\"效应压倒了\"运费上涨\"效应。"
+      }
+    ],
+    "n_contradictions": 2
+  },
+  "price_freshness": {
+    "spot_date": "2026-03-09",
+    "futures_date": "2026-03-16",
+    "lag_days": 7
+  }
+}

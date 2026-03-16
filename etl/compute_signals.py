@@ -3,6 +3,7 @@
 输出 signals.json
 """
 import json
+from datetime import datetime
 from config import DATA_DIR, SIGNAL_INVENTORY_WEEKS as N_WEEKS
 from config import (
     SIGNAL_CUSHING_WARN_MBBL,
@@ -215,13 +216,26 @@ def drilling_signal(production: dict, drilling: dict) -> dict:
 
 
 def opec_signal(global_bal: dict) -> dict:
-    """OPEC/全球供需平衡信号：基于隐含库存变化趋势"""
+    """OPEC/全球供需平衡信号：基于隐含库存变化趋势，区分实际vs预测"""
     balance = global_bal.get("balance", []) if global_bal else []
     if len(balance) < 3:
         return {"name": "全球供需", "signal": "neutral", "source": "none"}
 
-    # 最近 3 个月的供需平衡
-    recent = [d["value"] for d in balance[-3:]]
+    # 优先使用有 actual/forecast 标注的数据
+    has_type = any("type" in d for d in balance)
+
+    if has_type:
+        # 分离 actual 和 forecast
+        actuals = [d for d in balance if d.get("type") == "actual"]
+        forecasts = [d for d in balance if d.get("type") == "forecast"]
+        # 使用最近3个月的 actual 数据
+        use_data = actuals[-3:] if len(actuals) >= 3 else balance[-3:]
+        data_source = "actual" if len(actuals) >= 3 else "mixed"
+    else:
+        use_data = balance[-3:]
+        data_source = "unknown"
+
+    recent = [d["value"] for d in use_data]
     avg = sum(recent) / len(recent)
 
     if avg < -0.3:
@@ -242,13 +256,33 @@ def opec_signal(global_bal: dict) -> dict:
         elif sum(r) / len(r) < sum(p) / len(p) * 0.99:
             opec_trend = "decreasing"
 
-    return {
+    # Build supply/demand for report
+    supply_demand = []
+    for d in use_data:
+        entry = {"date": d["date"], "balance": d["value"]}
+        if "supply" in d:
+            entry["supply"] = d["supply"]
+        if "demand" in d:
+            entry["demand"] = d["demand"]
+        if "type" in d:
+            entry["type"] = d["type"]
+        supply_demand.append(entry)
+
+    result = {
         "name": "全球供需",
         "signal": signal,
         "balance_avg_3m": round(avg, 3),
         "opec_trend": opec_trend,
-        "detail": f"近3月平均平衡: {avg:+.3f} 百万桶/日",
+        "data_source": data_source,
+        "supply_demand_detail": supply_demand,
+        "detail": f"近3月平均平衡: {avg:+.3f} 百万桶/日 (来源: {data_source})",
     }
+
+    # 标注 STEO 预测误差警示
+    if data_source in ("forecast", "mixed"):
+        result["forecast_caveat"] = "⚠ 含STEO预测数据，历史误差约±100万桶/日"
+
+    return result
 
 
 def financial_signal(fin: dict) -> dict:
@@ -316,6 +350,204 @@ def positioning_signal(cftc: list[dict]) -> dict:
     }
 
 
+def crack_spread_signal(crack: dict, demand_sig: dict) -> dict:
+    """
+    裂解价差信号：3-2-1 裂解价差反映炼厂利润，是需求端最核心的验证指标。
+    与需求信号交叉验证：
+    - 需求弱 + 裂解弱 = 确认需求疲软（bearish）
+    - 需求弱 + 裂解强 = 可能是炼厂主动减产导致的"假性弱需求"（neutral）
+    - 需求强 + 裂解强 = 确认需求旺盛（bullish）
+    """
+    crack_321 = crack.get("crack_321", [])
+    gas_crack = crack.get("gasoline_crack", [])
+    diesel_crack = crack.get("diesel_crack", [])
+
+    if not crack_321 or len(crack_321) < 20:
+        return {"name": "裂解价差", "signal": "neutral", "detail": "数据不足"}
+
+    latest = crack_321[-1]["value"]
+    avg_20d = sum(d["value"] for d in crack_321[-20:]) / 20
+    window_60 = crack_321[-60:]
+    avg_60d = sum(d["value"] for d in window_60) / len(window_60)
+
+    # 趋势：20日均 vs 60日均
+    if avg_20d > avg_60d * 1.05:
+        crack_trend = "rising"
+    elif avg_20d < avg_60d * 0.95:
+        crack_trend = "falling"
+    else:
+        crack_trend = "flat"
+
+    # 裂解价差绝对水平判断
+    if latest > 30:
+        level = "high"  # 炼厂高利润
+    elif latest < 15:
+        level = "low"   # 炼厂利润承压
+    else:
+        level = "normal"
+
+    # 与需求信号交叉验证
+    demand_is_weak = demand_sig.get("signal") == "bearish"
+    demand_is_strong = demand_sig.get("signal") == "bullish"
+
+    if demand_is_weak and crack_trend == "falling":
+        signal = "bearish"   # 确认需求疲软
+        cross_note = "需求弱+裂解走低→确认需求疲软"
+    elif demand_is_weak and crack_trend in ("rising", "flat") and level != "low":
+        signal = "neutral"   # 假性弱需求
+        cross_note = "需求弱但裂解未走低→可能是炼厂主动减产导致的假性弱需求"
+    elif demand_is_strong and crack_trend == "rising":
+        signal = "bullish"   # 确认需求旺盛
+        cross_note = "需求强+裂解走高→确认需求旺盛"
+    elif level == "low":
+        signal = "bearish"
+        cross_note = "裂解价差处于低位，炼厂利润承压"
+    elif level == "high":
+        signal = "bullish"
+        cross_note = "裂解价差处于高位，炼厂利润丰厚"
+    else:
+        signal = "neutral"
+        cross_note = "裂解价差处于正常范围"
+
+    gas_latest = gas_crack[-1]["value"] if gas_crack else None
+    diesel_latest = diesel_crack[-1]["value"] if diesel_crack else None
+
+    return {
+        "name": "裂解价差",
+        "signal": signal,
+        "crack_321": round(latest, 2),
+        "crack_321_20d_avg": round(avg_20d, 2),
+        "crack_321_60d_avg": round(avg_60d, 2),
+        "gasoline_crack": round(gas_latest, 2) if gas_latest else None,
+        "diesel_crack": round(diesel_latest, 2) if diesel_latest else None,
+        "trend": crack_trend,
+        "level": level,
+        "cross_validation": cross_note,
+        "detail": f"3-2-1: ${latest:.1f} (20d均: ${avg_20d:.1f}, 60d均: ${avg_60d:.1f}), 趋势: {crack_trend}",
+    }
+
+
+def cross_analysis(curve_sig: dict, opec_sig: dict, maritime: dict, price: dict, futures: dict) -> dict:
+    """
+    交叉分析：识别信号间的关键矛盾和需要深入讨论的问题。
+    - 期限结构 vs 供需平衡 矛盾
+    - 海运咽喉要道异常关联
+    - 价格-期货时间差分析
+    """
+    findings = []
+    contradictions = []
+
+    # ── 1. 曲线 vs 供需矛盾 ──
+    is_backwardation = curve_sig.get("signal") == "bullish"
+    is_oversupply = opec_sig.get("signal") == "bearish"
+    balance_avg = opec_sig.get("balance_avg_3m", 0)
+
+    if is_backwardation and is_oversupply:
+        contradictions.append({
+            "type": "curve_vs_balance",
+            "severity": "high",
+            "detail": (
+                f"深度Backwardation理论上意味着现货紧张，但全球供需过剩"
+                f"{balance_avg:+.1f}百万桶/日。两者不能同时为真——"
+                f"Backwardation可能完全由地缘风险溢价驱动，而非基本面紧张。"
+            ),
+        })
+
+    # ── 2. 价格-期货时间差 ──
+    wti_series = price.get("wti", [])
+    curve = futures.get("curve", []) if futures else []
+    if wti_series and curve:
+        spot_date = wti_series[-1]["date"]
+        spot_price = wti_series[-1]["value"]
+        futures_date = curve[0].get("date", "")
+        futures_price = curve[0].get("price", 0)
+        if spot_date and futures_date and spot_date != futures_date:
+            gap = abs(futures_price - spot_price)
+            findings.append({
+                "type": "price_futures_gap",
+                "spot_date": spot_date,
+                "spot_price": spot_price,
+                "futures_date": futures_date,
+                "futures_price": futures_price,
+                "gap": round(gap, 2),
+                "detail": (
+                    f"现货({spot_date})${spot_price} vs 近月期货({futures_date})"
+                    f"${futures_price}，差距${gap:.2f}。"
+                    f"{'含数据时间差+地缘溢价，需区分两者贡献。' if gap > 5 else ''}"
+                ),
+            })
+
+    # ── 3. 海运咽喉异常关联 ──
+    chokepoints = maritime.get("chokepoints", {}) if maritime else {}
+    if chokepoints:
+        hormuz = chokepoints.get("chokepoint6", {}).get("tanker_stats", {})
+        mandeb = chokepoints.get("chokepoint4", {}).get("tanker_stats", {})
+        hormuz_wow = hormuz.get("wow_change", 0)
+        mandeb_wow = mandeb.get("wow_change", 0)
+
+        # 霍尔木兹 + 曼德海峡同时骤降：中东出口全面受阻
+        if hormuz_wow < -50 and mandeb_wow < -50:
+            findings.append({
+                "type": "hormuz_mandeb_correlation",
+                "severity": "critical",
+                "hormuz_wow": hormuz_wow,
+                "mandeb_wow": mandeb_wow,
+                "detail": (
+                    f"霍尔木兹({hormuz_wow:+.1f}%)与曼德海峡({mandeb_wow:+.1f}%)同时骤降，"
+                    f"中东原油出口双通道同时受阻，"
+                    f"供应中断严重程度远超单一咽喉封锁。"
+                ),
+            })
+        elif hormuz_wow < -50:
+            findings.append({
+                "type": "hormuz_critical",
+                "severity": "critical",
+                "detail": f"霍尔木兹油轮通行量周环比{hormuz_wow:+.1f}%，属极端事件。",
+            })
+
+        # 油轮股 vs 海运数据矛盾
+        tanker_stocks = maritime.get("tanker_stocks", [])
+        if tanker_stocks and hormuz_wow < -30:
+            avg_5d_chg = sum(s.get("change_5d", 0) for s in tanker_stocks) / len(tanker_stocks)
+            if avg_5d_chg < -3:  # 油轮股下跌但应该利好
+                contradictions.append({
+                    "type": "tanker_stock_vs_maritime",
+                    "severity": "medium",
+                    "avg_5d_change": round(avg_5d_chg, 1),
+                    "detail": (
+                        f"霍尔木兹封锁理论上利好油轮运费，但油轮股5日均跌"
+                        f"{avg_5d_chg:.1f}%。可能因封锁导致货源消失比运费上涨更快，"
+                        f"即\"无货可运\"效应压倒了\"运费上涨\"效应。"
+                    ),
+                })
+
+    return {
+        "findings": findings,
+        "contradictions": contradictions,
+        "n_contradictions": len(contradictions),
+    }
+
+
+def price_freshness(price: dict, futures: dict) -> dict:
+    """计算各数据源的时间新鲜度，标注时间差。"""
+    result = {}
+    wti = price.get("wti", [])
+    brent = price.get("brent", [])
+    curve = futures.get("curve", []) if futures else []
+    if wti:
+        result["spot_date"] = wti[-1]["date"]
+    if curve:
+        result["futures_date"] = curve[0].get("date", "")
+    if result.get("spot_date") and result.get("futures_date"):
+        try:
+            d1 = datetime.strptime(result["spot_date"], "%Y-%m-%d")
+            d2 = datetime.strptime(result["futures_date"], "%Y-%m-%d")
+            result["lag_days"] = abs((d2 - d1).days)
+        except ValueError:
+            result["lag_days"] = None
+    return result
+
+
 def compute_all_signals():
     inv = _load("inventory.json")
     price = _load("price.json")
@@ -325,6 +557,8 @@ def compute_all_signals():
     futures = _load("futures.json")
     global_bal = _load("global_balance.json")
     drill = _load("drilling.json")
+    crack = _load("crack_spread.json")
+    maritime = _load("maritime.json")
 
     cftc_path = DATA_DIR / "cftc.json"
     if cftc_path.exists():
@@ -333,14 +567,21 @@ def compute_all_signals():
     else:
         cftc = []
 
+    demand_sig = demand_signal(demand)
+    curve_sig = curve_signal(price, futures)
+    opec_sig = opec_signal(global_bal)
+
     signals = {
         "inventory": inventory_signal(inv),
-        "curve": curve_signal(price, futures),
-        "demand": demand_signal(demand),
+        "curve": curve_sig,
+        "demand": demand_sig,
+        "crack_spread": crack_spread_signal(crack, demand_sig),
         "drilling": drilling_signal(prod, drill),
-        "opec": opec_signal(global_bal),
+        "opec": opec_sig,
         "financial": financial_signal(fin),
         "positioning": positioning_signal(cftc),
+        "cross_analysis": cross_analysis(curve_sig, opec_sig, maritime, price, futures),
+        "price_freshness": price_freshness(price, futures),
     }
 
     with open(DATA_DIR / "signals.json", "w") as f:

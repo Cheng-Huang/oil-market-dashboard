@@ -222,15 +222,24 @@ def generate_mock_data():
     opec_vals = _walk(33.5, n_monthly, vol=0.008, trend=0.0)
     # 非 OPEC 约 67-69 百万桶/日
     non_opec_vals = [round(wp - op + random.gauss(0, 0.2), 3) for wp, op in zip(world_prod_vals, opec_vals)]
-    # 供需平衡 = 产量 - 消费
-    balance_vals = [round(p - c, 3) for p, c in zip(world_prod_vals, world_cons_vals)]
+    # 供需平衡 = 产量 - 消费, 标注 actual vs forecast
+    current_month = datetime(2026, 3, 1).strftime("%Y-%m")
+    balance_entries = []
+    for d, p, c in zip(monthly_dates, world_prod_vals, world_cons_vals):
+        balance_entries.append({
+            "date": d,
+            "value": round(p - c, 3),
+            "supply": round(p, 3),
+            "demand": round(c, 3),
+            "type": "forecast" if d >= current_month else "actual",
+        })
 
     global_balance = {
         "world_production":    [{"date": d, "value": round(v, 3)} for d, v in zip(monthly_dates, world_prod_vals)],
         "world_consumption":   [{"date": d, "value": round(v, 3)} for d, v in zip(monthly_dates, world_cons_vals)],
         "opec_production":     [{"date": d, "value": round(v, 3)} for d, v in zip(monthly_dates, opec_vals)],
         "non_opec_production": [{"date": d, "value": round(v, 3)} for d, v in zip(monthly_dates, non_opec_vals)],
-        "balance":             [{"date": d, "value": v} for d, v in zip(monthly_dates, balance_vals)],
+        "balance":             balance_entries,
     }
 
     # ── 钻井数据 (月度, 5年) ──────────────────────────

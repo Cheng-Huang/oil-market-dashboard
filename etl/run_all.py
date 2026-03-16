@@ -32,9 +32,62 @@ def run_mock():
     from compute_signals import compute_all_signals
     signals = compute_all_signals()
     for k, v in signals.items():
-        emoji = {"bullish": "🟢", "bearish": "🔴", "warning": "⚠️", "neutral": "⚪"}.get(v["signal"], "?")
-        print(f"  {emoji} {v['name']}: {v['signal']}")
+        if isinstance(v, dict) and "signal" in v:
+            emoji = {"bullish": "🟢", "bearish": "🔴", "warning": "⚠️", "neutral": "⚪"}.get(v["signal"], "?")
+            print(f"  {emoji} {v['name']}: {v['signal']}")
     print("\n✅ 完成！可以打开 web/index.html 查看 Dashboard")
+
+
+def _fix_price_freshness():
+    """
+    FRED 价格可能滞后 EIA 数天。
+    如果 price_eia.json 有比 price.json 更新的数据点，追加到 price.json。
+    同时记录各数据源最新日期，供报告标注时间差。
+    """
+    import json
+    price_file = config.DATA_DIR / "price.json"
+    eia_file = config.DATA_DIR / "price_eia.json"
+
+    if not price_file.exists() or not eia_file.exists():
+        return
+
+    try:
+        with open(price_file) as f:
+            price = json.load(f)
+        with open(eia_file) as f:
+            eia_price = json.load(f)
+    except (json.JSONDecodeError, FileNotFoundError):
+        return
+
+    updated = False
+    for key in ["wti", "brent"]:
+        fred_data = price.get(key, [])
+        eia_data = eia_price.get(key, [])
+        if not fred_data or not eia_data:
+            continue
+
+        fred_latest_date = fred_data[-1]["date"]
+        # Find EIA points newer than FRED latest
+        new_points = [p for p in eia_data if p["date"] > fred_latest_date]
+        if new_points:
+            fred_data.extend(new_points)
+            fred_data.sort(key=lambda x: x["date"])
+            price[key] = fred_data
+            updated = True
+            print(f"  ✓ {key}: 用 EIA 补齐 {len(new_points)} 个更新数据点 "
+                  f"({fred_latest_date} → {new_points[-1]['date']})")
+
+    if updated:
+        # Recompute spread
+        if price.get("wti") and price.get("brent"):
+            brent_map = {d["date"]: d["value"] for d in price["brent"]}
+            price["spread"] = [
+                {"date": d["date"], "value": round(d["value"] - brent_map[d["date"]], 4)}
+                for d in price["wti"]
+                if d["date"] in brent_map
+            ]
+        with open(price_file, "w") as f:
+            json.dump(price, f, indent=2)
 
 
 def _fix_crack_spread(fred_data, eia_data):
@@ -96,6 +149,9 @@ def run_real():
     # ── 裂解价差补救：FRED 汽油价格失效时，用 EIA 汽油现货替代 ──
     _fix_crack_spread(fred_data, eia_data)
 
+    # ── 价格新鲜度补救：FRED 价格滞后时，用 EIA 日度价格补齐 ──
+    _fix_price_freshness()
+
     # STEO (OPEC/全球供需 + 钻机数)
     if config.EIA_API_KEY:
         print("\n[3/9] STEO (全球供需 & 钻井) ...")
@@ -152,8 +208,18 @@ def run_real():
     from compute_signals import compute_all_signals
     signals = compute_all_signals()
     for k, v in signals.items():
-        emoji = {"bullish": "🟢", "bearish": "🔴", "warning": "⚠️", "neutral": "⚪"}.get(v["signal"], "?")
-        print(f"  {emoji} {v['name']}: {v['signal']}")
+        if isinstance(v, dict) and "signal" in v:
+            emoji = {"bullish": "🟢", "bearish": "🔴", "warning": "⚠️", "neutral": "⚪"}.get(v["signal"], "?")
+            print(f"  {emoji} {v['name']}: {v['signal']}")
+        elif k == "cross_analysis":
+            n = v.get("n_contradictions", 0)
+            print(f"  {'🔶' if n > 0 else '✓'} 交叉分析: {n} 个矛盾信号")
+        elif k == "price_freshness":
+            lag = v.get("lag_days")
+            if lag and lag > 3:
+                print(f"  ⚠️ 价格新鲜度: 现货 vs 期货滞后 {lag} 天")
+            else:
+                print(f"  ✓ 价格新鲜度: 正常")
 
     # Meta
     print("\n[9/9] 写入元信息 ...")

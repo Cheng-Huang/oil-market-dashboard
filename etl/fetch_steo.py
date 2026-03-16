@@ -61,14 +61,28 @@ def fetch_all_steo() -> dict:
 
 
 def _compute_balance(production: list[dict], consumption: list[dict]) -> list[dict]:
-    """计算全球供需平衡: production - consumption = 隐含库存变化"""
+    """
+    计算全球供需平衡: production - consumption = 隐含库存变化
+    标注 actual vs forecast：STEO数据中未来月份为预测值。
+    """
+    from datetime import datetime
+    # 当月 STEO 数据通常含预测成分，标记为 forecast
+    current_month = datetime.now().strftime("%Y-%m")
+
     prod_map = {d["date"]: d["value"] for d in production}
     cons_map = {d["date"]: d["value"] for d in consumption}
     common = sorted(set(prod_map) & set(cons_map))
-    return [
-        {"date": dt, "value": round(prod_map[dt] - cons_map[dt], 3)}
-        for dt in common
-    ]
+    result = []
+    for dt in common:
+        is_forecast = dt >= current_month
+        result.append({
+            "date": dt,
+            "value": round(prod_map[dt] - cons_map[dt], 3),
+            "supply": round(prod_map[dt], 3),
+            "demand": round(cons_map[dt], 3),
+            "type": "forecast" if is_forecast else "actual",
+        })
+    return result
 
 
 def save_steo_data(data: dict):

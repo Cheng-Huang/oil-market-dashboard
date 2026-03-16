@@ -1,0 +1,12 @@
+{
+  "last_updated": "2026-03-16T15:36:55.781347",
+  "sources": {
+    "fred": "ok",
+    "eia": "ok",
+    "cftc": "ok",
+    "futures": "ok",
+    "steo": "ok",
+    "polymarket": "ok",
+    "maritime": "ok"
+  }
+}
