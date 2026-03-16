@@ -211,9 +211,22 @@ def run_real():
         if isinstance(v, dict) and "signal" in v:
             emoji = {"bullish": "🟢", "bearish": "🔴", "warning": "⚠️", "neutral": "⚪"}.get(v["signal"], "?")
             print(f"  {emoji} {v['name']}: {v['signal']}")
+            # 裂解价差崩塌特殊提示
+            if k == "crack_spread" and v.get("collapse_alert"):
+                print(f"    🚨 汽油裂解崩塌预警: {v['collapse_alert']} (${v.get('gasoline_crack', '?')})")
         elif k == "cross_analysis":
             n = v.get("n_contradictions", 0)
             print(f"  {'🔶' if n > 0 else '✓'} 交叉分析: {n} 个矛盾信号")
+        elif k == "spr_policy":
+            likelihood = v.get("release_likelihood", "unknown")
+            emoji = {"very_high": "🚨", "high": "⚠️", "moderate": "⚪", "low": "✅"}.get(likelihood, "?")
+            print(f"  {emoji} SPR政策响应: {likelihood}")
+        elif k == "steo_validation":
+            if v.get("has_anomaly"):
+                n = len(v.get("anomalies", []))
+                print(f"  🔶 STEO数据验证: {n} 个异常数据点需要交叉验证")
+            else:
+                print(f"  ✓ STEO数据验证: 正常")
         elif k == "price_freshness":
             lag = v.get("lag_days")
             if lag and lag > 3:

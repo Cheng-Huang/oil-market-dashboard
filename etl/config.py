@@ -22,6 +22,7 @@ EIA_WEEKLY_SERIES = {
     "cushing_inventory":    "PET.W_EPC0_SAX_YCUOK_MBBL.W",   # 库欣库存
     "gasoline_inventory":   "PET.WGTSTUS1.W",   # 汽油库存
     "distillate_inventory": "PET.WDISTUS1.W",   # 馏分油库存
+    "spr_inventory":        "PET.WCSSTUS1.W",   # 战略石油储备 (SPR)
     "crude_production":     "PET.WCRFPUS2.W",   # 美国原油产量
     "refinery_utilization": "PET.WPULEUS3.W",   # 炼厂开工率
     "gasoline_demand":      "PET.WGFUPUS2.W",   # 汽油表观消费
@@ -73,3 +74,15 @@ SIGNAL_OVX_PANIC = 40.0          # OVX 恐慌阈值
 SIGNAL_REAL_RATE_HIGH = 2.0      # 高实际利率阈值
 SIGNAL_POSITIONING_HIGH_PCT = 90 # CFTC 净多头高分位
 SIGNAL_POSITIONING_LOW_PCT = 10  # CFTC 净多头低分位
+
+# ── 裂解价差崩塌预警 ────────────────────────────────
+SIGNAL_GASOLINE_CRACK_CRITICAL = 10.0  # 汽油裂解 < 此值 → 炼厂亏损预警
+SIGNAL_GASOLINE_CRACK_SHUTDOWN = 5.0   # 汽油裂解 < 此值 → 炼厂减产信号
+SIGNAL_CRACK_DAILY_DROP_PCT = 40.0     # 汽油裂解单日跌幅% → 崩塌信号
+
+# ── STEO 数据验证 ──────────────────────────────────
+SIGNAL_STEO_MAX_MONTHLY_SUPPLY_CHANGE = 4.0  # 月度供给变化 > 此值(百万桶/日) → 需要交叉验证
+
+# ── SPR 释放评估 ──────────────────────────────────
+SIGNAL_SPR_RELEASE_PRICE_TRIGGER = 95.0  # WTI > 此价 + 供给中断 → SPR释放概率高
+SIGNAL_SPR_LOW_LEVEL_MBBL = 350000       # SPR < 此水平(千桶) → 释放空间有限

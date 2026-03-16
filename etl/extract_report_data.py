@@ -30,7 +30,7 @@ def main():
     # --- Inventory ---
     inv = load('inventory.json')
     print("\n=== INVENTORY (last 5 weeks) ===")
-    for k in ['crude_inventory', 'cushing_inventory', 'gasoline_inventory', 'distillate_inventory']:
+    for k in ['crude_inventory', 'cushing_inventory', 'gasoline_inventory', 'distillate_inventory', 'spr']:
         if k in inv:
             print(f"  {k}: {inv[k][-5:]}")
 

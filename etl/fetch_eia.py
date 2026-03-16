@@ -72,6 +72,7 @@ def save_eia_data(data: dict):
         "cushing": data.get("cushing_inventory", []),
         "gasoline": data.get("gasoline_inventory", []),
         "distillate": data.get("distillate_inventory", []),
+        "spr": data.get("spr_inventory", []),
     }
     with open(DATA_DIR / "inventory.json", "w") as f:
         json.dump(inventory, f, indent=2)

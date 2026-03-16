@@ -25,7 +25,7 @@
   },
   "crack_spread": {
     "name": "裂解价差",
-    "signal": "neutral",
+    "signal": "bearish",
     "crack_321": 18.53,
     "crack_321_20d_avg": 24.97,
     "crack_321_60d_avg": 24.58,
@@ -33,8 +33,11 @@
     "diesel_crack": 40.17,
     "trend": "flat",
     "level": "normal",
-    "cross_validation": "裂解价差处于正常范围",
-    "detail": "3-2-1: $18.5 (20d均: $25.0, 60d均: $24.6), 趋势: flat"
+    "cross_validation": "⚠️ 汽油裂解接近亏损区（$7.7），若继续跌破$5.0预示需求端承接断裂，炼厂将被迫减产。",
+    "detail": "3-2-1: $18.5 (20d均: $25.0, 60d均: $24.6), 趋势: flat",
+    "collapse_alert": "critical",
+    "gasoline_crack_daily_drop_pct": 56.3,
+    "gas_diesel_divergence": 32.47
   },
   "drilling": {
     "name": "钻井活动",
@@ -118,6 +121,36 @@
       }
     ],
     "n_contradictions": 2
+  },
+  "spr_policy": {
+    "name": "SPR政策响应",
+    "spr_level_kbbl": null,
+    "current_wti": 100.31,
+    "detail": "WTI $100 远超政策干预阈值 $95.0，叠加霍尔木兹严重中断，SPR 释放和 IEA 成员国协调释放储备几乎是必然动作。这是打断地缘溢价的最直接催化剂。",
+    "release_likelihood": "very_high"
+  },
+  "steo_validation": {
+    "has_anomaly": true,
+    "anomalies": [
+      {
+        "date": "2020-05",
+        "prev_date": "2020-04",
+        "supply_change": -11.318,
+        "prev_supply": 99.719,
+        "curr_supply": 88.401,
+        "severity": "critical",
+        "detail": "2020-04→2020-05 供给变动 -11.32 百万桶/日，超过合理阈值 ±4.0。建议交叉验证：(1) 是否为 STEO 月度修正/统计口径调整；(2) 实际减产量 vs 数据修正量的区分。"
+      },
+      {
+        "date": "2026-03",
+        "prev_date": "2026-02",
+        "supply_change": -6.063,
+        "prev_supply": 107.879,
+        "curr_supply": 101.817,
+        "severity": "critical",
+        "detail": "2026-02→2026-03 供给变动 -6.06 百万桶/日，超过合理阈值 ±4.0。建议交叉验证：(1) 是否为 STEO 月度修正/统计口径调整；(2) 实际减产量 vs 数据修正量的区分。"
+      }
+    ]
   },
   "price_freshness": {
     "spot_date": "2026-03-09",

@@ -15,6 +15,12 @@ from config import (
     SIGNAL_REAL_RATE_HIGH,
     SIGNAL_POSITIONING_HIGH_PCT,
     SIGNAL_POSITIONING_LOW_PCT,
+    SIGNAL_GASOLINE_CRACK_CRITICAL,
+    SIGNAL_GASOLINE_CRACK_SHUTDOWN,
+    SIGNAL_CRACK_DAILY_DROP_PCT,
+    SIGNAL_STEO_MAX_MONTHLY_SUPPLY_CHANGE,
+    SIGNAL_SPR_RELEASE_PRICE_TRIGGER,
+    SIGNAL_SPR_LOW_LEVEL_MBBL,
 )
 
 
@@ -353,6 +359,12 @@ def positioning_signal(cftc: list[dict]) -> dict:
 def crack_spread_signal(crack: dict, demand_sig: dict) -> dict:
     """
     裂解价差信号：3-2-1 裂解价差反映炼厂利润，是需求端最核心的验证指标。
+    
+    新增：汽油裂解崩塌检测（交易员反馈 #2）
+    - 汽油裂解 < $10 = 炼厂亏损预警
+    - 汽油裂解 < $5 = 炼厂减产信号，需求端承接断裂
+    - 单日跌幅 > 40% = 裂解崩塌，地缘溢价不可持续的最强基本面信号
+    
     与需求信号交叉验证：
     - 需求弱 + 裂解弱 = 确认需求疲软（bearish）
     - 需求弱 + 裂解强 = 可能是炼厂主动减产导致的"假性弱需求"（neutral）
@@ -386,18 +398,59 @@ def crack_spread_signal(crack: dict, demand_sig: dict) -> dict:
     else:
         level = "normal"
 
+    # ── 汽油裂解崩塌检测 ──
+    gas_latest = gas_crack[-1]["value"] if gas_crack else None
+    diesel_latest = diesel_crack[-1]["value"] if diesel_crack else None
+    
+    collapse_alert = None
+    gas_daily_drop_pct = None
+    
+    if gas_crack and len(gas_crack) >= 2:
+        gas_prev = gas_crack[-2]["value"]
+        if gas_prev > 0:
+            gas_daily_drop_pct = round((gas_prev - gas_latest) / gas_prev * 100, 1)
+        
+        if gas_latest is not None:
+            if gas_latest < SIGNAL_GASOLINE_CRACK_SHUTDOWN:
+                collapse_alert = "shutdown"  # 炼厂减产信号
+            elif gas_latest < SIGNAL_GASOLINE_CRACK_CRITICAL:
+                collapse_alert = "critical"  # 炼厂亏损预警
+            
+            if gas_daily_drop_pct and gas_daily_drop_pct > SIGNAL_CRACK_DAILY_DROP_PCT:
+                if collapse_alert is None:
+                    collapse_alert = "collapse"  # 单日崩塌
+    
+    # 汽油-柴油裂解分化度
+    gas_diesel_divergence = None
+    if gas_latest is not None and diesel_latest is not None:
+        gas_diesel_divergence = round(diesel_latest - gas_latest, 2)
+
     # 与需求信号交叉验证
     demand_is_weak = demand_sig.get("signal") == "bearish"
     demand_is_strong = demand_sig.get("signal") == "bullish"
 
-    if demand_is_weak and crack_trend == "falling":
-        signal = "bearish"   # 确认需求疲软
+    # 崩塌信号优先级最高
+    if collapse_alert in ("shutdown", "collapse"):
+        signal = "bearish"
+        cross_note = (
+            f"🚨 汽油裂解崩塌（${gas_latest:.1f}）→ 终端消费者无法吸收油价上涨，"
+            f"炼厂利润被挤压到极限，下一步减产→原油需求塌陷→油价回调。"
+            f"这是地缘溢价不可持续的最强基本面信号。"
+        )
+    elif collapse_alert == "critical":
+        signal = "bearish"
+        cross_note = (
+            f"⚠️ 汽油裂解接近亏损区（${gas_latest:.1f}），若继续跌破"
+            f"${SIGNAL_GASOLINE_CRACK_SHUTDOWN}预示需求端承接断裂，炼厂将被迫减产。"
+        )
+    elif demand_is_weak and crack_trend == "falling":
+        signal = "bearish"
         cross_note = "需求弱+裂解走低→确认需求疲软"
     elif demand_is_weak and crack_trend in ("rising", "flat") and level != "low":
-        signal = "neutral"   # 假性弱需求
+        signal = "neutral"
         cross_note = "需求弱但裂解未走低→可能是炼厂主动减产导致的假性弱需求"
     elif demand_is_strong and crack_trend == "rising":
-        signal = "bullish"   # 确认需求旺盛
+        signal = "bullish"
         cross_note = "需求强+裂解走高→确认需求旺盛"
     elif level == "low":
         signal = "bearish"
@@ -409,10 +462,7 @@ def crack_spread_signal(crack: dict, demand_sig: dict) -> dict:
         signal = "neutral"
         cross_note = "裂解价差处于正常范围"
 
-    gas_latest = gas_crack[-1]["value"] if gas_crack else None
-    diesel_latest = diesel_crack[-1]["value"] if diesel_crack else None
-
-    return {
+    result = {
         "name": "裂解价差",
         "signal": signal,
         "crack_321": round(latest, 2),
@@ -425,6 +475,16 @@ def crack_spread_signal(crack: dict, demand_sig: dict) -> dict:
         "cross_validation": cross_note,
         "detail": f"3-2-1: ${latest:.1f} (20d均: ${avg_20d:.1f}, 60d均: ${avg_60d:.1f}), 趋势: {crack_trend}",
     }
+    
+    # 崩塌相关额外字段
+    if collapse_alert:
+        result["collapse_alert"] = collapse_alert
+    if gas_daily_drop_pct is not None:
+        result["gasoline_crack_daily_drop_pct"] = gas_daily_drop_pct
+    if gas_diesel_divergence is not None:
+        result["gas_diesel_divergence"] = gas_diesel_divergence
+
+    return result
 
 
 def cross_analysis(curve_sig: dict, opec_sig: dict, maritime: dict, price: dict, futures: dict) -> dict:
@@ -528,6 +588,154 @@ def cross_analysis(curve_sig: dict, opec_sig: dict, maritime: dict, price: dict,
     }
 
 
+def steo_data_validation(global_bal: dict) -> dict:
+    """
+    STEO 数据异常检测（交易员反馈 #5）：
+    当月度供给变化超过合理范围时，标记数据存疑并建议交叉验证。
+    例如：月度供给骤降 6 百万桶/日极端罕见，即使霍尔木兹完全封锁也不应如此。
+    可能原因：STEO 修正造成的统计口径问题，而非完全的实际供给减少。
+    """
+    balance = global_bal.get("balance", []) if global_bal else []
+    world_prod = global_bal.get("world_production", []) if global_bal else []
+
+    if len(world_prod) < 2:
+        return {"has_anomaly": False}
+
+    anomalies = []
+    for i in range(1, len(world_prod)):
+        prev = world_prod[i - 1]
+        curr = world_prod[i]
+        change = curr["value"] - prev["value"]
+        if abs(change) > SIGNAL_STEO_MAX_MONTHLY_SUPPLY_CHANGE:
+            anomalies.append({
+                "date": curr["date"],
+                "prev_date": prev["date"],
+                "supply_change": round(change, 3),
+                "prev_supply": round(prev["value"], 3),
+                "curr_supply": round(curr["value"], 3),
+                "severity": "critical" if abs(change) > 5.0 else "warning",
+                "detail": (
+                    f"{prev['date']}→{curr['date']} 供给变动 {change:+.2f} 百万桶/日，"
+                    f"超过合理阈值 ±{SIGNAL_STEO_MAX_MONTHLY_SUPPLY_CHANGE}。"
+                    f"建议交叉验证：(1) 是否为 STEO 月度修正/统计口径调整；"
+                    f"(2) 实际减产量 vs 数据修正量的区分。"
+                ),
+            })
+
+    return {
+        "has_anomaly": len(anomalies) > 0,
+        "anomalies": anomalies,
+    }
+
+
+def spr_policy_signal(inv: dict, price: dict, futures: dict, maritime: dict) -> dict:
+    """
+    SPR 释放 & IEA 协调响应评估（交易员反馈 #4）：
+    油价超过阈值 + 供给中断 → SPR 释放几乎是必然的政策响应，
+    这是打断地缘溢价的最直接催化剂。
+    
+    评估维度：
+    1. SPR 当前库存水平 → 释放空间
+    2. 油价水平 → 政策干预动机
+    3. 航运中断程度 → 供给紧急度
+    4. 历史释放节奏参考
+    """
+    spr_data = inv.get("spr", [])
+    wti = price.get("wti", [])
+    curve = futures.get("curve", []) if futures else []
+    chokepoints = maritime.get("chokepoints", {}) if maritime else {}
+
+    result = {
+        "name": "SPR政策响应",
+    }
+
+    # SPR 当前水平
+    if spr_data:
+        spr_latest = spr_data[-1]["value"]
+        spr_date = spr_data[-1]["date"]
+        result["spr_level_kbbl"] = spr_latest
+        result["spr_date"] = spr_date
+        result["spr_low"] = spr_latest < SIGNAL_SPR_LOW_LEVEL_MBBL
+
+        # 近期 SPR 变化趋势（4周）
+        if len(spr_data) >= 5:
+            recent_changes = [
+                spr_data[i]["value"] - spr_data[i - 1]["value"]
+                for i in range(len(spr_data) - 4, len(spr_data))
+            ]
+            result["spr_4w_change"] = round(sum(recent_changes), 0)
+            if all(c < 0 for c in recent_changes):
+                result["spr_trend"] = "releasing"
+            elif all(c > 0 for c in recent_changes):
+                result["spr_trend"] = "refilling"
+            else:
+                result["spr_trend"] = "stable"
+    else:
+        result["spr_level_kbbl"] = None
+
+    # 油价水平
+    current_price = None
+    if curve:
+        current_price = curve[0].get("price", 0)
+    elif wti:
+        current_price = wti[-1]["value"]
+    result["current_wti"] = current_price
+
+    price_above_trigger = (
+        current_price is not None
+        and current_price > SIGNAL_SPR_RELEASE_PRICE_TRIGGER
+    )
+
+    # 航运中断评估
+    hormuz = chokepoints.get("chokepoint6", {}).get("tanker_stats", {})
+    hormuz_disrupted = hormuz.get("wow_change", 0) < -50
+
+    # 综合评估 SPR 释放概率
+    if price_above_trigger and hormuz_disrupted:
+        release_likelihood = "very_high"
+        result["detail"] = (
+            f"WTI ${current_price:.0f} 远超政策干预阈值 "
+            f"${SIGNAL_SPR_RELEASE_PRICE_TRIGGER}，叠加霍尔木兹严重中断，"
+            f"SPR 释放和 IEA 成员国协调释放储备几乎是必然动作。"
+            f"这是打断地缘溢价的最直接催化剂。"
+        )
+    elif price_above_trigger:
+        release_likelihood = "high"
+        result["detail"] = (
+            f"WTI ${current_price:.0f} 超过政策干预阈值，"
+            f"SPR 释放概率较高，需关注白宫/DOE 政策信号。"
+        )
+    elif hormuz_disrupted:
+        release_likelihood = "moderate"
+        result["detail"] = (
+            "霍尔木兹严重中断但油价尚在可控范围，"
+            "IEA 协调响应可能以预警为主，实际释放视后续价格走势。"
+        )
+    else:
+        release_likelihood = "low"
+        result["detail"] = "当前无明显触发 SPR 释放的条件。"
+
+    result["release_likelihood"] = release_likelihood
+
+    # SPR 释放容量估算
+    if result.get("spr_level_kbbl") is not None:
+        spr_level = result["spr_level_kbbl"]
+        # 美国法定最大释放速率约 4.4 百万桶/日
+        max_days_at_full_rate = spr_level / 4400 if spr_level > 0 else 0
+        result["max_release_days"] = round(max_days_at_full_rate, 0)
+        result["capacity_note"] = (
+            f"SPR 当前 {spr_level/1000:.0f} 百万桶，"
+            f"按最大速率 4.4 百万桶/日可持续 {max_days_at_full_rate:.0f} 天。"
+        )
+        if result["spr_low"]:
+            result["capacity_note"] += (
+                f" ⚠️ SPR 低于 {SIGNAL_SPR_LOW_LEVEL_MBBL/1000:.0f} 百万桶警戒线，"
+                f"释放空间有限，政策可能更审慎。"
+            )
+
+    return result
+
+
 def price_freshness(price: dict, futures: dict) -> dict:
     """计算各数据源的时间新鲜度，标注时间差。"""
     result = {}
@@ -570,17 +778,20 @@ def compute_all_signals():
     demand_sig = demand_signal(demand)
     curve_sig = curve_signal(price, futures)
     opec_sig = opec_signal(global_bal)
+    crack_sig = crack_spread_signal(crack, demand_sig)
 
     signals = {
         "inventory": inventory_signal(inv),
         "curve": curve_sig,
         "demand": demand_sig,
-        "crack_spread": crack_spread_signal(crack, demand_sig),
+        "crack_spread": crack_sig,
         "drilling": drilling_signal(prod, drill),
         "opec": opec_sig,
         "financial": financial_signal(fin),
         "positioning": positioning_signal(cftc),
         "cross_analysis": cross_analysis(curve_sig, opec_sig, maritime, price, futures),
+        "spr_policy": spr_policy_signal(inv, price, futures, maritime),
+        "steo_validation": steo_data_validation(global_bal),
         "price_freshness": price_freshness(price, futures),
     }
 
@@ -593,5 +804,15 @@ def compute_all_signals():
 if __name__ == "__main__":
     signals = compute_all_signals()
     for k, v in signals.items():
-        emoji = {"bullish": "🟢", "bearish": "🔴", "warning": "⚠️", "neutral": "⚪"}.get(v["signal"], "?")
-        print(f"  {emoji} {v['name']}: {v['signal']}")
+        if isinstance(v, dict) and "signal" in v:
+            emoji = {"bullish": "🟢", "bearish": "🔴", "warning": "⚠️", "neutral": "⚪"}.get(v["signal"], "?")
+            print(f"  {emoji} {v['name']}: {v['signal']}")
+        elif k == "spr_policy":
+            likelihood = v.get("release_likelihood", "unknown")
+            emoji = {"very_high": "🚨", "high": "⚠️", "moderate": "⚪", "low": "✅"}.get(likelihood, "?")
+            print(f"  {emoji} SPR政策响应: {likelihood}")
+        elif k == "steo_validation":
+            if v.get("has_anomaly"):
+                print(f"  🔶 STEO数据异常: {len(v.get('anomalies', []))} 个异常点")
+            else:
+                print(f"  ✓ STEO数据: 无异常")
