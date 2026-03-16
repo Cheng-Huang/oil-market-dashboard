@@ -1,5 +1,68 @@
 # Changelog
 
+## [2026-03-16c] — 交易员反馈改进：SPR 政策信号、裂解崩塌检测、STEO 验证、风控规则
+
+> Commit: `10809b6` — 基于资深交易员对日报的 5 点结构性反馈，完善信号引擎和报告生成规则
+
+### 新增
+
+- **`etl/compute_signals.py`** — 新增 2 个信号计算函数 + 1 个崩塌检测机制
+  - `spr_policy_signal()` — SPR/IEA 政策响应评估
+    - 综合 WTI 价格水平、航运中断程度、SPR 库存水平，评估战略储备释放概率
+    - 四级输出：`very_high` / `high` / `moderate` / `low`
+    - 含 SPR 释放容量估算（当前库存 ÷ 最大释放速率 4.4 百万桶/日）
+    - 低库存警戒（< 350 百万桶时标注释放空间有限）
+  - `steo_data_validation()` — STEO 月度数据异常检测
+    - 监控月度供给变动是否超过 ±4 百万桶/日的合理阈值
+    - 超阈值数据点标记为 `warning` 或 `critical`，并建议交叉验证
+    - 当前正确捕获 2020-05 COVID 冲击（-11.3）和 2026-03 霍尔木兹封锁（-6.06）两个异常点
+  - `crack_spread_signal()` — 新增三级崩塌预警机制
+    - `critical`：汽油裂解 < $10（炼厂亏损预警）
+    - `shutdown`：汽油裂解 < $5（炼厂减产信号，需求端承接断裂）
+    - `collapse`：单日跌幅 > 40%（裂解崩塌，地缘溢价不可持续最强信号）
+    - 新增 `gas_diesel_divergence` 字段跟踪汽油-柴油裂解分化度
+    - 新增 `gasoline_crack_daily_drop_pct` 字段记录单日跌幅
+
+- **`etl/config.py`** — 新增 7 个信号参数
+  - `SIGNAL_GASOLINE_CRACK_CRITICAL = 10.0` — 汽油裂解亏损警戒线
+  - `SIGNAL_GASOLINE_CRACK_SHUTDOWN = 5.0` — 炼厂减产信号线
+  - `SIGNAL_CRACK_DAILY_DROP_PCT = 40.0` — 崩塌判定阈值
+  - `SIGNAL_STEO_MAX_MONTHLY_SUPPLY_CHANGE = 4.0` — STEO 月度供给异常阈值
+  - `SIGNAL_SPR_RELEASE_PRICE_TRIGGER = 95.0` — SPR 释放价格触发线
+  - `SIGNAL_SPR_LOW_LEVEL_MBBL = 350000` — SPR 低库存警戒线
+  - `spr_inventory` 加入 `EIA_WEEKLY_SERIES`（series: `PET.WCSSTUS1.W`）
+
+### 修改
+
+- **`etl/compute_signals.py`** — `compute_all_signals()` 输出从 10 组扩展到 12 组
+  - 新增 `spr_policy`、`steo_validation` 两个信号组
+  - `crack_spread` 信号优先级提升：崩塌信号覆盖所有其他判断逻辑
+
+- **`etl/run_all.py`** — 信号输出增强
+  - 裂解崩塌时显示 🚨 特殊提示（含 collapse_alert 级别和汽油裂解价格）
+  - SPR 政策信号按 likelihood 分级显示（🚨/⚠️/⚪/✅）
+  - STEO 验证异常时显示 🔶 提示（含异常数据点数量）
+
+- **`etl/fetch_eia.py`** — `save_eia_data()` 的 `inventory` 字典新增 `spr` 键
+
+- **`etl/extract_report_data.py`** — INVENTORY 输出新增 `spr` 字段
+
+- **报告生成规则**（SKILL.md）— 5 项重大规则更新
+  1. **情景概率**：必须用范围表达（如 10-25%），不得精确到个位；OVX > 80 时加置信区间警示；Polymarket 标注校准性局限
+  2. **策略风控**：每个操作建议必须包含止损位、仓位规则、最大亏损、保证金风险、时间窗口
+  3. **裂解崩塌**：汽油裂解 < $10 必须提升至核心风险级别，在核心观点 + 裂解分析 + 操作建议三处突出
+  4. **SPR/IEA 政策**：油价 > $95 + 供给中断时必须评估 SPR 释放和 IEA 协调响应
+  5. **STEO 异常**：月度供给变动 > 4 百万桶/日时标注数据存疑并建议交叉验证
+
+### 背景
+
+基于资深交易员对 `reports/2026-03-16-daily.md` 的评审反馈：
+- 反馈 #1：情景概率分配过于自信，缺乏方法论支撑
+- 反馈 #2：汽油裂解 $7.70 崩塌被低估为"偏弱"，实际是地缘溢价不可持续的最强信号
+- 反馈 #3：Calendar Spread 策略缺少止损位和仓位管理
+- 反馈 #4：完全缺失 SPR 释放和 IEA 协调响应维度
+- 反馈 #5：3 月 STEO 供给骤降 6 百万桶/日数据极端罕见，需要交叉验证
+
 ## [2026-03-16b] — 数据发布 GitHub + Actions 自动化 ETL + 信号引擎增强
 
 > Commit: `6fe74a4`
