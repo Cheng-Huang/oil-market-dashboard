@@ -1,0 +1,680 @@
+{
+  "sources": {
+    "spot_price": {
+      "desc": "WTI/Brent 现货价格",
+      "origin": "FRED + EIA",
+      "frequency": "日频（工作日）",
+      "latest": "2026-03-09",
+      "lag_days": 8,
+      "covers": [
+        "当前油价水平",
+        "WTI-Brent价差",
+        "近期价格趋势"
+      ],
+      "cannot_cover": [
+        "盘中实时价格",
+        "亚洲/欧洲时段价格"
+      ]
+    },
+    "futures_curve": {
+      "desc": "WTI 期货曲线 (12合约)",
+      "origin": "Yahoo Finance",
+      "frequency": "日频",
+      "latest": "2026-03-16",
+      "lag_days": 1,
+      "covers": [
+        "期限结构(Backwardation/Contango)",
+        "远月隐含价格",
+        "近远月价差"
+      ],
+      "cannot_cover": [
+        "期权隐含波动率曲面",
+        "期货成交量/持仓量分布"
+      ]
+    },
+    "us_inventory": {
+      "desc": "美国商业库存 (原油/库欣/汽油/馏分油)",
+      "origin": "EIA Weekly",
+      "frequency": "周频（每周三发布，截至上周五）",
+      "latest": "2026-03-06",
+      "lag_days": 11,
+      "covers": [
+        "美国库存趋势",
+        "库欣交割库水平",
+        "成品油库存方向"
+      ],
+      "cannot_cover": [
+        "全球库存（OECD/非OECD）",
+        "浮仓库存",
+        "中国SPR"
+      ]
+    },
+    "us_demand": {
+      "desc": "美国表观需求 (汽油/馏分油)",
+      "origin": "EIA Weekly",
+      "frequency": "周频",
+      "latest": "2026-03-06",
+      "lag_days": 11,
+      "covers": [
+        "美国汽油需求趋势",
+        "馏分油（柴油）需求趋势"
+      ],
+      "cannot_cover": [
+        "全球需求（IEA月报才有）",
+        "中国/印度需求",
+        "航空燃油需求"
+      ]
+    },
+    "crack_spread": {
+      "desc": "裂解价差 (3-2-1, 汽油, 柴油)",
+      "origin": "FRED/EIA 价格计算",
+      "frequency": "日频",
+      "latest": "2026-03-09",
+      "lag_days": 8,
+      "covers": [
+        "炼厂利润趋势",
+        "汽油vs柴油裂解分化",
+        "成品油供需间接信号"
+      ],
+      "cannot_cover": [
+        "实际炼厂利润（含运营成本）",
+        "区域性裂解差异（Gulf/East Coast）"
+      ]
+    },
+    "global_balance": {
+      "desc": "全球供需平衡 (STEO)",
+      "origin": "EIA STEO 月度",
+      "frequency": "月频",
+      "latest": "2027-12",
+      "lag_days": null,
+      "covers": [
+        "全球供需平衡趋势",
+        "OPEC产量方向",
+        "预测vs实际对比"
+      ],
+      "cannot_cover": [
+        "实时产量变化",
+        "制裁实际影响量",
+        "战略储备变化"
+      ]
+    },
+    "cftc_positioning": {
+      "desc": "CFTC 投机持仓",
+      "origin": "CFTC Disaggregated",
+      "frequency": "周频（周五发布，截至周二）",
+      "latest": "2026-03-10",
+      "lag_days": 7,
+      "covers": [
+        "投机净多头水平",
+        "多空驱动分解",
+        "历史百分位"
+      ],
+      "cannot_cover": [
+        "日内持仓变化",
+        "dealer/producer持仓细分",
+        "期权持仓"
+      ]
+    },
+    "financial": {
+      "desc": "金融条件 (DXY/OVX/实际利率)",
+      "origin": "FRED",
+      "frequency": "日频",
+      "latest": "2026-03-13",
+      "lag_days": 4,
+      "covers": [
+        "美元强弱",
+        "原油波动率水平",
+        "实际利率环境"
+      ],
+      "cannot_cover": [
+        "美联储政策预期（需CME FedWatch）",
+        "信用利差"
+      ]
+    },
+    "maritime": {
+      "desc": "航运要道通行量 + 油轮股",
+      "origin": "IMF PortWatch (ArcGIS) + Yahoo Finance",
+      "frequency": "日频",
+      "latest": "2026-03-17",
+      "lag_days": 0,
+      "covers": [
+        "霍尔木兹/曼德/苏伊士/马六甲通行趋势",
+        "油轮股价表现"
+      ],
+      "cannot_cover": [
+        "单船运价（需Baltic Exchange）",
+        "载重/货物细分",
+        "油轮AIS全覆盖"
+      ],
+      "data_caveat": "IMF PortWatch 基于AIS数据，可能存在覆盖不全或延迟"
+    },
+    "polymarket": {
+      "desc": "地缘风险预测市场",
+      "origin": "Polymarket API",
+      "frequency": "实时",
+      "latest": null,
+      "lag_days": 0,
+      "covers": [
+        "市场对地缘事件的概率定价"
+      ],
+      "cannot_cover": [
+        "概率准确性（校准性差）",
+        "事件实际影响量化"
+      ],
+      "data_caveat": "Polymarket在地缘事件上的校准性历史上较差，仅作情绪参考"
+    },
+    "us_production": {
+      "desc": "美国产量/炼厂/进口",
+      "origin": "EIA Weekly",
+      "frequency": "周频",
+      "latest": "2026-03-06",
+      "lag_days": 11,
+      "covers": [
+        "美国产量趋势",
+        "炼厂开工率",
+        "净进口变化"
+      ],
+      "cannot_cover": [
+        "OPEC各国实时产量",
+        "俄罗斯/伊朗出口量"
+      ]
+    }
+  },
+  "claims": [
+    {
+      "claim_id": "supply_disruption",
+      "claim": "供给中断（如霍尔木兹封锁、OPEC减产）",
+      "confidence": "medium",
+      "verdict": "项目数据可以部分验证，但存在盲区",
+      "checks": [
+        {
+          "source": "maritime",
+          "field": "霍尔木兹通行量",
+          "weight": "primary",
+          "check": "7日均值 vs 90日均值是否显著下降",
+          "status": "ok",
+          "lag_days": 0,
+          "caveat": "IMF PortWatch 基于AIS数据，可能存在覆盖不全或延迟"
+        },
+        {
+          "source": "global_balance",
+          "field": "STEO月度供给",
+          "weight": "secondary",
+          "check": "供给是否出现异常下降（注意：STEO=产量，运输封锁≠产量下降）",
+          "status": "missing",
+          "lag_days": null,
+          "caveat": null
+        },
+        {
+          "source": "futures_curve",
+          "field": "期限结构",
+          "weight": "supporting",
+          "check": "是否转为深度Backwardation",
+          "status": "ok",
+          "lag_days": 1,
+          "caveat": null
+        },
+        {
+          "source": "spot_price",
+          "field": "WTI-Brent价差",
+          "weight": "supporting",
+          "check": "Brent溢价是否扩大（国际供给更受影响）",
+          "status": "stale",
+          "lag_days": 8,
+          "caveat": null
+        }
+      ],
+      "cannot_verify": "实际封锁程度和持续时间；需要Kpler/Vortexa等商业航运数据",
+      "improve_hint": "接入Kpler或Vortexa的油轮追踪API，可获得按船型、目的地分类的实时贸易流数据",
+      "primary_verified": "1/1",
+      "total_verified": "2/4"
+    },
+    {
+      "claim_id": "demand_weakness",
+      "claim": "需求走弱/衰退风险",
+      "confidence": "medium",
+      "verdict": "项目数据可以部分验证，但存在盲区",
+      "checks": [
+        {
+          "source": "us_demand",
+          "field": "汽油+馏分油表观需求",
+          "weight": "primary",
+          "check": "是否连续2-4周低于季节性均值",
+          "status": "ok",
+          "lag_days": 11,
+          "caveat": null
+        },
+        {
+          "source": "crack_spread",
+          "field": "裂解价差趋势",
+          "weight": "primary",
+          "check": "3-2-1裂解是否持续2-4周下行（单日不够）",
+          "status": "stale",
+          "lag_days": 8,
+          "caveat": null
+        },
+        {
+          "source": "us_inventory",
+          "field": "成品油库存",
+          "weight": "supporting",
+          "check": "汽油/馏分油库存是否异常累积",
+          "status": "ok",
+          "lag_days": 11,
+          "caveat": null
+        },
+        {
+          "source": "us_production",
+          "field": "炼厂开工率",
+          "weight": "supporting",
+          "check": "开工率是否主动下调",
+          "status": "ok",
+          "lag_days": 11,
+          "caveat": null
+        }
+      ],
+      "cannot_verify": "全球需求（尤其中国/印度）；美国以外的炼厂利润",
+      "improve_hint": "可接入IEA月报API或中国海关进口数据来补充全球需求视角",
+      "primary_verified": "1/2",
+      "total_verified": "3/4"
+    },
+    {
+      "claim_id": "geopolitical_premium",
+      "claim": "地缘风险溢价推高油价",
+      "confidence": "high",
+      "verdict": "项目数据可以较好地验证此研判",
+      "checks": [
+        {
+          "source": "polymarket",
+          "field": "地缘事件概率",
+          "weight": "supporting",
+          "check": "相关事件概率是否显著高于基准",
+          "status": "ok",
+          "lag_days": 0,
+          "caveat": "Polymarket在地缘事件上的校准性历史上较差，仅作情绪参考"
+        },
+        {
+          "source": "financial",
+          "field": "OVX波动率",
+          "weight": "primary",
+          "check": "OVX是否远超正常水平（>40为恐慌）",
+          "status": "ok",
+          "lag_days": 4,
+          "caveat": null
+        },
+        {
+          "source": "futures_curve",
+          "field": "近远月价差",
+          "weight": "primary",
+          "check": "近月溢价是否远超远月（地缘驱动的Backwardation）",
+          "status": "ok",
+          "lag_days": 1,
+          "caveat": null
+        },
+        {
+          "source": "maritime",
+          "field": "航运要道通行量",
+          "weight": "supporting",
+          "check": "关键航线是否出现异常",
+          "status": "ok",
+          "lag_days": 0,
+          "caveat": "IMF PortWatch 基于AIS数据，可能存在覆盖不全或延迟"
+        }
+      ],
+      "cannot_verify": "地缘事件本身的概率和时间线；精确的风险溢价量化",
+      "improve_hint": "已有Polymarket，但其校准性差。可考虑接入多个预测市场取平均值",
+      "primary_verified": "2/2",
+      "total_verified": "4/4"
+    },
+    {
+      "claim_id": "refinery_margin_squeeze",
+      "claim": "炼厂利润挤压/减产预期",
+      "confidence": "medium",
+      "verdict": "项目数据可以部分验证，但存在盲区",
+      "checks": [
+        {
+          "source": "crack_spread",
+          "field": "汽油/柴油裂解",
+          "weight": "primary",
+          "check": "裂解价差是否持续2-4周低于历史均值",
+          "status": "stale",
+          "lag_days": 8,
+          "caveat": null
+        },
+        {
+          "source": "us_production",
+          "field": "炼厂开工率",
+          "weight": "primary",
+          "check": "开工率是否开始下降",
+          "status": "ok",
+          "lag_days": 11,
+          "caveat": null
+        },
+        {
+          "source": "us_demand",
+          "field": "需求趋势",
+          "weight": "supporting",
+          "check": "需求端是否同步走弱（交叉验证）",
+          "status": "ok",
+          "lag_days": 11,
+          "caveat": null
+        },
+        {
+          "source": "us_inventory",
+          "field": "成品油库存",
+          "weight": "supporting",
+          "check": "成品油是否累库（供大于求证据）",
+          "status": "ok",
+          "lag_days": 11,
+          "caveat": null
+        }
+      ],
+      "cannot_verify": "单个炼厂的实际生产成本和利润",
+      "improve_hint": "可接入EIA炼厂月度报告(EIA-820)获取更细粒度的开工率和产率数据",
+      "primary_verified": "1/2",
+      "total_verified": "3/4"
+    },
+    {
+      "claim_id": "speculative_positioning",
+      "claim": "投机资金推动/空头挤压",
+      "confidence": "high",
+      "verdict": "项目数据可以较好地验证此研判",
+      "checks": [
+        {
+          "source": "cftc_positioning",
+          "field": "净多头+分项变化",
+          "weight": "primary",
+          "check": "净多头变化由多头加仓还是空头回补驱动",
+          "status": "ok",
+          "lag_days": 7,
+          "caveat": null
+        },
+        {
+          "source": "financial",
+          "field": "OVX水平",
+          "weight": "supporting",
+          "check": "波动率环境是否有利于投机",
+          "status": "ok",
+          "lag_days": 4,
+          "caveat": null
+        },
+        {
+          "source": "futures_curve",
+          "field": "持仓量变化",
+          "weight": "supporting",
+          "check": "总持仓量是增是减（配合方向看资金行为）",
+          "status": "ok",
+          "lag_days": 1,
+          "caveat": null
+        }
+      ],
+      "cannot_verify": "CTA/量化基金的实时仓位；期权market making对冲需求",
+      "improve_hint": "CFTC补充数据(Traders in Financial Futures)可提供更细分的持仓",
+      "primary_verified": "1/1",
+      "total_verified": "3/3"
+    },
+    {
+      "claim_id": "curve_structure_anomaly",
+      "claim": "曲线结构异常（如Backwardation与过剩并存）",
+      "confidence": "medium",
+      "verdict": "项目数据可以部分验证，但存在盲区",
+      "checks": [
+        {
+          "source": "futures_curve",
+          "field": "各月合约价差",
+          "weight": "primary",
+          "check": "M1-M2, M1-M6 价差水平和趋势",
+          "status": "ok",
+          "lag_days": 1,
+          "caveat": null
+        },
+        {
+          "source": "global_balance",
+          "field": "供需平衡",
+          "weight": "primary",
+          "check": "实际供需是过剩还是紧缺",
+          "status": "missing",
+          "lag_days": null,
+          "caveat": null
+        },
+        {
+          "source": "us_inventory",
+          "field": "库欣库存",
+          "weight": "supporting",
+          "check": "交割库库存水平（直接影响近月定价）",
+          "status": "ok",
+          "lag_days": 11,
+          "caveat": null
+        },
+        {
+          "source": "cftc_positioning",
+          "field": "近月持仓",
+          "weight": "supporting",
+          "check": "是否有大量资金集中在近月",
+          "status": "ok",
+          "lag_days": 7,
+          "caveat": null
+        }
+      ],
+      "cannot_verify": "交割库的微观结构（管道调度、存储经济学等）",
+      "improve_hint": "可接入CME清算数据获取更精确的期货持仓分布",
+      "primary_verified": "1/2",
+      "total_verified": "3/4"
+    },
+    {
+      "claim_id": "policy_intervention",
+      "claim": "SPR释放/IEA协调/OPEC+政策变化",
+      "confidence": "low",
+      "verdict": "项目数据不足以验证此研判，需要补充数据源",
+      "checks": [
+        {
+          "source": "us_inventory",
+          "field": "SPR库存水平",
+          "weight": "primary",
+          "check": "SPR当前水平和近期变化趋势",
+          "status": "ok",
+          "lag_days": 11,
+          "caveat": null
+        },
+        {
+          "source": "spot_price",
+          "field": "油价水平",
+          "weight": "supporting",
+          "check": "是否超过历史政策干预触发价",
+          "status": "stale",
+          "lag_days": 8,
+          "caveat": null
+        },
+        {
+          "source": "global_balance",
+          "field": "供需缺口",
+          "weight": "primary",
+          "check": "是否存在实体供应缺口（过剩时释放概率低）",
+          "status": "missing",
+          "lag_days": null,
+          "caveat": null
+        }
+      ],
+      "cannot_verify": "政策决策内部讨论；国际协调时间表；OPEC+实际减产执行率",
+      "improve_hint": "可通过爬取DOE/IEA官方新闻or Twitter来获取政策信号的早期提示",
+      "primary_verified": "1/2",
+      "total_verified": "1/3"
+    }
+  ],
+  "temporal": {
+    "effective_window_days": 11,
+    "max_lag_days": 11,
+    "reliability": "degraded",
+    "high_volatility": true,
+    "ovx": 119.02,
+    "stale_sources": [
+      {
+        "source": "spot_price",
+        "lag": 8,
+        "desc": "WTI/Brent 现货价格"
+      },
+      {
+        "source": "us_inventory",
+        "lag": 11,
+        "desc": "美国商业库存 (原油/库欣/汽油/馏分油)"
+      },
+      {
+        "source": "us_demand",
+        "lag": 11,
+        "desc": "美国表观需求 (汽油/馏分油)"
+      },
+      {
+        "source": "crack_spread",
+        "lag": 8,
+        "desc": "裂解价差 (3-2-1, 汽油, 柴油)"
+      },
+      {
+        "source": "us_production",
+        "lag": 11,
+        "desc": "美国产量/炼厂/进口"
+      }
+    ],
+    "lag_map": {
+      "spot_price": 8,
+      "futures_curve": 1,
+      "us_inventory": 11,
+      "us_demand": 11,
+      "crack_spread": 8,
+      "cftc_positioning": 7,
+      "financial": 4,
+      "maritime": 0,
+      "polymarket": 0,
+      "us_production": 11
+    },
+    "warning": "当前OVX=119.0（高波动率环境），但数据最大滞后11天。高波动率下每天价格可能变动3-5%+，11天的数据差距意味着混合分析可能严重失真。建议：(1)优先依赖最新的数据源(期货/航运)；(2)滞后数据仅作为背景参考，不用于方向性判断。"
+  },
+  "gaps": {
+    "total_gaps": 27,
+    "weak_claims": 5,
+    "improvements": [
+      {
+        "priority": "high",
+        "area": "全球需求覆盖",
+        "current_gap": "仅有美国EIA周度需求数据，缺乏中国/印度/欧洲需求",
+        "suggestion": "接入IEA Oil Market Report月度数据 或 中国海关总署原油进口数据",
+        "effort": "中等（需要数据源API或爬虫）",
+        "value": "可验证'全球需求走弱'研判，当前完全盲区"
+      },
+      {
+        "priority": "high",
+        "area": "航运数据交叉验证",
+        "current_gap": "仅依赖IMF PortWatch (AIS)，数据可能不完整",
+        "suggestion": "接入Kpler或Vortexa API获取商业级油轮追踪数据",
+        "effort": "高（商业数据源，需付费API）",
+        "value": "可准确量化封锁影响的实际贸易流，而非依赖可疑的AIS数据"
+      },
+      {
+        "priority": "medium",
+        "area": "OPEC产量跟踪",
+        "current_gap": "STEO为月度数据，滞后且可能被修正",
+        "suggestion": "接入OPEC月报(MOMR)数据 或 S&P Global Platts产量估算",
+        "effort": "中等",
+        "value": "可更及时验证减产/增产执行情况"
+      },
+      {
+        "priority": "medium",
+        "area": "全球库存覆盖",
+        "current_gap": "仅有美国EIA库存，缺少全球(尤其中国、浮仓)",
+        "suggestion": "接入Kpler浮仓数据 或 IEA月度库存统计",
+        "effort": "中-高",
+        "value": "可验证'全球库存累积/去库'研判"
+      },
+      {
+        "priority": "low",
+        "area": "期权市场数据",
+        "current_gap": "缺少期权持仓、隐含波动率曲面、put/call比",
+        "suggestion": "接入CME期权数据 或 计算put/call ratio",
+        "effort": "中等",
+        "value": "可更好理解OVX高企的原因和市场尾部风险定价"
+      }
+    ],
+    "all_gaps_summary": {
+      "盘中实时价格": [
+        "spot_price"
+      ],
+      "亚洲/欧洲时段价格": [
+        "spot_price"
+      ],
+      "期权隐含波动率曲面": [
+        "futures_curve"
+      ],
+      "期货成交量/持仓量分布": [
+        "futures_curve"
+      ],
+      "全球库存（OECD/非OECD）": [
+        "us_inventory"
+      ],
+      "浮仓库存": [
+        "us_inventory"
+      ],
+      "中国SPR": [
+        "us_inventory"
+      ],
+      "全球需求（IEA月报才有）": [
+        "us_demand"
+      ],
+      "中国/印度需求": [
+        "us_demand"
+      ],
+      "航空燃油需求": [
+        "us_demand"
+      ],
+      "实际炼厂利润（含运营成本）": [
+        "crack_spread"
+      ],
+      "区域性裂解差异（Gulf/East Coast）": [
+        "crack_spread"
+      ],
+      "实时产量变化": [
+        "global_balance"
+      ],
+      "制裁实际影响量": [
+        "global_balance"
+      ],
+      "战略储备变化": [
+        "global_balance"
+      ],
+      "日内持仓变化": [
+        "cftc_positioning"
+      ],
+      "dealer/producer持仓细分": [
+        "cftc_positioning"
+      ],
+      "期权持仓": [
+        "cftc_positioning"
+      ],
+      "美联储政策预期（需CME FedWatch）": [
+        "financial"
+      ],
+      "信用利差": [
+        "financial"
+      ],
+      "单船运价（需Baltic Exchange）": [
+        "maritime"
+      ],
+      "载重/货物细分": [
+        "maritime"
+      ],
+      "油轮AIS全覆盖": [
+        "maritime"
+      ],
+      "概率准确性（校准性差）": [
+        "polymarket"
+      ],
+      "事件实际影响量化": [
+        "polymarket"
+      ],
+      "OPEC各国实时产量": [
+        "us_production"
+      ],
+      "俄罗斯/伊朗出口量": [
+        "us_production"
+      ]
+    }
+  },
+  "generated_at": "2026-03-17T11:57:20.219130"
+}

@@ -20,7 +20,8 @@ from config import (
     SIGNAL_CRACK_DAILY_DROP_PCT,
     SIGNAL_STEO_MAX_MONTHLY_SUPPLY_CHANGE,
     SIGNAL_SPR_RELEASE_PRICE_TRIGGER,
-    SIGNAL_SPR_LOW_LEVEL_MBBL,
+    SIGNAL_SPR_LOW_LEVEL_KBBL,
+    SIGNAL_SPR_MAX_RELEASE_RATE_KBD,
 )
 
 
@@ -348,12 +349,49 @@ def positioning_signal(cftc: list[dict]) -> dict:
     else:
         signal = "neutral"
 
-    return {
+    # 周度变化分析（多头 vs 空头驱动）
+    result = {
         "name": "持仓拥挤度",
         "signal": signal,
         "net_long": latest,
         "percentile": pct,
     }
+
+    if len(cftc) >= 2:
+        prev = cftc[-2]
+        curr = cftc[-1]
+        net_change = curr["net_long"] - prev["net_long"]
+        long_change = curr.get("long", 0) - prev.get("long", 0)
+        short_change = curr.get("short", 0) - prev.get("short", 0)
+        result["net_change"] = round(net_change, 0)
+        result["long_change"] = round(long_change, 0)
+        result["short_change"] = round(short_change, 0)
+
+        # 判断驱动来源
+        if abs(short_change) > abs(long_change) * 2 and short_change < 0:
+            result["driver"] = "short_squeeze"
+            result["driver_note"] = "空头回补驱动，非新多头入场，上涨持续性存疑"
+        elif long_change > abs(short_change) * 2 and long_change > 0:
+            result["driver"] = "new_longs"
+            result["driver_note"] = "新多头入场驱动，看多信心较强"
+        else:
+            result["driver"] = "mixed"
+            result["driver_note"] = "多空双边变动，方向信号不明确"
+
+    # 历史分布上下文
+    if len(net_longs) >= 10:
+        sorted_vals = sorted(net_longs)
+        p25 = sorted_vals[len(sorted_vals) // 4]
+        p75 = sorted_vals[3 * len(sorted_vals) // 4]
+        result["hist_p25"] = round(p25, 0)
+        result["hist_p75"] = round(p75, 0)
+        result["context_note"] = (
+            f"当前净多仓位于历史{pct:.0f}%分位"
+            f"（P25={p25:.0f}, P75={p75:.0f}），"
+            f"{'仍有较大上行空间' if pct < 30 else '接近中位水平' if pct < 70 else '拥挤度较高'}"
+        )
+
+    return result
 
 
 def crack_spread_signal(crack: dict, demand_sig: dict) -> dict:
@@ -429,19 +467,22 @@ def crack_spread_signal(crack: dict, demand_sig: dict) -> dict:
     demand_is_weak = demand_sig.get("signal") == "bearish"
     demand_is_strong = demand_sig.get("signal") == "bullish"
 
-    # 崩塌信号优先级最高
+    # 崩塌信号优先级最高，但需要标注数据可信度和其他可能原因
     if collapse_alert in ("shutdown", "collapse"):
         signal = "bearish"
         cross_note = (
-            f"🚨 汽油裂解崩塌（${gas_latest:.1f}）→ 终端消费者无法吸收油价上涨，"
-            f"炼厂利润被挤压到极限，下一步减产→原油需求塌陷→油价回调。"
-            f"这是地缘溢价不可持续的最强基本面信号。"
+            f"⚠️ 汽油裂解快速下跌至${gas_latest:.1f}，可能原因包括："
+            f"(1)成品油库存结构变化；(2)炼厂检修结束/开工率变化；"
+            f"(3)季节性切换（冬→春）；(4)RBOB合约换月；"
+            f"(5)终端消费者难以吸收油价上涨。"
+            f"当前仅有3天数据支撑，需观察2-4周趋势、成品油库存和炼厂开工率后才能确认。"
         )
     elif collapse_alert == "critical":
         signal = "bearish"
         cross_note = (
-            f"⚠️ 汽油裂解接近亏损区（${gas_latest:.1f}），若继续跌破"
-            f"${SIGNAL_GASOLINE_CRACK_SHUTDOWN}预示需求端承接断裂，炼厂将被迫减产。"
+            f"⚠️ 汽油裂解接近亏损区（${gas_latest:.1f}），"
+            f"可能反映多种因素：库存变化/合约换月/季节性调整。"
+            f"若持续2-4周低于${SIGNAL_GASOLINE_CRACK_SHUTDOWN}则预示炼厂利润真实受压。"
         )
     elif demand_is_weak and crack_trend == "falling":
         signal = "bearish"
@@ -505,11 +546,13 @@ def cross_analysis(curve_sig: dict, opec_sig: dict, maritime: dict, price: dict,
     if is_backwardation and is_oversupply:
         contradictions.append({
             "type": "curve_vs_balance",
-            "severity": "high",
+            "severity": "medium",
             "detail": (
-                f"深度Backwardation理论上意味着现货紧张，但全球供需过剩"
-                f"{balance_avg:+.1f}百万桶/日。两者不能同时为真——"
-                f"Backwardation可能完全由地缘风险溢价驱动，而非基本面紧张。"
+                f"深度Backwardation与全球供需过剩({balance_avg:+.1f}百万桶/日)并存。"
+                f"两者并非理论上不可共存——Backwardation反映短期供应风险/现货紧张预期"
+                f"（地缘溢价、库存结构、运输瓶颈等），而供需过剩反映中长期基本面压力。"
+                f"当前Backwardation主要由以下因素驱动：(1)地缘风险溢价；(2)库欣交割库结构；"
+                f"(3)近月资金做多。远月曲线更接近基本面均衡价格。"
             ),
         })
 
@@ -559,9 +602,37 @@ def cross_analysis(curve_sig: dict, opec_sig: dict, maritime: dict, price: dict,
                 ),
             })
         elif hormuz_wow < -50:
+            # 数据可信度交叉检查：如果霍尔木兹真的下降>90%，油价应远超当前水平
+            hormuz_avg_7d = hormuz.get("avg_7d", 0)
+            hormuz_avg_90d = hormuz.get("avg_90d", 0)
+            data_plausibility = "plausible"
+            if hormuz_wow < -90 and hormuz_avg_7d < 5:
+                # 检查油价水平是否与"接近完全封锁"一致
+                current_price = None
+                if curve:
+                    current_price = curve[0].get("price", 0)
+                elif wti_series:
+                    current_price = wti_series[-1]["value"]
+                if current_price and current_price < 120:
+                    data_plausibility = "questionable"
+                    findings.append({
+                        "type": "hormuz_data_plausibility",
+                        "severity": "warning",
+                        "detail": (
+                            f"霍尔木兹油轮通行量数据显示下降{hormuz_wow:+.1f}%"
+                            f"（7日均{hormuz_avg_7d:.1f}艘 vs 90日均{hormuz_avg_90d:.1f}艘），"
+                            f"但WTI仅${current_price:.0f}。如果全球~25%海运石油真的接近中断，"
+                            f"油价应远超$120-150+。数据与价格不一致，可能原因："
+                            f"(1) AIS数据统计口径问题（仅计入某类船型）；"
+                            f"(2) 数据源覆盖延迟；(3) 部分油轮关闭AIS转发器。"
+                            f"建议交叉验证Kpler、Vortexa等商业航运数据。"
+                        ),
+                    })
+
             findings.append({
                 "type": "hormuz_critical",
                 "severity": "critical",
+                "data_plausibility": data_plausibility,
                 "detail": f"霍尔木兹油轮通行量周环比{hormuz_wow:+.1f}%，属极端事件。",
             })
 
@@ -617,8 +688,12 @@ def steo_data_validation(global_bal: dict) -> dict:
                 "detail": (
                     f"{prev['date']}→{curr['date']} 供给变动 {change:+.2f} 百万桶/日，"
                     f"超过合理阈值 ±{SIGNAL_STEO_MAX_MONTHLY_SUPPLY_CHANGE}。"
-                    f"建议交叉验证：(1) 是否为 STEO 月度修正/统计口径调整；"
-                    f"(2) 实际减产量 vs 数据修正量的区分。"
+                    f"STEO供给=全球产量，产量不会因运输中断瞬间骤降——"
+                    f"运输封锁影响的是贸易流向而非产量本身。"
+                    f"可能原因：(1) STEO 月度数据修正/统计口径调整；"
+                    f"(2) 实际减产（OPEC+主动减产或制裁导致关井）；"
+                    f"(3) 数据发布时滞导致的暂时性异常。"
+                    f"建议交叉验证 OPEC 月报和 IEA 月报数据。"
                 ),
             })
 
@@ -655,7 +730,7 @@ def spr_policy_signal(inv: dict, price: dict, futures: dict, maritime: dict) -> 
         spr_date = spr_data[-1]["date"]
         result["spr_level_kbbl"] = spr_latest
         result["spr_date"] = spr_date
-        result["spr_low"] = spr_latest < SIGNAL_SPR_LOW_LEVEL_MBBL
+        result["spr_low"] = spr_latest < SIGNAL_SPR_LOW_LEVEL_KBBL
 
         # 近期 SPR 变化趋势（4周）
         if len(spr_data) >= 5:
@@ -692,18 +767,20 @@ def spr_policy_signal(inv: dict, price: dict, futures: dict, maritime: dict) -> 
 
     # 综合评估 SPR 释放概率
     if price_above_trigger and hormuz_disrupted:
-        release_likelihood = "very_high"
-        result["detail"] = (
-            f"WTI ${current_price:.0f} 远超政策干预阈值 "
-            f"${SIGNAL_SPR_RELEASE_PRICE_TRIGGER}，叠加霍尔木兹严重中断，"
-            f"SPR 释放和 IEA 成员国协调释放储备几乎是必然动作。"
-            f"这是打断地缘溢价的最直接催化剂。"
-        )
-    elif price_above_trigger:
         release_likelihood = "high"
         result["detail"] = (
+            f"WTI ${current_price:.0f} 超过政策干预阈值 "
+            f"${SIGNAL_SPR_RELEASE_PRICE_TRIGGER}，叠加航运数据显示霍尔木兹通行量异常。"
+            f"SPR 释放概率较高，但取决于："
+            f"(1)是否存在实体供应缺口（当前STEO显示供需仍为过剩）；"
+            f"(2)油价上涨持续时间；(3)政治窗口期。"
+            f"历史上SPR释放通常需要明确的实体供给中断，而非仅价格高位。"
+        )
+    elif price_above_trigger:
+        release_likelihood = "moderate"
+        result["detail"] = (
             f"WTI ${current_price:.0f} 超过政策干预阈值，"
-            f"SPR 释放概率较高，需关注白宫/DOE 政策信号。"
+            f"但当前供需仍为过剩，SPR 释放概率中等，需关注白宫/DOE 政策信号。"
         )
     elif hormuz_disrupted:
         release_likelihood = "moderate"
@@ -720,16 +797,15 @@ def spr_policy_signal(inv: dict, price: dict, futures: dict, maritime: dict) -> 
     # SPR 释放容量估算
     if result.get("spr_level_kbbl") is not None:
         spr_level = result["spr_level_kbbl"]
-        # 美国法定最大释放速率约 4.4 百万桶/日
-        max_days_at_full_rate = spr_level / 4400 if spr_level > 0 else 0
+        max_days_at_full_rate = spr_level / SIGNAL_SPR_MAX_RELEASE_RATE_KBD if spr_level > 0 else 0
         result["max_release_days"] = round(max_days_at_full_rate, 0)
         result["capacity_note"] = (
             f"SPR 当前 {spr_level/1000:.0f} 百万桶，"
-            f"按最大速率 4.4 百万桶/日可持续 {max_days_at_full_rate:.0f} 天。"
+            f"按最大速率 {SIGNAL_SPR_MAX_RELEASE_RATE_KBD/1000:.1f} 百万桶/日可持续 {max_days_at_full_rate:.0f} 天。"
         )
         if result["spr_low"]:
             result["capacity_note"] += (
-                f" ⚠️ SPR 低于 {SIGNAL_SPR_LOW_LEVEL_MBBL/1000:.0f} 百万桶警戒线，"
+                f" ⚠️ SPR 低于 {SIGNAL_SPR_LOW_LEVEL_KBBL/1000:.0f} 百万桶警戒线，"
                 f"释放空间有限，政策可能更审慎。"
             )
 
@@ -737,7 +813,7 @@ def spr_policy_signal(inv: dict, price: dict, futures: dict, maritime: dict) -> 
 
 
 def price_freshness(price: dict, futures: dict) -> dict:
-    """计算各数据源的时间新鲜度，标注时间差。"""
+    """计算各数据源的时间新鲜度，标注时间差，并评估时间错位风险。"""
     result = {}
     wti = price.get("wti", [])
     brent = price.get("brent", [])
@@ -753,6 +829,22 @@ def price_freshness(price: dict, futures: dict) -> dict:
             result["lag_days"] = abs((d2 - d1).days)
         except ValueError:
             result["lag_days"] = None
+
+    # 评估时间错位风险：在高波动市场中，数据时间差可能导致分析失真
+    max_lag = result.get("lag_days", 0) or 0
+    if max_lag >= 7:
+        result["temporal_risk"] = "high"
+        result["temporal_warning"] = (
+            f"现货与期货数据相差{max_lag}天。在地缘事件驱动的高波动市场中，"
+            f"7天内价格可能大幅变动，混合不同时间的数据得出的结论需保留不确定性。"
+        )
+    elif max_lag >= 3:
+        result["temporal_risk"] = "medium"
+        result["temporal_warning"] = (
+            f"数据存在{max_lag}天时差，分析结论需考虑时间错位因素。"
+        )
+    else:
+        result["temporal_risk"] = "low"
     return result
 
 
@@ -780,25 +872,107 @@ def compute_all_signals():
     opec_sig = opec_signal(global_bal)
     crack_sig = crack_spread_signal(crack, demand_sig)
 
+    inv_sig = inventory_signal(inv)
+    drill_sig = drilling_signal(prod, drill)
+    fin_sig = financial_signal(fin)
+    pos_sig = positioning_signal(cftc)
+
+    # 信号评分一致性检查
+    scored_signals = [inv_sig, curve_sig, demand_sig, crack_sig, drill_sig, opec_sig, fin_sig, pos_sig]
+    score_summary = _score_consistency(scored_signals)
+
     signals = {
-        "inventory": inventory_signal(inv),
+        "inventory": inv_sig,
         "curve": curve_sig,
         "demand": demand_sig,
         "crack_spread": crack_sig,
-        "drilling": drilling_signal(prod, drill),
+        "drilling": drill_sig,
         "opec": opec_sig,
-        "financial": financial_signal(fin),
-        "positioning": positioning_signal(cftc),
+        "financial": fin_sig,
+        "positioning": pos_sig,
         "cross_analysis": cross_analysis(curve_sig, opec_sig, maritime, price, futures),
         "spr_policy": spr_policy_signal(inv, price, futures, maritime),
         "steo_validation": steo_data_validation(global_bal),
         "price_freshness": price_freshness(price, futures),
+        "score_summary": score_summary,
     }
 
     with open(DATA_DIR / "signals.json", "w") as f:
         json.dump(signals, f, indent=2, ensure_ascii=False)
     print("✓ 信号计算完成")
     return signals
+
+
+def _score_consistency(scored_signals: list[dict]) -> dict:
+    """
+    评分一致性检查：汇总各维度信号，确保总结与评分系统一致。
+    不再简单计数，而是区分 '基本面信号' 和 '事件驱动信号'，
+    并标注当前市场是由哪种力量主导。
+    """
+    bullish = 0
+    bearish = 0
+    neutral = 0
+    data_issues = 0
+
+    for sig in scored_signals:
+        s = sig.get("signal", "neutral")
+        if s == "bullish":
+            bullish += 1
+        elif s in ("bearish", "warning"):
+            bearish += 1
+        else:
+            neutral += 1
+
+    total = bullish + bearish + neutral
+    if total == 0:
+        return {"regime": "unknown", "detail": "无信号数据"}
+
+    # 判断市场机制
+    if bearish > bullish + 1:
+        base_regime = "bearish_leaning"
+    elif bullish > bearish + 1:
+        base_regime = "bullish_leaning"
+    else:
+        base_regime = "mixed"
+
+    result = {
+        "bullish": bullish,
+        "neutral": neutral,
+        "bearish": bearish,
+        "base_regime": base_regime,
+        "regime": base_regime,
+    }
+
+    # 如果存在数据可信度问题，降低结论置信度
+    for sig in scored_signals:
+        if sig.get("collapse_alert") or sig.get("data_confidence") == "low":
+            data_issues += 1
+
+    if data_issues > 0:
+        result["data_confidence"] = "reduced"
+        result["confidence_note"] = (
+            f"存在{data_issues}个数据可信度问题，结论置信度降低。"
+        )
+
+    # 生成一致性摘要
+    if bearish > bullish:
+        result["summary"] = (
+            f"看多{bullish}/中性{neutral}/看空{bearish} — "
+            f"基本面信号偏空，但需区分：如果市场处于事件驱动模式，"
+            f"基本面信号权重应降低，方向性结论的置信度有限。"
+        )
+    elif bullish > bearish:
+        result["summary"] = (
+            f"看多{bullish}/中性{neutral}/看空{bearish} — "
+            f"信号偏多，但需检验是否由单一因素（如地缘风险）主导。"
+        )
+    else:
+        result["summary"] = (
+            f"看多{bullish}/中性{neutral}/看空{bearish} — "
+            f"多空信号接近均衡，方向不明确，宜维持中性或轻仓。"
+        )
+
+    return result
 
 
 if __name__ == "__main__":

@@ -218,7 +218,7 @@ def fetch_maritime_data():
 
 
 def _assess_risk(hormuz, mandeb):
-    """基于通行量变化评估封锁风险信号。"""
+    """基于通行量变化评估封锁风险信号，包含数据可信度检查。"""
     signals = []
 
     for cp_data, name in [(hormuz, "霍尔木兹"), (mandeb, "曼德海峡")]:
@@ -228,17 +228,37 @@ def _assess_risk(hormuz, mandeb):
         wow = ts.get("wow_change", 0)
         avg_7d = ts.get("avg_7d", 0)
         avg_90d = ts.get("avg_90d", 0)
+        avg_prev_7d = ts.get("avg_prev_7d", 0)
+
+        # ── 数据可信度检查 ──
+        # 下降超过90%属于极端罕见事件，需要标记数据可能不可靠
+        data_confidence = "high"
+        if wow < -90 and avg_7d < 5:
+            data_confidence = "low"
+            signals.append({
+                "level": "data_warning",
+                "message": (
+                    f"⚠️ {name}数据可信度存疑：7日均值 {avg_7d:.1f} 艘接近零，"
+                    f"降幅 {wow:.0f}% 属极端罕见。可能原因：(1) AIS数据覆盖不全；"
+                    f"(2) 统计口径变化（仅计入某类船型）；(3) 数据源延迟/缺失。"
+                    f"如确为真实封锁，全球油价应远超当前水平。建议交叉验证其他航运数据源。"
+                ),
+            })
+        elif wow < -70:
+            data_confidence = "medium"
 
         # 油轮通行量周环比大幅下降
         if wow < -30:
             signals.append({
                 "level": "danger",
-                "message": f"⚠️ {name}油轮通行量骤降 {wow:.0f}% (7日均值 {avg_7d:.0f} vs 前周 {ts.get('avg_prev_7d', 0):.0f})",
+                "data_confidence": data_confidence,
+                "message": f"⚠️ {name}油轮通行量骤降 {wow:.0f}% (7日均值 {avg_7d:.0f} vs 前周 {avg_prev_7d:.0f})",
             })
         elif wow < -15:
             signals.append({
                 "level": "warning",
-                "message": f"⚡ {name}油轮通行量下降 {wow:.0f}% (7日均值 {avg_7d:.0f} vs 前周 {ts.get('avg_prev_7d', 0):.0f})",
+                "data_confidence": data_confidence,
+                "message": f"⚡ {name}油轮通行量下降 {wow:.0f}% (7日均值 {avg_7d:.0f} vs 前周 {avg_prev_7d:.0f})",
             })
 
         # 7日均值低于90日均值的70%
@@ -246,6 +266,7 @@ def _assess_risk(hormuz, mandeb):
             pct = (avg_7d / avg_90d - 1) * 100
             signals.append({
                 "level": "danger",
+                "data_confidence": data_confidence,
                 "message": f"🚨 {name}油轮通行量显著低于常态 (7日均: {avg_7d:.0f}, 90日均: {avg_90d:.0f}, {pct:.0f}%)",
             })
 

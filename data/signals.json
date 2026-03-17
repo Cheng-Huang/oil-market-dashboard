@@ -11,10 +11,10 @@
     "signal": "bullish",
     "label": "Backwardation",
     "source": "futures",
-    "m1_m2_spread": 0.98,
-    "m1_m6_spread": 14.0,
-    "curve_front": 95.12,
-    "curve_back": 71.9,
+    "m1_m2_spread": 0.86,
+    "m1_m6_spread": 14.56,
+    "curve_front": 96.02,
+    "curve_back": 72.75,
     "n_contracts": 12
   },
   "demand": {
@@ -78,16 +78,24 @@
   },
   "financial": {
     "name": "金融条件",
-    "signal": "neutral",
-    "dxy_vs_ma200": -0.68,
-    "real_rate": 1.89,
+    "signal": "bearish",
+    "dxy_vs_ma200": 0.45,
+    "real_rate": 1.92,
     "ovx": 119.02
   },
   "positioning": {
     "name": "持仓拥挤度",
     "signal": "neutral",
     "net_long": 92122.0,
-    "percentile": 26.0
+    "percentile": 26.0,
+    "net_change": 23737.0,
+    "long_change": 2663.0,
+    "short_change": -21074.0,
+    "driver": "short_squeeze",
+    "driver_note": "空头回补驱动，非新多头入场，上涨持续性存疑",
+    "hist_p25": 91742.0,
+    "hist_p75": 174633.0,
+    "context_note": "当前净多仓位于历史26%分位（P25=91742, P75=174633），仍有较大上行空间"
   },
   "cross_analysis": {
     "findings": [
@@ -96,27 +104,33 @@
         "spot_date": "2026-03-09",
         "spot_price": 94.65,
         "futures_date": "2026-03-16",
-        "futures_price": 95.12,
-        "gap": 0.47,
-        "detail": "现货(2026-03-09)$94.65 vs 近月期货(2026-03-16)$95.12，差距$0.47。"
+        "futures_price": 96.02,
+        "gap": 1.37,
+        "detail": "现货(2026-03-09)$94.65 vs 近月期货(2026-03-16)$96.02，差距$1.37。"
+      },
+      {
+        "type": "hormuz_data_plausibility",
+        "severity": "warning",
+        "detail": "霍尔木兹油轮通行量数据显示下降-97.6%（7日均1.1艘 vs 90日均39.9艘），但WTI仅$96。如果全球~25%海运石油真的接近中断，油价应远超$120-150+。数据与价格不一致，可能原因：(1) AIS数据统计口径问题（仅计入某类船型）；(2) 数据源覆盖延迟；(3) 部分油轮关闭AIS转发器。建议交叉验证Kpler、Vortexa等商业航运数据。"
       },
       {
         "type": "hormuz_critical",
         "severity": "critical",
+        "data_plausibility": "questionable",
         "detail": "霍尔木兹油轮通行量周环比-97.6%，属极端事件。"
       }
     ],
     "contradictions": [
       {
         "type": "curve_vs_balance",
-        "severity": "high",
-        "detail": "深度Backwardation理论上意味着现货紧张，但全球供需过剩+2.6百万桶/日。两者不能同时为真——Backwardation可能完全由地缘风险溢价驱动，而非基本面紧张。"
+        "severity": "medium",
+        "detail": "深度Backwardation与全球供需过剩(+2.6百万桶/日)并存。两者并非理论上不可共存——Backwardation反映短期供应风险/现货紧张预期（地缘溢价、库存结构、运输瓶颈等），而供需过剩反映中长期基本面压力。当前Backwardation主要由以下因素驱动：(1)地缘风险溢价；(2)库欣交割库结构；(3)近月资金做多。远月曲线更接近基本面均衡价格。"
       },
       {
         "type": "tanker_stock_vs_maritime",
         "severity": "medium",
-        "avg_5d_change": -8.8,
-        "detail": "霍尔木兹封锁理论上利好油轮运费，但油轮股5日均跌-8.8%。可能因封锁导致货源消失比运费上涨更快，即\"无货可运\"效应压倒了\"运费上涨\"效应。"
+        "avg_5d_change": -7.1,
+        "detail": "霍尔木兹封锁理论上利好油轮运费，但油轮股5日均跌-7.1%。可能因封锁导致货源消失比运费上涨更快，即\"无货可运\"效应压倒了\"运费上涨\"效应。"
       }
     ],
     "n_contradictions": 2
@@ -128,9 +142,9 @@
     "spr_low": false,
     "spr_4w_change": 230.0,
     "spr_trend": "stable",
-    "current_wti": 95.12,
-    "detail": "WTI $95 远超政策干预阈值 $95.0，叠加霍尔木兹严重中断，SPR 释放和 IEA 成员国协调释放储备几乎是必然动作。这是打断地缘溢价的最直接催化剂。",
-    "release_likelihood": "very_high",
+    "current_wti": 96.02,
+    "detail": "WTI $96 超过政策干预阈值 $95.0，叠加航运数据显示霍尔木兹通行量异常。SPR 释放概率较高，但取决于：(1)是否存在实体供应缺口（当前STEO显示供需仍为过剩）；(2)油价上涨持续时间；(3)政治窗口期。历史上SPR释放通常需要明确的实体供给中断，而非仅价格高位。",
+    "release_likelihood": "high",
     "max_release_days": 94.0,
     "capacity_note": "SPR 当前 415 百万桶，按最大速率 4.4 百万桶/日可持续 94 天。"
   },
@@ -144,7 +158,7 @@
         "prev_supply": 99.719,
         "curr_supply": 88.401,
         "severity": "critical",
-        "detail": "2020-04→2020-05 供给变动 -11.32 百万桶/日，超过合理阈值 ±4.0。建议交叉验证：(1) 是否为 STEO 月度修正/统计口径调整；(2) 实际减产量 vs 数据修正量的区分。"
+        "detail": "2020-04→2020-05 供给变动 -11.32 百万桶/日，超过合理阈值 ±4.0。STEO供给=全球产量，产量不会因运输中断瞬间骤降——运输封锁影响的是贸易流向而非产量本身。可能原因：(1) STEO 月度数据修正/统计口径调整；(2) 实际减产（OPEC+主动减产或制裁导致关井）；(3) 数据发布时滞导致的暂时性异常。建议交叉验证 OPEC 月报和 IEA 月报数据。"
       },
       {
         "date": "2026-03",
@@ -153,13 +167,23 @@
         "prev_supply": 107.879,
         "curr_supply": 101.817,
         "severity": "critical",
-        "detail": "2026-02→2026-03 供给变动 -6.06 百万桶/日，超过合理阈值 ±4.0。建议交叉验证：(1) 是否为 STEO 月度修正/统计口径调整；(2) 实际减产量 vs 数据修正量的区分。"
+        "detail": "2026-02→2026-03 供给变动 -6.06 百万桶/日，超过合理阈值 ±4.0。STEO供给=全球产量，产量不会因运输中断瞬间骤降——运输封锁影响的是贸易流向而非产量本身。可能原因：(1) STEO 月度数据修正/统计口径调整；(2) 实际减产（OPEC+主动减产或制裁导致关井）；(3) 数据发布时滞导致的暂时性异常。建议交叉验证 OPEC 月报和 IEA 月报数据。"
       }
     ]
   },
   "price_freshness": {
     "spot_date": "2026-03-09",
     "futures_date": "2026-03-16",
-    "lag_days": 7
+    "lag_days": 7,
+    "temporal_risk": "high",
+    "temporal_warning": "现货与期货数据相差7天。在地缘事件驱动的高波动市场中，7天内价格可能大幅变动，混合不同时间的数据得出的结论需保留不确定性。"
+  },
+  "score_summary": {
+    "bullish": 2,
+    "neutral": 3,
+    "bearish": 3,
+    "base_regime": "mixed",
+    "regime": "mixed",
+    "summary": "看多2/中性3/看空3 — 基本面信号偏空，但需区分：如果市场处于事件驱动模式，基本面信号权重应降低，方向性结论的置信度有限。"
   }
 }

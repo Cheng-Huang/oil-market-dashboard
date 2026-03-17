@@ -1,5 +1,80 @@
 # Changelog
 
+## [2026-03-17a] — 数据驱动分析框架：验证引擎 + 航运数据可信度 + 分析纪律规则 + 日报
+
+### 新增
+
+- **`etl/data_verification.py`** — 4层数据验证与覆盖度评估引擎
+  - Layer 1: 数据源清单（11个源的覆盖范围、新鲜度、盲区）
+  - Layer 2: 7类市场研判的验证能力评估（high/medium/low）
+    - 地缘风险溢价、投机资金推动 → high
+    - 供给中断、需求走弱、炼厂利润、曲线异常 → medium
+    - SPR/政策 → low
+  - Layer 3: 时效可靠性评分（OVX + 数据滞后 → degraded/acceptable）
+  - Layer 4: 覆盖盲区识别 + 5条优先改进建议
+  - 输出 `data/verification.json`，作为报告生成的 ground truth
+
+- **`data/verification.json`** — 新增数据验证结果文件
+  - 11个数据源的新鲜度和覆盖能力
+  - 7个市场研判类型各自的验证检查清单和置信度
+  - 时效评估和改进建议
+
+- **`reports/2026-03-17-daily.md`** — 日报（数据驱动版本）
+  - 基于 verification.json 决定报告能写什么、不能写什么
+  - 经路透社/OilPrice 外部数据交叉验证
+  - 霍尔木兹-98%确认为真实数据（美伊战争实际影响，非数据错误）
+  - 明确标注盲区和不确定性
+  - 6大章节：数据验证总览、项目数据发现、市场研判与验证、盲区与不确定性、操作含义、数据改进路线图
+
+### 修改
+
+- **`etl/compute_signals.py`** — 10项分析纪律改进（基于专业投资者评审）
+  - Backwardation vs 过剩并存：严重性从 "high" 降为 "medium"，添加共存解释
+  - 裂解价差分析：使用审慎多因素语言，要求2-4周+多指标才能确认需求断裂
+  - SPR政策：release_likelihood 上限为 "high"（非 "very_high"），使用条件语言
+  - STEO供给：正确区分产量 vs 运输（封锁影响贸易流向，不直接导致产量骤降）
+  - CFTC持仓：新增驱动分析（short_squeeze/new_longs/mixed）+ P25/P75历史百分位
+  - 新增 `_score_consistency()` 评分一致性函数
+  - 新增 `price_freshness()` 中的 temporal_risk 评估
+  - 新增霍尔木兹数据合理性交叉验证（油价<$120 + 通行量-90% → 数据存疑标记）
+
+- **`etl/fetch_maritime.py`** — 航运数据可信度增强
+  - `_assess_risk()` 新增 `data_confidence` 字段（high/medium/low）
+  - 通行量降幅>90%且仅<5艘时标记 `data_warning`，含AIS/覆盖率解释
+
+- **`etl/run_all.py`** — 新增步骤 [10] 调用 `data_verification.run_verification()`
+
+- **`etl/config.py`** — 新增 `SIGNAL_CRACK_DAILY_DROP_PCT` 参数
+
+- **数据文件更新** — 全量ETL刷新（3/17运行）
+  - `data/signals.json` — 包含所有新增信号字段
+  - `data/futures.json` — 12合约WTI曲线（Backwardation, M1=$96.02）
+  - `data/inventory.json` — EIA周度库存含SPR
+  - `data/maritime.json` — 4航运要道 + 油轮股
+  - `data/financial.json` — DXY/OVX/实际利率
+  - `data/crack_spread.json` — 3-2-1裂解含汽柴油分拆
+  - `data/polymarket.json` — 地缘事件概率
+
+### SKILL.md v2.0 重写（报告生成理念变更）
+
+- **从模板驱动改为数据驱动**：不再用预设模板套数据，而是让数据说话
+- **verification.json 作为 ground truth**：先读验证结果，再决定报告能写什么
+- **7步分析流程**：数据盘点 → 数据发现 → 外部对照 → 交叉验证 → 盲区识别 → 研判输出 → 改进建议
+- **结论强度 = 数据支撑强度**：仅3天数据不能叫"崩塌"，单源异常不能叫"确认"
+- **9条常见逻辑陷阱**：Backwardation+过剩不矛盾、裂解下降≠需求断裂、航运极端值先查数据质量等
+- **Report Structure**：6章节制，新增"数据验证总览"和"盲区与不确定性"核心章节
+
+### 背景
+
+基于专业投资者对 `reports/2026-03-16-daily-v2.md` 的 10 点结构性评审，涵盖：
+- 关键逻辑错误（Backwardation vs 过剩、裂解过度推断、霍尔木兹数据质量）
+- 分析纪律问题（STEO解读、SPR政策断言、时间频率错配）
+- 形式问题（信号系统外露、结论/评分不一致）
+
+以及用户对 SKILL.md 的哲学性反馈："不应该用模板限定太多，应该让项目数据的结论与网络信息进行比对验证"
+
+---
+
 ## [2026-03-16c] — 交易员反馈改进：SPR 政策信号、裂解崩塌检测、STEO 验证、风控规则
 
 > Commit: `10809b6` — 基于资深交易员对日报的 5 点结构性反馈，完善信号引擎和报告生成规则

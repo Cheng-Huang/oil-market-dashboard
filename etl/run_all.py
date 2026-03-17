@@ -252,6 +252,14 @@ def run_real():
     with open(config.DATA_DIR / "meta.json", "w") as f:
         json.dump(meta, f, indent=2)
 
+    # 数据验证评估
+    print("\n[10] 数据验证与覆盖度评估 ...")
+    try:
+        from data_verification import run_verification
+        verification = run_verification()
+    except Exception as e:
+        print(f"  ✗ 数据验证失败: {e}")
+
     print("\n✅ ETL 完成!")
 
 
