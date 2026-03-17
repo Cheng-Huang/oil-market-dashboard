@@ -1,0 +1,174 @@
+{
+  "options": {
+    "by_ticker": {
+      "USO": {
+        "label": "United States Oil Fund ETF",
+        "pc_ratio_volume": 1.129,
+        "pc_ratio_oi": 0,
+        "total_call_volume": 79738,
+        "total_put_volume": 90038,
+        "total_call_oi": 0,
+        "total_put_oi": 0,
+        "expiries_analyzed": 4
+      },
+      "XLE": {
+        "label": "Energy Select Sector SPDR",
+        "pc_ratio_volume": 1.451,
+        "pc_ratio_oi": 1.274,
+        "total_call_volume": 31508,
+        "total_put_volume": 45719,
+        "total_call_oi": 137816,
+        "total_put_oi": 175601,
+        "expiries_analyzed": 4
+      }
+    },
+    "by_expiry": [
+      {
+        "ticker": "USO",
+        "expiry": "2026-03-18",
+        "pc_ratio_volume": 1.547,
+        "pc_ratio_oi": 0,
+        "total_call_volume": 29809,
+        "total_put_volume": 46123,
+        "total_call_oi": 0,
+        "total_put_oi": 0,
+        "max_call_oi_strike": 69.0,
+        "max_put_oi_strike": 69.0,
+        "avg_iv_calls": 0.2485,
+        "avg_iv_puts": 0.2893,
+        "iv_skew": 0.0408
+      },
+      {
+        "ticker": "USO",
+        "expiry": "2026-03-20",
+        "pc_ratio_volume": 0.723,
+        "pc_ratio_oi": 0,
+        "total_call_volume": 39829,
+        "total_put_volume": 28801,
+        "total_call_oi": 0,
+        "total_put_oi": 0,
+        "max_call_oi_strike": 50.0,
+        "max_put_oi_strike": 50.0,
+        "avg_iv_calls": 0.1895,
+        "avg_iv_puts": 0.2739,
+        "iv_skew": 0.0843
+      },
+      {
+        "ticker": "USO",
+        "expiry": "2026-03-25",
+        "pc_ratio_volume": 1.62,
+        "pc_ratio_oi": 0,
+        "total_call_volume": 1871,
+        "total_put_volume": 3031,
+        "total_call_oi": 0,
+        "total_put_oi": 0,
+        "max_call_oi_strike": 69.0,
+        "max_put_oi_strike": 50.0,
+        "avg_iv_calls": 0.1271,
+        "avg_iv_puts": 0.2483,
+        "iv_skew": 0.1212
+      },
+      {
+        "ticker": "USO",
+        "expiry": "2026-03-27",
+        "pc_ratio_volume": 1.468,
+        "pc_ratio_oi": 0,
+        "total_call_volume": 8229,
+        "total_put_volume": 12083,
+        "total_call_oi": 0,
+        "total_put_oi": 0,
+        "max_call_oi_strike": 55.0,
+        "max_put_oi_strike": 50.0,
+        "avg_iv_calls": 0.135,
+        "avg_iv_puts": 0.272,
+        "iv_skew": 0.137
+      },
+      {
+        "ticker": "XLE",
+        "expiry": "2026-03-20",
+        "pc_ratio_volume": 2.091,
+        "pc_ratio_oi": 1.256,
+        "total_call_volume": 18458,
+        "total_put_volume": 38590,
+        "total_call_oi": 125704,
+        "total_put_oi": 157893,
+        "max_call_oi_strike": 90.0,
+        "max_put_oi_strike": 80.0,
+        "avg_iv_calls": 0.8694,
+        "avg_iv_puts": 0.2412,
+        "iv_skew": -0.6282
+      },
+      {
+        "ticker": "XLE",
+        "expiry": "2026-03-27",
+        "pc_ratio_volume": 0.976,
+        "pc_ratio_oi": 0.0,
+        "total_call_volume": 1423,
+        "total_put_volume": 1389,
+        "total_call_oi": 2,
+        "total_put_oi": 0,
+        "max_call_oi_strike": 46.5,
+        "max_put_oi_strike": 40.0,
+        "avg_iv_calls": 0.0565,
+        "avg_iv_puts": 0.1576,
+        "iv_skew": 0.1011
+      },
+      {
+        "ticker": "XLE",
+        "expiry": "2026-03-31",
+        "pc_ratio_volume": 0.487,
+        "pc_ratio_oi": 1.462,
+        "total_call_volume": 10864,
+        "total_put_volume": 5293,
+        "total_call_oi": 12110,
+        "total_put_oi": 17708,
+        "max_call_oi_strike": 43.0,
+        "max_put_oi_strike": 86.0,
+        "avg_iv_calls": 0.4493,
+        "avg_iv_puts": 0.244,
+        "iv_skew": -0.2054
+      },
+      {
+        "ticker": "XLE",
+        "expiry": "2026-04-02",
+        "pc_ratio_volume": 0.586,
+        "pc_ratio_oi": 0,
+        "total_call_volume": 763,
+        "total_put_volume": 447,
+        "total_call_oi": 0,
+        "total_put_oi": 0,
+        "max_call_oi_strike": 45.0,
+        "max_put_oi_strike": 40.0,
+        "avg_iv_calls": 0.0383,
+        "avg_iv_puts": 0.107,
+        "iv_skew": 0.0688
+      }
+    ],
+    "aggregate": {
+      "total_pc_ratio_volume": 1.22,
+      "total_pc_ratio_oi": 1.274,
+      "total_call_volume": 111246,
+      "total_put_volume": 135757,
+      "total_call_oi": 137816,
+      "total_put_oi": 175601
+    },
+    "sentiment": {
+      "volume_signal": "bearish",
+      "volume_note": "P/C(vol)=1.22 偏空/谨慎",
+      "oi_signal": "bearish",
+      "skew_signal": "balanced",
+      "key_put_support": 86.0,
+      "key_call_resistance": 43.0
+    }
+  },
+  "ovx_enhanced": {
+    "latest": 119.02,
+    "date": "2026-03-13",
+    "avg_20d": 76.24,
+    "avg_60d": 52.99,
+    "percentile": 99.4,
+    "vol_of_vol_5d": 4.8,
+    "regime": "extreme_panic"
+  },
+  "updated": "2026-03-17T05:52:20Z"
+}

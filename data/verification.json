@@ -4,8 +4,8 @@
       "desc": "WTI/Brent 现货价格",
       "origin": "FRED + EIA",
       "frequency": "日频（工作日）",
-      "latest": "2026-03-09",
-      "lag_days": 8,
+      "latest": "2026-03-17",
+      "lag_days": 0,
       "covers": [
         "当前油价水平",
         "WTI-Brent价差",
@@ -20,8 +20,8 @@
       "desc": "WTI 期货曲线 (12合约)",
       "origin": "Yahoo Finance",
       "frequency": "日频",
-      "latest": "2026-03-16",
-      "lag_days": 1,
+      "latest": "2026-03-17",
+      "lag_days": 0,
       "covers": [
         "期限结构(Backwardation/Contango)",
         "远月隐含价格",
@@ -184,8 +184,8 @@
     {
       "claim_id": "supply_disruption",
       "claim": "供给中断（如霍尔木兹封锁、OPEC减产）",
-      "confidence": "medium",
-      "verdict": "项目数据可以部分验证，但存在盲区",
+      "confidence": "high",
+      "verdict": "项目数据可以较好地验证此研判",
       "checks": [
         {
           "source": "maritime",
@@ -211,7 +211,7 @@
           "weight": "supporting",
           "check": "是否转为深度Backwardation",
           "status": "ok",
-          "lag_days": 1,
+          "lag_days": 0,
           "caveat": null
         },
         {
@@ -219,15 +219,15 @@
           "field": "WTI-Brent价差",
           "weight": "supporting",
           "check": "Brent溢价是否扩大（国际供给更受影响）",
-          "status": "stale",
-          "lag_days": 8,
+          "status": "ok",
+          "lag_days": 0,
           "caveat": null
         }
       ],
       "cannot_verify": "实际封锁程度和持续时间；需要Kpler/Vortexa等商业航运数据",
       "improve_hint": "接入Kpler或Vortexa的油轮追踪API，可获得按船型、目的地分类的实时贸易流数据",
       "primary_verified": "1/1",
-      "total_verified": "2/4"
+      "total_verified": "3/4"
     },
     {
       "claim_id": "demand_weakness",
@@ -307,7 +307,7 @@
           "weight": "primary",
           "check": "近月溢价是否远超远月（地缘驱动的Backwardation）",
           "status": "ok",
-          "lag_days": 1,
+          "lag_days": 0,
           "caveat": null
         },
         {
@@ -403,7 +403,7 @@
           "weight": "supporting",
           "check": "总持仓量是增是减（配合方向看资金行为）",
           "status": "ok",
-          "lag_days": 1,
+          "lag_days": 0,
           "caveat": null
         }
       ],
@@ -424,7 +424,7 @@
           "weight": "primary",
           "check": "M1-M2, M1-M6 价差水平和趋势",
           "status": "ok",
-          "lag_days": 1,
+          "lag_days": 0,
           "caveat": null
         },
         {
@@ -463,8 +463,8 @@
     {
       "claim_id": "policy_intervention",
       "claim": "SPR释放/IEA协调/OPEC+政策变化",
-      "confidence": "low",
-      "verdict": "项目数据不足以验证此研判，需要补充数据源",
+      "confidence": "medium",
+      "verdict": "项目数据可以部分验证，但存在盲区",
       "checks": [
         {
           "source": "us_inventory",
@@ -480,8 +480,8 @@
           "field": "油价水平",
           "weight": "supporting",
           "check": "是否超过历史政策干预触发价",
-          "status": "stale",
-          "lag_days": 8,
+          "status": "ok",
+          "lag_days": 0,
           "caveat": null
         },
         {
@@ -497,7 +497,7 @@
       "cannot_verify": "政策决策内部讨论；国际协调时间表；OPEC+实际减产执行率",
       "improve_hint": "可通过爬取DOE/IEA官方新闻or Twitter来获取政策信号的早期提示",
       "primary_verified": "1/2",
-      "total_verified": "1/3"
+      "total_verified": "2/3"
     }
   ],
   "temporal": {
@@ -507,11 +507,6 @@
     "high_volatility": true,
     "ovx": 119.02,
     "stale_sources": [
-      {
-        "source": "spot_price",
-        "lag": 8,
-        "desc": "WTI/Brent 现货价格"
-      },
       {
         "source": "us_inventory",
         "lag": 11,
@@ -534,8 +529,8 @@
       }
     ],
     "lag_map": {
-      "spot_price": 8,
-      "futures_curve": 1,
+      "spot_price": 0,
+      "futures_curve": 0,
       "us_inventory": 11,
       "us_demand": 11,
       "crack_spread": 8,
@@ -549,7 +544,7 @@
   },
   "gaps": {
     "total_gaps": 27,
-    "weak_claims": 5,
+    "weak_claims": 4,
     "improvements": [
       {
         "priority": "high",
@@ -558,14 +553,6 @@
         "suggestion": "接入IEA Oil Market Report月度数据 或 中国海关总署原油进口数据",
         "effort": "中等（需要数据源API或爬虫）",
         "value": "可验证'全球需求走弱'研判，当前完全盲区"
-      },
-      {
-        "priority": "high",
-        "area": "航运数据交叉验证",
-        "current_gap": "仅依赖IMF PortWatch (AIS)，数据可能不完整",
-        "suggestion": "接入Kpler或Vortexa API获取商业级油轮追踪数据",
-        "effort": "高（商业数据源，需付费API）",
-        "value": "可准确量化封锁影响的实际贸易流，而非依赖可疑的AIS数据"
       },
       {
         "priority": "medium",
@@ -676,5 +663,5 @@
       ]
     }
   },
-  "generated_at": "2026-03-17T11:57:20.219130"
+  "generated_at": "2026-03-17T13:52:20.812856"
 }

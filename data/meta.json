@@ -1,12 +1,19 @@
 {
-  "last_updated": "2026-03-17T11:57:20.205626",
+  "last_updated": "2026-03-17T13:52:20.794364",
   "sources": {
     "fred": "ok",
     "eia": "ok",
+    "eia_daily": "ok",
     "cftc": "ok",
     "futures": "ok",
     "steo": "ok",
     "polymarket": "ok",
-    "maritime": "ok"
+    "maritime": "ok",
+    "yahoo_realtime": "ok",
+    "maritime_validation": "ok",
+    "global_demand": "ok",
+    "opec_production": "ok",
+    "global_inventory": "ok",
+    "options": "ok"
   }
 }

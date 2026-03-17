@@ -126,25 +126,27 @@ def run_real():
     print(f"🛢️  石油数据 ETL — {datetime.now().strftime('%Y-%m-%d %H:%M')}")
     print("=" * 50)
 
+    TOTAL_STEPS = 16
+
     # FRED
     fred_data = {}
     if config.FRED_API_KEY:
-        print("\n[1/9] FRED ...")
+        print(f"\n[1/{TOTAL_STEPS}] FRED ...")
         from fetch_fred import fetch_all_fred, save_fred_data
         fred_data = fetch_all_fred()
         save_fred_data(fred_data)
     else:
-        print("\n[1/9] FRED — ⚠ 跳过（无 API Key）")
+        print(f"\n[1/{TOTAL_STEPS}] FRED — ⚠ 跳过（无 API Key）")
 
     # EIA
     eia_data = {}
     if config.EIA_API_KEY:
-        print("\n[2/9] EIA ...")
+        print(f"\n[2/{TOTAL_STEPS}] EIA ...")
         from fetch_eia import fetch_all_eia, save_eia_data
         eia_data = fetch_all_eia()
         save_eia_data(eia_data)
     else:
-        print("\n[2/9] EIA — ⚠ 跳过（无 API Key）")
+        print(f"\n[2/{TOTAL_STEPS}] EIA — ⚠ 跳过（无 API Key）")
 
     # ── 裂解价差补救：FRED 汽油价格失效时，用 EIA 汽油现货替代 ──
     _fix_crack_spread(fred_data, eia_data)
@@ -154,7 +156,7 @@ def run_real():
 
     # STEO (OPEC/全球供需 + 钻机数)
     if config.EIA_API_KEY:
-        print("\n[3/9] STEO (全球供需 & 钻井) ...")
+        print(f"\n[3/{TOTAL_STEPS}] STEO (全球供需 & 钻井) ...")
         try:
             from fetch_steo import fetch_all_steo, save_steo_data
             steo_data = fetch_all_steo()
@@ -162,10 +164,10 @@ def run_real():
         except Exception as e:
             print(f"  ✗ STEO 数据获取失败: {e}")
     else:
-        print("\n[3/9] STEO — ⚠ 跳过（无 EIA API Key）")
+        print(f"\n[3/{TOTAL_STEPS}] STEO — ⚠ 跳过（无 EIA API Key）")
 
     # CFTC
-    print("\n[4/9] CFTC ...")
+    print(f"\n[4/{TOTAL_STEPS}] CFTC ...")
     try:
         from fetch_cftc import fetch_cftc_positioning, save_cftc_data
         cftc_data = fetch_cftc_positioning()
@@ -175,7 +177,7 @@ def run_real():
         print(f"  ✗ {e}")
 
     # 期货曲线（Yahoo Finance，无需 API Key）
-    print("\n[5/9] 期货曲线 ...")
+    print(f"\n[5/{TOTAL_STEPS}] 期货曲线 ...")
     try:
         from fetch_futures import fetch_futures_data
         futures_data = fetch_futures_data()
@@ -186,7 +188,7 @@ def run_real():
         print(f"  ✗ 期货数据获取失败: {e}")
 
     # Polymarket 预测市场（免费，无需 API Key）
-    print("\n[6/9] Polymarket 预测市场 ...")
+    print(f"\n[6/{TOTAL_STEPS}] Polymarket 预测市场 ...")
     try:
         from fetch_polymarket import fetch_polymarket_data, save_polymarket_data
         poly_data = fetch_polymarket_data()
@@ -195,7 +197,7 @@ def run_real():
         print(f"  ✗ Polymarket 数据获取失败: {e}")
 
     # 航运数据（IMF PortWatch + Yahoo Finance，免费，无需 API Key）
-    print("\n[7/9] 航运数据 (IMF PortWatch) ...")
+    print(f"\n[7/{TOTAL_STEPS}] 航运数据 (IMF PortWatch) ...")
     try:
         from fetch_maritime import fetch_maritime_data, save_maritime_data
         maritime_data = fetch_maritime_data()
@@ -203,8 +205,88 @@ def run_real():
     except Exception as e:
         print(f"  ✗ 航运数据获取失败: {e}")
 
+    # Yahoo Finance 实时价格（消除现货 8 天滞后）
+    print(f"\n[8/{TOTAL_STEPS}] Yahoo Finance 实时价格 ...")
+    try:
+        from fetch_yahoo_realtime import fetch_realtime_prices, save_realtime_prices
+        rt_data = fetch_realtime_prices()
+        if rt_data:
+            save_realtime_prices(rt_data)
+            freshness = rt_data.get("freshness", {})
+            for key, info in freshness.items():
+                lag = info.get("fred_lag_days", "?")
+                print(f"    {key}: 实时={info.get('realtime','?')}, FRED滞后={lag}天")
+    except Exception as e:
+        print(f"  ✗ 实时价格获取失败: {e}")
+
+    # EIA 日频现货价格（每天拉取，不等周报）
+    if config.EIA_API_KEY:
+        print(f"\n[9/{TOTAL_STEPS}] EIA 日频现货价格 ...")
+        try:
+            from fetch_eia_daily import fetch_eia_daily_prices, save_eia_daily_prices
+            eia_daily = fetch_eia_daily_prices()
+            save_eia_daily_prices(eia_daily)
+        except Exception as e:
+            print(f"  ✗ EIA 日频价格获取失败: {e}")
+    else:
+        print(f"\n[9/{TOTAL_STEPS}] EIA 日频价格 — ⚠ 跳过（无 API Key）")
+
+    # 航运数据交叉验证
+    print(f"\n[10/{TOTAL_STEPS}] 航运数据交叉验证 ...")
+    try:
+        from fetch_maritime_alt import fetch_and_validate_maritime, save_maritime_validation
+        mv_data = fetch_and_validate_maritime()
+        save_maritime_validation(mv_data)
+    except Exception as e:
+        print(f"  ✗ 航运交叉验证失败: {e}")
+
+    # 全球需求覆盖（STEO 分国别 + JODI）
+    if config.EIA_API_KEY:
+        print(f"\n[11/{TOTAL_STEPS}] 全球需求 (STEO + JODI) ...")
+        try:
+            from fetch_global_demand import fetch_global_demand, save_global_demand
+            gd_data = fetch_global_demand()
+            save_global_demand(gd_data)
+        except Exception as e:
+            print(f"  ✗ 全球需求获取失败: {e}")
+    else:
+        print(f"\n[11/{TOTAL_STEPS}] 全球需求 — ⚠ 跳过（无 EIA API Key）")
+
+    # OPEC 产量监控
+    if config.EIA_API_KEY:
+        print(f"\n[12/{TOTAL_STEPS}] OPEC 产量监控 ...")
+        try:
+            from fetch_opec_production import fetch_all_opec_data, save_opec_production
+            opec_data = fetch_all_opec_data()
+            save_opec_production(opec_data)
+        except Exception as e:
+            print(f"  ✗ OPEC 产量获取失败: {e}")
+    else:
+        print(f"\n[12/{TOTAL_STEPS}] OPEC 产量 — ⚠ 跳过（无 EIA API Key）")
+
+    # 全球库存覆盖（OECD + 隐含 + 浮仓 + SPR）
+    if config.EIA_API_KEY:
+        print(f"\n[13/{TOTAL_STEPS}] 全球库存 (OECD + 浮仓 + SPR) ...")
+        try:
+            from fetch_global_inventory import fetch_global_inventory, save_global_inventory
+            gi_data = fetch_global_inventory()
+            save_global_inventory(gi_data)
+        except Exception as e:
+            print(f"  ✗ 全球库存获取失败: {e}")
+    else:
+        print(f"\n[13/{TOTAL_STEPS}] 全球库存 — ⚠ 跳过（无 EIA API Key）")
+
+    # 期权数据 (Put/Call Ratio)
+    print(f"\n[14/{TOTAL_STEPS}] 期权数据 (Put/Call Ratio) ...")
+    try:
+        from fetch_options import fetch_all_options_data, save_options_data
+        opt_data = fetch_all_options_data()
+        save_options_data(opt_data)
+    except Exception as e:
+        print(f"  ✗ 期权数据获取失败: {e}")
+
     # 信号
-    print("\n[8/9] 计算信号 ...")
+    print(f"\n[15/{TOTAL_STEPS}] 计算信号 ...")
     from compute_signals import compute_all_signals
     signals = compute_all_signals()
     for k, v in signals.items():
@@ -235,25 +317,32 @@ def run_real():
                 print(f"  ✓ 价格新鲜度: 正常")
 
     # Meta
-    print("\n[9/9] 写入元信息 ...")
+    print(f"\n[{TOTAL_STEPS}/{TOTAL_STEPS}] 写入元信息 ...")
     import json
     meta = {
         "last_updated": datetime.now().isoformat(),
         "sources": {
             "fred": "ok" if config.FRED_API_KEY else "skipped",
             "eia": "ok" if config.EIA_API_KEY else "skipped",
+            "eia_daily": "ok" if config.EIA_API_KEY else "skipped",
             "cftc": "ok",
             "futures": "ok",
             "steo": "ok" if config.EIA_API_KEY else "skipped",
             "polymarket": "ok",
             "maritime": "ok",
+            "yahoo_realtime": "ok",
+            "maritime_validation": "ok",
+            "global_demand": "ok" if config.EIA_API_KEY else "skipped",
+            "opec_production": "ok" if config.EIA_API_KEY else "skipped",
+            "global_inventory": "ok" if config.EIA_API_KEY else "skipped",
+            "options": "ok",
         },
     }
     with open(config.DATA_DIR / "meta.json", "w") as f:
         json.dump(meta, f, indent=2)
 
     # 数据验证评估
-    print("\n[10] 数据验证与覆盖度评估 ...")
+    print("\n[+] 数据验证与覆盖度评估 ...")
     try:
         from data_verification import run_verification
         verification = run_verification()

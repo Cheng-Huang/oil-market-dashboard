@@ -11,10 +11,10 @@
     "signal": "bullish",
     "label": "Backwardation",
     "source": "futures",
-    "m1_m2_spread": 0.86,
-    "m1_m6_spread": 14.56,
-    "curve_front": 96.02,
-    "curve_back": 72.75,
+    "m1_m2_spread": 0.79,
+    "m1_m6_spread": 14.38,
+    "curve_front": 95.94,
+    "curve_back": 72.69,
     "n_contracts": 12
   },
   "demand": {
@@ -100,15 +100,6 @@
   "cross_analysis": {
     "findings": [
       {
-        "type": "price_futures_gap",
-        "spot_date": "2026-03-09",
-        "spot_price": 94.65,
-        "futures_date": "2026-03-16",
-        "futures_price": 96.02,
-        "gap": 1.37,
-        "detail": "现货(2026-03-09)$94.65 vs 近月期货(2026-03-16)$96.02，差距$1.37。"
-      },
-      {
         "type": "hormuz_data_plausibility",
         "severity": "warning",
         "detail": "霍尔木兹油轮通行量数据显示下降-97.6%（7日均1.1艘 vs 90日均39.9艘），但WTI仅$96。如果全球~25%海运石油真的接近中断，油价应远超$120-150+。数据与价格不一致，可能原因：(1) AIS数据统计口径问题（仅计入某类船型）；(2) 数据源覆盖延迟；(3) 部分油轮关闭AIS转发器。建议交叉验证Kpler、Vortexa等商业航运数据。"
@@ -142,7 +133,7 @@
     "spr_low": false,
     "spr_4w_change": 230.0,
     "spr_trend": "stable",
-    "current_wti": 96.02,
+    "current_wti": 95.94,
     "detail": "WTI $96 超过政策干预阈值 $95.0，叠加航运数据显示霍尔木兹通行量异常。SPR 释放概率较高，但取决于：(1)是否存在实体供应缺口（当前STEO显示供需仍为过剩）；(2)油价上涨持续时间；(3)政治窗口期。历史上SPR释放通常需要明确的实体供给中断，而非仅价格高位。",
     "release_likelihood": "high",
     "max_release_days": 94.0,
@@ -172,11 +163,10 @@
     ]
   },
   "price_freshness": {
-    "spot_date": "2026-03-09",
-    "futures_date": "2026-03-16",
-    "lag_days": 7,
-    "temporal_risk": "high",
-    "temporal_warning": "现货与期货数据相差7天。在地缘事件驱动的高波动市场中，7天内价格可能大幅变动，混合不同时间的数据得出的结论需保留不确定性。"
+    "spot_date": "2026-03-17",
+    "futures_date": "2026-03-17",
+    "lag_days": 0,
+    "temporal_risk": "low"
   },
   "score_summary": {
     "bullish": 2,
