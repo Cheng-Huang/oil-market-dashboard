@@ -8,8 +8,8 @@
       "open": 94.41,
       "high": 98.42,
       "low": 93.88,
-      "close": 97.93,
-      "volume": 43678
+      "close": 97.9,
+      "volume": 44211
     },
     "history": [
       {
@@ -409,8 +409,8 @@
         "open": 94.41,
         "high": 98.42,
         "low": 93.88,
-        "close": 97.93,
-        "volume": 43678
+        "close": 97.9,
+        "volume": 44211
       }
     ]
   },
@@ -423,8 +423,8 @@
       "open": 101.37,
       "high": 104.98,
       "low": 100.76,
-      "close": 104.28,
-      "volume": 7842
+      "close": 104.31,
+      "volume": 7954
     },
     "history": [
       {
@@ -824,8 +824,8 @@
         "open": 101.37,
         "high": 104.98,
         "low": 100.76,
-        "close": 104.28,
-        "volume": 7842
+        "close": 104.31,
+        "volume": 7954
       }
     ]
   },
@@ -838,8 +838,8 @@
       "open": 3.62,
       "high": 3.78,
       "low": 3.61,
-      "close": 3.77,
-      "volume": 2496
+      "close": 3.78,
+      "volume": 2568
     },
     "history": [
       {
@@ -1239,8 +1239,8 @@
         "open": 3.62,
         "high": 3.78,
         "low": 3.61,
-        "close": 3.77,
-        "volume": 2496
+        "close": 3.78,
+        "volume": 2568
       }
     ]
   },
@@ -1254,7 +1254,7 @@
       "high": 3.07,
       "low": 2.97,
       "close": 3.06,
-      "volume": 3255
+      "volume": 3271
     },
     "history": [
       {
@@ -1655,7 +1655,7 @@
         "high": 3.07,
         "low": 2.97,
         "close": 3.06,
-        "volume": 3255
+        "volume": 3271
       }
     ]
   },
@@ -1668,8 +1668,8 @@
       "open": 3.04,
       "high": 3.05,
       "low": 3.01,
-      "close": 3.04,
-      "volume": 2849
+      "close": 3.03,
+      "volume": 2874
     },
     "history": [
       {
@@ -2069,8 +2069,8 @@
         "open": 3.04,
         "high": 3.05,
         "low": 3.01,
-        "close": 3.04,
-        "volume": 2849
+        "close": 3.03,
+        "volume": 2874
       }
     ]
   },
@@ -2273,7 +2273,7 @@
     },
     {
       "date": "2026-03-17",
-      "value": -6.35
+      "value": -6.41
     }
   ],
   "crack_321_realtime": [
@@ -2475,10 +2475,10 @@
     },
     {
       "date": "2026-03-17",
-      "value": 40.53
+      "value": 40.7
     }
   ],
-  "snapshot_time": "2026-03-17T14:23:04",
+  "snapshot_time": "2026-03-17T14:25:37",
   "freshness": {
     "wti": {
       "realtime": "2026-03-17",
