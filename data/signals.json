@@ -15,10 +15,10 @@
     "evidence_note": "期货价格为直接市场观测",
     "label": "Backwardation",
     "source": "futures",
-    "m1_m2_spread": 0.81,
-    "m1_m6_spread": 14.99,
-    "curve_front": 97.88,
-    "curve_back": 72.94,
+    "m1_m2_spread": 0.65,
+    "m1_m6_spread": 13.22,
+    "curve_front": 94.59,
+    "curve_back": 73.01,
     "n_contracts": 12
   },
   "demand": {
@@ -95,7 +95,7 @@
     "evidence_note": "DXY/OVX/实际利率为直接市场观测",
     "dxy_vs_ma200": 0.45,
     "real_rate": 1.92,
-    "ovx": 119.02
+    "ovx": 101.97
   },
   "positioning": {
     "name": "持仓拥挤度",
@@ -114,35 +114,15 @@
     "context_note": "当前净多仓位于历史26%分位（P25=91742, P75=174633），仍有较大上行空间"
   },
   "cross_analysis": {
-    "findings": [
-      {
-        "type": "hormuz_data_plausibility",
-        "severity": "warning",
-        "detail": "霍尔木兹油轮通行量数据显示下降-97.6%（7日均1.1艘 vs 90日均39.9艘），但WTI仅$98。如果全球~25%海运石油真的接近中断，油价应远超$120-150+。数据与价格不一致，可能原因：(1) AIS数据统计口径问题（仅计入某类船型）；(2) 数据源覆盖延迟；(3) 部分油轮关闭AIS转发器。建议交叉验证Kpler、Vortexa等商业航运数据。"
-      },
-      {
-        "type": "hormuz_critical",
-        "severity": "critical",
-        "data_plausibility": "questionable",
-        "detail": "霍尔木兹油轮通行量周环比-97.6%，属极端事件。"
-      }
-    ],
+    "findings": [],
     "contradictions": [
       {
         "type": "curve_vs_balance",
         "severity": "medium",
         "detail": "深度Backwardation与全球供需过剩(+2.6百万桶/日)并存。两者并非理论上不可共存——Backwardation反映短期供应风险/现货紧张预期（地缘溢价、库存结构、运输瓶颈等），而供需过剩反映中长期基本面压力。当前Backwardation主要由以下因素驱动：(1)地缘风险溢价；(2)库欣交割库结构；(3)近月资金做多。远月曲线更接近基本面均衡价格。"
-      },
-      {
-        "type": "tanker_stock_vs_maritime",
-        "severity": "medium",
-        "evidence_tier": "C",
-        "evidence_note": "油轮股为C层市场代理，仅作辅助信号，不能单独确认供给中断规模",
-        "avg_5d_change": -7.1,
-        "detail": "霍尔木兹通行量下降但油轮股5日均跌-7.1%。与\"封锁导致货源减少\"一致，但也可能反映市场恐慌情绪、流动性收缩或板块轮动等因素。"
       }
     ],
-    "n_contradictions": 2
+    "n_contradictions": 1
   },
   "spr_policy": {
     "name": "SPR政策响应",
@@ -151,9 +131,9 @@
     "spr_low": false,
     "spr_4w_change": 230.0,
     "spr_trend": "stable",
-    "current_wti": 97.88,
-    "detail": "WTI $98 超过政策干预阈值 $95.0，叠加航运数据显示霍尔木兹通行量异常。SPR 释放概率较高，但取决于：(1)是否存在实体供应缺口（当前STEO显示供需仍为过剩）；(2)油价上涨持续时间；(3)政治窗口期。历史上SPR释放通常需要明确的实体供给中断，而非仅价格高位。",
-    "release_likelihood": "high",
+    "current_wti": 94.59,
+    "detail": "当前无明显触发 SPR 释放的条件。",
+    "release_likelihood": "low",
     "max_release_days": 94.0,
     "capacity_note": "SPR 当前 415 百万桶，按最大速率 4.4 百万桶/日可持续 94 天。"
   },

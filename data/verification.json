@@ -128,8 +128,8 @@
       "origin": "FRED",
       "evidence_tier": "A",
       "frequency": "日频",
-      "latest": "2026-03-13",
-      "lag_days": 4,
+      "latest": "2026-03-16",
+      "lag_days": 1,
       "covers": [
         "美元强弱",
         "原油波动率水平",
@@ -317,7 +317,7 @@
           "weight": "primary",
           "check": "OVX是否远超正常水平（>40为恐慌）",
           "status": "ok",
-          "lag_days": 4,
+          "lag_days": 1,
           "caveat": null
         },
         {
@@ -417,7 +417,7 @@
           "weight": "supporting",
           "check": "波动率环境是否有利于投机",
           "status": "ok",
-          "lag_days": 4,
+          "lag_days": 1,
           "caveat": null
         },
         {
@@ -533,7 +533,7 @@
     "max_lag_days": 11,
     "reliability": "degraded",
     "high_volatility": true,
-    "ovx": 119.02,
+    "ovx": 101.97,
     "stale_sources": [
       {
         "source": "us_inventory",
@@ -563,12 +563,12 @@
       "us_demand": 11,
       "crack_spread": 8,
       "cftc_positioning": 7,
-      "financial": 4,
+      "financial": 1,
       "maritime": 0,
       "polymarket": 0,
       "us_production": 11
     },
-    "warning": "当前OVX=119.0（高波动率环境），但数据最大滞后11天。高波动率下每天价格可能变动3-5%+，11天的数据差距意味着混合分析可能严重失真。建议：(1)优先依赖最新的数据源(期货/航运)；(2)滞后数据仅作为背景参考，不用于方向性判断。"
+    "warning": "当前OVX=102.0（高波动率环境），但数据最大滞后11天。高波动率下每天价格可能变动3-5%+，11天的数据差距意味着混合分析可能严重失真。建议：(1)优先依赖最新的数据源(期货/航运)；(2)滞后数据仅作为背景参考，不用于方向性判断。"
   },
   "gaps": {
     "total_gaps": 27,
@@ -691,5 +691,5 @@
       ]
     }
   },
-  "generated_at": "2026-03-17T15:38:31.387853"
+  "generated_at": "2026-03-17T14:49:55.467367"
 }
