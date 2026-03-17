@@ -3,6 +3,7 @@
     "spot_price": {
       "desc": "WTI/Brent 现货价格",
       "origin": "FRED + EIA",
+      "evidence_tier": "A",
       "frequency": "日频（工作日）",
       "latest": "2026-03-17",
       "lag_days": 0,
@@ -19,6 +20,7 @@
     "futures_curve": {
       "desc": "WTI 期货曲线 (12合约)",
       "origin": "Yahoo Finance",
+      "evidence_tier": "A",
       "frequency": "日频",
       "latest": "2026-03-17",
       "lag_days": 0,
@@ -35,6 +37,7 @@
     "us_inventory": {
       "desc": "美国商业库存 (原油/库欣/汽油/馏分油)",
       "origin": "EIA Weekly",
+      "evidence_tier": "A",
       "frequency": "周频（每周三发布，截至上周五）",
       "latest": "2026-03-06",
       "lag_days": 11,
@@ -52,6 +55,7 @@
     "us_demand": {
       "desc": "美国表观需求 (汽油/馏分油)",
       "origin": "EIA Weekly",
+      "evidence_tier": "A",
       "frequency": "周频",
       "latest": "2026-03-06",
       "lag_days": 11,
@@ -68,6 +72,7 @@
     "crack_spread": {
       "desc": "裂解价差 (3-2-1, 汽油, 柴油)",
       "origin": "FRED/EIA 价格计算",
+      "evidence_tier": "A",
       "frequency": "日频",
       "latest": "2026-03-09",
       "lag_days": 8,
@@ -84,6 +89,8 @@
     "global_balance": {
       "desc": "全球供需平衡 (STEO)",
       "origin": "EIA STEO 月度",
+      "evidence_tier": "B/D",
+      "evidence_tier_note": "实际值为B层，预测值为D层，需区分引用",
       "frequency": "月频",
       "latest": "2027-12",
       "lag_days": null,
@@ -101,6 +108,7 @@
     "cftc_positioning": {
       "desc": "CFTC 投机持仓",
       "origin": "CFTC Disaggregated",
+      "evidence_tier": "A",
       "frequency": "周频（周五发布，截至周二）",
       "latest": "2026-03-10",
       "lag_days": 7,
@@ -118,6 +126,7 @@
     "financial": {
       "desc": "金融条件 (DXY/OVX/实际利率)",
       "origin": "FRED",
+      "evidence_tier": "A",
       "frequency": "日频",
       "latest": "2026-03-13",
       "lag_days": 4,
@@ -134,6 +143,8 @@
     "maritime": {
       "desc": "航运要道通行量 + 油轮股",
       "origin": "IMF PortWatch (ArcGIS) + Yahoo Finance",
+      "evidence_tier": "A/C",
+      "evidence_tier_note": "航运通行量为A层直接观测，油轮股价为C层市场代理，不得混用",
       "frequency": "日频",
       "latest": "2026-03-17",
       "lag_days": 0,
@@ -151,6 +162,8 @@
     "polymarket": {
       "desc": "地缘风险预测市场",
       "origin": "Polymarket API",
+      "evidence_tier": "C",
+      "evidence_tier_note": "C层市场代理，校准性差，仅作情绪参考",
       "frequency": "实时",
       "latest": null,
       "lag_days": 0,
@@ -166,6 +179,7 @@
     "us_production": {
       "desc": "美国产量/炼厂/进口",
       "origin": "EIA Weekly",
+      "evidence_tier": "A",
       "frequency": "周频",
       "latest": "2026-03-06",
       "lag_days": 11,
@@ -184,6 +198,7 @@
     {
       "claim_id": "supply_disruption",
       "claim": "供给中断（如霍尔木兹封锁、OPEC减产）",
+      "hypothesis_label": "假设：实物供给通道受阻",
       "confidence": "high",
       "verdict": "项目数据可以较好地验证此研判",
       "checks": [
@@ -225,6 +240,7 @@
         }
       ],
       "cannot_verify": "实际封锁程度和持续时间；需要Kpler/Vortexa等商业航运数据",
+      "counter_evidence": "如果航运通行量回升、替代路线增量显著、或Brent-WTI价差快速收窄，则削弱此假设",
       "improve_hint": "接入Kpler或Vortexa的油轮追踪API，可获得按船型、目的地分类的实时贸易流数据",
       "primary_verified": "1/1",
       "total_verified": "3/4"
@@ -232,6 +248,7 @@
     {
       "claim_id": "demand_weakness",
       "claim": "需求走弱/衰退风险",
+      "hypothesis_label": "假设：终端需求面临百万桶/日级别走弱",
       "confidence": "medium",
       "verdict": "项目数据可以部分验证，但存在盲区",
       "checks": [
@@ -273,6 +290,7 @@
         }
       ],
       "cannot_verify": "全球需求（尤其中国/印度）；美国以外的炼厂利润",
+      "counter_evidence": "如果汽油+馏分油需求回升、裂解价差企稳、炼厂开工率上行，则削弱此假设",
       "improve_hint": "可接入IEA月报API或中国海关进口数据来补充全球需求视角",
       "primary_verified": "1/2",
       "total_verified": "3/4"
@@ -280,6 +298,7 @@
     {
       "claim_id": "geopolitical_premium",
       "claim": "地缘风险溢价推高油价",
+      "hypothesis_label": "假设：当前价格中含显著地缘风险成分",
       "confidence": "high",
       "verdict": "项目数据可以较好地验证此研判",
       "checks": [
@@ -321,6 +340,7 @@
         }
       ],
       "cannot_verify": "地缘事件本身的概率和时间线；精确的风险溢价量化",
+      "counter_evidence": "如果OVX回落、近远月价差收窄、航运流量恢复、停火信号出现，则削弱此假设",
       "improve_hint": "已有Polymarket，但其校准性差。可考虑接入多个预测市场取平均值",
       "primary_verified": "2/2",
       "total_verified": "4/4"
@@ -328,6 +348,7 @@
     {
       "claim_id": "refinery_margin_squeeze",
       "claim": "炼厂利润挤压/减产预期",
+      "hypothesis_label": "假设：炼厂利润已下降至减产引发水平",
       "confidence": "medium",
       "verdict": "项目数据可以部分验证，但存在盲区",
       "checks": [
@@ -369,6 +390,7 @@
         }
       ],
       "cannot_verify": "单个炼厂的实际生产成本和利润",
+      "counter_evidence": "如果裂解价差回升、炼厂开工率稳定、成品油库存转为去库，则削弱此假设",
       "improve_hint": "可接入EIA炼厂月度报告(EIA-820)获取更细粒度的开工率和产率数据",
       "primary_verified": "1/2",
       "total_verified": "3/4"
@@ -376,6 +398,7 @@
     {
       "claim_id": "speculative_positioning",
       "claim": "投机资金推动/空头挤压",
+      "hypothesis_label": "假设：近期价格变动中投机持仓变化贡献显著",
       "confidence": "high",
       "verdict": "项目数据可以较好地验证此研判",
       "checks": [
@@ -408,6 +431,7 @@
         }
       ],
       "cannot_verify": "CTA/量化基金的实时仓位；期权market making对冲需求",
+      "counter_evidence": "如果要注意区分空头回补和新多入场的不同含义；如果仓位回落而价格维持，则削弱投机驱动假设",
       "improve_hint": "CFTC补充数据(Traders in Financial Futures)可提供更细分的持仓",
       "primary_verified": "1/1",
       "total_verified": "3/3"
@@ -415,6 +439,7 @@
     {
       "claim_id": "curve_structure_anomaly",
       "claim": "曲线结构异常（如Backwardation与过剩并存）",
+      "hypothesis_label": "假设：期限结构反映短期供应紧张而非中期基本面",
       "confidence": "medium",
       "verdict": "项目数据可以部分验证，但存在盲区",
       "checks": [
@@ -456,6 +481,7 @@
         }
       ],
       "cannot_verify": "交割库的微观结构（管道调度、存储经济学等）",
+      "counter_evidence": "如果近远月价差快速收窄、库欣库存大幅累积、资金流出近月合约，则削弱此假设",
       "improve_hint": "可接入CME清算数据获取更精确的期货持仓分布",
       "primary_verified": "1/2",
       "total_verified": "3/4"
@@ -463,6 +489,7 @@
     {
       "claim_id": "policy_intervention",
       "claim": "SPR释放/IEA协调/OPEC+政策变化",
+      "hypothesis_label": "假设：政策干预将在短期内影响供给",
       "confidence": "medium",
       "verdict": "项目数据可以部分验证，但存在盲区",
       "checks": [
@@ -495,6 +522,7 @@
         }
       ],
       "cannot_verify": "政策决策内部讨论；国际协调时间表；OPEC+实际减产执行率",
+      "counter_evidence": "如果油价回落至政策干预阈值以下、STEO供需恢复平衡、航运流量正常化，则削弱此假设",
       "improve_hint": "可通过爬取DOE/IEA官方新闻or Twitter来获取政策信号的早期提示",
       "primary_verified": "1/2",
       "total_verified": "2/3"
@@ -663,5 +691,5 @@
       ]
     }
   },
-  "generated_at": "2026-03-17T14:26:51.490784"
+  "generated_at": "2026-03-17T15:38:31.387853"
 }

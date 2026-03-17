@@ -2,6 +2,8 @@
   "inventory": {
     "name": "库存趋势",
     "signal": "bearish",
+    "evidence_tier": "A",
+    "evidence_note": "EIA周度库存为直接观测数据",
     "detail": "最近3周变化: [15989.0, 3475.0, 3824.0]",
     "last_change_mbbl": 3824.0,
     "cushing_warning": false
@@ -9,6 +11,8 @@
   "curve": {
     "name": "曲线结构",
     "signal": "bullish",
+    "evidence_tier": "A",
+    "evidence_note": "期货价格为直接市场观测",
     "label": "Backwardation",
     "source": "futures",
     "m1_m2_spread": 0.81,
@@ -20,12 +24,16 @@
   "demand": {
     "name": "需求强度",
     "signal": "neutral",
+    "evidence_tier": "A",
+    "evidence_note": "EIA表观需求为直接观测（仅覆盖美国）",
     "gasoline_trend": "bullish",
     "distillate_trend": "bearish"
   },
   "crack_spread": {
     "name": "裂解价差",
     "signal": "neutral",
+    "evidence_tier": "A",
+    "evidence_note": "裂解价差基于现货/期货价格计算，属直接观测",
     "crack_321": 24.32,
     "crack_321_20d_avg": 29.15,
     "crack_321_60d_avg": 26.24,
@@ -41,6 +49,8 @@
   "drilling": {
     "name": "钻井活动",
     "signal": "bullish",
+    "evidence_tier": "A",
+    "evidence_note": "钻机数为直接观测",
     "source": "rig_count",
     "recent_avg": 16.0,
     "prev_avg": 16.5
@@ -48,6 +58,8 @@
   "opec": {
     "name": "全球供需",
     "signal": "bearish",
+    "evidence_tier": "B",
+    "evidence_note": "STEO实际值为B层二手确认",
     "balance_avg_3m": 2.56,
     "opec_trend": "stable",
     "data_source": "actual",
@@ -79,6 +91,8 @@
   "financial": {
     "name": "金融条件",
     "signal": "bearish",
+    "evidence_tier": "A",
+    "evidence_note": "DXY/OVX/实际利率为直接市场观测",
     "dxy_vs_ma200": 0.45,
     "real_rate": 1.92,
     "ovx": 119.02
@@ -86,6 +100,8 @@
   "positioning": {
     "name": "持仓拥挤度",
     "signal": "neutral",
+    "evidence_tier": "A",
+    "evidence_note": "CFTC持仓为直接观测（周频，截至周二）",
     "net_long": 92122.0,
     "percentile": 26.0,
     "net_change": 23737.0,
@@ -120,8 +136,10 @@
       {
         "type": "tanker_stock_vs_maritime",
         "severity": "medium",
+        "evidence_tier": "C",
+        "evidence_note": "油轮股为C层市场代理，仅作辅助信号，不能单独确认供给中断规模",
         "avg_5d_change": -7.1,
-        "detail": "霍尔木兹封锁理论上利好油轮运费，但油轮股5日均跌-7.1%。可能因封锁导致货源消失比运费上涨更快，即\"无货可运\"效应压倒了\"运费上涨\"效应。"
+        "detail": "霍尔木兹通行量下降但油轮股5日均跌-7.1%。与\"封锁导致货源减少\"一致，但也可能反映市场恐慌情绪、流动性收缩或板块轮动等因素。"
       }
     ],
     "n_contradictions": 2

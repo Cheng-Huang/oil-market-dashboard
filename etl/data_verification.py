@@ -58,6 +58,7 @@ def inventory_data_sources() -> dict:
     sources["spot_price"] = {
         "desc": "WTI/Brent 现货价格",
         "origin": "FRED + EIA",
+        "evidence_tier": "A",
         "frequency": "日频（工作日）",
         "latest": _latest_date(price.get("wti", [])),
         "lag_days": _staleness_days(_latest_date(price.get("wti", [])), today),
@@ -68,6 +69,7 @@ def inventory_data_sources() -> dict:
     sources["futures_curve"] = {
         "desc": "WTI 期货曲线 (12合约)",
         "origin": "Yahoo Finance",
+        "evidence_tier": "A",
         "frequency": "日频",
         "latest": curve[0].get("date") if curve else None,
         "lag_days": _staleness_days(curve[0].get("date") if curve else None, today),
@@ -80,6 +82,7 @@ def inventory_data_sources() -> dict:
     sources["us_inventory"] = {
         "desc": "美国商业库存 (原油/库欣/汽油/馏分油)",
         "origin": "EIA Weekly",
+        "evidence_tier": "A",
         "frequency": "周频（每周三发布，截至上周五）",
         "latest": _latest_date(inv.get("crude", [])),
         "lag_days": _staleness_days(_latest_date(inv.get("crude", [])), today),
@@ -92,6 +95,7 @@ def inventory_data_sources() -> dict:
     sources["us_demand"] = {
         "desc": "美国表观需求 (汽油/馏分油)",
         "origin": "EIA Weekly",
+        "evidence_tier": "A",
         "frequency": "周频",
         "latest": _latest_date(demand.get("gasoline", [])),
         "lag_days": _staleness_days(_latest_date(demand.get("gasoline", [])), today),
@@ -104,6 +108,7 @@ def inventory_data_sources() -> dict:
     sources["crack_spread"] = {
         "desc": "裂解价差 (3-2-1, 汽油, 柴油)",
         "origin": "FRED/EIA 价格计算",
+        "evidence_tier": "A",
         "frequency": "日频",
         "latest": _latest_date(crack.get("crack_321", [])),
         "lag_days": _staleness_days(_latest_date(crack.get("crack_321", [])), today),
@@ -117,6 +122,8 @@ def inventory_data_sources() -> dict:
     sources["global_balance"] = {
         "desc": "全球供需平衡 (STEO)",
         "origin": "EIA STEO 月度",
+        "evidence_tier": "B/D",
+        "evidence_tier_note": "实际值为B层，预测值为D层，需区分引用",
         "frequency": "月频",
         "latest": _latest_date(balance) if balance else None,
         "lag_days": None,  # 月度数据，lag概念不同
@@ -129,6 +136,7 @@ def inventory_data_sources() -> dict:
     sources["cftc_positioning"] = {
         "desc": "CFTC 投机持仓",
         "origin": "CFTC Disaggregated",
+        "evidence_tier": "A",
         "frequency": "周频（周五发布，截至周二）",
         "latest": cftc[-1]["date"] if cftc else None,
         "lag_days": _staleness_days(cftc[-1]["date"] if cftc else None, today),
@@ -141,6 +149,7 @@ def inventory_data_sources() -> dict:
     sources["financial"] = {
         "desc": "金融条件 (DXY/OVX/实际利率)",
         "origin": "FRED",
+        "evidence_tier": "A",
         "frequency": "日频",
         "latest": _latest_date(fin.get("ovx", [])),
         "lag_days": _staleness_days(_latest_date(fin.get("ovx", [])), today),
@@ -153,6 +162,8 @@ def inventory_data_sources() -> dict:
     sources["maritime"] = {
         "desc": "航运要道通行量 + 油轮股",
         "origin": "IMF PortWatch (ArcGIS) + Yahoo Finance",
+        "evidence_tier": "A/C",
+        "evidence_tier_note": "航运通行量为A层直接观测，油轮股价为C层市场代理，不得混用",
         "frequency": "日频",
         "latest": maritime.get("updated", "")[:10] if maritime else None,
         "lag_days": _staleness_days(maritime.get("updated", "")[:10] if maritime else None, today),
@@ -166,6 +177,8 @@ def inventory_data_sources() -> dict:
     sources["polymarket"] = {
         "desc": "地缘风险预测市场",
         "origin": "Polymarket API",
+        "evidence_tier": "C",
+        "evidence_tier_note": "C层市场代理，校准性差，仅作情绪参考",
         "frequency": "实时",
         "latest": poly.get("updated", "")[:10] if isinstance(poly, dict) and poly.get("updated") else None,
         "lag_days": 0 if poly else None,
@@ -179,6 +192,7 @@ def inventory_data_sources() -> dict:
     sources["us_production"] = {
         "desc": "美国产量/炼厂/进口",
         "origin": "EIA Weekly",
+        "evidence_tier": "A",
         "frequency": "周频",
         "latest": _latest_date(prod.get("crude_production", [])),
         "lag_days": _staleness_days(_latest_date(prod.get("crude_production", [])), today),
@@ -193,11 +207,12 @@ def inventory_data_sources() -> dict:
 # 第2层：市场研判 → 数据验证能力评估
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-# 定义常见市场研判及其验证需求
+# 定义常见市场研判及其验证需求（改用"假设"框架）
 MARKET_CLAIMS = [
     {
         "id": "supply_disruption",
         "claim": "供给中断（如霍尔木兹封锁、OPEC减产）",
+        "hypothesis_label": "假设：实物供给通道受阻",
         "verify_with": [
             {"source": "maritime", "field": "霍尔木兹通行量", "weight": "primary",
              "check": "7日均值 vs 90日均值是否显著下降"},
@@ -209,11 +224,13 @@ MARKET_CLAIMS = [
              "check": "Brent溢价是否扩大（国际供给更受影响）"},
         ],
         "cannot_verify": "实际封锁程度和持续时间；需要Kpler/Vortexa等商业航运数据",
+        "counter_evidence": "如果航运通行量回升、替代路线增量显著、或Brent-WTI价差快速收窄，则削弱此假设",
         "improve_hint": "接入Kpler或Vortexa的油轮追踪API，可获得按船型、目的地分类的实时贸易流数据",
     },
     {
         "id": "demand_weakness",
         "claim": "需求走弱/衰退风险",
+        "hypothesis_label": "假设：终端需求面临百万桶/日级别走弱",
         "verify_with": [
             {"source": "us_demand", "field": "汽油+馏分油表观需求", "weight": "primary",
              "check": "是否连续2-4周低于季节性均值"},
@@ -225,11 +242,13 @@ MARKET_CLAIMS = [
              "check": "开工率是否主动下调"},
         ],
         "cannot_verify": "全球需求（尤其中国/印度）；美国以外的炼厂利润",
+        "counter_evidence": "如果汽油+馏分油需求回升、裂解价差企稳、炼厂开工率上行，则削弱此假设",
         "improve_hint": "可接入IEA月报API或中国海关进口数据来补充全球需求视角",
     },
     {
         "id": "geopolitical_premium",
         "claim": "地缘风险溢价推高油价",
+        "hypothesis_label": "假设：当前价格中含显著地缘风险成分",
         "verify_with": [
             {"source": "polymarket", "field": "地缘事件概率", "weight": "supporting",
              "check": "相关事件概率是否显著高于基准"},
@@ -241,11 +260,13 @@ MARKET_CLAIMS = [
              "check": "关键航线是否出现异常"},
         ],
         "cannot_verify": "地缘事件本身的概率和时间线；精确的风险溢价量化",
+        "counter_evidence": "如果OVX回落、近远月价差收窄、航运流量恢复、停火信号出现，则削弱此假设",
         "improve_hint": "已有Polymarket，但其校准性差。可考虑接入多个预测市场取平均值",
     },
     {
         "id": "refinery_margin_squeeze",
         "claim": "炼厂利润挤压/减产预期",
+        "hypothesis_label": "假设：炼厂利润已下降至减产引发水平",
         "verify_with": [
             {"source": "crack_spread", "field": "汽油/柴油裂解", "weight": "primary",
              "check": "裂解价差是否持续2-4周低于历史均值"},
@@ -257,11 +278,13 @@ MARKET_CLAIMS = [
              "check": "成品油是否累库（供大于求证据）"},
         ],
         "cannot_verify": "单个炼厂的实际生产成本和利润",
+        "counter_evidence": "如果裂解价差回升、炼厂开工率稳定、成品油库存转为去库，则削弱此假设",
         "improve_hint": "可接入EIA炼厂月度报告(EIA-820)获取更细粒度的开工率和产率数据",
     },
     {
         "id": "speculative_positioning",
         "claim": "投机资金推动/空头挤压",
+        "hypothesis_label": "假设：近期价格变动中投机持仓变化贡献显著",
         "verify_with": [
             {"source": "cftc_positioning", "field": "净多头+分项变化", "weight": "primary",
              "check": "净多头变化由多头加仓还是空头回补驱动"},
@@ -271,11 +294,13 @@ MARKET_CLAIMS = [
              "check": "总持仓量是增是减（配合方向看资金行为）"},
         ],
         "cannot_verify": "CTA/量化基金的实时仓位；期权market making对冲需求",
+        "counter_evidence": "如果要注意区分空头回补和新多入场的不同含义；如果仓位回落而价格维持，则削弱投机驱动假设",
         "improve_hint": "CFTC补充数据(Traders in Financial Futures)可提供更细分的持仓",
     },
     {
         "id": "curve_structure_anomaly",
         "claim": "曲线结构异常（如Backwardation与过剩并存）",
+        "hypothesis_label": "假设：期限结构反映短期供应紧张而非中期基本面",
         "verify_with": [
             {"source": "futures_curve", "field": "各月合约价差", "weight": "primary",
              "check": "M1-M2, M1-M6 价差水平和趋势"},
@@ -287,11 +312,13 @@ MARKET_CLAIMS = [
              "check": "是否有大量资金集中在近月"},
         ],
         "cannot_verify": "交割库的微观结构（管道调度、存储经济学等）",
+        "counter_evidence": "如果近远月价差快速收窄、库欣库存大幅累积、资金流出近月合约，则削弱此假设",
         "improve_hint": "可接入CME清算数据获取更精确的期货持仓分布",
     },
     {
         "id": "policy_intervention",
         "claim": "SPR释放/IEA协调/OPEC+政策变化",
+        "hypothesis_label": "假设：政策干预将在短期内影响供给",
         "verify_with": [
             {"source": "us_inventory", "field": "SPR库存水平", "weight": "primary",
              "check": "SPR当前水平和近期变化趋势"},
@@ -301,6 +328,7 @@ MARKET_CLAIMS = [
              "check": "是否存在实体供应缺口（过剩时释放概率低）"},
         ],
         "cannot_verify": "政策决策内部讨论；国际协调时间表；OPEC+实际减产执行率",
+        "counter_evidence": "如果油价回落至政策干预阈值以下、STEO供需恢复平衡、航运流量正常化，则削弱此假设",
         "improve_hint": "可通过爬取DOE/IEA官方新闻or Twitter来获取政策信号的早期提示",
     },
 ]
@@ -361,10 +389,12 @@ def assess_claim_verifiability(sources: dict) -> list[dict]:
         results.append({
             "claim_id": claim_id,
             "claim": claim_def["claim"],
+            "hypothesis_label": claim_def.get("hypothesis_label", claim_def["claim"]),
             "confidence": confidence,
             "verdict": verdict,
             "checks": checks,
             "cannot_verify": claim_def["cannot_verify"],
+            "counter_evidence": claim_def.get("counter_evidence", ""),
             "improve_hint": claim_def["improve_hint"],
             "primary_verified": f"{primary_ok}/{total_primary}",
             "total_verified": f"{verified_count}/{total_checks}",

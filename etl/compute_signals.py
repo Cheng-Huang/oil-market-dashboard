@@ -1,6 +1,17 @@
 """
 信号计算引擎：根据拉取的数据计算各维度信号
 输出 signals.json
+
+证据等级体系：
+  A层（直接观测）：现货/期货价格、月差、航运流量、库存、OI/成交量、炼厂开工
+  B层（二手确认）：Reuters/IEA/EIA/OPEC报告、企业公告、政府公告
+  C层（市场代理）：油轮股、ETF Put/Call、风险资产联动
+  D层（推演情景）：概率估计、溢价测算、均衡价
+
+引用规则：
+  A/B层 → 可写"事实"
+  C层 → 只写"辅助信号"，不当核心证据
+  D层 → 只写"情景假设"，附触发/失效条件
 """
 import json
 from datetime import datetime
@@ -72,6 +83,8 @@ def inventory_signal(inv: dict) -> dict:
     return {
         "name": "库存趋势",
         "signal": signal,
+        "evidence_tier": "A",
+        "evidence_note": "EIA周度库存为直接观测数据",
         "detail": f"最近{N_WEEKS}周变化: {[round(c, 1) for c in recent]}",
         "last_change_mbbl": last_change,
         "cushing_warning": cushing_warn,
@@ -104,6 +117,8 @@ def curve_signal(price: dict, futures: dict) -> dict:
         result = {
             "name": "曲线结构",
             "signal": signal,
+            "evidence_tier": "A",
+            "evidence_note": "期货价格为直接市场观测",
             "label": label,
             "source": "futures",
             "m1_m2_spread": round(m1_m2, 4),
@@ -177,6 +192,8 @@ def demand_signal(demand: dict) -> dict:
     return {
         "name": "需求强度",
         "signal": signal,
+        "evidence_tier": "A",
+        "evidence_note": "EIA表观需求为直接观测（仅覆盖美国）",
         "gasoline_trend": gas_t,
         "distillate_trend": dist_t,
     }
@@ -216,6 +233,8 @@ def drilling_signal(production: dict, drilling: dict) -> dict:
     return {
         "name": "钻井活动",
         "signal": signal,
+        "evidence_tier": "A" if source == "rig_count" else "C",
+        "evidence_note": "钻机数为直接观测" if source == "rig_count" else "使用产量作为代理指标",
         "source": source,
         "recent_avg": round(avg_recent, 1),
         "prev_avg": round(avg_prev, 1),
@@ -278,6 +297,8 @@ def opec_signal(global_bal: dict) -> dict:
     result = {
         "name": "全球供需",
         "signal": signal,
+        "evidence_tier": "B" if data_source == "actual" else "D",
+        "evidence_note": "STEO实际值为B层二手确认" if data_source == "actual" else "含STEO预测，属D层推演数据",
         "balance_avg_3m": round(avg, 3),
         "opec_trend": opec_trend,
         "data_source": data_source,
@@ -331,7 +352,13 @@ def financial_signal(fin: dict) -> dict:
     else:
         signal = "neutral"
 
-    return {"name": "金融条件", "signal": signal, **details}
+    return {
+        "name": "金融条件",
+        "signal": signal,
+        "evidence_tier": "A",
+        "evidence_note": "DXY/OVX/实际利率为直接市场观测",
+        **details,
+    }
 
 
 def positioning_signal(cftc: list[dict]) -> dict:
@@ -353,6 +380,8 @@ def positioning_signal(cftc: list[dict]) -> dict:
     result = {
         "name": "持仓拥挤度",
         "signal": signal,
+        "evidence_tier": "A",
+        "evidence_note": "CFTC持仓为直接观测（周频，截至周二）",
         "net_long": latest,
         "percentile": pct,
     }
@@ -506,6 +535,8 @@ def crack_spread_signal(crack: dict, demand_sig: dict) -> dict:
     result = {
         "name": "裂解价差",
         "signal": signal,
+        "evidence_tier": "A",
+        "evidence_note": "裂解价差基于现货/期货价格计算，属直接观测",
         "crack_321": round(latest, 2),
         "crack_321_20d_avg": round(avg_20d, 2),
         "crack_321_60d_avg": round(avg_60d, 2),
@@ -644,11 +675,13 @@ def cross_analysis(curve_sig: dict, opec_sig: dict, maritime: dict, price: dict,
                 contradictions.append({
                     "type": "tanker_stock_vs_maritime",
                     "severity": "medium",
+                    "evidence_tier": "C",
+                    "evidence_note": "油轮股为C层市场代理，仅作辅助信号，不能单独确认供给中断规模",
                     "avg_5d_change": round(avg_5d_chg, 1),
                     "detail": (
-                        f"霍尔木兹封锁理论上利好油轮运费，但油轮股5日均跌"
-                        f"{avg_5d_chg:.1f}%。可能因封锁导致货源消失比运费上涨更快，"
-                        f"即\"无货可运\"效应压倒了\"运费上涨\"效应。"
+                        f"霍尔木兹通行量下降但油轮股5日均跌"
+                        f"{avg_5d_chg:.1f}%。与\"封锁导致货源减少\"一致，"
+                        f"但也可能反映市场恐慌情绪、流动性收缩或板块轮动等因素。"
                     ),
                 })
 
