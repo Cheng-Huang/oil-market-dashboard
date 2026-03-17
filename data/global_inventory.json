@@ -41369,6 +41369,7 @@
         "name": "日本",
         "level_mb": 320,
         "date": "est.",
+        "estimate_year": 2024,
         "note": "含国家储备+民间义务储备",
         "source": "IEA estimate"
       },
@@ -41376,6 +41377,7 @@
         "name": "中国",
         "level_mb": 950,
         "date": "est.",
+        "estimate_year": 2024,
         "note": "中国不公布SPR具体数据，此为外部估算",
         "source": "industry estimate"
       },
@@ -41383,6 +41385,7 @@
         "name": "欧洲 IEA 成员",
         "level_mb": 500,
         "date": "est.",
+        "estimate_year": 2024,
         "note": "IEA欧洲成员国合计",
         "source": "IEA estimate"
       }
@@ -41390,5 +41393,5 @@
     "total_estimated_mb": 2185.0,
     "note": "除美国外均为行业估算值，非官方实时数据"
   },
-  "updated": "2026-03-17T05:52:16Z"
+  "updated": "2026-03-17T06:23:51Z"
 }

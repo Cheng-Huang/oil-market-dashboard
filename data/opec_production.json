@@ -46027,6 +46027,7 @@
       "overall_compliance_pct": -14.3
     }
   },
+  "quota_reference": "2024-06 OPEC+ 37th JMMC",
   "production_trends": [
     {
       "country": "brazil",
@@ -46236,5 +46237,5 @@
     },
     "total_spare_mbd": 3.43
   },
-  "updated": "2026-03-17T05:52:15Z"
+  "updated": "2026-03-17T06:23:50Z"
 }

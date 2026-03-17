@@ -159,6 +159,67 @@
         <div id="chart-drilling" class="chart-box"></div>
       </div>
 
+      <!-- ═══════════════ 新增: 全球需求 / OPEC 产量 / 全球库存 / 期权情绪 ═══════════════ -->
+
+      <!-- ── 全球需求 (STEO 区域消费) ── -->
+      <div class="panel">
+        <h2 class="panel-title">🌏 全球石油需求 (STEO 区域拆分)</h2>
+        <div id="chart-global-demand" class="chart-box"></div>
+      </div>
+
+      <!-- ── OPEC+ 国家产量 ── -->
+      <div class="panel">
+        <h2 class="panel-title">🏗️ OPEC+ 主要产油国 (产量对比)</h2>
+        <div id="chart-opec-production" class="chart-box"></div>
+      </div>
+
+      <!-- ── OPEC+ 减产执行 & 闲置产能 (Full Width) ── -->
+      <div class="panel lg:col-span-2" id="opec-compliance-panel" style="display:none;">
+        <h2 class="panel-title">📋 OPEC+ 减产执行率 & 闲置产能</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+          <div>
+            <h3 class="text-sm font-semibold text-gray-400 mb-2">🎯 减产执行率 (配额 vs 实际产量)</h3>
+            <div id="chart-opec-compliance" style="height: 300px;"></div>
+          </div>
+          <div>
+            <h3 class="text-sm font-semibold text-gray-400 mb-2">⚡ 闲置产能估算 (mb/d)</h3>
+            <div id="chart-spare-capacity" style="height: 300px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 隐含库存变化 (供需→库存推演) ── -->
+      <div class="panel">
+        <h2 class="panel-title">📦 隐含库存变化 (供需推演)</h2>
+        <div id="chart-implied-stockchange" class="chart-box"></div>
+      </div>
+
+      <!-- ── 全球 SPR & 库存偏差 (Full Width) ── -->
+      <div class="panel lg:col-span-2" id="spr-panel" style="display:none;">
+        <h2 class="panel-title">🛡️ 全球战略石油储备 (SPR) & 库存偏差</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+          <div>
+            <h3 class="text-sm font-semibold text-gray-400 mb-2">🛢️ 各国 SPR 储备 (百万桶)</h3>
+            <div id="chart-spr" style="height: 300px;"></div>
+          </div>
+          <div>
+            <h3 class="text-sm font-semibold text-gray-400 mb-2">📊 美国商业库存偏差 (vs 5年均值)</h3>
+            <div id="spr-deviation-card" class="flex flex-col items-center justify-center h-full"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 期权情绪 (P/C Ratio + OVX 增强) (Full Width) ── -->
+      <div class="panel lg:col-span-2" id="options-panel" style="display:none;">
+        <h2 class="panel-title">📊 期权情绪 & 波动率监控 (USO/XLE P/C Ratio + OVX)</h2>
+        <p class="text-xs text-gray-500 px-4">USO (原油ETF) + XLE (能源ETF) 期权 Put/Call Ratio · OVX 原油波动率指数增强分析</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+          <div id="options-pc-cards"></div>
+          <div id="chart-options-pc" style="height: 280px;"></div>
+          <div id="options-ovx-card"></div>
+        </div>
+      </div>
+
       <!-- ── 航运要道监控 (Full Width) ── -->
       <div class="panel lg:col-span-2" id="maritime-panel" style="display:none;">
         <h2 class="panel-title">🚢 石油航运要道监控 (IMF PortWatch)</h2>
@@ -184,11 +245,11 @@
 
   <!-- ═══════════════ FOOTER ═══════════════ -->
   <footer class="text-center text-gray-600 text-xs py-4 border-t border-gray-800">
-    数据来源: EIA / FRED / CFTC / Yahoo Finance / Polymarket / IMF PortWatch · 仅供参考，不构成投资建议
+    数据来源: EIA / FRED / CFTC / Yahoo Finance / Polymarket / IMF PortWatch / EIA STEO / EIA International · 仅供参考，不构成投资建议
   </footer>
 
-  <script src="js/charts.js?v=20260316"></script>
-  <script src="js/signals.js?v=20260316"></script>
-  <script src="js/app.js?v=20260316"></script>
+  <script src="js/charts.js?v=20260317"></script>
+  <script src="js/signals.js?v=20260317"></script>
+  <script src="js/app.js?v=20260317"></script>
 </body>
 </html>

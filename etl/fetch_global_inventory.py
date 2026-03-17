@@ -15,6 +15,7 @@ import requests
 from datetime import datetime, timedelta
 
 from config import EIA_API_KEY, DATA_DIR
+from eia_utils import fetch_steo_series
 
 
 # ── EIA STEO 库存 series ─────────────────────────────
@@ -25,25 +26,7 @@ STEO_INVENTORY_SERIES = {
 }
 
 
-def _fetch_steo(series_id: str, days_back: int = 1825) -> list[dict]:
-    """拉取单个 EIA STEO series"""
-    start = (datetime.now() - timedelta(days=days_back)).strftime("%Y-%m-%d")
-    url = f"https://api.eia.gov/v2/seriesid/{series_id}"
-    params = {"api_key": EIA_API_KEY, "start": start}
-    resp = requests.get(url, params=params, timeout=30)
-    resp.raise_for_status()
-    data = resp.json().get("response", {}).get("data", [])
-    result = []
-    for item in data:
-        period = item.get("period", "")
-        value = item.get("value")
-        if value is not None:
-            try:
-                result.append({"date": period, "value": float(value)})
-            except (ValueError, TypeError):
-                pass
-    result.sort(key=lambda x: x["date"])
-    return result
+# _fetch_steo 已移至 eia_utils.fetch_steo_series
 
 
 def fetch_oecd_inventory() -> dict:
@@ -58,7 +41,7 @@ def fetch_oecd_inventory() -> dict:
     for key, sid in STEO_INVENTORY_SERIES.items():
         print(f"    STEO库存: {key} ...")
         try:
-            data = _fetch_steo(sid)
+            data = fetch_steo_series(sid)
             result[key] = data
             if data:
                 latest = data[-1]
@@ -227,15 +210,17 @@ def _fetch_spr_global() -> dict:
         },
         "japan": {
             "name": "日本",
-            "level_mb": 320,  # 约3.2亿桶（IEA报告估算）
+            "level_mb": 320,
             "date": "est.",
+            "estimate_year": 2024,
             "note": "含国家储备+民间义务储备",
             "source": "IEA estimate",
         },
         "china": {
             "name": "中国",
-            "level_mb": 950,  # 中国SPR约9.5亿桶（估算，非官方数据）
+            "level_mb": 950,
             "date": "est.",
+            "estimate_year": 2024,
             "note": "中国不公布SPR具体数据，此为外部估算",
             "source": "industry estimate",
         },
@@ -243,6 +228,7 @@ def _fetch_spr_global() -> dict:
             "name": "欧洲 IEA 成员",
             "level_mb": 500,
             "date": "est.",
+            "estimate_year": 2024,
             "note": "IEA欧洲成员国合计",
             "source": "IEA estimate",
         },

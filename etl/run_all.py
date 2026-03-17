@@ -126,7 +126,13 @@ def run_real():
     print(f"🛢️  石油数据 ETL — {datetime.now().strftime('%Y-%m-%d %H:%M')}")
     print("=" * 50)
 
-    TOTAL_STEPS = 16
+    # 步骤列表：便于维护，新增/删除步骤时自动计算总数
+    _steps = [
+        "FRED", "EIA", "STEO", "CFTC", "期货曲线", "Polymarket",
+        "航运数据", "Yahoo实时价格", "EIA日频价格", "航运交叉验证",
+        "全球需求", "OPEC产量", "全球库存", "期权数据", "计算信号", "元信息",
+    ]
+    TOTAL_STEPS = len(_steps)
 
     # FRED
     fred_data = {}

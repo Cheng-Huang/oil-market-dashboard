@@ -1,5 +1,105 @@
 # Changelog
 
+## [2026-03-17d] — 代码重构: 提取公共 EIA 工具模块 + 去重 + 元数据增强
+
+### 新增
+
+- **`etl/eia_utils.py`** — EIA API 公共工具模块
+  - `fetch_steo_series()` — 拉取单个 EIA STEO series（统一实现）
+  - `fetch_eia_intl_production()` — 拉取 EIA International 分国别产量，支持 `convert_to_mbd` 参数
+
+### 重构
+
+- **`etl/fetch_global_demand.py`** — 删除本地 `_fetch_steo_series()`，改用 `eia_utils.fetch_steo_series`；`fetch_eia_intl_production` 重命名为 `fetch_demand_intl_production` 并委托给 `eia_utils`
+- **`etl/fetch_opec_production.py`** — 删除本地 `_fetch_steo()` 和 30+ 行内联 EIA International 拉取逻辑，改用 `eia_utils`
+- **`etl/fetch_global_inventory.py`** — 删除本地 `_fetch_steo()`，改用 `eia_utils.fetch_steo_series`
+
+### 改进
+
+- **OPEC+ 配额元数据** — 新增 `OPEC_PLUS_QUOTA_REFERENCE` 常量（`"2024-06 OPEC+ 37th JMMC"`），输出 JSON 写入 `quota_reference` 字段，便于识别配额基准是否过时
+- **SPR 估算标注** — 日本/中国/欧洲 SPR 估算值新增 `estimate_year: 2024`，明确标注数据版本年份
+- **`etl/run_all.py`** — `TOTAL_STEPS` 从硬编码 `16` 改为从步骤列表动态计算 `len(_steps)`，后续增删步骤时自动更新
+
+## [2026-03-17c] — 中期数据扩展: 全球需求/OPEC产量/全球库存/期权情绪 + Dashboard 可视化
+
+### 新增
+
+- **`etl/fetch_global_demand.py`** — 全球石油需求覆盖模块
+  - EIA STEO 5 区域月度消费（美国/OECD欧洲/非OECD/OECD/全球），456 期
+  - EIA International 5 国原油产量（中国/印度/巴西/挪威/墨西哥），`INTL.57-1-{ISO3}-TBPD.M`
+  - 需求份额计算（非OECD≈57%、美国≈19%）+ 月度异常检测
+  - JODI UN SDMX API（预留，当前返回 HTTP 500）
+  - MPC/VLO/PSX 炼厂股价作为亚洲需求代理
+  - 输出：`data/global_demand.json`
+
+- **`etl/fetch_opec_production.py`** — OPEC+ 国别产量监控模块
+  - 20 国/地区产量覆盖：STEO 聚合 4 个 + EIA International 国别 16 个
+  - OPEC+ 减产执行率计算（硬编码配额: SAU=9.0, RUS=9.0, IRQ=4.0 等）
+  - 闲置产能估算（5年峰值 vs 当前产量），总闲置 ≈3.43 mb/d
+  - 产量月环比趋势 + 异常检测（MoM > ±5%）
+  - 输出：`data/opec_production.json`
+
+- **`etl/fetch_global_inventory.py`** — 全球库存综合模块
+  - STEO 美国商业库存月度（`STEO.PASC_US.M`）
+  - EIA 周度 5 类库存（原油/库欣/汽油/馏分油/SPR）
+  - 隐含库存变化（读取 global_balance.json 供需差值推算，最近 24 月）
+  - 浮仓经济性分析（期货曲线 Contango → 浮仓利润估算）
+  - 库存偏差分析（当前 vs 5 年均值，支持季节性修正）
+  - 全球 SPR 估算（美国实际 + 日/中/欧估算值，合计 ≈2185 mb）
+  - 输出：`data/global_inventory.json`
+
+- **`etl/fetch_options.py`** — 期权数据 & Put/Call Ratio 模块
+  - Yahoo Finance USO/XLE ETF 期权链（CL=F 期货期权不可用，ETF 作代理）
+  - 多 ticker 迭代：USO 19 到期日 + XLE 22 到期日
+  - P/C Ratio（Volume + OI）+ IV Skew + 关键 OI Strike 位
+  - OVX 增强分析：百分位/regime/vol-of-vol（读取 financial.json）
+  - 情绪评估：5 档信号（extreme_bullish → extreme_bearish）
+  - 输出：`data/options.json`
+
+- **`etl/fetch_yahoo_realtime.py`** — Yahoo Finance 实时价格快照
+  - WTI/Brent/天然气/汽油盘中价格
+  - 输出：`data/price_realtime.json`
+
+- **`etl/fetch_eia_daily.py`** — EIA 每日现货价格补充
+  - 补齐 FRED 滞后时的最新 EIA 日度数据
+
+- **`etl/fetch_maritime_alt.py`** — 航运数据交叉验证
+  - 油轮上市公司股价（FRO/STNG/INSW/DHT）多源交叉
+  - 输出：`data/maritime_validation.json`
+
+- **Dashboard 7 个新面板**（`web/index.html` + `web/js/app.js` + `web/js/charts.js`）
+  - 🌏 全球石油需求 (STEO 区域拆分) — 5 区域消费趋势折线图
+  - 🏗️ OPEC+ 主要产油国 — 8 国产量对比折线图，截至日期标注
+  - 📋 OPEC+ 减产执行率 & 闲置产能 — 双面板：配额vs实际横向柱图 + 闲置产能柱图
+  - 📦 隐含库存变化 (供需推演) — 累库/去库柱图 + 预测区间标注
+  - 🛡️ 全球 SPR & 库存偏差 — 双面板：各国SPR柱图 + 偏差仪表盘
+  - 📊 期权情绪 & 波动率 (P/C + OVX) — 三栏：P/C卡片 + 到期日柱图 + OVX增强仪表盘
+  - charts.js 新增 6 个图表工厂函数：quotaComplianceChart, spareCapacityChart, impliedStockchangeChart, sprBarChart, optionsPCChart
+
+### 修改
+
+- **`etl/run_all.py`** — 管道从 9 步扩展到 16 步
+  - [8-10] Yahoo实时价格 + EIA日度 + 航运交叉验证
+  - [11-14] 全球需求 + OPEC产量 + 全球库存 + 期权数据
+  - meta.json sources 新增 7 个数据源
+
+- **`web/index.html`** — 新增 7 个面板 HTML 结构 + 数据源标注更新
+- **`web/js/app.js`** — 新增 7 个 render 函数 + Promise.all 加载 18 个 JSON + handleResize 支持新图表
+- **`web/js/charts.js`** — 新增 6 个 ECharts 图表配置工厂函数
+
+### 修复
+
+- **OPEC+ 产量图** — 移除 STEO `us_production`（24 mb/d 含 NGL 等全部液体，口径不同于国别原油产量），改用 8 个 OPEC+ 核心国
+- **OPEC+ 产量图** — 数据截取最近 120 个月，避免 1973 年起的 50 年 x 轴；添加"数据截至 YYYY-MM（EIA International 滞后约 3-4 个月）"标注
+- **_site 部署** — 修复 `cp -r data _site/data` 嵌套复制问题（先 rm -rf 再 cp）
+
+### 技术说明
+
+- EIA STEO 国别系列（如 `STEO.PATC_CHINA.M`）返回空数据，改用 EIA International API（`INTL.57-1-{ISO3}-TBPD.M`），但仅 activityId=1（产量）可用
+- STEO 库存系列仅美国可用（`PASC_US.M`），OECD/欧洲/日本系列返回空
+- Yahoo Finance 不提供 CL=F 商品期货期权，改用 USO/XLE ETF 期权作代理
+- 中国不公布 SPR 数据，使用行业估算值（≈950 mb）
+
 ## [2026-03-17a] — 数据驱动分析框架：验证引擎 + 航运数据可信度 + 分析纪律规则 + 日报
 
 ### 新增

@@ -19,9 +19,15 @@
   - [裂解价差 (crack_spread.json)](#8-裂解价差-crack_spreadjson)
   - [全球供需平衡 (global_balance.json)](#9-全球供需平衡-global_balancejson)
   - [钻井数据 (drilling.json)](#10-钻井数据-drillingjson)
-  - [综合信号 (signals.json)](#11-综合信号-signalsjson)
+  - [全球需求覆盖 (global_demand.json)](#12-全球需求覆盖-global_demandjson)
+  - [OPEC+ 产量 (opec_production.json)](#13-opec-产量-opec_productionjson)
+  - [全球库存 (global_inventory.json)](#14-全球库存-global_inventoryjson)
+  - [期权情绪 (options.json)](#15-期权情绪-optionsjson)
+  - [综合信号 (signals.json)](#16-综合信号-signalsjson)
+- [ETL 管道步骤](#etl-管道步骤16-步)
 - [Hard-coded 参数一览](#hard-coded-参数一览)
 - [信号计算逻辑详解](#信号计算逻辑详解)
+- [前端面板一览](#前端面板一览22-个)
 - [如何使用 / 如何看数据](#如何使用--如何看数据)
 - [项目欠缺与改进方向](#项目欠缺与改进方向)
 - [更新日志](#更新日志)
@@ -31,40 +37,63 @@
 ## 项目结构
 
 ```
-oil/
+oil-market-dashboard/
 ├── README.md               ← 本文件
+├── CHANGELOG.md            # 变更日志
 ├── requirements.md          # 需求文档
 ├── 石油投资.md               # 投资指标知识梳理
 ├── data/                    # JSON 数据文件（ETL 输出 / 前端读取）
 │   ├── price.json           # WTI/Brent 价格 + 价差
 │   ├── price_eia.json       # EIA 源的价格（备份/对照）
+│   ├── price_realtime.json  # Yahoo Finance 实时价格快照
 │   ├── futures.json         # WTI 期货曲线 + M1-M2 价差
-│   ├── inventory.json       # 原油/库欣/汽油/馏分油库存
+│   ├── inventory.json       # 原油/库欣/汽油/馏分油/SPR 库存
 │   ├── production.json      # 原油产量、炼厂开工率、净进口
 │   ├── demand.json          # 汽油/馏分油隐含需求
 │   ├── financial.json       # DXY、实际利率、OVX
 │   ├── cftc.json            # CFTC 投机持仓
-│   ├── crack_spread.json     # 裂解价差（3-2-1 + 汽油 + 柴油）
-│   ├── global_balance.json   # 全球供需平衡（STEO）
-│   ├── drilling.json         # 美国钻机数（STEO）
-│   ├── signals.json         # 综合信号计算结果（7 维）
+│   ├── crack_spread.json    # 裂解价差（3-2-1 + 汽油 + 柴油）
+│   ├── global_balance.json  # 全球供需平衡（STEO）
+│   ├── drilling.json        # 美国钻机数（STEO）
+│   ├── global_demand.json   # 全球需求（STEO 区域 + EIA Intl 国别）
+│   ├── opec_production.json # OPEC+ 国别产量 + 配额执行 + 闲置产能
+│   ├── global_inventory.json # 全球库存（OECD + 隐含 + 浮仓 + SPR）
+│   ├── options.json         # 期权 P/C Ratio + OVX 增强分析
+│   ├── maritime.json        # 航运要道通行量 + 油轮运价代理
+│   ├── maritime_validation.json # 航运数据交叉验证
+│   ├── polymarket.json      # Polymarket 预测市场概率
+│   ├── signals.json         # 综合信号计算结果
+│   ├── verification.json    # 数据验证 & 覆盖度评估
 │   └── meta.json            # 更新时间戳 + 数据源状态
-├── etl/                     # Python 数据获取 & 计算脚本
+├── etl/                     # Python 数据获取 & 计算脚本（16 步管道）
 │   ├── config.py            # API 端点、Series ID、信号阈值
-│   ├── run_all.py           # ETL 入口（--mock 生成模拟数据）
-│   ├── fetch_eia.py         # EIA API v2 数据拉取
-│   ├── fetch_fred.py        # FRED API 数据拉取 + 裂解价差计算
-│   ├── fetch_cftc.py        # CFTC Socrata API 数据拉取
-│   ├── fetch_futures.py     # Yahoo Finance 期货曲线数据
-│   ├── fetch_steo.py        # EIA STEO 全球供需 + 钻机数据
-│   ├── compute_signals.py   # 信号计算引擎（7 维信号）
+│   ├── run_all.py           # ETL 管道入口（16 步，--mock 模拟数据）
+│   ├── fetch_eia.py         # EIA API v2 周度数据
+│   ├── fetch_eia_daily.py   # EIA 每日现货价格
+│   ├── fetch_fred.py        # FRED API + 裂解价差计算
+│   ├── fetch_cftc.py        # CFTC Socrata API 持仓数据
+│   ├── fetch_futures.py     # Yahoo Finance 期货曲线
+│   ├── fetch_steo.py        # EIA STEO 全球供需 + 钻机
+│   ├── fetch_yahoo_realtime.py # Yahoo Finance 实时价格快照
+│   ├── fetch_maritime.py    # IMF PortWatch 航运要道
+│   ├── fetch_maritime_alt.py # 航运数据交叉验证
+│   ├── fetch_polymarket.py  # Polymarket 预测市场
+│   ├── fetch_global_demand.py   # 全球需求（STEO + EIA Intl）
+│   ├── fetch_opec_production.py # OPEC+ 国别产量 + 配额
+│   ├── fetch_global_inventory.py # 全球库存综合
+│   ├── fetch_options.py     # 期权 P/C Ratio + OVX 增强
+│   ├── compute_signals.py   # 信号计算引擎
+│   ├── data_verification.py # 4 层数据验证引擎
+│   ├── extract_report_data.py # 报告数据提取
 │   ├── generate_mock.py     # 模拟数据生成器
-│   └── requirements.txt     # Python 依赖（含 scipy）
+│   └── requirements.txt     # Python 依赖
+├── reports/                 # 自动生成的日报
+│   └── 2026-03-17-daily.md  # 最新日报
 └── web/                     # 前端 Dashboard（纯静态）
-    ├── index.html
+    ├── index.html           # 22 个可视化面板
     ├── css/style.css
     └── js/
-        ├── app.js           # 主入口：加载数据 + 渲染
+        ├── app.js           # 主入口：加载 18 个 JSON + 渲染
         ├── charts.js        # ECharts 图表配置工厂
         └── signals.js       # 信号面板渲染
 ```
@@ -102,7 +131,20 @@ oil/
 | `global_balance.json` — opec_production | OPEC 液体燃料产量 百万桶/日 | **EIA STEO** `STEO.PAPR_OPEC.M` | ⭐⭐⭐⭐ 官方预测 | 月度 | ❌ 直接拉取 |
 | `global_balance.json` — balance | 全球供需平衡（隐含库存变化）| **计算** | ⭐⭐⭐⭐ | 月度 | ✅ `产量 - 消费`，>0累库 <0去库 |
 | `drilling.json` — rig_count | 美国原油钻机数 (座) | **EIA STEO** `STEO.CORIPUS.M` | ⭐⭐⭐⭐ 官方预测 | 月度 | ❌ 直接拉取 |
-| `signals.json` | 7 维综合信号 | **计算** | ⭐⭐⭐ 规则简化 | 随 ETL 运行 | ✅ 完全由 `compute_signals.py` 计算 |
+| `global_demand.json` — steo_by_region | 全球需求（5 区域消费）mb/d | **EIA STEO** | ⭐⭐⭐⭐ 官方预测 | 月度 | ❌ 直接拉取 |
+| `global_demand.json` — intl_production | 国别原油产量（中/印/巴/挪/墨） | **EIA International** `INTL.57-1-{ISO3}-TBPD.M` | ⭐⭐⭐⭐ 实际统计（滞后 3-4 月） | 月度 | ❌ 直接拉取 |
+| `opec_production.json` — production_by_country | OPEC+ 20 国原油产量 | **EIA STEO** + **EIA Intl** | ⭐⭐⭐⭐ 官方统计 | 月度 | ❌ 直接拉取 |
+| `opec_production.json` — quota_compliance | OPEC+ 减产执行率 | **计算**（EIA 产量 vs 硬编码配额） | ⭐⭐⭐ 配额需手动更新 | 月度 | ✅ 实际产量 vs 配额 |
+| `opec_production.json` — spare_capacity | 闲置产能估算 | **计算**（5 年峰值 - 当前产量） | ⭐⭐⭐ 粗略估算 | 月度 | ✅ 简单峰值差 |
+| `global_inventory.json` — oecd_inventory | 美国商业库存（STEO 月度 + EIA 周度） | **EIA STEO** + **EIA Weekly** | ⭐⭐⭐⭐⭐ 官方权威 | 周度/月度 | ❌ 直接拉取 |
+| `global_inventory.json` — implied_stockchange | 隐含库存变化 | **计算**（global_balance 供给-需求差） | ⭐⭐⭐ STEO 预测值为主 | 月度 | ✅ ≈92% 为预测，非实测 |
+| `global_inventory.json` — global_spr | 全球 SPR 储备 | **EIA**(美国) + **估算**(日/中/欧) | ⭐⭐⭐ 中国不公布 | 月度 | 部分估算 |
+| `options.json` — options | ETF 期权 P/C Ratio | **Yahoo Finance**（USO/XLE ETF 期权） | ⭐⭐⭐ ETF 代理非期货 | 日度 | ❌ 直接拉取 |
+| `options.json` — ovx_enhanced | OVX 增强分析（百分位/regime） | **计算**（基于 FRED OVX） | ⭐⭐⭐⭐ OVX 数据可靠 | 日度 | ✅ 百分位/趋势计算 |
+| `price_realtime.json` | 实时价格快照 | **Yahoo Finance** | ⭐⭐⭐⭐ 市场数据 | 实时 | ❌ 直接拉取 |
+| `maritime_validation.json` | 航运交叉验证 | **Yahoo Finance**（油轮股） | ⭐⭐⭐ 间接代理 | 日度 | ✅ 多源交叉 |
+| `verification.json` | 数据验证 & 覆盖度 | **计算** | ⭐⭐⭐ 规则引擎 | 随 ETL | ✅ 4 层验证 |
+| `signals.json` | 综合信号 | **计算** | ⭐⭐⭐ 规则简化 | 随 ETL 运行 | ✅ 完全由 `compute_signals.py` 计算 |
 | `meta.json` | 更新时间戳 | **系统** | — | 随 ETL 运行 | ✅ ETL 运行时生成 |
 
 ### 可信度说明
@@ -221,7 +263,52 @@ oil/
 |------|------|-----------------|-----------|--------|
 | `rig_count` | 美国原油钻机数（座）| `STEO.CORIPUS.M` | 钻机数是产量的**领先指标**（6-9个月），比产量本身更能预判供给拐点 | 钻机减少 → 未来产量下降 → 利多；增加 → 利空 |
 
-### 11. 综合信号 (signals.json)
+### 12. 全球需求覆盖 (global_demand.json)
+
+| 字段组 | 含义 | 数据源 | 为什么需要 | 如何看 |
+|--------|------|--------|-----------|--------|
+| `steo_by_region` | 5 个区域消费趋势（美国/OECD欧洲/非OECD/OECD/全球）mb/d | **EIA STEO** | 拆分全球需求的地理分布，弥补"仅有美国数据"的盲区 | 非 OECD 占全球 57%，关注其增速 |
+| `intl_production` | 5 国原油产量（中国/印度/巴西/挪威/墨西哥）kb/d | **EIA International** `INTL.57-1-{ISO3}` | 国别生产间接反映需求（EIA Intl 消费数据对非 OECD 不可用） | ⚠️ 是"产量"非"需求"，注意口径 |
+| `demand_share` | 各区域占全球需求的比例 | **计算** | 快速了解需求结构 | US ≈19%, 非OECD ≈57% |
+| `anomalies` | 月度消费异常检测 | **计算** | 捕捉非常规需求变动 | 月变化 > 0.5 mb/d 标记 |
+
+> **数据滞后**：STEO 含约 2 年预测；EIA International 国别数据滞后约 3-4 个月。
+
+### 13. OPEC+ 产量 (opec_production.json)
+
+| 字段组 | 含义 | 数据源 | 为什么需要 | 如何看 |
+|--------|------|--------|-----------|--------|
+| `production_by_country` | 20 国/地区原油产量 mb/d（STEO 聚合 4 个 + EIA Intl 国别 16 个） | **EIA STEO** + **EIA International** | OPEC+ 主导全球边际供给，国别产量是监控减产执行的基础 | 沙特 ≈10, 俄罗斯 ≈10, 伊拉克 ≈4.4 |
+| `quota_compliance` | 减产执行率（配额 vs 实际产量） | **计算** | 评估 OPEC+ 纪律与市场预期差距 | 执行率 > 100% = 超额减产；< 100% = 超产 |
+| `spare_capacity` | 闲置产能估算（5 年峰值 - 当前产量） | **计算** | 市场恐慌时的缓冲能力指标 | 全球 ≈3-4 mb/d，沙特占主要份额 |
+| `production_trends` | 产量月环比趋势 & 异常 | **计算** | 捕捉产量突变（制裁/停产/维护） | MoM > ±5% 标记异常 |
+
+> **注意**：配额为硬编码值（SAU=9.0, RUS=9.0 等），OPEC+ 调整配额后需手动更新代码。EIA International 国别数据滞后 3-4 个月。
+
+### 14. 全球库存 (global_inventory.json)
+
+| 字段组 | 含义 | 数据源 | 为什么需要 | 如何看 |
+|--------|------|--------|-----------|--------|
+| `oecd_inventory` | 美国商业库存（STEO 月度 + EIA 周度原油/库欣/汽油/馏分油/SPR） | **EIA STEO** + **EIA Weekly** | 最全面的美国库存组合 | 与 5 年均值对比看偏差 |
+| `implied_stockchange` | 隐含库存变化 mb/d（供给-需求差） | **计算**（读取 global_balance.json） | 从供需推演全球累/去库趋势 | > 0 累库(利空), < 0 去库(利多)；⚠️ 大部分为 STEO 预测值 |
+| `floating_storage` | 浮仓经济性分析（期货曲线结构 → 浮仓利润） | **计算**（读取 futures.json） | 深度 Contango 时浮仓增加，吸收过剩供给 | contango/月 > $1 → 浮仓有利可图 |
+| `oecd_deviation` | 美国商业库存 vs 5 年均值偏差 | **计算** | 一目了然的库存松紧度指标 | 正偏差 = 宽松, 负偏差 = 紧张 |
+| `global_spr` | 全球战略石油储备（美国实际 + 日/中/欧估算）| **EIA**(US) + **估算** | 地缘危机时的释放缓冲评估 | 美国 ≈415mb，中国 ≈950mb（不公布） |
+
+> **关键局限**：`implied_stockchange` 24 条记录中约 22 条为 STEO **预测值**，不是实测库存。中国/日本/欧洲 SPR 为行业估算。
+
+### 15. 期权情绪 (options.json)
+
+| 字段组 | 含义 | 数据源 | 为什么需要 | 如何看 |
+|--------|------|--------|-----------|--------|
+| `options.by_ticker` | USO/XLE 各 ETF 的 P/C Ratio 汇总 | **Yahoo Finance** ETF 期权链 | CL=F 期货期权在 Yahoo 不可用，ETF 作代理 | USO 更接近原油，XLE 含能源股因素 |
+| `options.aggregate` | 跨 ticker 综合 P/C Ratio（volume + OI） | **计算** | 综合情绪指标 | < 0.7 极度看多, 0.7-1.0 偏多, 1.0-1.2 中性, > 1.2 偏空, > 1.5 极度看空 |
+| `options.sentiment` | 情绪评估（信号 + 关键 strike 位） | **计算** | 快速判断市场方向性偏好 | key_put_support = 下方支撑, key_call_resistance = 上方阻力 |
+| `ovx_enhanced` | OVX 增强分析（百分位/regime/vol-of-vol） | **计算**（基于 financial.json 中 FRED OVX） | 比原始 OVX 更有参考价值 | regime: normal/elevated/panic/extreme_panic |
+
+> **注意**：P/C Ratio 来自 USO/XLE **ETF** 期权，反映 ETF 投资者情绪，非 CME 原油专业交易员。OVX 本身来自 FRED（CBOE 编制），高度可靠。
+
+### 16. 综合信号 (signals.json)
 
 这是**完全由 `compute_signals.py` 计算出来的衍生数据**，不来自任何外部 API。信号系统基于简化规则，详见下文。
 
@@ -441,21 +528,72 @@ cd web && python -m http.server 8080
 
 ---
 
+## ETL 管道步骤（16 步）
+
+| 步骤 | 模块 | 数据源 | 输出文件 |
+|------|------|--------|----------|
+| 1/16 | `fetch_eia.py` | EIA API v2（周度） | price_eia.json, inventory.json, production.json, demand.json |
+| 2/16 | `fetch_fred.py` | FRED API | price.json, financial.json, crack_spread.json |
+| 3/16 | `fetch_steo.py` | EIA STEO（月度） | global_balance.json, drilling.json |
+| 4/16 | `fetch_cftc.py` | CFTC Socrata | cftc.json |
+| 5/16 | `fetch_futures.py` | Yahoo Finance | futures.json |
+| 6/16 | `fetch_polymarket.py` | Polymarket Gamma API | polymarket.json |
+| 7/16 | `fetch_maritime.py` | IMF PortWatch ArcGIS | maritime.json |
+| 8/16 | `fetch_yahoo_realtime.py` | Yahoo Finance | price_realtime.json |
+| 9/16 | `fetch_eia_daily.py` | EIA API v2（日度） | price_eia.json（更新） |
+| 10/16 | `fetch_maritime_alt.py` | Yahoo Finance（油轮股） | maritime_validation.json |
+| 11/16 | `fetch_global_demand.py` | EIA STEO + EIA International | global_demand.json |
+| 12/16 | `fetch_opec_production.py` | EIA STEO + EIA International | opec_production.json |
+| 13/16 | `fetch_global_inventory.py` | EIA STEO + EIA Weekly + 计算 | global_inventory.json |
+| 14/16 | `fetch_options.py` | Yahoo Finance（USO/XLE 期权）| options.json |
+| 15/16 | `compute_signals.py` | 读取上述 JSON 计算 | signals.json |
+| 16/16 | `data_verification.py` + meta | 验证 + 元信息 | verification.json, meta.json |
+
 ## 技术栈
 
 | 层 | 技术 | 说明 |
 |----|------|------|
-| 数据获取 | Python 3 + requests + yfinance | 调用 EIA / FRED / CFTC 的 REST API + Yahoo Finance 期货数据 |
+| 数据获取 | Python 3 + requests + yfinance | 调用 EIA / FRED / CFTC 的 REST API + Yahoo Finance 期货/期权数据 |
 | 配置 | python-dotenv | API Key 通过 `.env` 文件管理 |
-| 前端 | HTML + Vanilla JS | 纯静态，fetch 加载 JSON |
+| 前端 | HTML + Vanilla JS | 纯静态，fetch 加载 18 个 JSON |
 | 图表 | ECharts 5 | 深色主题，支持交互缩放 |
 | 样式 | Tailwind CSS (CDN) | 快速搭建深色 Dashboard |
 
 ---
 
+## 前端面板一览（22 个）
+
+| 面板 | 数据源 | 类型 |
+|------|--------|------|
+| WTI/Brent 价格卡片 + Sparkline | price.json | 卡片 |
+| M1-M2 期货价差 / WTI-Brent 价差 | futures.json / price.json | 卡片 |
+| 综合信号面板 | signals.json | 卡片 |
+| 美国原油库存（5 年季节性区间带） | inventory.json | 面积图 |
+| WTI/Brent 价格走势 | price.json | 折线图 |
+| 库欣 & 汽油 & 馏分油库存 | inventory.json | 折线图 |
+| M1-M2 期货价差走势 | futures.json | 折线图 |
+| WTI 期货曲线 (Term Structure) | futures.json | 折线图 |
+| 产量 & 炼厂开工率 | production.json | 双轴折线 |
+| 金融条件 (DXY/实际利率/OVX) | financial.json | 双轴折线 |
+| 成品油隐含需求 | demand.json | 折线图 |
+| CFTC 投机净多头 | cftc.json | 柱形图 |
+| 裂解价差 (Crack Spread) | crack_spread.json | 折线图 |
+| 原油净进口 | production.json | 折线图 |
+| 全球供需平衡 (STEO) | global_balance.json | 双轴线+柱 |
+| 美国原油钻机数 | drilling.json | 折线图 |
+| **全球石油需求 (STEO 区域)** | global_demand.json | 折线图 |
+| **OPEC+ 主要产油国** | opec_production.json | 折线图 |
+| **OPEC+ 减产执行率 & 闲置产能** | opec_production.json | 双面板横向柱图 |
+| **隐含库存变化 (供需推演)** | global_inventory.json | 柱形图 |
+| **全球 SPR & 库存偏差** | global_inventory.json | 柱图+仪表盘 |
+| **期权情绪 & 波动率 (P/C + OVX)** | options.json | 三栏卡片+柱图 |
+| 石油航运要道监控 (IMF PortWatch) | maritime.json | 卡片+柱线图 |
+| 预测市场情绪 (Polymarket) | polymarket.json | 概率卡片 |
+
 ## 更新日志
 
 详见 [CHANGELOG.md](CHANGELOG.md)。
+
 
 ---
 

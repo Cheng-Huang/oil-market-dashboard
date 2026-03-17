@@ -429,3 +429,143 @@ function futuresSpreadChart(spreadHistory) {
   opt.dataZoom = [{ type: 'inside', start: 0, end: 100 }];
   return opt;
 }
+
+// ══════════════════════════════════════════════════════
+// 新增图表工厂函数
+// ══════════════════════════════════════════════════════
+
+/** OPEC+ 减产执行率（配额 vs 实际横向柱形图） */
+function quotaComplianceChart(quotaData) {
+  const opt = baseOption();
+  const countries = Object.keys(quotaData);
+  const quotas = countries.map(c => quotaData[c].quota_mbd);
+  const actuals = countries.map(c => quotaData[c].actual_mbd);
+  const labels = countries.map(c => c.toUpperCase());
+
+  opt.grid = { left: 80, right: 30, top: 30, bottom: 30 };
+  opt.xAxis = { type: 'value', name: 'mb/d', axisLabel: { color: '#6b7280', fontSize: 10 }, splitLine: { lineStyle: { color: '#1f2937' } } };
+  opt.yAxis = { type: 'category', data: labels, axisLabel: { color: '#9ca3af', fontSize: 11 }, axisLine: { lineStyle: { color: '#374151' } } };
+  opt.legend = { data: ['配额', '实际产量'], textStyle: { color: '#9ca3af', fontSize: 11 }, top: 4, right: 10 };
+  opt.series = [
+    { name: '配额', type: 'bar', data: quotas, itemStyle: { color: COLORS.cyan + 'aa' }, barGap: '10%' },
+    { name: '实际产量', type: 'bar', data: actuals, itemStyle: { color: (params) => actuals[params.dataIndex] > quotas[params.dataIndex] ? COLORS.red + 'cc' : COLORS.green + 'cc' } },
+  ];
+  opt.tooltip = { ...opt.tooltip, trigger: 'axis', axisPointer: { type: 'shadow' } };
+  return opt;
+}
+
+/** 闲置产能横向柱图 */
+function spareCapacityChart(spareData) {
+  const opt = baseOption();
+  const countries = Object.keys(spareData);
+  const values = countries.map(c => spareData[c].spare_capacity_mbd);
+  const labels = countries.map(c => c.toUpperCase());
+
+  opt.grid = { left: 80, right: 30, top: 20, bottom: 30 };
+  opt.xAxis = { type: 'value', name: 'mb/d', axisLabel: { color: '#6b7280', fontSize: 10 }, splitLine: { lineStyle: { color: '#1f2937' } } };
+  opt.yAxis = { type: 'category', data: labels, axisLabel: { color: '#9ca3af', fontSize: 11 }, axisLine: { lineStyle: { color: '#374151' } } };
+  opt.series = [{
+    type: 'bar',
+    data: values.map(v => ({ value: v, itemStyle: { color: v > 1 ? COLORS.amber : v > 0.3 ? COLORS.cyan : COLORS.gray } })),
+    barMaxWidth: 20,
+    label: { show: true, position: 'right', formatter: '{c} mb/d', fontSize: 10, color: '#9ca3af' },
+  }];
+  opt.tooltip = { ...opt.tooltip, trigger: 'axis', axisPointer: { type: 'shadow' } };
+  return opt;
+}
+
+/** 隐含库存变化柱形图 */
+function impliedStockchangeChart(data) {
+  const opt = baseOption();
+  const dates = data.map(d => d.date);
+  const values = data.map(d => d.stockchange_mbd);
+
+  opt.xAxis.data = dates;
+  opt.yAxis.name = 'mb/d';
+  opt.series = [{
+    name: '隐含库存变化',
+    type: 'bar',
+    data: values.map(v => ({
+      value: v,
+      itemStyle: { color: v >= 0 ? COLORS.red + 'bb' : COLORS.green + 'bb' },
+    })),
+    barMaxWidth: 16,
+    markLine: {
+      silent: true,
+      data: [{ yAxis: 0, lineStyle: { color: '#6b7280', type: 'dashed' } }],
+    },
+  }];
+
+  const forecastStart = data.findIndex(d => d.type === 'forecast');
+  if (forecastStart > 0) {
+    opt.series[0].markArea = {
+      silent: true,
+      data: [[
+        { xAxis: dates[forecastStart], itemStyle: { color: 'rgba(107,114,128,0.08)' } },
+        { xAxis: dates[dates.length - 1] }
+      ]],
+      label: { show: true, position: 'insideTopLeft', formatter: '← 预测区间', fontSize: 10, color: '#6b7280' },
+    };
+  }
+
+  opt.dataZoom = [{ type: 'inside', start: 0, end: 100 }];
+  return opt;
+}
+
+/** SPR 各国储备柱图 */
+function sprBarChart(sprData) {
+  const opt = baseOption();
+  const countries = Object.keys(sprData);
+  const labels = countries.map(c => sprData[c].name || c);
+  const values = countries.map(c => sprData[c].level_mb);
+
+  opt.grid = { left: 80, right: 30, top: 20, bottom: 30 };
+  opt.xAxis = { type: 'value', name: '百万桶', axisLabel: { color: '#6b7280', fontSize: 10 }, splitLine: { lineStyle: { color: '#1f2937' } } };
+  opt.yAxis = { type: 'category', data: labels, axisLabel: { color: '#9ca3af', fontSize: 11 }, axisLine: { lineStyle: { color: '#374151' } } };
+  opt.series = [{
+    type: 'bar',
+    data: values.map(v => ({
+      value: v,
+      itemStyle: { color: COLORS.blue + 'cc' },
+    })),
+    barMaxWidth: 24,
+    label: { show: true, position: 'right', formatter: '{c} mb', fontSize: 10, color: '#9ca3af' },
+  }];
+  opt.tooltip = { ...opt.tooltip, trigger: 'axis', axisPointer: { type: 'shadow' } };
+  return opt;
+}
+
+/** 期权 P/C ratio 柱状对比图 */
+function optionsPCChart(byExpiry) {
+  const opt = baseOption();
+  const labels = byExpiry.map(e => `${e.ticker} ${e.expiry}`);
+  const pcVol = byExpiry.map(e => e.pc_ratio_volume);
+
+  opt.grid = { left: 50, right: 20, top: 30, bottom: 60 };
+  opt.xAxis = {
+    type: 'category', data: labels,
+    axisLabel: { color: '#6b7280', fontSize: 9, rotate: 35 },
+    axisLine: { lineStyle: { color: '#374151' } },
+  };
+  opt.yAxis = { type: 'value', name: 'P/C Ratio', splitLine: { lineStyle: { color: '#1f2937' } }, axisLabel: { color: '#6b7280', fontSize: 10 } };
+  opt.series = [{
+    name: 'P/C Ratio (Volume)',
+    type: 'bar',
+    data: pcVol.map(v => ({
+      value: v,
+      itemStyle: {
+        color: v > 1.5 ? COLORS.red + 'cc'
+          : v > 1.2 ? COLORS.amber + 'cc'
+          : v > 0.7 ? COLORS.green + 'cc'
+          : COLORS.cyan + 'cc'
+      },
+    })),
+    barMaxWidth: 30,
+  }];
+
+  opt.series.push(
+    { name: '看空阈值', type: 'line', data: pcVol.map(() => 1.2), showSymbol: false, lineStyle: { width: 1, type: 'dashed', color: COLORS.red + '80' } },
+    { name: '中性线', type: 'line', data: pcVol.map(() => 1.0), showSymbol: false, lineStyle: { width: 1, type: 'dashed', color: '#6b7280' } },
+  );
+  return opt;
+}

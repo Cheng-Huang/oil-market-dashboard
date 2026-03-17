@@ -18,6 +18,7 @@ from datetime import datetime, timedelta
 import yfinance as yf
 
 from config import EIA_API_KEY, DATA_DIR
+from eia_utils import fetch_steo_series, fetch_eia_intl_production as _fetch_eia_intl
 
 
 # ── EIA STEO 分地区消费 series ──────────────────────
@@ -67,30 +68,7 @@ ASIA_DEMAND_PROXIES = {
 }
 
 
-def _fetch_steo_series(series_id: str, days_back: int = 1825) -> list[dict]:
-    """拉取单个 EIA STEO series"""
-    start = (datetime.now() - timedelta(days=days_back)).strftime("%Y-%m-%d")
-    url = f"https://api.eia.gov/v2/seriesid/{series_id}"
-    params = {
-        "api_key": EIA_API_KEY,
-        "start": start,
-    }
-    resp = requests.get(url, params=params, timeout=30)
-    resp.raise_for_status()
-    data = resp.json()
-    response_data = data.get("response", {}).get("data", [])
-
-    result = []
-    for item in response_data:
-        period = item.get("period", "")
-        value = item.get("value")
-        if value is not None:
-            try:
-                result.append({"date": period, "value": float(value)})
-            except (ValueError, TypeError):
-                pass
-    result.sort(key=lambda x: x["date"])
-    return result
+# _fetch_steo_series 已移至 eia_utils.fetch_steo_series
 
 
 def fetch_steo_demand_by_country() -> dict:
@@ -103,7 +81,7 @@ def fetch_steo_demand_by_country() -> dict:
     for key, sid in STEO_DEMAND_SERIES.items():
         print(f"    STEO需求: {key} ...")
         try:
-            data = _fetch_steo_series(sid)
+            data = fetch_steo_series(sid)
             result[key] = data
             if data:
                 latest = data[-1]
@@ -117,54 +95,17 @@ def fetch_steo_demand_by_country() -> dict:
     return result
 
 
-def fetch_eia_intl_production() -> dict:
+def fetch_demand_intl_production() -> dict:
     """
     拉取 EIA International 主要国家原油产量（月度, 千桶/天）。
-    EIA International 仅提供 production 数据，不提供非OECD国家消费/进口。
-    产量变化可作为供需间接指标。
+    委托给 eia_utils.fetch_eia_intl_production，不转换单位(kb/d)。
     """
-    if not EIA_API_KEY:
-        return {}
-
-    result = {}
-    for key, info in EIA_INTL_PRODUCTION_COUNTRIES.items():
-        country = info["country"]
-        name = info["name"]
-        print(f"    EIA国际: {name} ({country}) 原油产量...")
-        try:
-            # EIA International: INTL.{product}-{activity}-{country}-TBPD.M
-            # productId=57(crude), activityId=1(production)
-            sid = f"INTL.57-1-{country}-TBPD.M"
-            url = f"https://api.eia.gov/v2/seriesid/{sid}"
-            params = {
-                "api_key": EIA_API_KEY,
-                "start": (datetime.now() - timedelta(days=1825)).strftime("%Y-%m-%d"),
-            }
-            resp = requests.get(url, params=params, timeout=30)
-            resp.raise_for_status()
-            data = resp.json().get("response", {}).get("data", [])
-
-            records = []
-            for item in data:
-                period = item.get("period", "")
-                value = item.get("value")
-                if value is not None:
-                    try:
-                        records.append({"date": period, "value": float(value)})
-                    except (ValueError, TypeError):
-                        pass
-            records.sort(key=lambda x: x["date"])
-            result[key] = records
-            if records:
-                latest = records[-1]
-                print(f"      → {len(records)} 月, 最新: {latest['date']} = {latest['value']:.0f} kb/d")
-            else:
-                print(f"      → 0 条记录")
-        except Exception as e:
-            print(f"      ✗ 失败: {e}")
-            result[key] = []
-
-    return result
+    # 转换 {key: {"country": x}} → {key: {"code": x, "name": y}} 格式
+    countries = {
+        k: {"code": v["country"], "name": v["name"]}
+        for k, v in EIA_INTL_PRODUCTION_COUNTRIES.items()
+    }
+    return _fetch_eia_intl(countries, convert_to_mbd=False)
 
 
 def fetch_jodi_demand_data() -> dict:
@@ -355,7 +296,7 @@ def fetch_global_demand() -> dict:
     steo_demand = fetch_steo_demand_by_country()
 
     print("  [2] EIA 国际产量 (中国/印度/日本/韩国/巴西)...")
-    intl_production = fetch_eia_intl_production()
+    intl_production = fetch_demand_intl_production()
 
     print("  [3] JODI 国际石油需求...")
     jodi_data = fetch_jodi_demand_data()

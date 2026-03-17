@@ -341,6 +341,301 @@ function renderDrillingChart(drilling) {
   if (!chart) return;
   chart.setOption(rigCountChart(drilling));
 }
+
+// ══════════════════════════════════════════════════════
+// 新增渲染函数: 全球需求 / OPEC产量 / 全球库存 / 期权
+// ══════════════════════════════════════════════════════
+
+// ── 全球需求 ─────────────────────────────────────────
+function renderGlobalDemandChart(globalDemand) {
+  if (!globalDemand?.steo_by_region) return;
+  const chart = initChart('chart-global-demand');
+  if (!chart) return;
+
+  const regionMap = {
+    world_consumption: { name: '全球', color: COLORS.white },
+    us_consumption: { name: '美国', color: COLORS.cyan },
+    oecd_europe_consumption: { name: 'OECD 欧洲', color: COLORS.blue },
+    non_oecd_consumption: { name: '非OECD', color: COLORS.amber },
+    oecd_consumption: { name: 'OECD', color: COLORS.green },
+  };
+
+  const series = [];
+  for (const [key, cfg] of Object.entries(regionMap)) {
+    const data = globalDemand.steo_by_region[key];
+    if (data?.length) {
+      series.push({ name: cfg.name, data, color: cfg.color });
+    }
+  }
+  if (series.length === 0) return;
+
+  const opt = lineChart(series, { dataZoom: true, zoomStart: 70, yAxisName: 'mb/d' });
+  chart.setOption(opt);
+}
+
+// ── OPEC+ 主要产油国 ────────────────────────────────
+function renderOPECProductionChart(opecProd) {
+  if (!opecProd?.production_by_country) return;
+  const chart = initChart('chart-opec-production');
+  if (!chart) return;
+
+  // 只展示 OPEC+ 核心国原油产量（EIA International 国别数据）
+  const countryMap = {
+    saudi: { name: '沙特', color: COLORS.green },
+    russia: { name: '俄罗斯', color: COLORS.red },
+    iraq: { name: '伊拉克', color: COLORS.amber },
+    uae: { name: '阿联酋', color: COLORS.cyan },
+    iran: { name: '伊朗', color: COLORS.purple },
+    kuwait: { name: '科威特', color: COLORS.pink },
+    nigeria: { name: '尼日利亚', color: COLORS.blue },
+    canada: { name: '加拿大', color: '#8b5cf6' },
+  };
+
+  const series = [];
+  let latestDate = '';
+  for (const [key, cfg] of Object.entries(countryMap)) {
+    let data = opecProd.production_by_country[key];
+    if (data?.length) {
+      data = data.slice(-120);
+      series.push({ name: cfg.name, data, color: cfg.color });
+      const last = data[data.length - 1].date;
+      if (last > latestDate) latestDate = last;
+    }
+  }
+  if (series.length === 0) return;
+
+  const opt = lineChart(series, { dataZoom: true, zoomStart: 50, yAxisName: 'mb/d' });
+
+  // 标注数据截止日期（EIA International 有 3-4 月滞后）
+  if (latestDate) {
+    opt.title = {
+      text: `数据截至 ${latestDate}（EIA International 滞后约 3-4 个月）`,
+      textStyle: { color: '#6b7280', fontSize: 11, fontWeight: 'normal' },
+      left: 'center', bottom: 4,
+    };
+    opt.grid.bottom = 50;
+  }
+
+  chart.setOption(opt);
+
+  // 更新面板标题显示日期
+  const titleEl = document.getElementById('chart-opec-production')?.closest('.panel')?.querySelector('.panel-title');
+  if (titleEl && latestDate) {
+    titleEl.textContent = `🏗️ OPEC+ 主要产油国 · 截至 ${latestDate}`;
+  }
+}
+
+// ── OPEC+ 减产执行 & 闲置产能 ──────────────────────
+function renderOPECCompliance(opecProd) {
+  const panel = document.getElementById('opec-compliance-panel');
+  if (!panel || !opecProd) return;
+
+  const hasQuota = opecProd.quota_compliance?.by_country && Object.keys(opecProd.quota_compliance.by_country).length > 0;
+  const hasSpare = opecProd.spare_capacity?.by_country && Object.keys(opecProd.spare_capacity.by_country).length > 0;
+  if (!hasQuota && !hasSpare) return;
+
+  panel.style.display = '';
+
+  if (hasQuota) {
+    const dom = document.getElementById('chart-opec-compliance');
+    if (dom) {
+      const chart = echarts.init(dom, null, { renderer: 'canvas' });
+      chart.setOption(quotaComplianceChart(opecProd.quota_compliance.by_country));
+    }
+  }
+
+  if (hasSpare) {
+    const dom = document.getElementById('chart-spare-capacity');
+    if (dom) {
+      const chart = echarts.init(dom, null, { renderer: 'canvas' });
+      chart.setOption(spareCapacityChart(opecProd.spare_capacity.by_country));
+    }
+  }
+}
+
+// ── 隐含库存变化 ────────────────────────────────────
+function renderImpliedStockchange(globalInv) {
+  if (!globalInv?.implied_stockchange?.length) {
+    const panel = document.getElementById('chart-implied-stockchange')?.closest('.panel');
+    if (panel) panel.style.display = 'none';
+    return;
+  }
+  const chart = initChart('chart-implied-stockchange');
+  if (!chart) return;
+  chart.setOption(impliedStockchangeChart(globalInv.implied_stockchange));
+}
+
+// ── 全球 SPR & 库存偏差 ─────────────────────────────
+function renderSPRPanel(globalInv) {
+  const panel = document.getElementById('spr-panel');
+  if (!panel || !globalInv) return;
+
+  const hasSPR = globalInv.global_spr?.by_country && Object.keys(globalInv.global_spr.by_country).length > 0;
+  const hasDev = globalInv.oecd_deviation?.deviation_mb != null;
+  if (!hasSPR && !hasDev) return;
+
+  panel.style.display = '';
+
+  // SPR 柱图
+  if (hasSPR) {
+    const dom = document.getElementById('chart-spr');
+    if (dom) {
+      const chart = echarts.init(dom, null, { renderer: 'canvas' });
+      chart.setOption(sprBarChart(globalInv.global_spr.by_country));
+    }
+  }
+
+  // 库存偏差卡片
+  if (hasDev) {
+    const dev = globalInv.oecd_deviation;
+    const devEl = document.getElementById('spr-deviation-card');
+    if (devEl) {
+      const isAbove = dev.assessment === 'above';
+      const devColor = isAbove ? 'text-red-400' : 'text-green-400';
+      const devIcon = isAbove ? '📈' : '📉';
+      const devBg = isAbove ? 'bg-red-900/20' : 'bg-green-900/20';
+      devEl.innerHTML = `
+        <div class="${devBg} rounded-xl p-6 text-center w-full">
+          <div class="text-4xl mb-2">${devIcon}</div>
+          <div class="text-sm text-gray-400 mb-1">美国商业库存 vs 5年均值</div>
+          <div class="text-3xl font-bold ${devColor} mb-1">${dev.deviation_mb > 0 ? '+' : ''}${dev.deviation_mb} mb</div>
+          <div class="text-sm text-gray-500">${dev.deviation_pct > 0 ? '+' : ''}${dev.deviation_pct}% 偏差</div>
+          <div class="mt-3 grid grid-cols-2 gap-3 text-xs">
+            <div class="bg-oil-700/50 rounded p-2">
+              <div class="text-gray-500">当前</div>
+              <div class="text-white font-medium">${fmt(dev.latest_value_mb, 1)} mb</div>
+            </div>
+            <div class="bg-oil-700/50 rounded p-2">
+              <div class="text-gray-500">5年均值</div>
+              <div class="text-white font-medium">${fmt(dev.avg_5y_mb, 1)} mb</div>
+            </div>
+          </div>
+          <div class="text-[10px] text-gray-600 mt-2">数据日期: ${dev.latest_date}</div>
+        </div>
+      `;
+    }
+  }
+}
+
+// ── 期权情绪面板 ─────────────────────────────────────
+function renderOptionsPanel(optionsData) {
+  const panel = document.getElementById('options-panel');
+  if (!panel || !optionsData) return;
+
+  const opts = optionsData.options;
+  const ovx = optionsData.ovx_enhanced;
+  if (!opts && !ovx) return;
+
+  panel.style.display = '';
+
+  // 1. P/C ratio 卡片 (左)
+  const cardsEl = document.getElementById('options-pc-cards');
+  if (cardsEl && opts) {
+    const agg = opts.aggregate || {};
+    const sentiment = opts.sentiment || {};
+    const sigColor = {
+      extreme_bullish: 'text-green-300', bullish: 'text-green-400',
+      neutral: 'text-gray-400', bearish: 'text-red-400', extreme_bearish: 'text-red-300',
+    };
+    const sigLabel = {
+      extreme_bullish: '极度看多', bullish: '偏多',
+      neutral: '中性', bearish: '偏空', extreme_bearish: '极度看空',
+    };
+
+    let html = '<div class="space-y-3">';
+    // Aggregate P/C
+    html += `
+      <div class="bg-oil-700/50 rounded-lg p-3">
+        <div class="text-xs text-gray-500 mb-1">综合 P/C Ratio (Volume)</div>
+        <div class="text-2xl font-bold text-white">${fmt(agg.total_pc_ratio_volume, 3)}</div>
+        <div class="text-sm ${sigColor[sentiment.volume_signal] || 'text-gray-400'} mt-1">${sigLabel[sentiment.volume_signal] || '--'}</div>
+      </div>
+    `;
+    // P/C OI
+    html += `
+      <div class="bg-oil-700/50 rounded-lg p-3">
+        <div class="text-xs text-gray-500 mb-1">综合 P/C Ratio (OI)</div>
+        <div class="text-2xl font-bold text-white">${fmt(agg.total_pc_ratio_oi, 3)}</div>
+        <div class="text-sm ${sigColor[sentiment.oi_signal] || 'text-gray-400'} mt-1">${sigLabel[sentiment.oi_signal] || '--'}</div>
+      </div>
+    `;
+    // Key levels
+    if (sentiment.key_put_support || sentiment.key_call_resistance) {
+      html += `
+        <div class="bg-oil-700/50 rounded-lg p-3">
+          <div class="text-xs text-gray-500 mb-1">关键期权位</div>
+          <div class="flex justify-between text-sm">
+            <span class="text-green-400">支撑: $${sentiment.key_put_support || '--'}</span>
+            <span class="text-red-400">阻力: $${sentiment.key_call_resistance || '--'}</span>
+          </div>
+        </div>
+      `;
+    }
+    // By ticker
+    const bt = opts.by_ticker || {};
+    for (const [sym, info] of Object.entries(bt)) {
+      html += `
+        <div class="bg-oil-700/50 rounded-lg p-2 text-xs">
+          <span class="text-gray-400">${sym}</span>
+          <span class="text-white ml-2">P/C=${fmt(info.pc_ratio_volume, 2)}</span>
+          <span class="text-gray-500 ml-2">${info.expiries_analyzed} 到期日</span>
+        </div>
+      `;
+    }
+    html += '</div>';
+    cardsEl.innerHTML = html;
+  }
+
+  // 2. P/C ratio 柱图 (中)
+  if (opts?.by_expiry?.length) {
+    const dom = document.getElementById('chart-options-pc');
+    if (dom) {
+      const chart = echarts.init(dom, null, { renderer: 'canvas' });
+      chart.setOption(optionsPCChart(opts.by_expiry));
+    }
+  }
+
+  // 3. OVX 增强卡片 (右)
+  const ovxEl = document.getElementById('options-ovx-card');
+  if (ovxEl && ovx) {
+    const regimeColor = {
+      extreme_panic: 'text-red-300', panic: 'text-red-400',
+      elevated: 'text-amber-400', normal: 'text-green-400',
+    };
+    const regimeLabel = {
+      extreme_panic: '极度恐慌', panic: '恐慌',
+      elevated: '偏高', normal: '正常',
+    };
+    const regimeBg = {
+      extreme_panic: 'bg-red-900/30', panic: 'bg-red-900/20',
+      elevated: 'bg-amber-900/20', normal: 'bg-green-900/20',
+    };
+
+    ovxEl.innerHTML = `
+      <div class="${regimeBg[ovx.regime] || 'bg-oil-700/50'} rounded-xl p-4 text-center h-full flex flex-col justify-center">
+        <div class="text-xs text-gray-500 mb-1">OVX 原油波动率指数</div>
+        <div class="text-4xl font-bold ${regimeColor[ovx.regime] || 'text-white'}">${ovx.latest}</div>
+        <div class="text-sm ${regimeColor[ovx.regime] || 'text-gray-400'} mt-1">${regimeLabel[ovx.regime] || ovx.regime}</div>
+        <div class="mt-3 text-xs text-gray-500">百分位: ${ovx.percentile}%</div>
+        <div class="w-full bg-gray-700/50 rounded-full h-2 mt-1">
+          <div class="h-2 rounded-full transition-all ${ovx.percentile > 90 ? 'bg-red-500' : ovx.percentile > 70 ? 'bg-amber-500' : 'bg-green-500'}"
+               style="width: ${Math.min(ovx.percentile, 100)}%"></div>
+        </div>
+        <div class="grid grid-cols-2 gap-2 mt-3 text-xs">
+          <div class="bg-oil-700/50 rounded p-2">
+            <div class="text-gray-500">20日均</div>
+            <div class="text-white">${ovx.avg_20d}</div>
+          </div>
+          <div class="bg-oil-700/50 rounded p-2">
+            <div class="text-gray-500">60日均</div>
+            <div class="text-white">${ovx.avg_60d}</div>
+          </div>
+        </div>
+        <div class="text-[10px] text-gray-600 mt-2">Vol-of-Vol(5d): ${ovx.vol_of_vol_5d}% · ${ovx.date}</div>
+      </div>
+    `;
+  }
+}
 // ── 航运要道监控 ─────────────────────────────────────
 function renderMaritime(maritime) {
   const panel = document.getElementById('maritime-panel');
@@ -551,7 +846,7 @@ function renderMeta(meta) {
 
 // ── 窗口自适应 ───────────────────────────────────────
 function handleResize() {
-  document.querySelectorAll('.chart-box').forEach(dom => {
+  document.querySelectorAll('.chart-box, #chart-opec-compliance, #chart-spare-capacity, #chart-spr, #chart-options-pc, #chart-hormuz-tanker').forEach(dom => {
     const instance = echarts.getInstanceByDom(dom);
     if (instance) instance.resize();
   });
@@ -560,7 +855,7 @@ function handleResize() {
 // ── 主入口 ───────────────────────────────────────────
 async function main() {
   // 并行加载所有 JSON
-  const [price, inventory, production, demand, financial, cftc, signals, meta, futures, crackSpread, globalBalance, drilling, polymarket, maritime] = await Promise.all([
+  const [price, inventory, production, demand, financial, cftc, signals, meta, futures, crackSpread, globalBalance, drilling, polymarket, maritime, globalDemand, opecProd, globalInv, optionsData] = await Promise.all([
     loadJSON('price.json'),
     loadJSON('inventory.json'),
     loadJSON('production.json'),
@@ -575,6 +870,10 @@ async function main() {
     loadJSON('drilling.json'),
     loadJSON('polymarket.json'),
     loadJSON('maritime.json'),
+    loadJSON('global_demand.json'),
+    loadJSON('opec_production.json'),
+    loadJSON('global_inventory.json'),
+    loadJSON('options.json'),
   ]);
 
   // 渲染
@@ -594,6 +893,12 @@ async function main() {
   renderNetImportChart(production);
   renderGlobalBalanceChart(globalBalance);
   renderDrillingChart(drilling);
+  renderGlobalDemandChart(globalDemand);
+  renderOPECProductionChart(opecProd);
+  renderOPECCompliance(opecProd);
+  renderImpliedStockchange(globalInv);
+  renderSPRPanel(globalInv);
+  renderOptionsPanel(optionsData);
   renderMaritime(maritime);
   renderPolymarket(polymarket);
   renderMeta(meta);

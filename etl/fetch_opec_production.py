@@ -15,6 +15,7 @@ import requests
 from datetime import datetime, timedelta
 
 from config import EIA_API_KEY, DATA_DIR
+from eia_utils import fetch_steo_series, fetch_eia_intl_production as _fetch_eia_intl
 
 
 # ── EIA STEO 全球/地区级产量 ─────────────────────────
@@ -48,8 +49,9 @@ EIA_INTL_PRODUCTION = {
     "china":      {"code": "CHN", "name": "中国"},
 }
 
-# OPEC+ 减产基准（2024 年参考产量配额，百万桶/日）
+# OPEC+ 减产基准（百万桶/日）
 # 来源: OPEC+ 第37次部长级会议 (2024年6月)
+OPEC_PLUS_QUOTA_REFERENCE = "2024-06 OPEC+ 37th JMMC"
 OPEC_PLUS_QUOTAS = {
     "saudi":      9.0,    # 自愿额外减产后的目标
     "iraq":       4.0,
@@ -61,25 +63,7 @@ OPEC_PLUS_QUOTAS = {
 }
 
 
-def _fetch_steo(series_id: str, days_back: int = 1825) -> list[dict]:
-    """拉取单个 EIA STEO series"""
-    start = (datetime.now() - timedelta(days=days_back)).strftime("%Y-%m-%d")
-    url = f"https://api.eia.gov/v2/seriesid/{series_id}"
-    params = {"api_key": EIA_API_KEY, "start": start}
-    resp = requests.get(url, params=params, timeout=30)
-    resp.raise_for_status()
-    data = resp.json().get("response", {}).get("data", [])
-    result = []
-    for item in data:
-        period = item.get("period", "")
-        value = item.get("value")
-        if value is not None:
-            try:
-                result.append({"date": period, "value": float(value)})
-            except (ValueError, TypeError):
-                pass
-    result.sort(key=lambda x: x["date"])
-    return result
+# _fetch_steo 已移至 eia_utils.fetch_steo_series
 
 
 def fetch_opec_production() -> dict:
@@ -94,7 +78,7 @@ def fetch_opec_production() -> dict:
     for key, sid in STEO_PRODUCTION_SERIES.items():
         print(f"    STEO产量: {key} ...")
         try:
-            data = _fetch_steo(sid)
+            data = fetch_steo_series(sid)
             result[key] = data
             if data:
                 latest = data[-1]
@@ -103,41 +87,9 @@ def fetch_opec_production() -> dict:
             print(f"      ✗ 失败: {e}")
             result[key] = []
 
-    # 2) EIA International 分国别产量
-    for key, info in EIA_INTL_PRODUCTION.items():
-        code = info["code"]
-        name = info["name"]
-        sid = f"INTL.57-1-{code}-TBPD.M"
-        print(f"    EIA国际: {name} ({code}) ...")
-        try:
-            sid = f"INTL.57-1-{code}-TBPD.M"
-            url = f"https://api.eia.gov/v2/seriesid/{sid}"
-            params = {
-                "api_key": EIA_API_KEY,
-                "start": (datetime.now() - timedelta(days=1825)).strftime("%Y-%m-%d"),
-            }
-            resp = requests.get(url, params=params, timeout=30)
-            resp.raise_for_status()
-            api_data = resp.json().get("response", {}).get("data", [])
-
-            records = []
-            for item in api_data:
-                period = item.get("period", "")
-                value = item.get("value")
-                if value is not None:
-                    try:
-                        # EIA International 单位是 千桶/天 (TBPD)，转换为 百万桶/天
-                        records.append({"date": period, "value": round(float(value) / 1000, 3)})
-                    except (ValueError, TypeError):
-                        pass
-            records.sort(key=lambda x: x["date"])
-            result[key] = records
-            if records:
-                latest = records[-1]
-                print(f"      → {len(records)} 月, 最新: {latest['date']} = {latest['value']:.3f} mb/d")
-        except Exception as e:
-            print(f"      ✗ 失败: {e}")
-            result[key] = []
+    # 2) EIA International 分国别产量（委托 eia_utils，转换为 mb/d）
+    intl = _fetch_eia_intl(EIA_INTL_PRODUCTION, convert_to_mbd=True)
+    result.update(intl)
 
     return result
 
@@ -289,6 +241,7 @@ def fetch_all_opec_data() -> dict:
     return {
         "production_by_country": production,
         "quota_compliance": compliance,
+        "quota_reference": OPEC_PLUS_QUOTA_REFERENCE,
         "production_trends": trends,
         "spare_capacity": spare,
         "updated": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
