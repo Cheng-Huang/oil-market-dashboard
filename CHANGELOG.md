@@ -1,5 +1,66 @@
 # Changelog
 
+## [2026-03-17f] — 证据层级框架 + 假设驱动分析 + 弱推断约束
+
+> Commit: `4e25c65` — 从「声称→验证」转变为「假设→证据→反证」框架，引入 Evidence Tier 分层和 counter-evidence 约束
+
+### 新增
+
+- **证据层级（Evidence Tier）体系** — 每个数据源标注 A/B/C/D 层级
+  - A 层（直接观测）：现货/期货价格、EIA 周度库存/需求/产量、CFTC 持仓、OVX/DXY、航运通行量、钻机数
+  - B 层（二手确认）：STEO 实际值、OPEC 国别产量
+  - C 层（市场代理）：油轮股价、ETF 期权（USO/XLE）、Polymarket
+  - D 层（推演/预测）：STEO 预测值、情景概率
+  - 混合层级标注：`maritime = "A/C"`（通行量=A，油轮股=C，不得混用）、`global_balance = "B/D"`（实际值=B，预测值=D）
+
+- **假设框架（Hypothesis-based reasoning）** — 7 类市场研判改用假设标签
+  - 每个 `MARKET_CLAIMS` 新增 `hypothesis_label` 字段（如"假设：实物供给通道受阻"）
+  - 每个研判新增 `counter_evidence` 字段，明确列出削弱假设的具体数据条件
+
+- **`reports/2026-03-17-daily-v3.md`** — 日报 v3（假设驱动版本，428行）
+  - 每个数据段落结构：事实 → 多种一致解释 → 不能确认的事项 → 反证条件
+  - 滞后 >7 天数据剔除方向性判断，降级为"背景"
+  - 4 个核心假设独立验证：地缘风险成分(中-高) / 供给通道受阻(中) / 空头回补主导(中低) / SPR 释放(中)
+  - 触发条件矩阵：供应恶化/僵持/快速缓和 三情景各自的观察指标和失效条件
+  - 数据改进路线图：按"减少 AI 补脑空间"优先级排列
+
+### 修改
+
+- **`etl/data_verification.py`**
+  - `inventory_data_sources()` 中 11 个数据源全部新增 `evidence_tier` 字段
+  - 混合数据源新增 `evidence_tier_note` 解释字段
+  - `MARKET_CLAIMS` 7 个研判全部新增 `hypothesis_label` 和 `counter_evidence`
+  - `assess_claim_verifiability()` 输出新增 `hypothesis_label` 和 `counter_evidence` 字段
+
+- **`data/signals.json`** — 每个信号新增 `evidence_tier` + `evidence_note`
+  - contradictions 中 tanker_stock_vs_maritime 措辞从因果性改为相关性（"与…一致，但也可能…"）
+
+- **`data/verification.json`** — 同步新增证据层级和假设框架字段
+
+## [2026-03-17e] — 2026-03-17 全量数据刷新 + 日报 v2
+
+> Commit: `1feafde` — 16 源 ETL 全量刷新 + 数据驱动日报
+
+### 新增
+
+- **`reports/2026-03-17-daily-v2.md`** — 日报 v2（数据驱动版本，304行）
+  - WTI $97.90, Brent $104.31; OVX 119.02（99.4% 分位，极端恐慌）
+  - 霍尔木兹通行量 -97%（AIS 数据，实际中断估计 50-70%）
+  - 深度 Backwardation：M1-M6 价差 +$15
+  - CFTC：空头回补驱动，净多仓 26% 分位
+  - 数据交叉验证 + 置信度分层
+
+### 修改
+
+- **数据文件全量刷新** — 15 个 JSON 更新（FRED, EIA, STEO, CFTC, Yahoo Finance, Polymarket, IMF PortWatch, 期权）
+  - `data/futures.json` — 期货曲线合约价格更新
+  - `data/polymarket.json` — 地缘事件概率更新
+  - `data/price.json` / `data/price_eia.json` / `data/price_realtime.json` — 价格数据刷新
+  - `data/signals.json` — 信号重新计算
+  - 其余数据文件增量更新
+
+---
+
 ## [2026-03-17d] — 代码重构: 提取公共 EIA 工具模块 + 去重 + 元数据增强
 
 ### 新增
