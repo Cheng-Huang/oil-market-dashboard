@@ -4,15 +4,11 @@
       "name": "Frontline (VLCC)",
       "segment": "crude",
       "weight": 0.3,
-      "price": 31.36,
-      "change_5d_pct": -3.4,
-      "change_20d_pct": -2.8,
-      "volume_spike_pct": -18.3,
+      "price": 32.44,
+      "change_5d_pct": 5.4,
+      "change_20d_pct": -1.1,
+      "volume_spike_pct": -23.6,
       "history": [
-        {
-          "date": "2026-02-03",
-          "close": 27.95
-        },
         {
           "date": "2026-02-04",
           "close": 27.33
@@ -127,7 +123,11 @@
         },
         {
           "date": "2026-03-17",
-          "close": 31.36
+          "close": 31.3
+        },
+        {
+          "date": "2026-03-18",
+          "close": 32.44
         }
       ]
     },
@@ -135,15 +135,11 @@
       "name": "DHT Holdings (VLCC)",
       "segment": "crude",
       "weight": 0.2,
-      "price": 17.11,
-      "change_5d_pct": -4.3,
-      "change_20d_pct": 5.2,
-      "volume_spike_pct": -20.0,
+      "price": 17.48,
+      "change_5d_pct": 3.8,
+      "change_20d_pct": 3.5,
+      "volume_spike_pct": -21.0,
       "history": [
-        {
-          "date": "2026-02-03",
-          "close": 13.96
-        },
         {
           "date": "2026-02-04",
           "close": 13.6
@@ -258,7 +254,11 @@
         },
         {
           "date": "2026-03-17",
-          "close": 17.11
+          "close": 16.89
+        },
+        {
+          "date": "2026-03-18",
+          "close": 17.48
         }
       ]
     },
@@ -266,15 +266,11 @@
       "name": "Intl Seaways",
       "segment": "mixed",
       "weight": 0.2,
-      "price": 67.74,
-      "change_5d_pct": -3.8,
-      "change_20d_pct": 3.6,
-      "volume_spike_pct": -31.4,
+      "price": 69.98,
+      "change_5d_pct": 4.9,
+      "change_20d_pct": 4.4,
+      "volume_spike_pct": -31.1,
       "history": [
-        {
-          "date": "2026-02-03",
-          "close": 61.02
-        },
         {
           "date": "2026-02-04",
           "close": 58.96
@@ -389,7 +385,11 @@
         },
         {
           "date": "2026-03-17",
-          "close": 67.74
+          "close": 67.73
+        },
+        {
+          "date": "2026-03-18",
+          "close": 69.98
         }
       ]
     },
@@ -397,15 +397,11 @@
       "name": "Scorpio Tankers",
       "segment": "product",
       "weight": 0.2,
-      "price": 67.02,
-      "change_5d_pct": -8.5,
-      "change_20d_pct": -4.7,
-      "volume_spike_pct": -1.1,
+      "price": 68.96,
+      "change_5d_pct": 2.3,
+      "change_20d_pct": -4.3,
+      "volume_spike_pct": 19.2,
       "history": [
-        {
-          "date": "2026-02-03",
-          "close": 64.6
-        },
         {
           "date": "2026-02-04",
           "close": 64.13
@@ -520,7 +516,11 @@
         },
         {
           "date": "2026-03-17",
-          "close": 67.02
+          "close": 66.3
+        },
+        {
+          "date": "2026-03-18",
+          "close": 68.96
         }
       ]
     },
@@ -528,15 +528,11 @@
       "name": "Breakwave Dry Bulk",
       "segment": "dry_bulk",
       "weight": 0.1,
-      "price": 10.5,
-      "change_5d_pct": -1.9,
-      "change_20d_pct": -10.7,
-      "volume_spike_pct": -53.7,
+      "price": 10.69,
+      "change_5d_pct": 2.7,
+      "change_20d_pct": -8.4,
+      "volume_spike_pct": -66.2,
       "history": [
-        {
-          "date": "2026-02-03",
-          "close": 10.55
-        },
         {
           "date": "2026-02-04",
           "close": 10.85
@@ -651,7 +647,11 @@
         },
         {
           "date": "2026-03-17",
-          "close": 10.5
+          "close": 10.43
+        },
+        {
+          "date": "2026-03-18",
+          "close": 10.69
         }
       ]
     }
@@ -682,7 +682,7 @@
   },
   "cross_validation": {
     "hormuz_tanker_wow": 150.0,
-    "crude_tanker_stock_5d": -3.8
+    "crude_tanker_stock_5d": 4.8
   },
   "unctad": {
     "source": "UNCTAD LSCI",
@@ -697,5 +697,5 @@
       "油轮数 150% vs 容量 9243% → 船型结构变化"
     ]
   },
-  "updated": "2026-03-17T14:49:42Z"
+  "updated": "2026-03-18T14:56:50Z"
 }
