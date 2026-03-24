@@ -5,7 +5,7 @@
       "origin": "FRED + EIA",
       "evidence_tier": "A",
       "frequency": "日频（工作日）",
-      "latest": "2026-03-23",
+      "latest": "2026-03-24",
       "lag_days": 0,
       "covers": [
         "当前油价水平",
@@ -22,7 +22,7 @@
       "origin": "Yahoo Finance",
       "evidence_tier": "A",
       "frequency": "日频",
-      "latest": "2026-03-23",
+      "latest": "2026-03-24",
       "lag_days": 0,
       "covers": [
         "期限结构(Backwardation/Contango)",
@@ -40,7 +40,7 @@
       "evidence_tier": "A",
       "frequency": "周频（每周三发布，截至上周五）",
       "latest": "2026-03-13",
-      "lag_days": 10,
+      "lag_days": 11,
       "covers": [
         "美国库存趋势",
         "库欣交割库水平",
@@ -58,7 +58,7 @@
       "evidence_tier": "A",
       "frequency": "周频",
       "latest": "2026-03-13",
-      "lag_days": 10,
+      "lag_days": 11,
       "covers": [
         "美国汽油需求趋势",
         "馏分油（柴油）需求趋势"
@@ -75,7 +75,7 @@
       "evidence_tier": "A",
       "frequency": "日频",
       "latest": "2026-03-16",
-      "lag_days": 7,
+      "lag_days": 8,
       "covers": [
         "炼厂利润趋势",
         "汽油vs柴油裂解分化",
@@ -111,7 +111,7 @@
       "evidence_tier": "A",
       "frequency": "周频（周五发布，截至周二）",
       "latest": "2026-03-17",
-      "lag_days": 6,
+      "lag_days": 7,
       "covers": [
         "投机净多头水平",
         "多空驱动分解",
@@ -128,8 +128,8 @@
       "origin": "FRED",
       "evidence_tier": "A",
       "frequency": "日频",
-      "latest": "2026-03-20",
-      "lag_days": 3,
+      "latest": "2026-03-23",
+      "lag_days": 1,
       "covers": [
         "美元强弱",
         "原油波动率水平",
@@ -146,7 +146,7 @@
       "evidence_tier": "A/C",
       "evidence_tier_note": "航运通行量为A层直接观测，油轮股价为C层市场代理，不得混用",
       "frequency": "日频",
-      "latest": "2026-03-23",
+      "latest": "2026-03-24",
       "lag_days": 0,
       "covers": [
         "霍尔木兹/曼德/苏伊士/马六甲通行趋势",
@@ -182,7 +182,7 @@
       "evidence_tier": "A",
       "frequency": "周频",
       "latest": "2026-03-13",
-      "lag_days": 10,
+      "lag_days": 11,
       "covers": [
         "美国产量趋势",
         "炼厂开工率",
@@ -249,8 +249,8 @@
       "claim_id": "demand_weakness",
       "claim": "需求走弱/衰退风险",
       "hypothesis_label": "假设：终端需求面临百万桶/日级别走弱",
-      "confidence": "high",
-      "verdict": "项目数据可以较好地验证此研判",
+      "confidence": "medium",
+      "verdict": "项目数据可以部分验证，但存在盲区",
       "checks": [
         {
           "source": "us_demand",
@@ -258,7 +258,7 @@
           "weight": "primary",
           "check": "是否连续2-4周低于季节性均值",
           "status": "ok",
-          "lag_days": 10,
+          "lag_days": 11,
           "caveat": null
         },
         {
@@ -266,8 +266,8 @@
           "field": "裂解价差趋势",
           "weight": "primary",
           "check": "3-2-1裂解是否持续2-4周下行（单日不够）",
-          "status": "ok",
-          "lag_days": 7,
+          "status": "stale",
+          "lag_days": 8,
           "caveat": null
         },
         {
@@ -276,7 +276,7 @@
           "weight": "supporting",
           "check": "汽油/馏分油库存是否异常累积",
           "status": "ok",
-          "lag_days": 10,
+          "lag_days": 11,
           "caveat": null
         },
         {
@@ -285,15 +285,15 @@
           "weight": "supporting",
           "check": "开工率是否主动下调",
           "status": "ok",
-          "lag_days": 10,
+          "lag_days": 11,
           "caveat": null
         }
       ],
       "cannot_verify": "全球需求（尤其中国/印度）；美国以外的炼厂利润",
       "counter_evidence": "如果汽油+馏分油需求回升、裂解价差企稳、炼厂开工率上行，则削弱此假设",
       "improve_hint": "可接入IEA月报API或中国海关进口数据来补充全球需求视角",
-      "primary_verified": "2/2",
-      "total_verified": "4/4"
+      "primary_verified": "1/2",
+      "total_verified": "3/4"
     },
     {
       "claim_id": "geopolitical_premium",
@@ -317,7 +317,7 @@
           "weight": "primary",
           "check": "OVX是否远超正常水平（>40为恐慌）",
           "status": "ok",
-          "lag_days": 3,
+          "lag_days": 1,
           "caveat": null
         },
         {
@@ -349,16 +349,16 @@
       "claim_id": "refinery_margin_squeeze",
       "claim": "炼厂利润挤压/减产预期",
       "hypothesis_label": "假设：炼厂利润已下降至减产引发水平",
-      "confidence": "high",
-      "verdict": "项目数据可以较好地验证此研判",
+      "confidence": "medium",
+      "verdict": "项目数据可以部分验证，但存在盲区",
       "checks": [
         {
           "source": "crack_spread",
           "field": "汽油/柴油裂解",
           "weight": "primary",
           "check": "裂解价差是否持续2-4周低于历史均值",
-          "status": "ok",
-          "lag_days": 7,
+          "status": "stale",
+          "lag_days": 8,
           "caveat": null
         },
         {
@@ -367,7 +367,7 @@
           "weight": "primary",
           "check": "开工率是否开始下降",
           "status": "ok",
-          "lag_days": 10,
+          "lag_days": 11,
           "caveat": null
         },
         {
@@ -376,7 +376,7 @@
           "weight": "supporting",
           "check": "需求端是否同步走弱（交叉验证）",
           "status": "ok",
-          "lag_days": 10,
+          "lag_days": 11,
           "caveat": null
         },
         {
@@ -385,15 +385,15 @@
           "weight": "supporting",
           "check": "成品油是否累库（供大于求证据）",
           "status": "ok",
-          "lag_days": 10,
+          "lag_days": 11,
           "caveat": null
         }
       ],
       "cannot_verify": "单个炼厂的实际生产成本和利润",
       "counter_evidence": "如果裂解价差回升、炼厂开工率稳定、成品油库存转为去库，则削弱此假设",
       "improve_hint": "可接入EIA炼厂月度报告(EIA-820)获取更细粒度的开工率和产率数据",
-      "primary_verified": "2/2",
-      "total_verified": "4/4"
+      "primary_verified": "1/2",
+      "total_verified": "3/4"
     },
     {
       "claim_id": "speculative_positioning",
@@ -408,7 +408,7 @@
           "weight": "primary",
           "check": "净多头变化由多头加仓还是空头回补驱动",
           "status": "ok",
-          "lag_days": 6,
+          "lag_days": 7,
           "caveat": null
         },
         {
@@ -417,7 +417,7 @@
           "weight": "supporting",
           "check": "波动率环境是否有利于投机",
           "status": "ok",
-          "lag_days": 3,
+          "lag_days": 1,
           "caveat": null
         },
         {
@@ -467,7 +467,7 @@
           "weight": "supporting",
           "check": "交割库库存水平（直接影响近月定价）",
           "status": "ok",
-          "lag_days": 10,
+          "lag_days": 11,
           "caveat": null
         },
         {
@@ -476,7 +476,7 @@
           "weight": "supporting",
           "check": "是否有大量资金集中在近月",
           "status": "ok",
-          "lag_days": 6,
+          "lag_days": 7,
           "caveat": null
         }
       ],
@@ -499,7 +499,7 @@
           "weight": "primary",
           "check": "SPR当前水平和近期变化趋势",
           "status": "ok",
-          "lag_days": 10,
+          "lag_days": 11,
           "caveat": null
         },
         {
@@ -529,45 +529,50 @@
     }
   ],
   "temporal": {
-    "effective_window_days": 10,
-    "max_lag_days": 10,
+    "effective_window_days": 11,
+    "max_lag_days": 11,
     "reliability": "degraded",
     "high_volatility": true,
-    "ovx": 91.85,
+    "ovx": 89.78,
     "stale_sources": [
       {
         "source": "us_inventory",
-        "lag": 10,
+        "lag": 11,
         "desc": "美国商业库存 (原油/库欣/汽油/馏分油)"
       },
       {
         "source": "us_demand",
-        "lag": 10,
+        "lag": 11,
         "desc": "美国表观需求 (汽油/馏分油)"
       },
       {
+        "source": "crack_spread",
+        "lag": 8,
+        "desc": "裂解价差 (3-2-1, 汽油, 柴油)"
+      },
+      {
         "source": "us_production",
-        "lag": 10,
+        "lag": 11,
         "desc": "美国产量/炼厂/进口"
       }
     ],
     "lag_map": {
       "spot_price": 0,
       "futures_curve": 0,
-      "us_inventory": 10,
-      "us_demand": 10,
-      "crack_spread": 7,
-      "cftc_positioning": 6,
-      "financial": 3,
+      "us_inventory": 11,
+      "us_demand": 11,
+      "crack_spread": 8,
+      "cftc_positioning": 7,
+      "financial": 1,
       "maritime": 0,
       "polymarket": 0,
-      "us_production": 10
+      "us_production": 11
     },
-    "warning": "当前OVX=91.8（高波动率环境），但数据最大滞后10天。高波动率下每天价格可能变动3-5%+，10天的数据差距意味着混合分析可能严重失真。建议：(1)优先依赖最新的数据源(期货/航运)；(2)滞后数据仅作为背景参考，不用于方向性判断。"
+    "warning": "当前OVX=89.8（高波动率环境），但数据最大滞后11天。高波动率下每天价格可能变动3-5%+，11天的数据差距意味着混合分析可能严重失真。建议：(1)优先依赖最新的数据源(期货/航运)；(2)滞后数据仅作为背景参考，不用于方向性判断。"
   },
   "gaps": {
     "total_gaps": 27,
-    "weak_claims": 2,
+    "weak_claims": 4,
     "improvements": [
       {
         "priority": "high",
@@ -686,5 +691,5 @@
       ]
     }
   },
-  "generated_at": "2026-03-23T14:49:25.522378"
+  "generated_at": "2026-03-24T14:51:41.669716"
 }

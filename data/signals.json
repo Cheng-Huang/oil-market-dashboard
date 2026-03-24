@@ -16,9 +16,9 @@
     "label": "Backwardation",
     "source": "futures",
     "m1_m2_spread": 2.75,
-    "m1_m6_spread": 13.2,
-    "curve_front": 89.83,
-    "curve_back": 71.86,
+    "m1_m6_spread": 13.1,
+    "curve_front": 92.12,
+    "curve_back": 73.97,
     "n_contracts": 12
   },
   "demand": {
@@ -93,9 +93,9 @@
     "signal": "bearish",
     "evidence_tier": "A",
     "evidence_note": "DXY/OVX/实际利率为直接市场观测",
-    "dxy_vs_ma200": 0.45,
-    "real_rate": 1.88,
-    "ovx": 91.85
+    "dxy_vs_ma200": 0.21,
+    "real_rate": 2.01,
+    "ovx": 89.78
   },
   "positioning": {
     "name": "持仓拥挤度",
@@ -114,7 +114,14 @@
     "context_note": "当前净多仓位于历史28%分位（P25=91742, P75=174585），仍有较大上行空间"
   },
   "cross_analysis": {
-    "findings": [],
+    "findings": [
+      {
+        "type": "hormuz_critical",
+        "severity": "critical",
+        "data_plausibility": "plausible",
+        "detail": "霍尔木兹油轮通行量周环比-75.0%，属极端事件。"
+      }
+    ],
     "contradictions": [
       {
         "type": "curve_vs_balance",
@@ -131,9 +138,9 @@
     "spr_low": false,
     "spr_4w_change": 1.0,
     "spr_trend": "stable",
-    "current_wti": 89.83,
-    "detail": "当前无明显触发 SPR 释放的条件。",
-    "release_likelihood": "low",
+    "current_wti": 92.12,
+    "detail": "霍尔木兹严重中断但油价尚在可控范围，IEA 协调响应可能以预警为主，实际释放视后续价格走势。",
+    "release_likelihood": "moderate",
     "max_release_days": 94.0,
     "capacity_note": "SPR 当前 415 百万桶，按最大速率 4.4 百万桶/日可持续 94 天。"
   },
@@ -161,8 +168,8 @@
     ]
   },
   "price_freshness": {
-    "spot_date": "2026-03-23",
-    "futures_date": "2026-03-23",
+    "spot_date": "2026-03-24",
+    "futures_date": "2026-03-24",
     "lag_days": 0,
     "temporal_risk": "low"
   },
