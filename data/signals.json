@@ -15,10 +15,10 @@
     "evidence_note": "期货价格为直接市场观测",
     "label": "Backwardation",
     "source": "futures",
-    "m1_m2_spread": 2.75,
-    "m1_m6_spread": 13.1,
-    "curve_front": 92.12,
-    "curve_back": 73.97,
+    "m1_m2_spread": 2.47,
+    "m1_m6_spread": 11.07,
+    "curve_front": 88.69,
+    "curve_back": 72.43,
     "n_contracts": 12
   },
   "demand": {
@@ -95,7 +95,7 @@
     "evidence_note": "DXY/OVX/实际利率为直接市场观测",
     "dxy_vs_ma200": 0.21,
     "real_rate": 2.01,
-    "ovx": 89.78
+    "ovx": 89.34
   },
   "positioning": {
     "name": "持仓拥挤度",
@@ -138,7 +138,7 @@
     "spr_low": false,
     "spr_4w_change": 1.0,
     "spr_trend": "stable",
-    "current_wti": 92.12,
+    "current_wti": 88.69,
     "detail": "霍尔木兹严重中断但油价尚在可控范围，IEA 协调响应可能以预警为主，实际释放视后续价格走势。",
     "release_likelihood": "moderate",
     "max_release_days": 94.0,
@@ -168,8 +168,8 @@
     ]
   },
   "price_freshness": {
-    "spot_date": "2026-03-24",
-    "futures_date": "2026-03-24",
+    "spot_date": "2026-03-25",
+    "futures_date": "2026-03-25",
     "lag_days": 0,
     "temporal_risk": "low"
   },
