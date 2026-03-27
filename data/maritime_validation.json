@@ -4,15 +4,11 @@
       "name": "Frontline (VLCC)",
       "segment": "crude",
       "weight": 0.3,
-      "price": 34.48,
-      "change_5d_pct": 7.2,
-      "change_20d_pct": -6.3,
-      "volume_spike_pct": -28.6,
+      "price": 33.44,
+      "change_5d_pct": -1.1,
+      "change_20d_pct": -12.9,
+      "volume_spike_pct": -29.9,
       "history": [
-        {
-          "date": "2026-02-12",
-          "close": 28.78
-        },
         {
           "date": "2026-02-13",
           "close": 29.97
@@ -127,7 +123,11 @@
         },
         {
           "date": "2026-03-26",
-          "close": 34.48
+          "close": 33.57
+        },
+        {
+          "date": "2026-03-27",
+          "close": 33.44
         }
       ]
     },
@@ -135,15 +135,11 @@
       "name": "DHT Holdings (VLCC)",
       "segment": "crude",
       "weight": 0.2,
-      "price": 18.19,
-      "change_5d_pct": 5.4,
-      "change_20d_pct": -6.6,
-      "volume_spike_pct": -34.3,
+      "price": 17.88,
+      "change_5d_pct": 0.6,
+      "change_20d_pct": -9.0,
+      "volume_spike_pct": -35.1,
       "history": [
-        {
-          "date": "2026-02-12",
-          "close": 15.04
-        },
         {
           "date": "2026-02-13",
           "close": 15.52
@@ -258,7 +254,11 @@
         },
         {
           "date": "2026-03-26",
-          "close": 18.19
+          "close": 17.82
+        },
+        {
+          "date": "2026-03-27",
+          "close": 17.88
         }
       ]
     },
@@ -266,15 +266,11 @@
       "name": "Intl Seaways",
       "segment": "mixed",
       "weight": 0.2,
-      "price": 71.64,
-      "change_5d_pct": 5.7,
-      "change_20d_pct": -2.2,
-      "volume_spike_pct": -29.7,
+      "price": 70.4,
+      "change_5d_pct": 0.6,
+      "change_20d_pct": -5.1,
+      "volume_spike_pct": -49.2,
       "history": [
-        {
-          "date": "2026-02-12",
-          "close": 60.2
-        },
         {
           "date": "2026-02-13",
           "close": 62.03
@@ -389,7 +385,11 @@
         },
         {
           "date": "2026-03-26",
-          "close": 71.64
+          "close": 70.01
+        },
+        {
+          "date": "2026-03-27",
+          "close": 70.4
         }
       ]
     },
@@ -397,15 +397,11 @@
       "name": "Scorpio Tankers",
       "segment": "product",
       "weight": 0.2,
-      "price": 75.07,
-      "change_5d_pct": 10.4,
-      "change_20d_pct": -4.5,
-      "volume_spike_pct": -12.5,
+      "price": 74.45,
+      "change_5d_pct": 5.3,
+      "change_20d_pct": -4.3,
+      "volume_spike_pct": -23.8,
       "history": [
-        {
-          "date": "2026-02-12",
-          "close": 67.38
-        },
         {
           "date": "2026-02-13",
           "close": 70.11
@@ -520,7 +516,11 @@
         },
         {
           "date": "2026-03-26",
-          "close": 75.07
+          "close": 73.91
+        },
+        {
+          "date": "2026-03-27",
+          "close": 74.45
         }
       ]
     },
@@ -528,15 +528,11 @@
       "name": "Breakwave Dry Bulk",
       "segment": "dry_bulk",
       "weight": 0.1,
-      "price": 10.14,
-      "change_5d_pct": 1.3,
-      "change_20d_pct": -16.0,
-      "volume_spike_pct": -65.5,
+      "price": 9.99,
+      "change_5d_pct": 0.1,
+      "change_20d_pct": -18.2,
+      "volume_spike_pct": -72.2,
       "history": [
-        {
-          "date": "2026-02-12",
-          "close": 11.3
-        },
         {
           "date": "2026-02-13",
           "close": 11.49
@@ -651,7 +647,11 @@
         },
         {
           "date": "2026-03-26",
-          "close": 10.14
+          "close": 10.0
+        },
+        {
+          "date": "2026-03-27",
+          "close": 9.99
         }
       ]
     }
@@ -682,7 +682,7 @@
   },
   "cross_validation": {
     "hormuz_tanker_wow": -75.0,
-    "crude_tanker_stock_5d": 6.3,
+    "crude_tanker_stock_5d": -0.1,
     "interpretation": "油轮股价平稳 + 霍尔木兹通行骤降 → 市场已消化封锁预期，或 PortWatch 数据噪声较大",
     "portwatch_confirmed": "uncertain"
   },
@@ -699,5 +699,5 @@
       "油轮股价平稳 + 霍尔木兹通行骤降 → 市场已消化封锁预期，或 PortWatch 数据噪声较大"
     ]
   },
-  "updated": "2026-03-26T14:57:11Z"
+  "updated": "2026-03-27T14:43:21Z"
 }

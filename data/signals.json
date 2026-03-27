@@ -15,10 +15,10 @@
     "evidence_note": "期货价格为直接市场观测",
     "label": "Backwardation",
     "source": "futures",
-    "m1_m2_spread": 3.17,
-    "m1_m6_spread": 13.73,
-    "curve_front": 93.64,
-    "curve_back": 73.98,
+    "m1_m2_spread": 4.23,
+    "m1_m6_spread": 16.92,
+    "curve_front": 97.79,
+    "curve_back": 74.46,
     "n_contracts": 12
   },
   "demand": {
@@ -94,8 +94,8 @@
     "evidence_tier": "A",
     "evidence_note": "DXY/OVX/实际利率为直接市场观测",
     "dxy_vs_ma200": 0.21,
-    "real_rate": 2.06,
-    "ovx": 90.16
+    "real_rate": 2.02,
+    "ovx": 92.37
   },
   "positioning": {
     "name": "持仓拥挤度",
@@ -138,9 +138,9 @@
     "spr_low": false,
     "spr_4w_change": 1.0,
     "spr_trend": "stable",
-    "current_wti": 93.64,
-    "detail": "霍尔木兹严重中断但油价尚在可控范围，IEA 协调响应可能以预警为主，实际释放视后续价格走势。",
-    "release_likelihood": "moderate",
+    "current_wti": 97.79,
+    "detail": "WTI $98 超过政策干预阈值 $95.0，叠加航运数据显示霍尔木兹通行量异常。SPR 释放概率较高，但取决于：(1)是否存在实体供应缺口（当前STEO显示供需仍为过剩）；(2)油价上涨持续时间；(3)政治窗口期。历史上SPR释放通常需要明确的实体供给中断，而非仅价格高位。",
+    "release_likelihood": "high",
     "max_release_days": 94.0,
     "capacity_note": "SPR 当前 415 百万桶，按最大速率 4.4 百万桶/日可持续 94 天。"
   },
@@ -168,8 +168,8 @@
     ]
   },
   "price_freshness": {
-    "spot_date": "2026-03-26",
-    "futures_date": "2026-03-26",
+    "spot_date": "2026-03-27",
+    "futures_date": "2026-03-27",
     "lag_days": 0,
     "temporal_risk": "low"
   },

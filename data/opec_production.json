@@ -9268,6 +9268,10 @@
       {
         "date": "2025-11",
         "value": 9.94
+      },
+      {
+        "date": "2025-12",
+        "value": 10.06
       }
     ],
     "iran": [
@@ -11810,6 +11814,10 @@
       {
         "date": "2025-11",
         "value": 4.17
+      },
+      {
+        "date": "2025-12",
+        "value": 4.22
       }
     ],
     "iraq": [
@@ -14352,6 +14360,10 @@
       {
         "date": "2025-11",
         "value": 4.391
+      },
+      {
+        "date": "2025-12",
+        "value": 4.321
       }
     ],
     "uae": [
@@ -16894,6 +16906,10 @@
       {
         "date": "2025-11",
         "value": 4.05
+      },
+      {
+        "date": "2025-12",
+        "value": 3.99
       }
     ],
     "kuwait": [
@@ -19436,6 +19452,10 @@
       {
         "date": "2025-11",
         "value": 2.64
+      },
+      {
+        "date": "2025-12",
+        "value": 2.69
       }
     ],
     "venezuela": [
@@ -21978,6 +21998,10 @@
       {
         "date": "2025-11",
         "value": 1.005
+      },
+      {
+        "date": "2025-12",
+        "value": 0.905
       }
     ],
     "nigeria": [
@@ -24520,6 +24544,10 @@
       {
         "date": "2025-11",
         "value": 1.562
+      },
+      {
+        "date": "2025-12",
+        "value": 1.57
       }
     ],
     "libya": [
@@ -27062,6 +27090,10 @@
       {
         "date": "2025-11",
         "value": 1.358
+      },
+      {
+        "date": "2025-12",
+        "value": 1.428
       }
     ],
     "algeria": [
@@ -29603,6 +29635,10 @@
       },
       {
         "date": "2025-11",
+        "value": 1.18
+      },
+      {
+        "date": "2025-12",
         "value": 1.18
       }
     ],
@@ -32146,6 +32182,10 @@
       {
         "date": "2025-11",
         "value": 1.045
+      },
+      {
+        "date": "2025-12",
+        "value": 1.005
       }
     ],
     "russia": [
@@ -33776,6 +33816,10 @@
       {
         "date": "2025-11",
         "value": 10.056
+      },
+      {
+        "date": "2025-12",
+        "value": 9.977
       }
     ],
     "canada": [
@@ -36318,6 +36362,10 @@
       {
         "date": "2025-11",
         "value": 5.234
+      },
+      {
+        "date": "2025-12",
+        "value": 5.23
       }
     ],
     "brazil": [
@@ -38332,6 +38380,10 @@
       {
         "date": "2025-11",
         "value": 3.773
+      },
+      {
+        "date": "2025-12",
+        "value": 4.015
       }
     ],
     "norway": [
@@ -40874,6 +40926,10 @@
       {
         "date": "2025-11",
         "value": 1.899
+      },
+      {
+        "date": "2025-12",
+        "value": 1.984
       }
     ],
     "mexico": [
@@ -43416,6 +43472,10 @@
       {
         "date": "2025-11",
         "value": 1.73
+      },
+      {
+        "date": "2025-12",
+        "value": 1.75
       }
     ],
     "china": [
@@ -45958,6 +46018,10 @@
       {
         "date": "2025-11",
         "value": 4.31
+      },
+      {
+        "date": "2025-12",
+        "value": 4.19
       }
     ]
   },
@@ -45965,34 +46029,34 @@
     "by_country": {
       "saudi": {
         "quota_mbd": 9.0,
-        "actual_mbd": 9.94,
-        "deviation_mbd": 0.94,
-        "compliance_pct": -10.4,
-        "date": "2025-11",
+        "actual_mbd": 10.06,
+        "deviation_mbd": 1.06,
+        "compliance_pct": -11.8,
+        "date": "2025-12",
         "status": "under_cut"
       },
       "iraq": {
         "quota_mbd": 4.0,
-        "actual_mbd": 4.39,
-        "deviation_mbd": 0.39,
-        "compliance_pct": -9.8,
-        "date": "2025-11",
+        "actual_mbd": 4.32,
+        "deviation_mbd": 0.32,
+        "compliance_pct": -8.0,
+        "date": "2025-12",
         "status": "under_cut"
       },
       "uae": {
         "quota_mbd": 2.9,
-        "actual_mbd": 4.05,
-        "deviation_mbd": 1.15,
-        "compliance_pct": -39.7,
-        "date": "2025-11",
+        "actual_mbd": 3.99,
+        "deviation_mbd": 1.09,
+        "compliance_pct": -37.6,
+        "date": "2025-12",
         "status": "under_cut"
       },
       "kuwait": {
         "quota_mbd": 2.4,
-        "actual_mbd": 2.64,
-        "deviation_mbd": 0.24,
-        "compliance_pct": -10.0,
-        "date": "2025-11",
+        "actual_mbd": 2.69,
+        "deviation_mbd": 0.29,
+        "compliance_pct": -12.1,
+        "date": "2025-12",
         "status": "under_cut"
       },
       "algeria": {
@@ -46000,50 +46064,42 @@
         "actual_mbd": 1.18,
         "deviation_mbd": 0.28,
         "compliance_pct": -31.1,
-        "date": "2025-11",
+        "date": "2025-12",
         "status": "under_cut"
       },
       "nigeria": {
         "quota_mbd": 1.4,
-        "actual_mbd": 1.56,
-        "deviation_mbd": 0.16,
-        "compliance_pct": -11.6,
-        "date": "2025-11",
+        "actual_mbd": 1.57,
+        "deviation_mbd": 0.17,
+        "compliance_pct": -12.1,
+        "date": "2025-12",
         "status": "under_cut"
       },
       "russia": {
         "quota_mbd": 9.0,
-        "actual_mbd": 10.06,
-        "deviation_mbd": 1.06,
-        "compliance_pct": -11.7,
-        "date": "2025-11",
+        "actual_mbd": 9.98,
+        "deviation_mbd": 0.98,
+        "compliance_pct": -10.9,
+        "date": "2025-12",
         "status": "under_cut"
       }
     },
     "overall": {
       "total_quota_mbd": 29.599999999999998,
-      "total_actual_mbd": 33.82,
-      "total_deviation_mbd": 4.22,
-      "overall_compliance_pct": -14.3
+      "total_actual_mbd": 33.79,
+      "total_deviation_mbd": 4.19,
+      "overall_compliance_pct": -14.2
     }
   },
   "quota_reference": "2024-06 OPEC+ 37th JMMC",
   "production_trends": [
     {
       "country": "brazil",
-      "date": "2025-11",
-      "value_mbd": 3.77,
-      "mom_change_mbd": -0.257,
-      "mom_change_pct": -6.4,
-      "3m_change_mbd": -0.139
-    },
-    {
-      "country": "canada",
-      "date": "2025-11",
-      "value_mbd": 5.23,
-      "mom_change_mbd": 0.252,
-      "mom_change_pct": 5.1,
-      "3m_change_mbd": 0.228
+      "date": "2025-12",
+      "value_mbd": 4.01,
+      "mom_change_mbd": 0.242,
+      "mom_change_pct": 6.4,
+      "3m_change_mbd": -0.015
     },
     {
       "country": "us_production",
@@ -46054,188 +46110,196 @@
       "3m_change_mbd": 0.047
     },
     {
-      "country": "iran",
-      "date": "2025-11",
-      "value_mbd": 4.17,
-      "mom_change_mbd": -0.1,
-      "mom_change_pct": -2.3,
-      "3m_change_mbd": -0.03
-    },
-    {
-      "country": "iraq",
-      "date": "2025-11",
-      "value_mbd": 4.39,
-      "mom_change_mbd": -0.07,
-      "mom_change_pct": -1.6,
-      "3m_change_mbd": -0.07
+      "country": "saudi",
+      "date": "2025-12",
+      "value_mbd": 10.06,
+      "mom_change_mbd": 0.12,
+      "mom_change_pct": 1.2,
+      "3m_change_mbd": 0.07
     },
     {
       "country": "china",
-      "date": "2025-11",
-      "value_mbd": 4.31,
-      "mom_change_mbd": 0.07,
-      "mom_change_pct": 1.7,
-      "3m_change_mbd": -0.01
-    },
-    {
-      "country": "nigeria",
-      "date": "2025-11",
-      "value_mbd": 1.56,
-      "mom_change_mbd": -0.062,
-      "mom_change_pct": -3.8,
-      "3m_change_mbd": -0.104
-    },
-    {
-      "country": "uae",
-      "date": "2025-11",
-      "value_mbd": 4.05,
-      "mom_change_mbd": 0.06,
-      "mom_change_pct": 1.5,
-      "3m_change_mbd": 0.03
-    },
-    {
-      "country": "saudi",
-      "date": "2025-11",
-      "value_mbd": 9.94,
-      "mom_change_mbd": -0.05,
-      "mom_change_pct": -0.5,
-      "3m_change_mbd": -0.28
-    },
-    {
-      "country": "kuwait",
-      "date": "2025-11",
-      "value_mbd": 2.64,
-      "mom_change_mbd": 0.04,
-      "mom_change_pct": 1.5,
-      "3m_change_mbd": -0.005
-    },
-    {
-      "country": "algeria",
-      "date": "2025-11",
-      "value_mbd": 1.18,
-      "mom_change_mbd": 0.03,
-      "mom_change_pct": 2.6,
-      "3m_change_mbd": 0.02
-    },
-    {
-      "country": "norway",
-      "date": "2025-11",
-      "value_mbd": 1.9,
-      "mom_change_mbd": -0.023,
-      "mom_change_pct": -1.2,
-      "3m_change_mbd": -0.023
-    },
-    {
-      "country": "angola",
-      "date": "2025-11",
-      "value_mbd": 1.04,
-      "mom_change_mbd": 0.02,
-      "mom_change_pct": 2.0,
-      "3m_change_mbd": 0.0
-    },
-    {
-      "country": "russia",
-      "date": "2025-11",
-      "value_mbd": 10.06,
-      "mom_change_mbd": -0.018,
-      "mom_change_pct": -0.2,
-      "3m_change_mbd": 0.11
-    },
-    {
-      "country": "mexico",
-      "date": "2025-11",
-      "value_mbd": 1.73,
-      "mom_change_mbd": -0.001,
-      "mom_change_pct": -0.1,
-      "3m_change_mbd": -0.012
+      "date": "2025-12",
+      "value_mbd": 4.19,
+      "mom_change_mbd": -0.12,
+      "mom_change_pct": -2.8,
+      "3m_change_mbd": -0.05
     },
     {
       "country": "venezuela",
-      "date": "2025-11",
-      "value_mbd": 1.0,
-      "mom_change_mbd": 0.0,
-      "mom_change_pct": 0.0,
-      "3m_change_mbd": 0.005
+      "date": "2025-12",
+      "value_mbd": 0.91,
+      "mom_change_mbd": -0.1,
+      "mom_change_pct": -10.0,
+      "3m_change_mbd": -0.1
+    },
+    {
+      "country": "norway",
+      "date": "2025-12",
+      "value_mbd": 1.98,
+      "mom_change_mbd": 0.085,
+      "mom_change_pct": 4.5,
+      "3m_change_mbd": 0.062
+    },
+    {
+      "country": "russia",
+      "date": "2025-12",
+      "value_mbd": 9.98,
+      "mom_change_mbd": -0.079,
+      "mom_change_pct": -0.8,
+      "3m_change_mbd": -0.097
+    },
+    {
+      "country": "iraq",
+      "date": "2025-12",
+      "value_mbd": 4.32,
+      "mom_change_mbd": -0.07,
+      "mom_change_pct": -1.6,
+      "3m_change_mbd": -0.14
     },
     {
       "country": "libya",
-      "date": "2025-11",
-      "value_mbd": 1.36,
+      "date": "2025-12",
+      "value_mbd": 1.43,
+      "mom_change_mbd": 0.07,
+      "mom_change_pct": 5.2,
+      "3m_change_mbd": 0.07
+    },
+    {
+      "country": "uae",
+      "date": "2025-12",
+      "value_mbd": 3.99,
+      "mom_change_mbd": -0.06,
+      "mom_change_pct": -1.5,
+      "3m_change_mbd": 0.0
+    },
+    {
+      "country": "iran",
+      "date": "2025-12",
+      "value_mbd": 4.22,
+      "mom_change_mbd": 0.05,
+      "mom_change_pct": 1.2,
+      "3m_change_mbd": -0.05
+    },
+    {
+      "country": "kuwait",
+      "date": "2025-12",
+      "value_mbd": 2.69,
+      "mom_change_mbd": 0.05,
+      "mom_change_pct": 1.9,
+      "3m_change_mbd": 0.09
+    },
+    {
+      "country": "angola",
+      "date": "2025-12",
+      "value_mbd": 1.0,
+      "mom_change_mbd": -0.04,
+      "mom_change_pct": -3.8,
+      "3m_change_mbd": -0.02
+    },
+    {
+      "country": "mexico",
+      "date": "2025-12",
+      "value_mbd": 1.75,
+      "mom_change_mbd": 0.02,
+      "mom_change_pct": 1.2,
+      "3m_change_mbd": 0.019
+    },
+    {
+      "country": "nigeria",
+      "date": "2025-12",
+      "value_mbd": 1.57,
+      "mom_change_mbd": 0.008,
+      "mom_change_pct": 0.5,
+      "3m_change_mbd": -0.054
+    },
+    {
+      "country": "canada",
+      "date": "2025-12",
+      "value_mbd": 5.23,
+      "mom_change_mbd": -0.004,
+      "mom_change_pct": -0.1,
+      "3m_change_mbd": 0.248
+    },
+    {
+      "country": "algeria",
+      "date": "2025-12",
+      "value_mbd": 1.18,
       "mom_change_mbd": 0.0,
       "mom_change_pct": 0.0,
-      "3m_change_mbd": -0.04
+      "3m_change_mbd": 0.03
     }
   ],
   "spare_capacity": {
     "by_country": {
       "saudi": {
-        "current_mbd": 9.94,
+        "current_mbd": 10.06,
         "estimated_peak_mbd": 11.23,
-        "spare_capacity_mbd": 1.29,
-        "date": "2025-11"
-      },
-      "iran": {
-        "current_mbd": 4.17,
-        "estimated_peak_mbd": 4.27,
-        "spare_capacity_mbd": 0.1,
-        "date": "2025-11"
+        "spare_capacity_mbd": 1.17,
+        "date": "2025-12"
       },
       "iraq": {
-        "current_mbd": 4.39,
+        "current_mbd": 4.32,
         "estimated_peak_mbd": 4.61,
-        "spare_capacity_mbd": 0.21,
-        "date": "2025-11"
+        "spare_capacity_mbd": 0.28,
+        "date": "2025-12"
+      },
+      "uae": {
+        "current_mbd": 3.99,
+        "estimated_peak_mbd": 4.05,
+        "spare_capacity_mbd": 0.06,
+        "date": "2025-12"
       },
       "kuwait": {
-        "current_mbd": 2.64,
+        "current_mbd": 2.69,
         "estimated_peak_mbd": 2.94,
-        "spare_capacity_mbd": 0.3,
-        "date": "2025-11"
+        "spare_capacity_mbd": 0.25,
+        "date": "2025-12"
+      },
+      "venezuela": {
+        "current_mbd": 0.91,
+        "estimated_peak_mbd": 1.0,
+        "spare_capacity_mbd": 0.1,
+        "date": "2025-12"
       },
       "nigeria": {
-        "current_mbd": 1.56,
+        "current_mbd": 1.57,
         "estimated_peak_mbd": 1.69,
-        "spare_capacity_mbd": 0.13,
-        "date": "2025-11"
+        "spare_capacity_mbd": 0.12,
+        "date": "2025-12"
       },
       "algeria": {
         "current_mbd": 1.18,
         "estimated_peak_mbd": 1.24,
         "spare_capacity_mbd": 0.06,
-        "date": "2025-11"
+        "date": "2025-12"
       },
       "angola": {
-        "current_mbd": 1.04,
+        "current_mbd": 1.0,
         "estimated_peak_mbd": 1.24,
-        "spare_capacity_mbd": 0.19,
-        "date": "2025-11"
+        "spare_capacity_mbd": 0.23,
+        "date": "2025-12"
       },
       "russia": {
-        "current_mbd": 10.06,
+        "current_mbd": 9.98,
         "estimated_peak_mbd": 10.69,
-        "spare_capacity_mbd": 0.64,
-        "date": "2025-11"
-      },
-      "norway": {
-        "current_mbd": 1.9,
-        "estimated_peak_mbd": 1.98,
-        "spare_capacity_mbd": 0.08,
-        "date": "2025-11"
+        "spare_capacity_mbd": 0.71,
+        "date": "2025-12"
       },
       "mexico": {
-        "current_mbd": 1.73,
+        "current_mbd": 1.75,
         "estimated_peak_mbd": 1.97,
-        "spare_capacity_mbd": 0.24,
-        "date": "2025-11"
+        "spare_capacity_mbd": 0.22,
+        "date": "2025-12"
       },
       "china": {
-        "current_mbd": 4.31,
+        "current_mbd": 4.19,
         "estimated_peak_mbd": 4.5,
-        "spare_capacity_mbd": 0.19,
-        "date": "2025-11"
+        "spare_capacity_mbd": 0.31,
+        "date": "2025-12"
       }
     },
-    "total_spare_mbd": 3.43
+    "total_spare_mbd": 3.51
   },
-  "updated": "2026-03-26T14:57:23Z"
+  "updated": "2026-03-27T14:43:31Z"
 }
