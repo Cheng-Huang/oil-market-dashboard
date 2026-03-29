@@ -3,10 +3,10 @@
     "by_ticker": {
       "USO": {
         "label": "United States Oil Fund ETF",
-        "pc_ratio_volume": 0.871,
+        "pc_ratio_volume": 0.872,
         "pc_ratio_oi": 1.215,
-        "total_call_volume": 89655,
-        "total_put_volume": 78133,
+        "total_call_volume": 89650,
+        "total_put_volume": 78130,
         "total_call_oi": 299997,
         "total_put_oi": 364437,
         "expiries_analyzed": 4
@@ -16,9 +16,9 @@
         "pc_ratio_volume": 0.555,
         "pc_ratio_oi": 1.232,
         "total_call_volume": 97256,
-        "total_put_volume": 53966,
+        "total_put_volume": 53958,
         "total_call_oi": 433385,
-        "total_put_oi": 533716,
+        "total_put_oi": 533715,
         "expiries_analyzed": 4
       }
     },
@@ -34,9 +34,9 @@
         "total_put_oi": 15612,
         "max_call_oi_strike": 140.0,
         "max_put_oi_strike": 100.0,
-        "avg_iv_calls": 1.0982,
-        "avg_iv_puts": 1.0961,
-        "iv_skew": -0.002
+        "avg_iv_calls": 1.2278,
+        "avg_iv_puts": 1.2248,
+        "iv_skew": -0.003
       },
       {
         "ticker": "USO",
@@ -44,29 +44,29 @@
         "pc_ratio_volume": 1.176,
         "pc_ratio_oi": 0.694,
         "total_call_volume": 24416,
-        "total_put_volume": 28712,
+        "total_put_volume": 28711,
         "total_call_oi": 63071,
         "total_put_oi": 43764,
         "max_call_oi_strike": 200.0,
         "max_put_oi_strike": 71.5,
-        "avg_iv_calls": 1.5332,
-        "avg_iv_puts": 1.384,
-        "iv_skew": -0.1492
+        "avg_iv_calls": 1.6797,
+        "avg_iv_puts": 1.517,
+        "iv_skew": -0.1626
       },
       {
         "ticker": "USO",
         "expiry": "2026-04-10",
         "pc_ratio_volume": 1.148,
         "pc_ratio_oi": 1.243,
-        "total_call_volume": 6834,
-        "total_put_volume": 7844,
+        "total_call_volume": 6829,
+        "total_put_volume": 7842,
         "total_call_oi": 21035,
         "total_put_oi": 26149,
         "max_call_oi_strike": 125.0,
         "max_put_oi_strike": 55.0,
-        "avg_iv_calls": 1.1924,
-        "avg_iv_puts": 1.1421,
-        "iv_skew": -0.0503
+        "avg_iv_calls": 1.2374,
+        "avg_iv_puts": 1.1853,
+        "iv_skew": -0.0521
       },
       {
         "ticker": "USO",
@@ -79,9 +79,9 @@
         "total_put_oi": 278912,
         "max_call_oi_strike": 120.0,
         "max_put_oi_strike": 75.0,
-        "avg_iv_calls": 1.1106,
-        "avg_iv_puts": 1.0713,
-        "iv_skew": -0.0393
+        "avg_iv_calls": 1.1379,
+        "avg_iv_puts": 1.0974,
+        "iv_skew": -0.0405
       },
       {
         "ticker": "XLE",
@@ -89,14 +89,14 @@
         "pc_ratio_volume": 0.199,
         "pc_ratio_oi": 2.67,
         "total_call_volume": 30398,
-        "total_put_volume": 6052,
+        "total_put_volume": 6044,
         "total_call_oi": 29764,
-        "total_put_oi": 79482,
+        "total_put_oi": 79481,
         "max_call_oi_strike": 62.0,
         "max_put_oi_strike": 52.5,
-        "avg_iv_calls": 1.6659,
-        "avg_iv_puts": 1.0993,
-        "iv_skew": -0.5666
+        "avg_iv_calls": 1.8088,
+        "avg_iv_puts": 1.2997,
+        "iv_skew": -0.5091
       },
       {
         "ticker": "XLE",
@@ -109,9 +109,9 @@
         "total_put_oi": 33901,
         "max_call_oi_strike": 63.0,
         "max_put_oi_strike": 58.0,
-        "avg_iv_calls": 0.8495,
-        "avg_iv_puts": 0.8247,
-        "iv_skew": -0.0248
+        "avg_iv_calls": 0.9222,
+        "avg_iv_puts": 0.8987,
+        "iv_skew": -0.0235
       },
       {
         "ticker": "XLE",
@@ -124,9 +124,9 @@
         "total_put_oi": 14616,
         "max_call_oi_strike": 63.0,
         "max_put_oi_strike": 58.0,
-        "avg_iv_calls": 0.5367,
-        "avg_iv_puts": 0.5348,
-        "iv_skew": -0.0019
+        "avg_iv_calls": 0.5545,
+        "avg_iv_puts": 0.5553,
+        "iv_skew": 0.0008
       },
       {
         "ticker": "XLE",
@@ -139,18 +139,18 @@
         "total_put_oi": 405717,
         "max_call_oi_strike": 60.0,
         "max_put_oi_strike": 50.0,
-        "avg_iv_calls": 0.6598,
-        "avg_iv_puts": 0.8227,
-        "iv_skew": 0.1629
+        "avg_iv_calls": 0.6718,
+        "avg_iv_puts": 0.8426,
+        "iv_skew": 0.1708
       }
     ],
     "aggregate": {
       "total_pc_ratio_volume": 0.707,
       "total_pc_ratio_oi": 1.225,
-      "total_call_volume": 186911,
-      "total_put_volume": 132099,
+      "total_call_volume": 186906,
+      "total_put_volume": 132088,
       "total_call_oi": 733382,
-      "total_put_oi": 898153
+      "total_put_oi": 898152
     },
     "sentiment": {
       "volume_signal": "bullish",
@@ -170,5 +170,5 @@
     "vol_of_vol_5d": 1.4,
     "regime": "extreme_panic"
   },
-  "updated": "2026-03-28T14:23:41Z"
+  "updated": "2026-03-29T14:25:10Z"
 }
