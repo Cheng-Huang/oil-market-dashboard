@@ -41229,7 +41229,7 @@
       "stockchange_mbd": -1.88,
       "supply_mbd": 101.817,
       "demand_mbd": 103.697,
-      "type": "forecast"
+      "type": "actual"
     },
     {
       "date": "2026-04",
@@ -41433,5 +41433,5 @@
     "total_estimated_mb": 2185.0,
     "note": "除美国外均为行业估算值，非官方实时数据"
   },
-  "updated": "2026-03-31T14:54:29Z"
+  "updated": "2026-04-01T15:06:05Z"
 }

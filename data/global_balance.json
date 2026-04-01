@@ -9663,7 +9663,7 @@
       "value": -1.88,
       "supply": 101.817,
       "demand": 103.697,
-      "type": "forecast"
+      "type": "actual"
     },
     {
       "date": "2026-04",
