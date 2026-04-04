@@ -7,7 +7,7 @@
       "price": 36.6,
       "change_5d_pct": 8.8,
       "change_20d_pct": 9.3,
-      "volume_spike_pct": -21.0,
+      "volume_spike_pct": -20.9,
       "history": [
         {
           "date": "2026-02-20",
@@ -697,5 +697,5 @@
       "油轮数 20% vs 容量 -71% → 船型结构变化"
     ]
   },
-  "updated": "2026-04-03T14:35:59Z"
+  "updated": "2026-04-04T14:24:53Z"
 }
