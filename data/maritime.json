@@ -5,126 +5,70 @@
       "name_en": "Strait of Hormuz",
       "oil_share": "~25% 全球海运石油",
       "tanker_stats": {
-        "avg_90d": 31.7,
-        "avg_7d": 0.9,
-        "avg_prev_7d": 0.7,
-        "wow_change": 20.0,
+        "avg_90d": 28.9,
+        "avg_7d": 4.1,
+        "avg_prev_7d": 0.9,
+        "wow_change": 383.3,
         "max": 72,
         "min": 0,
-        "latest": 2
+        "latest": 7
       },
       "total_stats": {
-        "avg_90d": 58.3,
-        "avg_7d": 3.4,
-        "avg_prev_7d": 2.7,
-        "wow_change": 26.3,
+        "avg_90d": 53.4,
+        "avg_7d": 8.4,
+        "avg_prev_7d": 3.4,
+        "wow_change": 145.8,
         "max": 129,
         "min": 0,
-        "latest": 5
+        "latest": 9
       },
       "chart_data": [
         {
-          "date": "2025-10-01",
-          "tanker": 67,
-          "tanker_7d": 67.0,
-          "total": 114,
-          "total_7d": 114.0,
-          "capacity_tanker": 2606835
-        },
-        {
-          "date": "2025-10-02",
-          "tanker": 57,
-          "tanker_7d": 62.0,
-          "total": 94,
-          "total_7d": 104.0,
-          "capacity_tanker": 4094564
-        },
-        {
-          "date": "2025-10-03",
-          "tanker": 58,
-          "tanker_7d": 60.7,
-          "total": 113,
-          "total_7d": 107.0,
-          "capacity_tanker": 3307649
-        },
-        {
-          "date": "2025-10-04",
-          "tanker": 72,
-          "tanker_7d": 63.5,
-          "total": 117,
-          "total_7d": 109.5,
-          "capacity_tanker": 1884716
-        },
-        {
-          "date": "2025-10-05",
-          "tanker": 61,
-          "tanker_7d": 63.0,
-          "total": 104,
-          "total_7d": 108.4,
-          "capacity_tanker": 3186815
-        },
-        {
-          "date": "2025-10-06",
-          "tanker": 52,
-          "tanker_7d": 61.2,
-          "total": 93,
-          "total_7d": 105.8,
-          "capacity_tanker": 2626892
-        },
-        {
-          "date": "2025-10-07",
-          "tanker": 67,
-          "tanker_7d": 62.0,
-          "total": 123,
-          "total_7d": 108.3,
-          "capacity_tanker": 3229733
-        },
-        {
           "date": "2025-10-08",
           "tanker": 37,
-          "tanker_7d": 57.7,
+          "tanker_7d": 37.0,
           "total": 79,
-          "total_7d": 103.3,
+          "total_7d": 79.0,
           "capacity_tanker": 1404386
         },
         {
           "date": "2025-10-09",
           "tanker": 44,
-          "tanker_7d": 55.9,
+          "tanker_7d": 40.5,
           "total": 77,
-          "total_7d": 100.9,
+          "total_7d": 78.0,
           "capacity_tanker": 2195625
         },
         {
           "date": "2025-10-10",
           "tanker": 43,
-          "tanker_7d": 53.7,
+          "tanker_7d": 41.3,
           "total": 84,
-          "total_7d": 96.7,
+          "total_7d": 80.0,
           "capacity_tanker": 1419223
         },
         {
           "date": "2025-10-11",
           "tanker": 49,
-          "tanker_7d": 50.4,
+          "tanker_7d": 43.2,
           "total": 91,
-          "total_7d": 93.0,
+          "total_7d": 82.8,
           "capacity_tanker": 2300405
         },
         {
           "date": "2025-10-12",
           "tanker": 45,
-          "tanker_7d": 48.1,
+          "tanker_7d": 43.6,
           "total": 83,
-          "total_7d": 90.0,
+          "total_7d": 82.8,
           "capacity_tanker": 1528892
         },
         {
           "date": "2025-10-13",
           "tanker": 54,
-          "tanker_7d": 48.4,
+          "tanker_7d": 45.3,
           "total": 100,
-          "total_7d": 91.0,
+          "total_7d": 85.7,
           "capacity_tanker": 2310620
         },
         {
@@ -1462,11 +1406,67 @@
           "total": 5,
           "total_7d": 3.4,
           "capacity_tanker": 5464
+        },
+        {
+          "date": "2026-03-30",
+          "tanker": 12,
+          "tanker_7d": 2.3,
+          "total": 17,
+          "total_7d": 5.3,
+          "capacity_tanker": 115147
+        },
+        {
+          "date": "2026-03-31",
+          "tanker": 2,
+          "tanker_7d": 2.4,
+          "total": 6,
+          "total_7d": 5.9,
+          "capacity_tanker": 70842
+        },
+        {
+          "date": "2026-04-01",
+          "tanker": 0,
+          "tanker_7d": 2.3,
+          "total": 6,
+          "total_7d": 6.6,
+          "capacity_tanker": 0
+        },
+        {
+          "date": "2026-04-02",
+          "tanker": 2,
+          "tanker_7d": 2.6,
+          "total": 6,
+          "total_7d": 6.7,
+          "capacity_tanker": 0
+        },
+        {
+          "date": "2026-04-03",
+          "tanker": 4,
+          "tanker_7d": 3.1,
+          "total": 5,
+          "total_7d": 7.0,
+          "capacity_tanker": 97195
+        },
+        {
+          "date": "2026-04-04",
+          "tanker": 2,
+          "tanker_7d": 3.4,
+          "total": 10,
+          "total_7d": 7.9,
+          "capacity_tanker": 38238
+        },
+        {
+          "date": "2026-04-05",
+          "tanker": 7,
+          "tanker_7d": 4.1,
+          "total": 9,
+          "total_7d": 8.4,
+          "capacity_tanker": 266704
         }
       ],
       "data_range": {
-        "start": "2025-10-01",
-        "end": "2026-03-29",
+        "start": "2025-10-08",
+        "end": "2026-04-05",
         "days": 180
       }
     },
@@ -1475,126 +1475,70 @@
       "name_en": "Bab el-Mandeb",
       "oil_share": "~9% 全球海运石油",
       "tanker_stats": {
-        "avg_90d": 12.1,
-        "avg_7d": 12.9,
-        "avg_prev_7d": 16.0,
-        "wow_change": -19.6,
+        "avg_90d": 12.4,
+        "avg_7d": 13.7,
+        "avg_prev_7d": 12.9,
+        "wow_change": 6.7,
         "max": 21,
         "min": 4,
-        "latest": 11
+        "latest": 14
       },
       "total_stats": {
-        "avg_90d": 33.0,
-        "avg_7d": 32.6,
-        "avg_prev_7d": 36.7,
-        "wow_change": -11.3,
+        "avg_90d": 33.4,
+        "avg_7d": 35.0,
+        "avg_prev_7d": 32.6,
+        "wow_change": 7.5,
         "max": 51,
         "min": 12,
-        "latest": 32
+        "latest": 33
       },
       "chart_data": [
         {
-          "date": "2025-10-01",
-          "tanker": 7,
-          "tanker_7d": 7.0,
-          "total": 23,
-          "total_7d": 23.0,
-          "capacity_tanker": 178264
-        },
-        {
-          "date": "2025-10-02",
-          "tanker": 17,
-          "tanker_7d": 12.0,
-          "total": 43,
-          "total_7d": 33.0,
-          "capacity_tanker": 1394863
-        },
-        {
-          "date": "2025-10-03",
-          "tanker": 11,
-          "tanker_7d": 11.7,
-          "total": 32,
-          "total_7d": 32.7,
-          "capacity_tanker": 667541
-        },
-        {
-          "date": "2025-10-04",
-          "tanker": 17,
-          "tanker_7d": 13.0,
-          "total": 45,
-          "total_7d": 35.8,
-          "capacity_tanker": 887953
-        },
-        {
-          "date": "2025-10-05",
-          "tanker": 11,
-          "tanker_7d": 12.6,
-          "total": 31,
-          "total_7d": 34.8,
-          "capacity_tanker": 544351
-        },
-        {
-          "date": "2025-10-06",
-          "tanker": 18,
-          "tanker_7d": 13.5,
-          "total": 39,
-          "total_7d": 35.5,
-          "capacity_tanker": 1000590
-        },
-        {
-          "date": "2025-10-07",
-          "tanker": 18,
-          "tanker_7d": 14.1,
-          "total": 31,
-          "total_7d": 34.9,
-          "capacity_tanker": 910321
-        },
-        {
           "date": "2025-10-08",
           "tanker": 12,
-          "tanker_7d": 14.9,
+          "tanker_7d": 12.0,
           "total": 31,
-          "total_7d": 36.0,
+          "total_7d": 31.0,
           "capacity_tanker": 300236
         },
         {
           "date": "2025-10-09",
           "tanker": 11,
-          "tanker_7d": 14.0,
+          "tanker_7d": 11.5,
           "total": 40,
-          "total_7d": 35.6,
+          "total_7d": 35.5,
           "capacity_tanker": 949831
         },
         {
           "date": "2025-10-10",
           "tanker": 14,
-          "tanker_7d": 14.4,
+          "tanker_7d": 12.3,
           "total": 34,
-          "total_7d": 35.9,
+          "total_7d": 35.0,
           "capacity_tanker": 580855
         },
         {
           "date": "2025-10-11",
           "tanker": 15,
-          "tanker_7d": 14.1,
+          "tanker_7d": 13.0,
           "total": 34,
-          "total_7d": 34.3,
+          "total_7d": 34.8,
           "capacity_tanker": 698454
         },
         {
           "date": "2025-10-12",
           "tanker": 9,
-          "tanker_7d": 13.9,
+          "tanker_7d": 12.2,
           "total": 27,
-          "total_7d": 33.7,
+          "total_7d": 33.2,
           "capacity_tanker": 648505
         },
         {
           "date": "2025-10-13",
           "tanker": 8,
-          "tanker_7d": 12.4,
+          "tanker_7d": 11.5,
           "total": 32,
-          "total_7d": 32.7,
+          "total_7d": 33.0,
           "capacity_tanker": 448285
         },
         {
@@ -2932,11 +2876,67 @@
           "total": 32,
           "total_7d": 32.6,
           "capacity_tanker": 196975
+        },
+        {
+          "date": "2026-03-30",
+          "tanker": 12,
+          "tanker_7d": 12.0,
+          "total": 44,
+          "total_7d": 35.6,
+          "capacity_tanker": 696585
+        },
+        {
+          "date": "2026-03-31",
+          "tanker": 10,
+          "tanker_7d": 12.0,
+          "total": 28,
+          "total_7d": 35.7,
+          "capacity_tanker": 450103
+        },
+        {
+          "date": "2026-04-01",
+          "tanker": 16,
+          "tanker_7d": 12.3,
+          "total": 39,
+          "total_7d": 35.3,
+          "capacity_tanker": 826004
+        },
+        {
+          "date": "2026-04-02",
+          "tanker": 14,
+          "tanker_7d": 12.1,
+          "total": 38,
+          "total_7d": 35.6,
+          "capacity_tanker": 389180
+        },
+        {
+          "date": "2026-04-03",
+          "tanker": 13,
+          "tanker_7d": 12.3,
+          "total": 27,
+          "total_7d": 34.4,
+          "capacity_tanker": 1069279
+        },
+        {
+          "date": "2026-04-04",
+          "tanker": 17,
+          "tanker_7d": 13.3,
+          "total": 36,
+          "total_7d": 34.9,
+          "capacity_tanker": 634467
+        },
+        {
+          "date": "2026-04-05",
+          "tanker": 14,
+          "tanker_7d": 13.7,
+          "total": 33,
+          "total_7d": 35.0,
+          "capacity_tanker": 693635
         }
       ],
       "data_range": {
-        "start": "2025-10-01",
-        "end": "2026-03-29",
+        "start": "2025-10-08",
+        "end": "2026-04-05",
         "days": 180
       }
     },
@@ -2945,126 +2945,70 @@
       "name_en": "Suez Canal",
       "oil_share": "~12% 全球海运石油",
       "tanker_stats": {
-        "avg_90d": 14.6,
-        "avg_7d": 13.9,
-        "avg_prev_7d": 14.9,
-        "wow_change": -6.7,
+        "avg_90d": 14.9,
+        "avg_7d": 17.4,
+        "avg_prev_7d": 13.9,
+        "wow_change": 25.8,
         "max": 25,
         "min": 5,
-        "latest": 17
+        "latest": 19
       },
       "total_stats": {
-        "avg_90d": 38.2,
-        "avg_7d": 37.4,
-        "avg_prev_7d": 37.1,
-        "wow_change": 0.8,
+        "avg_90d": 38.7,
+        "avg_7d": 41.3,
+        "avg_prev_7d": 37.4,
+        "wow_change": 10.3,
         "max": 52,
         "min": 22,
-        "latest": 34
+        "latest": 45
       },
       "chart_data": [
         {
-          "date": "2025-10-01",
-          "tanker": 18,
-          "tanker_7d": 18.0,
-          "total": 45,
-          "total_7d": 45.0,
-          "capacity_tanker": 736337
-        },
-        {
-          "date": "2025-10-02",
-          "tanker": 18,
-          "tanker_7d": 18.0,
-          "total": 42,
-          "total_7d": 43.5,
-          "capacity_tanker": 1012602
-        },
-        {
-          "date": "2025-10-03",
-          "tanker": 20,
-          "tanker_7d": 18.7,
-          "total": 46,
-          "total_7d": 44.3,
-          "capacity_tanker": 876643
-        },
-        {
-          "date": "2025-10-04",
-          "tanker": 12,
-          "tanker_7d": 17.0,
-          "total": 35,
-          "total_7d": 42.0,
-          "capacity_tanker": 336531
-        },
-        {
-          "date": "2025-10-05",
-          "tanker": 15,
-          "tanker_7d": 16.6,
-          "total": 41,
-          "total_7d": 41.8,
-          "capacity_tanker": 990528
-        },
-        {
-          "date": "2025-10-06",
-          "tanker": 13,
-          "tanker_7d": 16.0,
-          "total": 38,
-          "total_7d": 41.2,
-          "capacity_tanker": 399215
-        },
-        {
-          "date": "2025-10-07",
-          "tanker": 14,
-          "tanker_7d": 15.7,
-          "total": 32,
-          "total_7d": 39.9,
-          "capacity_tanker": 892404
-        },
-        {
           "date": "2025-10-08",
           "tanker": 13,
-          "tanker_7d": 15.0,
+          "tanker_7d": 13.0,
           "total": 41,
-          "total_7d": 39.3,
+          "total_7d": 41.0,
           "capacity_tanker": 357069
         },
         {
           "date": "2025-10-09",
           "tanker": 15,
-          "tanker_7d": 14.6,
+          "tanker_7d": 14.0,
           "total": 40,
-          "total_7d": 39.0,
+          "total_7d": 40.5,
           "capacity_tanker": 607599
         },
         {
           "date": "2025-10-10",
           "tanker": 12,
-          "tanker_7d": 13.4,
+          "tanker_7d": 13.3,
           "total": 36,
-          "total_7d": 37.6,
+          "total_7d": 39.0,
           "capacity_tanker": 580906
         },
         {
           "date": "2025-10-11",
           "tanker": 15,
-          "tanker_7d": 13.9,
+          "tanker_7d": 13.8,
           "total": 40,
-          "total_7d": 38.3,
+          "total_7d": 39.2,
           "capacity_tanker": 803316
         },
         {
           "date": "2025-10-12",
           "tanker": 24,
-          "tanker_7d": 15.1,
+          "tanker_7d": 15.8,
           "total": 43,
-          "total_7d": 38.6,
+          "total_7d": 40.0,
           "capacity_tanker": 1153853
         },
         {
           "date": "2025-10-13",
           "tanker": 15,
-          "tanker_7d": 15.4,
+          "tanker_7d": 15.7,
           "total": 48,
-          "total_7d": 40.0,
+          "total_7d": 41.3,
           "capacity_tanker": 656092
         },
         {
@@ -4201,7 +4145,7 @@
           "tanker_7d": 17.4,
           "total": 42,
           "total_7d": 41.3,
-          "capacity_tanker": 769773
+          "capacity_tanker": 766252
         },
         {
           "date": "2026-03-05",
@@ -4402,11 +4346,67 @@
           "total": 34,
           "total_7d": 37.4,
           "capacity_tanker": 685039
+        },
+        {
+          "date": "2026-03-30",
+          "tanker": 11,
+          "tanker_7d": 13.3,
+          "total": 34,
+          "total_7d": 37.3,
+          "capacity_tanker": 569947
+        },
+        {
+          "date": "2026-03-31",
+          "tanker": 19,
+          "tanker_7d": 14.0,
+          "total": 41,
+          "total_7d": 37.6,
+          "capacity_tanker": 935456
+        },
+        {
+          "date": "2026-04-01",
+          "tanker": 20,
+          "tanker_7d": 14.6,
+          "total": 48,
+          "total_7d": 37.9,
+          "capacity_tanker": 678406
+        },
+        {
+          "date": "2026-04-02",
+          "tanker": 19,
+          "tanker_7d": 15.6,
+          "total": 42,
+          "total_7d": 39.1,
+          "capacity_tanker": 853387
+        },
+        {
+          "date": "2026-04-03",
+          "tanker": 11,
+          "tanker_7d": 15.9,
+          "total": 29,
+          "total_7d": 38.0,
+          "capacity_tanker": 683164
+        },
+        {
+          "date": "2026-04-04",
+          "tanker": 23,
+          "tanker_7d": 17.1,
+          "total": 50,
+          "total_7d": 39.7,
+          "capacity_tanker": 346367
+        },
+        {
+          "date": "2026-04-05",
+          "tanker": 19,
+          "tanker_7d": 17.4,
+          "total": 45,
+          "total_7d": 41.3,
+          "capacity_tanker": 560905
         }
       ],
       "data_range": {
-        "start": "2025-10-01",
-        "end": "2026-03-29",
+        "start": "2025-10-08",
+        "end": "2026-04-05",
         "days": 180
       }
     },
@@ -4415,126 +4415,70 @@
       "name_en": "Malacca Strait",
       "oil_share": "~28% 全球海运石油",
       "tanker_stats": {
-        "avg_90d": 79.4,
-        "avg_7d": 63.6,
-        "avg_prev_7d": 72.3,
-        "wow_change": -12.1,
+        "avg_90d": 78.7,
+        "avg_7d": 70.4,
+        "avg_prev_7d": 63.6,
+        "wow_change": 10.8,
         "max": 105,
         "min": 51,
-        "latest": 69
+        "latest": 67
       },
       "total_stats": {
-        "avg_90d": 228.9,
-        "avg_7d": 201.0,
-        "avg_prev_7d": 205.4,
-        "wow_change": -2.2,
+        "avg_90d": 226.6,
+        "avg_7d": 212.3,
+        "avg_prev_7d": 201.0,
+        "wow_change": 5.6,
         "max": 295,
         "min": 183,
-        "latest": 203
+        "latest": 211
       },
       "chart_data": [
         {
-          "date": "2025-10-01",
-          "tanker": 70,
-          "tanker_7d": 70.0,
-          "total": 227,
-          "total_7d": 227.0,
-          "capacity_tanker": 2998747
-        },
-        {
-          "date": "2025-10-02",
-          "tanker": 98,
-          "tanker_7d": 84.0,
-          "total": 252,
-          "total_7d": 239.5,
-          "capacity_tanker": 4948519
-        },
-        {
-          "date": "2025-10-03",
-          "tanker": 77,
-          "tanker_7d": 81.7,
-          "total": 226,
-          "total_7d": 235.0,
-          "capacity_tanker": 2422498
-        },
-        {
-          "date": "2025-10-04",
-          "tanker": 85,
-          "tanker_7d": 82.5,
-          "total": 257,
-          "total_7d": 240.5,
-          "capacity_tanker": 3740431
-        },
-        {
-          "date": "2025-10-05",
-          "tanker": 77,
-          "tanker_7d": 81.4,
-          "total": 237,
-          "total_7d": 239.8,
-          "capacity_tanker": 3695661
-        },
-        {
-          "date": "2025-10-06",
-          "tanker": 89,
-          "tanker_7d": 82.7,
-          "total": 273,
-          "total_7d": 245.3,
-          "capacity_tanker": 2398550
-        },
-        {
-          "date": "2025-10-07",
-          "tanker": 69,
-          "tanker_7d": 80.7,
-          "total": 230,
-          "total_7d": 243.1,
-          "capacity_tanker": 3347965
-        },
-        {
           "date": "2025-10-08",
           "tanker": 83,
-          "tanker_7d": 82.6,
+          "tanker_7d": 83.0,
           "total": 243,
-          "total_7d": 245.4,
+          "total_7d": 243.0,
           "capacity_tanker": 4361208
         },
         {
           "date": "2025-10-09",
           "tanker": 75,
-          "tanker_7d": 79.3,
+          "tanker_7d": 79.0,
           "total": 221,
-          "total_7d": 241.0,
+          "total_7d": 232.0,
           "capacity_tanker": 3024696
         },
         {
           "date": "2025-10-10",
           "tanker": 84,
-          "tanker_7d": 80.3,
+          "tanker_7d": 80.7,
           "total": 229,
-          "total_7d": 241.4,
+          "total_7d": 231.0,
           "capacity_tanker": 2867650
         },
         {
           "date": "2025-10-11",
           "tanker": 95,
-          "tanker_7d": 81.7,
+          "tanker_7d": 84.2,
           "total": 275,
-          "total_7d": 244.0,
+          "total_7d": 242.0,
           "capacity_tanker": 3979368
         },
         {
           "date": "2025-10-12",
           "tanker": 88,
-          "tanker_7d": 83.3,
+          "tanker_7d": 85.0,
           "total": 232,
-          "total_7d": 243.3,
+          "total_7d": 240.0,
           "capacity_tanker": 3503921
         },
         {
           "date": "2025-10-13",
           "tanker": 75,
-          "tanker_7d": 81.3,
+          "tanker_7d": 83.3,
           "total": 234,
-          "total_7d": 237.7,
+          "total_7d": 239.0,
           "capacity_tanker": 4754023
         },
         {
@@ -5872,11 +5816,67 @@
           "total": 203,
           "total_7d": 201.0,
           "capacity_tanker": 2221668
+        },
+        {
+          "date": "2026-03-30",
+          "tanker": 75,
+          "tanker_7d": 67.0,
+          "total": 218,
+          "total_7d": 205.7,
+          "capacity_tanker": 2788082
+        },
+        {
+          "date": "2026-03-31",
+          "tanker": 75,
+          "tanker_7d": 68.0,
+          "total": 223,
+          "total_7d": 206.1,
+          "capacity_tanker": 928848
+        },
+        {
+          "date": "2026-04-01",
+          "tanker": 61,
+          "tanker_7d": 67.4,
+          "total": 190,
+          "total_7d": 204.9,
+          "capacity_tanker": 1963640
+        },
+        {
+          "date": "2026-04-02",
+          "tanker": 76,
+          "tanker_7d": 68.6,
+          "total": 202,
+          "total_7d": 204.4,
+          "capacity_tanker": 2985395
+        },
+        {
+          "date": "2026-04-03",
+          "tanker": 68,
+          "tanker_7d": 68.4,
+          "total": 218,
+          "total_7d": 205.3,
+          "capacity_tanker": 1940605
+        },
+        {
+          "date": "2026-04-04",
+          "tanker": 71,
+          "tanker_7d": 70.7,
+          "total": 224,
+          "total_7d": 211.1,
+          "capacity_tanker": 2544542
+        },
+        {
+          "date": "2026-04-05",
+          "tanker": 67,
+          "tanker_7d": 70.4,
+          "total": 211,
+          "total_7d": 212.3,
+          "capacity_tanker": 3014376
         }
       ],
       "data_range": {
-        "start": "2025-10-01",
-        "end": "2026-03-29",
+        "start": "2025-10-08",
+        "end": "2026-04-05",
         "days": 180
       }
     }
@@ -5885,440 +5885,440 @@
     {
       "ticker": "FRO",
       "label": "Frontline (VLCC 原油)",
-      "price": 36.61,
-      "change_5d": 9.6,
-      "change_1m": 8.2,
-      "change_6m": 64.4,
+      "price": 35.65,
+      "change_5d": 2.3,
+      "change_1m": 6.4,
+      "change_6m": 67.6,
       "history": [
         {
-          "date": "2025-10-06",
-          "close": 22.27
+          "date": "2025-10-07",
+          "close": 21.27
         },
         {
-          "date": "2025-10-13",
-          "close": 22.09
+          "date": "2025-10-14",
+          "close": 21.33
         },
         {
-          "date": "2025-10-20",
-          "close": 22.8
+          "date": "2025-10-21",
+          "close": 22.13
         },
         {
-          "date": "2025-10-27",
-          "close": 23.11
-        },
-        {
-          "date": "2025-11-03",
+          "date": "2025-10-28",
           "close": 23.49
         },
         {
-          "date": "2025-11-10",
+          "date": "2025-11-04",
+          "close": 22.56
+        },
+        {
+          "date": "2025-11-11",
           "close": 23.36
         },
         {
-          "date": "2025-11-17",
-          "close": 24.52
+          "date": "2025-11-18",
+          "close": 24.98
         },
         {
-          "date": "2025-11-24",
-          "close": 24.19
+          "date": "2025-11-25",
+          "close": 23.25
         },
         {
-          "date": "2025-12-02",
-          "close": 22.58
+          "date": "2025-12-03",
+          "close": 22.87
         },
         {
-          "date": "2025-12-09",
-          "close": 22.05
+          "date": "2025-12-10",
+          "close": 22.09
         },
         {
-          "date": "2025-12-16",
-          "close": 21.8
+          "date": "2025-12-17",
+          "close": 22.22
         },
         {
-          "date": "2025-12-23",
-          "close": 20.85
+          "date": "2025-12-24",
+          "close": 20.77
         },
         {
-          "date": "2025-12-31",
-          "close": 21.15
+          "date": "2026-01-02",
+          "close": 19.95
         },
         {
-          "date": "2026-01-08",
-          "close": 23.68
+          "date": "2026-01-09",
+          "close": 24.21
         },
         {
-          "date": "2026-01-15",
-          "close": 25.15
+          "date": "2026-01-16",
+          "close": 25.48
         },
         {
-          "date": "2026-01-23",
-          "close": 25.26
+          "date": "2026-01-26",
+          "close": 25.86
         },
         {
-          "date": "2026-01-30",
-          "close": 27.7
+          "date": "2026-02-02",
+          "close": 27.68
         },
         {
-          "date": "2026-02-06",
-          "close": 28.47
+          "date": "2026-02-09",
+          "close": 28.21
         },
         {
-          "date": "2026-02-13",
-          "close": 29.97
+          "date": "2026-02-17",
+          "close": 30.55
         },
         {
-          "date": "2026-02-23",
-          "close": 34.01
+          "date": "2026-02-24",
+          "close": 35.4
         },
         {
-          "date": "2026-03-02",
-          "close": 38.4
+          "date": "2026-03-03",
+          "close": 36.0
         },
         {
-          "date": "2026-03-09",
-          "close": 34.4
+          "date": "2026-03-10",
+          "close": 34.16
         },
         {
-          "date": "2026-03-16",
-          "close": 31.83
+          "date": "2026-03-17",
+          "close": 31.3
         },
         {
-          "date": "2026-03-23",
-          "close": 33.83
+          "date": "2026-03-24",
+          "close": 35.44
         },
         {
-          "date": "2026-03-30",
-          "close": 33.39
+          "date": "2026-03-31",
+          "close": 34.86
         }
       ]
     },
     {
       "ticker": "STNG",
       "label": "Scorpio Tankers (成品油)",
-      "price": 76.2,
-      "change_5d": 3.4,
-      "change_1m": -2.6,
-      "change_6m": 36.3,
+      "price": 76.42,
+      "change_5d": 2.4,
+      "change_1m": -0.6,
+      "change_6m": 41.5,
       "history": [
         {
-          "date": "2025-10-06",
-          "close": 55.92
+          "date": "2025-10-07",
+          "close": 54.02
         },
         {
-          "date": "2025-10-13",
-          "close": 53.84
+          "date": "2025-10-14",
+          "close": 53.09
         },
         {
-          "date": "2025-10-20",
-          "close": 57.61
+          "date": "2025-10-21",
+          "close": 56.55
         },
         {
-          "date": "2025-10-27",
-          "close": 59.85
+          "date": "2025-10-28",
+          "close": 61.09
         },
         {
-          "date": "2025-11-03",
-          "close": 61.27
+          "date": "2025-11-04",
+          "close": 60.39
         },
         {
-          "date": "2025-11-10",
-          "close": 64.15
+          "date": "2025-11-11",
+          "close": 62.24
         },
         {
-          "date": "2025-11-17",
-          "close": 61.22
+          "date": "2025-11-18",
+          "close": 61.92
         },
         {
-          "date": "2025-11-24",
-          "close": 59.85
+          "date": "2025-11-25",
+          "close": 58.52
         },
         {
-          "date": "2025-12-02",
-          "close": 56.03
+          "date": "2025-12-03",
+          "close": 56.26
         },
         {
-          "date": "2025-12-09",
-          "close": 54.42
+          "date": "2025-12-10",
+          "close": 54.07
         },
         {
-          "date": "2025-12-16",
-          "close": 51.1
+          "date": "2025-12-17",
+          "close": 51.53
         },
         {
-          "date": "2025-12-23",
-          "close": 50.5
+          "date": "2025-12-24",
+          "close": 50.72
         },
         {
-          "date": "2025-12-31",
-          "close": 50.54
+          "date": "2026-01-02",
+          "close": 49.41
         },
         {
-          "date": "2026-01-08",
-          "close": 55.86
+          "date": "2026-01-09",
+          "close": 54.5
         },
         {
-          "date": "2026-01-15",
-          "close": 58.04
+          "date": "2026-01-16",
+          "close": 58.74
         },
         {
-          "date": "2026-01-23",
-          "close": 58.2
+          "date": "2026-01-26",
+          "close": 57.07
         },
         {
-          "date": "2026-01-30",
-          "close": 63.26
+          "date": "2026-02-02",
+          "close": 63.36
         },
         {
-          "date": "2026-02-06",
-          "close": 68.04
+          "date": "2026-02-09",
+          "close": 67.32
         },
         {
-          "date": "2026-02-13",
-          "close": 70.11
+          "date": "2026-02-17",
+          "close": 69.62
         },
         {
-          "date": "2026-02-23",
-          "close": 71.39
+          "date": "2026-02-24",
+          "close": 72.95
         },
         {
-          "date": "2026-03-02",
-          "close": 77.83
+          "date": "2026-03-03",
+          "close": 78.96
         },
         {
-          "date": "2026-03-09",
-          "close": 76.28
+          "date": "2026-03-10",
+          "close": 75.29
         },
         {
-          "date": "2026-03-16",
-          "close": 68.42
+          "date": "2026-03-17",
+          "close": 66.3
         },
         {
-          "date": "2026-03-23",
-          "close": 70.68
+          "date": "2026-03-24",
+          "close": 75.12
         },
         {
-          "date": "2026-03-30",
-          "close": 73.66
+          "date": "2026-03-31",
+          "close": 74.66
         }
       ]
     },
     {
       "ticker": "INSW",
       "label": "Intl Seaways (原油+成品油)",
-      "price": 75.36,
-      "change_5d": 6.3,
-      "change_1m": 7.1,
-      "change_6m": 71.6,
+      "price": 74.94,
+      "change_5d": 2.8,
+      "change_1m": 6.7,
+      "change_6m": 77.2,
       "history": [
         {
-          "date": "2025-10-06",
-          "close": 43.91
+          "date": "2025-10-07",
+          "close": 42.3
         },
         {
-          "date": "2025-10-13",
-          "close": 41.92
+          "date": "2025-10-14",
+          "close": 41.29
         },
         {
-          "date": "2025-10-20",
-          "close": 44.19
+          "date": "2025-10-21",
+          "close": 43.15
         },
         {
-          "date": "2025-10-27",
-          "close": 46.43
+          "date": "2025-10-28",
+          "close": 47.34
         },
         {
-          "date": "2025-11-03",
-          "close": 48.09
+          "date": "2025-11-04",
+          "close": 46.93
         },
         {
-          "date": "2025-11-10",
-          "close": 51.15
+          "date": "2025-11-11",
+          "close": 50.7
         },
         {
-          "date": "2025-11-17",
-          "close": 51.12
+          "date": "2025-11-18",
+          "close": 52.15
         },
         {
-          "date": "2025-11-24",
-          "close": 51.96
+          "date": "2025-11-25",
+          "close": 51.35
         },
         {
-          "date": "2025-12-02",
-          "close": 49.16
+          "date": "2025-12-03",
+          "close": 49.95
         },
         {
-          "date": "2025-12-09",
-          "close": 48.03
+          "date": "2025-12-10",
+          "close": 47.84
         },
         {
-          "date": "2025-12-16",
-          "close": 46.61
+          "date": "2025-12-17",
+          "close": 47.63
         },
         {
-          "date": "2025-12-23",
-          "close": 46.43
+          "date": "2025-12-24",
+          "close": 46.57
         },
         {
-          "date": "2025-12-31",
-          "close": 47.09
+          "date": "2026-01-02",
+          "close": 45.58
         },
         {
-          "date": "2026-01-08",
-          "close": 52.87
+          "date": "2026-01-09",
+          "close": 52.77
         },
         {
-          "date": "2026-01-15",
-          "close": 54.1
+          "date": "2026-01-16",
+          "close": 54.68
         },
         {
-          "date": "2026-01-23",
-          "close": 55.54
+          "date": "2026-01-26",
+          "close": 55.35
         },
         {
-          "date": "2026-01-30",
-          "close": 57.86
+          "date": "2026-02-02",
+          "close": 58.57
         },
         {
-          "date": "2026-02-06",
-          "close": 59.22
+          "date": "2026-02-09",
+          "close": 59.19
         },
         {
-          "date": "2026-02-13",
-          "close": 62.03
+          "date": "2026-02-17",
+          "close": 62.48
         },
         {
-          "date": "2026-02-23",
-          "close": 65.04
+          "date": "2026-02-24",
+          "close": 67.68
         },
         {
-          "date": "2026-03-02",
-          "close": 74.2
+          "date": "2026-03-03",
+          "close": 73.34
         },
         {
-          "date": "2026-03-09",
-          "close": 73.48
+          "date": "2026-03-10",
+          "close": 71.17
         },
         {
-          "date": "2026-03-16",
-          "close": 66.57
+          "date": "2026-03-17",
+          "close": 65.69
         },
         {
-          "date": "2026-03-23",
-          "close": 70.0
+          "date": "2026-03-24",
+          "close": 73.15
         },
         {
-          "date": "2026-03-30",
-          "close": 70.93
+          "date": "2026-03-31",
+          "close": 72.88
         }
       ]
     },
     {
       "ticker": "DHT",
       "label": "DHT Holdings (VLCC 原油)",
-      "price": 18.6,
-      "change_5d": 3.7,
-      "change_1m": 0.3,
-      "change_6m": 64.1,
+      "price": 18.03,
+      "change_5d": -1.3,
+      "change_1m": -0.2,
+      "change_6m": 61.5,
       "history": [
         {
-          "date": "2025-10-06",
-          "close": 11.33
+          "date": "2025-10-07",
+          "close": 11.17
         },
         {
-          "date": "2025-10-13",
-          "close": 11.1
+          "date": "2025-10-14",
+          "close": 10.92
         },
         {
-          "date": "2025-10-20",
-          "close": 11.86
+          "date": "2025-10-21",
+          "close": 11.63
         },
         {
-          "date": "2025-10-27",
-          "close": 12.42
+          "date": "2025-10-28",
+          "close": 12.58
         },
         {
-          "date": "2025-11-03",
-          "close": 12.72
+          "date": "2025-11-04",
+          "close": 12.54
         },
         {
-          "date": "2025-11-10",
+          "date": "2025-11-11",
           "close": 13.03
         },
         {
-          "date": "2025-11-17",
-          "close": 13.25
+          "date": "2025-11-18",
+          "close": 13.29
         },
         {
-          "date": "2025-11-24",
-          "close": 12.99
+          "date": "2025-11-25",
+          "close": 12.71
         },
         {
-          "date": "2025-12-02",
-          "close": 12.52
+          "date": "2025-12-03",
+          "close": 12.6
         },
         {
-          "date": "2025-12-09",
-          "close": 12.21
+          "date": "2025-12-10",
+          "close": 12.17
         },
         {
-          "date": "2025-12-16",
-          "close": 12.2
+          "date": "2025-12-17",
+          "close": 12.35
         },
         {
-          "date": "2025-12-23",
-          "close": 11.8
+          "date": "2025-12-24",
+          "close": 11.81
         },
         {
-          "date": "2025-12-31",
-          "close": 11.91
+          "date": "2026-01-02",
+          "close": 11.45
         },
         {
-          "date": "2026-01-08",
-          "close": 13.1
+          "date": "2026-01-09",
+          "close": 13.09
         },
         {
-          "date": "2026-01-15",
-          "close": 12.95
+          "date": "2026-01-16",
+          "close": 12.93
         },
         {
-          "date": "2026-01-23",
-          "close": 13.48
+          "date": "2026-01-26",
+          "close": 13.31
         },
         {
-          "date": "2026-01-30",
-          "close": 13.98
+          "date": "2026-02-02",
+          "close": 14.0
         },
         {
-          "date": "2026-02-06",
-          "close": 14.5
+          "date": "2026-02-09",
+          "close": 14.52
         },
         {
-          "date": "2026-02-13",
-          "close": 15.52
+          "date": "2026-02-17",
+          "close": 15.87
         },
         {
-          "date": "2026-02-23",
-          "close": 17.53
+          "date": "2026-02-24",
+          "close": 18.7
         },
         {
-          "date": "2026-03-02",
-          "close": 19.65
+          "date": "2026-03-03",
+          "close": 19.26
         },
         {
-          "date": "2026-03-09",
-          "close": 18.97
+          "date": "2026-03-10",
+          "close": 18.63
         },
         {
-          "date": "2026-03-16",
-          "close": 17.49
+          "date": "2026-03-17",
+          "close": 16.89
         },
         {
-          "date": "2026-03-23",
-          "close": 17.77
+          "date": "2026-03-24",
+          "close": 18.52
         },
         {
-          "date": "2026-03-30",
-          "close": 17.93
+          "date": "2026-03-31",
+          "close": 18.27
         }
       ]
     }
@@ -6327,13 +6327,8 @@
     {
       "level": "danger",
       "data_confidence": "high",
-      "message": "🚨 霍尔木兹油轮通行量显著低于常态 (7日均: 1, 90日均: 32, -97%)"
-    },
-    {
-      "level": "warning",
-      "data_confidence": "high",
-      "message": "⚡ 曼德海峡油轮通行量下降 -20% (7日均值 13 vs 前周 16)"
+      "message": "🚨 霍尔木兹油轮通行量显著低于常态 (7日均: 4, 90日均: 29, -86%)"
     }
   ],
-  "updated": "2026-04-06T14:40:11Z"
+  "updated": "2026-04-07T15:01:24Z"
 }
