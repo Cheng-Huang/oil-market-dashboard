@@ -4,15 +4,11 @@
       "name": "Frontline (VLCC)",
       "segment": "crude",
       "weight": 0.3,
-      "price": 36.35,
-      "change_5d_pct": -0.7,
-      "change_20d_pct": 18.1,
-      "volume_spike_pct": -14.9,
+      "price": 34.17,
+      "change_5d_pct": -6.3,
+      "change_20d_pct": 13.2,
+      "volume_spike_pct": -18.5,
       "history": [
-        {
-          "date": "2026-02-26",
-          "close": 36.13
-        },
         {
           "date": "2026-02-27",
           "close": 36.78
@@ -127,7 +123,11 @@
         },
         {
           "date": "2026-04-09",
-          "close": 36.35
+          "close": 34.82
+        },
+        {
+          "date": "2026-04-10",
+          "close": 34.17
         }
       ]
     },
@@ -135,15 +135,11 @@
       "name": "DHT Holdings (VLCC)",
       "segment": "crude",
       "weight": 0.2,
-      "price": 18.35,
-      "change_5d_pct": -1.7,
-      "change_20d_pct": 9.0,
-      "volume_spike_pct": -19.9,
+      "price": 17.28,
+      "change_5d_pct": -6.6,
+      "change_20d_pct": 2.6,
+      "volume_spike_pct": -17.0,
       "history": [
-        {
-          "date": "2026-02-26",
-          "close": 19.17
-        },
         {
           "date": "2026-02-27",
           "close": 19.49
@@ -258,7 +254,11 @@
         },
         {
           "date": "2026-04-09",
-          "close": 18.35
+          "close": 17.8
+        },
+        {
+          "date": "2026-04-10",
+          "close": 17.28
         }
       ]
     },
@@ -266,15 +266,11 @@
       "name": "Intl Seaways",
       "segment": "mixed",
       "weight": 0.2,
-      "price": 76.56,
-      "change_5d_pct": 1.6,
-      "change_20d_pct": 18.3,
-      "volume_spike_pct": -14.2,
+      "price": 72.72,
+      "change_5d_pct": -4.0,
+      "change_20d_pct": 13.8,
+      "volume_spike_pct": -8.1,
       "history": [
-        {
-          "date": "2026-02-26",
-          "close": 70.33
-        },
         {
           "date": "2026-02-27",
           "close": 73.26
@@ -389,7 +385,11 @@
         },
         {
           "date": "2026-04-09",
-          "close": 76.56
+          "close": 74.95
+        },
+        {
+          "date": "2026-04-10",
+          "close": 72.72
         }
       ]
     },
@@ -397,15 +397,11 @@
       "name": "Scorpio Tankers",
       "segment": "product",
       "weight": 0.2,
-      "price": 77.88,
-      "change_5d_pct": 1.9,
-      "change_20d_pct": 15.5,
-      "volume_spike_pct": -1.4,
+      "price": 73.36,
+      "change_5d_pct": -4.2,
+      "change_20d_pct": 10.5,
+      "volume_spike_pct": 3.2,
       "history": [
-        {
-          "date": "2026-02-26",
-          "close": 76.57
-        },
         {
           "date": "2026-02-27",
           "close": 78.63
@@ -520,7 +516,11 @@
         },
         {
           "date": "2026-04-09",
-          "close": 77.88
+          "close": 76.01
+        },
+        {
+          "date": "2026-04-10",
+          "close": 73.36
         }
       ]
     },
@@ -528,15 +528,11 @@
       "name": "Breakwave Dry Bulk",
       "segment": "dry_bulk",
       "weight": 0.1,
-      "price": 10.43,
-      "change_5d_pct": -0.2,
-      "change_20d_pct": 0.3,
-      "volume_spike_pct": -35.3,
+      "price": 10.68,
+      "change_5d_pct": 7.4,
+      "change_20d_pct": 1.8,
+      "volume_spike_pct": -36.9,
       "history": [
-        {
-          "date": "2026-02-26",
-          "close": 11.91
-        },
         {
           "date": "2026-02-27",
           "close": 12.07
@@ -651,7 +647,11 @@
         },
         {
           "date": "2026-04-09",
-          "close": 10.43
+          "close": 10.3
+        },
+        {
+          "date": "2026-04-10",
+          "close": 10.68
         }
       ]
     }
@@ -682,7 +682,7 @@
   },
   "cross_validation": {
     "hormuz_tanker_wow": 383.3,
-    "crude_tanker_stock_5d": -0.3
+    "crude_tanker_stock_5d": -5.7
   },
   "unctad": {
     "source": "UNCTAD LSCI",
@@ -697,5 +697,5 @@
       "油轮数 383% vs 容量 896% → 船型结构变化"
     ]
   },
-  "updated": "2026-04-09T15:13:36Z"
+  "updated": "2026-04-10T14:42:19Z"
 }
