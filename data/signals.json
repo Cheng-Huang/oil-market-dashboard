@@ -15,10 +15,10 @@
     "evidence_note": "期货价格为直接市场观测",
     "label": "Backwardation",
     "source": "futures",
-    "m1_m2_spread": 4.45,
-    "m1_m6_spread": 15.44,
-    "curve_front": 93.6,
-    "curve_back": 73.11,
+    "m1_m2_spread": 3.12,
+    "m1_m6_spread": 13.49,
+    "curve_front": 92.1,
+    "curve_back": 73.33,
     "n_contracts": 12
   },
   "demand": {
@@ -94,8 +94,8 @@
     "evidence_tier": "A",
     "evidence_note": "DXY/OVX/实际利率为直接市场观测",
     "dxy_vs_ma200": -1.16,
-    "real_rate": 1.95,
-    "ovx": 80.55
+    "real_rate": 1.92,
+    "ovx": 75.35
   },
   "positioning": {
     "name": "持仓拥挤度",
@@ -131,7 +131,7 @@
     "spr_low": false,
     "spr_4w_change": -2117.0,
     "spr_trend": "stable",
-    "current_wti": 93.6,
+    "current_wti": 92.1,
     "detail": "当前无明显触发 SPR 释放的条件。",
     "release_likelihood": "low",
     "max_release_days": 94.0,
@@ -161,8 +161,8 @@
     ]
   },
   "price_freshness": {
-    "spot_date": "2026-04-14",
-    "futures_date": "2026-04-14",
+    "spot_date": "2026-04-15",
+    "futures_date": "2026-04-15",
     "lag_days": 0,
     "temporal_risk": "low"
   },
