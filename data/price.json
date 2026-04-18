@@ -20014,7 +20014,7 @@
     },
     {
       "date": "2026-04-17",
-      "value": 80.44
+      "value": 83.85
     }
   ],
   "brent": [
@@ -40036,7 +40036,7 @@
     },
     {
       "date": "2026-04-17",
-      "value": 87.52
+      "value": 90.38
     }
   ],
   "spread": [
@@ -59766,8 +59766,8 @@
     },
     {
       "date": "2026-04-17",
-      "value": -7.08
+      "value": -6.53
     }
   ],
-  "_source_note": "FRED + EIA daily. Last EIA daily merge: 2026-04-17T14:47:48"
+  "_source_note": "FRED + EIA daily. Last EIA daily merge: 2026-04-18T14:34:01"
 }
