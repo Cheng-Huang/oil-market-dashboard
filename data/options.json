@@ -8,15 +8,15 @@
         "total_call_volume": 76136,
         "total_put_volume": 76507,
         "total_call_oi": 116528,
-        "total_put_oi": 105256,
+        "total_put_oi": 105259,
         "expiries_analyzed": 4
       },
       "XLE": {
         "label": "Energy Select Sector SPDR",
-        "pc_ratio_volume": 1.164,
+        "pc_ratio_volume": 1.163,
         "pc_ratio_oi": 0.777,
         "total_call_volume": 83043,
-        "total_put_volume": 96643,
+        "total_put_volume": 96579,
         "total_call_oi": 235729,
         "total_put_oi": 183265,
         "expiries_analyzed": 4
@@ -34,9 +34,9 @@
         "total_put_oi": 29016,
         "max_call_oi_strike": 175.0,
         "max_put_oi_strike": 125.0,
-        "avg_iv_calls": 1.2252,
-        "avg_iv_puts": 1.0682,
-        "iv_skew": -0.157
+        "avg_iv_calls": 1.3698,
+        "avg_iv_puts": 1.1943,
+        "iv_skew": -0.1755
       },
       {
         "ticker": "USO",
@@ -49,9 +49,9 @@
         "total_put_oi": 37452,
         "max_call_oi_strike": 260.0,
         "max_put_oi_strike": 65.0,
-        "avg_iv_calls": 1.1946,
-        "avg_iv_puts": 1.0909,
-        "iv_skew": -0.1037
+        "avg_iv_calls": 1.2909,
+        "avg_iv_puts": 1.1785,
+        "iv_skew": -0.1124
       },
       {
         "ticker": "USO",
@@ -61,12 +61,12 @@
         "total_call_volume": 8208,
         "total_put_volume": 12984,
         "total_call_oi": 27969,
-        "total_put_oi": 28208,
+        "total_put_oi": 28211,
         "max_call_oi_strike": 200.0,
         "max_put_oi_strike": 70.0,
-        "avg_iv_calls": 1.0025,
-        "avg_iv_puts": 0.9284,
-        "iv_skew": -0.0742
+        "avg_iv_calls": 1.0403,
+        "avg_iv_puts": 0.9635,
+        "iv_skew": -0.0769
       },
       {
         "ticker": "USO",
@@ -79,9 +79,9 @@
         "total_put_oi": 10580,
         "max_call_oi_strike": 150.0,
         "max_put_oi_strike": 100.0,
-        "avg_iv_calls": 0.9072,
-        "avg_iv_puts": 0.8104,
-        "iv_skew": -0.0968
+        "avg_iv_calls": 0.9296,
+        "avg_iv_puts": 0.8303,
+        "iv_skew": -0.0993
       },
       {
         "ticker": "XLE",
@@ -94,9 +94,9 @@
         "total_put_oi": 32089,
         "max_call_oi_strike": 60.0,
         "max_put_oi_strike": 55.0,
-        "avg_iv_calls": 0.5275,
-        "avg_iv_puts": 0.5109,
-        "iv_skew": -0.0166
+        "avg_iv_calls": 0.5696,
+        "avg_iv_puts": 0.5422,
+        "iv_skew": -0.0274
       },
       {
         "ticker": "XLE",
@@ -109,9 +109,9 @@
         "total_put_oi": 10767,
         "max_call_oi_strike": 61.0,
         "max_put_oi_strike": 56.5,
-        "avg_iv_calls": 0.5103,
-        "avg_iv_puts": 0.5002,
-        "iv_skew": -0.0101
+        "avg_iv_calls": 0.5284,
+        "avg_iv_puts": 0.5092,
+        "iv_skew": -0.0192
       },
       {
         "ticker": "XLE",
@@ -124,33 +124,33 @@
         "total_put_oi": 9781,
         "max_call_oi_strike": 57.5,
         "max_put_oi_strike": 56.0,
-        "avg_iv_calls": 0.4329,
-        "avg_iv_puts": 0.5136,
-        "iv_skew": 0.0807
+        "avg_iv_calls": 0.4403,
+        "avg_iv_puts": 0.5263,
+        "iv_skew": 0.0859
       },
       {
         "ticker": "XLE",
         "expiry": "2026-05-15",
-        "pc_ratio_volume": 0.931,
+        "pc_ratio_volume": 0.93,
         "pc_ratio_oi": 0.752,
         "total_call_volume": 61674,
-        "total_put_volume": 57407,
+        "total_put_volume": 57343,
         "total_call_oi": 173737,
         "total_put_oi": 130628,
         "max_call_oi_strike": 65.0,
         "max_put_oi_strike": 55.0,
-        "avg_iv_calls": 0.4887,
-        "avg_iv_puts": 0.5027,
-        "iv_skew": 0.014
+        "avg_iv_calls": 0.4976,
+        "avg_iv_puts": 0.512,
+        "iv_skew": 0.0144
       }
     ],
     "aggregate": {
-      "total_pc_ratio_volume": 1.088,
+      "total_pc_ratio_volume": 1.087,
       "total_pc_ratio_oi": 0.819,
       "total_call_volume": 159179,
-      "total_put_volume": 173150,
+      "total_put_volume": 173086,
       "total_call_oi": 352257,
-      "total_put_oi": 288521
+      "total_put_oi": 288524
     },
     "sentiment": {
       "volume_signal": "neutral",
@@ -171,5 +171,5 @@
     "vol_of_vol_5d": 3.9,
     "regime": "panic"
   },
-  "updated": "2026-04-18T14:34:15Z"
+  "updated": "2026-04-19T14:34:21Z"
 }
