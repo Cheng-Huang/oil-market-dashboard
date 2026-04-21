@@ -4,15 +4,11 @@
       "name": "Frontline (VLCC)",
       "segment": "crude",
       "weight": 0.3,
-      "price": 36.81,
-      "change_5d_pct": 7.8,
-      "change_20d_pct": 8.8,
-      "volume_spike_pct": -5.7,
+      "price": 36.74,
+      "change_5d_pct": 3.5,
+      "change_20d_pct": 3.7,
+      "volume_spike_pct": -3.4,
       "history": [
-        {
-          "date": "2026-03-09",
-          "close": 34.4
-        },
         {
           "date": "2026-03-10",
           "close": 34.16
@@ -127,7 +123,11 @@
         },
         {
           "date": "2026-04-20",
-          "close": 36.81
+          "close": 36.97
+        },
+        {
+          "date": "2026-04-21",
+          "close": 36.74
         }
       ]
     },
@@ -135,15 +135,11 @@
       "name": "DHT Holdings (VLCC)",
       "segment": "crude",
       "weight": 0.2,
-      "price": 18.67,
-      "change_5d_pct": 8.6,
-      "change_20d_pct": 5.0,
-      "volume_spike_pct": -17.9,
+      "price": 18.56,
+      "change_5d_pct": 5.1,
+      "change_20d_pct": 0.2,
+      "volume_spike_pct": -18.0,
       "history": [
-        {
-          "date": "2026-03-09",
-          "close": 18.97
-        },
         {
           "date": "2026-03-10",
           "close": 18.63
@@ -258,7 +254,11 @@
         },
         {
           "date": "2026-04-20",
-          "close": 18.67
+          "close": 18.66
+        },
+        {
+          "date": "2026-04-21",
+          "close": 18.56
         }
       ]
     },
@@ -266,15 +266,11 @@
       "name": "Intl Seaways",
       "segment": "mixed",
       "weight": 0.2,
-      "price": 77.12,
-      "change_5d_pct": 6.4,
-      "change_20d_pct": 10.2,
-      "volume_spike_pct": -16.9,
+      "price": 77.49,
+      "change_5d_pct": 4.0,
+      "change_20d_pct": 5.9,
+      "volume_spike_pct": -15.9,
       "history": [
-        {
-          "date": "2026-03-09",
-          "close": 73.48
-        },
         {
           "date": "2026-03-10",
           "close": 71.17
@@ -389,7 +385,11 @@
         },
         {
           "date": "2026-04-20",
-          "close": 77.12
+          "close": 77.46
+        },
+        {
+          "date": "2026-04-21",
+          "close": 77.49
         }
       ]
     },
@@ -397,15 +397,11 @@
       "name": "Scorpio Tankers",
       "segment": "product",
       "weight": 0.2,
-      "price": 76.98,
-      "change_5d_pct": 4.7,
-      "change_20d_pct": 8.9,
-      "volume_spike_pct": -27.5,
+      "price": 75.53,
+      "change_5d_pct": 2.1,
+      "change_20d_pct": 0.5,
+      "volume_spike_pct": -26.2,
       "history": [
-        {
-          "date": "2026-03-09",
-          "close": 76.28
-        },
         {
           "date": "2026-03-10",
           "close": 75.29
@@ -520,7 +516,11 @@
         },
         {
           "date": "2026-04-20",
-          "close": 76.98
+          "close": 76.89
+        },
+        {
+          "date": "2026-04-21",
+          "close": 75.53
         }
       ]
     },
@@ -529,14 +529,10 @@
       "segment": "dry_bulk",
       "weight": 0.1,
       "price": 11.35,
-      "change_5d_pct": -0.6,
-      "change_20d_pct": 13.6,
-      "volume_spike_pct": 58.3,
+      "change_5d_pct": -0.4,
+      "change_20d_pct": 15.8,
+      "volume_spike_pct": 56.2,
       "history": [
-        {
-          "date": "2026-03-09",
-          "close": 10.26
-        },
         {
           "date": "2026-03-10",
           "close": 10.23
@@ -651,6 +647,10 @@
         },
         {
           "date": "2026-04-20",
+          "close": 11.3
+        },
+        {
+          "date": "2026-04-21",
           "close": 11.35
         }
       ]
@@ -660,29 +660,29 @@
     "checks": [
       {
         "check": "hormuz_tanker_vs_total",
-        "tanker_wow": -41.4,
-        "total_wow": -22.0,
+        "tanker_wow": 111.8,
+        "total_wow": 82.6,
         "consistency": "consistent",
         "note": ""
       },
       {
         "check": "hormuz_count_vs_capacity",
-        "tanker_count_change": -41.4,
-        "capacity_change": 21.4,
+        "tanker_count_change": 111.8,
+        "capacity_change": 52.9,
         "consistency": "divergent",
-        "note": "油轮数 -41% vs 容量 21% → 船型结构变化"
+        "note": "油轮数 112% vs 容量 53% → 船型结构变化"
       },
       {
         "check": "substitute_route_effect",
-        "hormuz_wow": -41.4,
-        "suez_wow": -4.9,
+        "hormuz_wow": 111.8,
+        "suez_wow": -15.5,
         "note": ""
       }
     ]
   },
   "cross_validation": {
-    "hormuz_tanker_wow": -41.4,
-    "crude_tanker_stock_5d": 7.6
+    "hormuz_tanker_wow": 111.8,
+    "crude_tanker_stock_5d": 4.1
   },
   "unctad": {
     "source": "UNCTAD LSCI",
@@ -694,8 +694,8 @@
     "score": 90,
     "level": "high",
     "issues": [
-      "油轮数 -41% vs 容量 21% → 船型结构变化"
+      "油轮数 112% vs 容量 53% → 船型结构变化"
     ]
   },
-  "updated": "2026-04-20T15:14:04Z"
+  "updated": "2026-04-21T15:04:31Z"
 }
