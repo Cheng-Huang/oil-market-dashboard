@@ -15,10 +15,10 @@
     "evidence_note": "期货价格为直接市场观测",
     "label": "Backwardation",
     "source": "futures",
-    "m1_m2_spread": 4.3,
-    "m1_m6_spread": 14.88,
-    "curve_front": 93.42,
-    "curve_back": 72.84,
+    "m1_m2_spread": 4.99,
+    "m1_m6_spread": 16.15,
+    "curve_front": 94.91,
+    "curve_back": 73.3,
     "n_contracts": 12
   },
   "demand": {
@@ -31,20 +31,8 @@
   },
   "crack_spread": {
     "name": "裂解价差",
-    "signal": "bullish",
-    "evidence_tier": "A",
-    "evidence_note": "裂解价差基于现货/期货价格计算，属直接观测",
-    "crack_321": 45.08,
-    "crack_321_20d_avg": 43.85,
-    "crack_321_60d_avg": 36.47,
-    "gasoline_crack": 40.53,
-    "diesel_crack": 54.18,
-    "trend": "rising",
-    "level": "high",
-    "cross_validation": "需求强+裂解走高→确认需求旺盛",
-    "detail": "3-2-1: $45.1 (20d均: $43.8, 60d均: $36.5), 趋势: rising",
-    "gasoline_crack_daily_drop_pct": 2.4,
-    "gas_diesel_divergence": 13.65
+    "signal": "neutral",
+    "detail": "数据不足"
   },
   "drilling": {
     "name": "钻井活动",
@@ -90,12 +78,10 @@
   },
   "financial": {
     "name": "金融条件",
-    "signal": "neutral",
+    "signal": "bullish",
     "evidence_tier": "A",
     "evidence_note": "DXY/OVX/实际利率为直接市场观测",
-    "dxy_vs_ma200": -1.9,
-    "real_rate": 1.92,
-    "ovx": 76.77
+    "dxy_vs_ma200": -1.9
   },
   "positioning": {
     "name": "持仓拥挤度",
@@ -131,7 +117,7 @@
     "spr_low": false,
     "spr_4w_change": -10397.0,
     "spr_trend": "releasing",
-    "current_wti": 93.42,
+    "current_wti": 94.91,
     "detail": "当前无明显触发 SPR 释放的条件。",
     "release_likelihood": "low",
     "max_release_days": 92.0,
@@ -161,8 +147,8 @@
     ]
   },
   "price_freshness": {
-    "spot_date": "2026-04-23",
-    "futures_date": "2026-04-23",
+    "spot_date": "2026-04-24",
+    "futures_date": "2026-04-24",
     "lag_days": 0,
     "temporal_risk": "low"
   },
