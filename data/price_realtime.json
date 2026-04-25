@@ -7,9 +7,9 @@
       "date": "2026-04-24",
       "open": 96.62,
       "high": 97.85,
-      "low": 93.63,
-      "close": 94.91,
-      "volume": 172041
+      "low": 92.68,
+      "close": 94.4,
+      "volume": 365210
     },
     "history": [
       {
@@ -402,15 +402,15 @@
         "high": 98.39,
         "low": 92.3,
         "close": 95.85,
-        "volume": 299675
+        "volume": 365210
       },
       {
         "date": "2026-04-24",
         "open": 96.62,
         "high": 97.85,
-        "low": 93.63,
-        "close": 94.91,
-        "volume": 172041
+        "low": 92.68,
+        "close": 94.4,
+        "volume": 365210
       }
     ]
   },
@@ -421,10 +421,10 @@
     "latest": {
       "date": "2026-04-24",
       "open": 106.28,
-      "high": 101.32,
-      "low": 97.55,
-      "close": 98.87,
-      "volume": 33122
+      "high": 107.46,
+      "low": 103.4,
+      "close": 105.33,
+      "volume": 54489
     },
     "history": [
       {
@@ -817,15 +817,15 @@
         "high": 107.36,
         "low": 101.28,
         "close": 105.07,
-        "volume": 39837
+        "volume": 54489
       },
       {
         "date": "2026-04-24",
         "open": 106.28,
-        "high": 101.32,
-        "low": 97.55,
-        "close": 98.87,
-        "volume": 33122
+        "high": 107.46,
+        "low": 103.4,
+        "close": 105.33,
+        "volume": 54489
       }
     ]
   },
@@ -835,11 +835,11 @@
     "ticker": "HO=F",
     "latest": {
       "date": "2026-04-24",
-      "open": 3.91,
-      "high": 3.98,
-      "low": 3.81,
-      "close": 3.84,
-      "volume": 18665
+      "open": 4.01,
+      "high": 4.11,
+      "low": 3.82,
+      "close": 3.89,
+      "volume": 17151
     },
     "history": [
       {
@@ -1232,15 +1232,15 @@
         "high": 4.07,
         "low": 3.81,
         "close": 3.99,
-        "volume": 22087
+        "volume": 17151
       },
       {
         "date": "2026-04-24",
-        "open": 3.91,
-        "high": 3.98,
-        "low": 3.81,
-        "close": 3.84,
-        "volume": 18665
+        "open": 4.01,
+        "high": 4.11,
+        "low": 3.82,
+        "close": 3.89,
+        "volume": 17151
       }
     ]
   },
@@ -1250,11 +1250,11 @@
     "ticker": "RB=F",
     "latest": {
       "date": "2026-04-24",
-      "open": 3.35,
-      "high": 3.37,
-      "low": 3.27,
-      "close": 3.3,
-      "volume": 25071
+      "open": 3.47,
+      "high": 3.49,
+      "low": 3.39,
+      "close": 3.46,
+      "volume": 31337
     },
     "history": [
       {
@@ -1647,15 +1647,15 @@
         "high": 3.5,
         "low": 3.32,
         "close": 3.46,
-        "volume": 28633
+        "volume": 31337
       },
       {
         "date": "2026-04-24",
-        "open": 3.35,
-        "high": 3.37,
-        "low": 3.27,
-        "close": 3.3,
-        "volume": 25071
+        "open": 3.47,
+        "high": 3.49,
+        "low": 3.39,
+        "close": 3.46,
+        "volume": 31337
       }
     ]
   },
@@ -1665,11 +1665,11 @@
     "ticker": "NG=F",
     "latest": {
       "date": "2026-04-24",
-      "open": 2.74,
-      "high": 2.74,
-      "low": 2.66,
-      "close": 2.67,
-      "volume": 60958
+      "open": 2.59,
+      "high": 2.59,
+      "low": 2.49,
+      "close": 2.52,
+      "volume": 79279
     },
     "history": [
       {
@@ -2062,15 +2062,15 @@
         "high": 2.74,
         "low": 2.57,
         "close": 2.61,
-        "volume": 78929
+        "volume": 79279
       },
       {
         "date": "2026-04-24",
-        "open": 2.74,
-        "high": 2.74,
-        "low": 2.66,
-        "close": 2.67,
-        "volume": 60958
+        "open": 2.59,
+        "high": 2.59,
+        "low": 2.49,
+        "close": 2.52,
+        "volume": 79279
       }
     ]
   },
@@ -2273,7 +2273,7 @@
     },
     {
       "date": "2026-04-24",
-      "value": -3.96
+      "value": -10.93
     }
   ],
   "crack_321_realtime": [
@@ -2475,13 +2475,15 @@
     },
     {
       "date": "2026-04-24",
-      "value": 51.25
+      "value": 56.94
     }
   ],
-  "snapshot_time": "2026-04-24T15:01:08",
+  "snapshot_time": "2026-04-25T14:35:47",
   "freshness": {
     "wti": {
       "realtime": "2026-04-24",
+      "fred": "2026-04-20",
+      "fred_lag_days": 4,
       "eia": "2026-04-20",
       "eia_lag_days": 4
     },

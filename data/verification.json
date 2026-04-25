@@ -6,7 +6,7 @@
       "evidence_tier": "A",
       "frequency": "日频（工作日）",
       "latest": "2026-04-24",
-      "lag_days": 0,
+      "lag_days": 1,
       "covers": [
         "当前油价水平",
         "WTI-Brent价差",
@@ -23,7 +23,7 @@
       "evidence_tier": "A",
       "frequency": "日频",
       "latest": "2026-04-24",
-      "lag_days": 0,
+      "lag_days": 1,
       "covers": [
         "期限结构(Backwardation/Contango)",
         "远月隐含价格",
@@ -40,7 +40,7 @@
       "evidence_tier": "A",
       "frequency": "周频（每周三发布，截至上周五）",
       "latest": "2026-04-17",
-      "lag_days": 7,
+      "lag_days": 8,
       "covers": [
         "美国库存趋势",
         "库欣交割库水平",
@@ -58,7 +58,7 @@
       "evidence_tier": "A",
       "frequency": "周频",
       "latest": "2026-04-17",
-      "lag_days": 7,
+      "lag_days": 8,
       "covers": [
         "美国汽油需求趋势",
         "馏分油（柴油）需求趋势"
@@ -74,8 +74,8 @@
       "origin": "FRED/EIA 价格计算",
       "evidence_tier": "A",
       "frequency": "日频",
-      "latest": null,
-      "lag_days": null,
+      "latest": "2026-04-20",
+      "lag_days": 5,
       "covers": [
         "炼厂利润趋势",
         "汽油vs柴油裂解分化",
@@ -110,8 +110,8 @@
       "origin": "CFTC Disaggregated",
       "evidence_tier": "A",
       "frequency": "周频（周五发布，截至周二）",
-      "latest": "2026-04-14",
-      "lag_days": 10,
+      "latest": "2026-04-21",
+      "lag_days": 4,
       "covers": [
         "投机净多头水平",
         "多空驱动分解",
@@ -128,8 +128,8 @@
       "origin": "FRED",
       "evidence_tier": "A",
       "frequency": "日频",
-      "latest": null,
-      "lag_days": null,
+      "latest": "2026-04-23",
+      "lag_days": 2,
       "covers": [
         "美元强弱",
         "原油波动率水平",
@@ -146,7 +146,7 @@
       "evidence_tier": "A/C",
       "evidence_tier_note": "航运通行量为A层直接观测，油轮股价为C层市场代理，不得混用",
       "frequency": "日频",
-      "latest": "2026-04-24",
+      "latest": "2026-04-25",
       "lag_days": 0,
       "covers": [
         "霍尔木兹/曼德/苏伊士/马六甲通行趋势",
@@ -182,7 +182,7 @@
       "evidence_tier": "A",
       "frequency": "周频",
       "latest": "2026-04-17",
-      "lag_days": 7,
+      "lag_days": 8,
       "covers": [
         "美国产量趋势",
         "炼厂开工率",
@@ -226,7 +226,7 @@
           "weight": "supporting",
           "check": "是否转为深度Backwardation",
           "status": "ok",
-          "lag_days": 0,
+          "lag_days": 1,
           "caveat": null
         },
         {
@@ -235,7 +235,7 @@
           "weight": "supporting",
           "check": "Brent溢价是否扩大（国际供给更受影响）",
           "status": "ok",
-          "lag_days": 0,
+          "lag_days": 1,
           "caveat": null
         }
       ],
@@ -249,8 +249,8 @@
       "claim_id": "demand_weakness",
       "claim": "需求走弱/衰退风险",
       "hypothesis_label": "假设：终端需求面临百万桶/日级别走弱",
-      "confidence": "medium",
-      "verdict": "项目数据可以部分验证，但存在盲区",
+      "confidence": "high",
+      "verdict": "项目数据可以较好地验证此研判",
       "checks": [
         {
           "source": "us_demand",
@@ -258,7 +258,7 @@
           "weight": "primary",
           "check": "是否连续2-4周低于季节性均值",
           "status": "ok",
-          "lag_days": 7,
+          "lag_days": 8,
           "caveat": null
         },
         {
@@ -266,8 +266,8 @@
           "field": "裂解价差趋势",
           "weight": "primary",
           "check": "3-2-1裂解是否持续2-4周下行（单日不够）",
-          "status": "missing",
-          "lag_days": null,
+          "status": "ok",
+          "lag_days": 5,
           "caveat": null
         },
         {
@@ -276,7 +276,7 @@
           "weight": "supporting",
           "check": "汽油/馏分油库存是否异常累积",
           "status": "ok",
-          "lag_days": 7,
+          "lag_days": 8,
           "caveat": null
         },
         {
@@ -285,22 +285,22 @@
           "weight": "supporting",
           "check": "开工率是否主动下调",
           "status": "ok",
-          "lag_days": 7,
+          "lag_days": 8,
           "caveat": null
         }
       ],
       "cannot_verify": "全球需求（尤其中国/印度）；美国以外的炼厂利润",
       "counter_evidence": "如果汽油+馏分油需求回升、裂解价差企稳、炼厂开工率上行，则削弱此假设",
       "improve_hint": "可接入IEA月报API或中国海关进口数据来补充全球需求视角",
-      "primary_verified": "1/2",
-      "total_verified": "3/4"
+      "primary_verified": "2/2",
+      "total_verified": "4/4"
     },
     {
       "claim_id": "geopolitical_premium",
       "claim": "地缘风险溢价推高油价",
       "hypothesis_label": "假设：当前价格中含显著地缘风险成分",
-      "confidence": "medium",
-      "verdict": "项目数据可以部分验证，但存在盲区",
+      "confidence": "high",
+      "verdict": "项目数据可以较好地验证此研判",
       "checks": [
         {
           "source": "polymarket",
@@ -316,8 +316,8 @@
           "field": "OVX波动率",
           "weight": "primary",
           "check": "OVX是否远超正常水平（>40为恐慌）",
-          "status": "missing",
-          "lag_days": null,
+          "status": "ok",
+          "lag_days": 2,
           "caveat": null
         },
         {
@@ -326,7 +326,7 @@
           "weight": "primary",
           "check": "近月溢价是否远超远月（地缘驱动的Backwardation）",
           "status": "ok",
-          "lag_days": 0,
+          "lag_days": 1,
           "caveat": null
         },
         {
@@ -342,23 +342,23 @@
       "cannot_verify": "地缘事件本身的概率和时间线；精确的风险溢价量化",
       "counter_evidence": "如果OVX回落、近远月价差收窄、航运流量恢复、停火信号出现，则削弱此假设",
       "improve_hint": "已有Polymarket，但其校准性差。可考虑接入多个预测市场取平均值",
-      "primary_verified": "1/2",
-      "total_verified": "3/4"
+      "primary_verified": "2/2",
+      "total_verified": "4/4"
     },
     {
       "claim_id": "refinery_margin_squeeze",
       "claim": "炼厂利润挤压/减产预期",
       "hypothesis_label": "假设：炼厂利润已下降至减产引发水平",
-      "confidence": "medium",
-      "verdict": "项目数据可以部分验证，但存在盲区",
+      "confidence": "high",
+      "verdict": "项目数据可以较好地验证此研判",
       "checks": [
         {
           "source": "crack_spread",
           "field": "汽油/柴油裂解",
           "weight": "primary",
           "check": "裂解价差是否持续2-4周低于历史均值",
-          "status": "missing",
-          "lag_days": null,
+          "status": "ok",
+          "lag_days": 5,
           "caveat": null
         },
         {
@@ -367,7 +367,7 @@
           "weight": "primary",
           "check": "开工率是否开始下降",
           "status": "ok",
-          "lag_days": 7,
+          "lag_days": 8,
           "caveat": null
         },
         {
@@ -376,7 +376,7 @@
           "weight": "supporting",
           "check": "需求端是否同步走弱（交叉验证）",
           "status": "ok",
-          "lag_days": 7,
+          "lag_days": 8,
           "caveat": null
         },
         {
@@ -385,22 +385,22 @@
           "weight": "supporting",
           "check": "成品油是否累库（供大于求证据）",
           "status": "ok",
-          "lag_days": 7,
+          "lag_days": 8,
           "caveat": null
         }
       ],
       "cannot_verify": "单个炼厂的实际生产成本和利润",
       "counter_evidence": "如果裂解价差回升、炼厂开工率稳定、成品油库存转为去库，则削弱此假设",
       "improve_hint": "可接入EIA炼厂月度报告(EIA-820)获取更细粒度的开工率和产率数据",
-      "primary_verified": "1/2",
-      "total_verified": "3/4"
+      "primary_verified": "2/2",
+      "total_verified": "4/4"
     },
     {
       "claim_id": "speculative_positioning",
       "claim": "投机资金推动/空头挤压",
       "hypothesis_label": "假设：近期价格变动中投机持仓变化贡献显著",
-      "confidence": "medium",
-      "verdict": "项目数据可以部分验证，但存在盲区",
+      "confidence": "high",
+      "verdict": "项目数据可以较好地验证此研判",
       "checks": [
         {
           "source": "cftc_positioning",
@@ -408,7 +408,7 @@
           "weight": "primary",
           "check": "净多头变化由多头加仓还是空头回补驱动",
           "status": "ok",
-          "lag_days": 10,
+          "lag_days": 4,
           "caveat": null
         },
         {
@@ -416,8 +416,8 @@
           "field": "OVX水平",
           "weight": "supporting",
           "check": "波动率环境是否有利于投机",
-          "status": "missing",
-          "lag_days": null,
+          "status": "ok",
+          "lag_days": 2,
           "caveat": null
         },
         {
@@ -426,7 +426,7 @@
           "weight": "supporting",
           "check": "总持仓量是增是减（配合方向看资金行为）",
           "status": "ok",
-          "lag_days": 0,
+          "lag_days": 1,
           "caveat": null
         }
       ],
@@ -434,7 +434,7 @@
       "counter_evidence": "如果要注意区分空头回补和新多入场的不同含义；如果仓位回落而价格维持，则削弱投机驱动假设",
       "improve_hint": "CFTC补充数据(Traders in Financial Futures)可提供更细分的持仓",
       "primary_verified": "1/1",
-      "total_verified": "2/3"
+      "total_verified": "3/3"
     },
     {
       "claim_id": "curve_structure_anomaly",
@@ -449,7 +449,7 @@
           "weight": "primary",
           "check": "M1-M2, M1-M6 价差水平和趋势",
           "status": "ok",
-          "lag_days": 0,
+          "lag_days": 1,
           "caveat": null
         },
         {
@@ -467,7 +467,7 @@
           "weight": "supporting",
           "check": "交割库库存水平（直接影响近月定价）",
           "status": "ok",
-          "lag_days": 7,
+          "lag_days": 8,
           "caveat": null
         },
         {
@@ -476,7 +476,7 @@
           "weight": "supporting",
           "check": "是否有大量资金集中在近月",
           "status": "ok",
-          "lag_days": 10,
+          "lag_days": 4,
           "caveat": null
         }
       ],
@@ -499,7 +499,7 @@
           "weight": "primary",
           "check": "SPR当前水平和近期变化趋势",
           "status": "ok",
-          "lag_days": 7,
+          "lag_days": 8,
           "caveat": null
         },
         {
@@ -508,7 +508,7 @@
           "weight": "supporting",
           "check": "是否超过历史政策干预触发价",
           "status": "ok",
-          "lag_days": 0,
+          "lag_days": 1,
           "caveat": null
         },
         {
@@ -529,33 +529,45 @@
     }
   ],
   "temporal": {
-    "effective_window_days": 10,
-    "max_lag_days": 10,
+    "effective_window_days": 8,
+    "max_lag_days": 8,
     "reliability": "degraded",
-    "high_volatility": false,
-    "ovx": 0,
+    "high_volatility": true,
+    "ovx": 78.67,
     "stale_sources": [
       {
-        "source": "cftc_positioning",
-        "lag": 10,
-        "desc": "CFTC 投机持仓"
+        "source": "us_inventory",
+        "lag": 8,
+        "desc": "美国商业库存 (原油/库欣/汽油/馏分油)"
+      },
+      {
+        "source": "us_demand",
+        "lag": 8,
+        "desc": "美国表观需求 (汽油/馏分油)"
+      },
+      {
+        "source": "us_production",
+        "lag": 8,
+        "desc": "美国产量/炼厂/进口"
       }
     ],
     "lag_map": {
-      "spot_price": 0,
-      "futures_curve": 0,
-      "us_inventory": 7,
-      "us_demand": 7,
-      "cftc_positioning": 10,
+      "spot_price": 1,
+      "futures_curve": 1,
+      "us_inventory": 8,
+      "us_demand": 8,
+      "crack_spread": 5,
+      "cftc_positioning": 4,
+      "financial": 2,
       "maritime": 0,
       "polymarket": 0,
-      "us_production": 7
+      "us_production": 8
     },
-    "warning": "数据最大时间差达10天，不同数据源反映的可能是不同的市场状态。需谨慎处理跨数据源的结论推导。"
+    "warning": "当前OVX=78.7（高波动率环境），但数据最大滞后8天。高波动率下每天价格可能变动3-5%+，8天的数据差距意味着混合分析可能严重失真。建议：(1)优先依赖最新的数据源(期货/航运)；(2)滞后数据仅作为背景参考，不用于方向性判断。"
   },
   "gaps": {
     "total_gaps": 27,
-    "weak_claims": 6,
+    "weak_claims": 2,
     "improvements": [
       {
         "priority": "high",
@@ -674,5 +686,5 @@
       ]
     }
   },
-  "generated_at": "2026-04-24T15:02:18.966481"
+  "generated_at": "2026-04-25T14:36:05.377242"
 }

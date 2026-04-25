@@ -15,10 +15,10 @@
     "evidence_note": "期货价格为直接市场观测",
     "label": "Backwardation",
     "source": "futures",
-    "m1_m2_spread": 4.99,
-    "m1_m6_spread": 16.15,
-    "curve_front": 94.91,
-    "curve_back": 73.3,
+    "m1_m2_spread": 4.82,
+    "m1_m6_spread": 15.62,
+    "curve_front": 94.4,
+    "curve_back": 73.48,
     "n_contracts": 12
   },
   "demand": {
@@ -31,8 +31,20 @@
   },
   "crack_spread": {
     "name": "裂解价差",
-    "signal": "neutral",
-    "detail": "数据不足"
+    "signal": "bullish",
+    "evidence_tier": "A",
+    "evidence_note": "裂解价差基于现货/期货价格计算，属直接观测",
+    "crack_321": 45.08,
+    "crack_321_20d_avg": 43.85,
+    "crack_321_60d_avg": 36.47,
+    "gasoline_crack": 40.53,
+    "diesel_crack": 54.18,
+    "trend": "rising",
+    "level": "high",
+    "cross_validation": "需求强+裂解走高→确认需求旺盛",
+    "detail": "3-2-1: $45.1 (20d均: $43.8, 60d均: $36.5), 趋势: rising",
+    "gasoline_crack_daily_drop_pct": 2.4,
+    "gas_diesel_divergence": 13.65
   },
   "drilling": {
     "name": "钻井活动",
@@ -78,26 +90,28 @@
   },
   "financial": {
     "name": "金融条件",
-    "signal": "bullish",
+    "signal": "neutral",
     "evidence_tier": "A",
     "evidence_note": "DXY/OVX/实际利率为直接市场观测",
-    "dxy_vs_ma200": -1.9
+    "dxy_vs_ma200": -1.9,
+    "real_rate": 1.92,
+    "ovx": 78.67
   },
   "positioning": {
     "name": "持仓拥挤度",
     "signal": "neutral",
     "evidence_tier": "A",
     "evidence_note": "CFTC持仓为直接观测（周频，截至周二）",
-    "net_long": 98368.0,
-    "percentile": 32.0,
-    "net_change": 19668.0,
-    "long_change": 13362.0,
-    "short_change": -6306.0,
-    "driver": "new_longs",
-    "driver_note": "新多头入场驱动，看多信心较强",
+    "net_long": 99887.0,
+    "percentile": 33.5,
+    "net_change": 1519.0,
+    "long_change": 701.0,
+    "short_change": -818.0,
+    "driver": "mixed",
+    "driver_note": "多空双边变动，方向信号不明确",
     "hist_p25": 90956.0,
-    "hist_p75": 171765.0,
-    "context_note": "当前净多仓位于历史32%分位（P25=90956, P75=171765），接近中位水平"
+    "hist_p75": 170605.0,
+    "context_note": "当前净多仓位于历史34%分位（P25=90956, P75=170605），接近中位水平"
   },
   "cross_analysis": {
     "findings": [],
@@ -117,7 +131,7 @@
     "spr_low": false,
     "spr_4w_change": -10397.0,
     "spr_trend": "releasing",
-    "current_wti": 94.91,
+    "current_wti": 94.4,
     "detail": "当前无明显触发 SPR 释放的条件。",
     "release_likelihood": "low",
     "max_release_days": 92.0,
