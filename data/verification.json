@@ -5,7 +5,7 @@
       "origin": "FRED + EIA",
       "evidence_tier": "A",
       "frequency": "日频（工作日）",
-      "latest": "2026-04-28",
+      "latest": "2026-04-29",
       "lag_days": 0,
       "covers": [
         "当前油价水平",
@@ -22,7 +22,7 @@
       "origin": "Yahoo Finance",
       "evidence_tier": "A",
       "frequency": "日频",
-      "latest": "2026-04-28",
+      "latest": "2026-04-29",
       "lag_days": 0,
       "covers": [
         "期限结构(Backwardation/Contango)",
@@ -40,7 +40,7 @@
       "evidence_tier": "A",
       "frequency": "周频（每周三发布，截至上周五）",
       "latest": "2026-04-17",
-      "lag_days": 11,
+      "lag_days": 12,
       "covers": [
         "美国库存趋势",
         "库欣交割库水平",
@@ -58,7 +58,7 @@
       "evidence_tier": "A",
       "frequency": "周频",
       "latest": "2026-04-17",
-      "lag_days": 11,
+      "lag_days": 12,
       "covers": [
         "美国汽油需求趋势",
         "馏分油（柴油）需求趋势"
@@ -74,8 +74,8 @@
       "origin": "FRED/EIA 价格计算",
       "evidence_tier": "A",
       "frequency": "日频",
-      "latest": "2026-04-20",
-      "lag_days": 8,
+      "latest": null,
+      "lag_days": null,
       "covers": [
         "炼厂利润趋势",
         "汽油vs柴油裂解分化",
@@ -111,7 +111,7 @@
       "evidence_tier": "A",
       "frequency": "周频（周五发布，截至周二）",
       "latest": "2026-04-21",
-      "lag_days": 7,
+      "lag_days": 8,
       "covers": [
         "投机净多头水平",
         "多空驱动分解",
@@ -128,7 +128,7 @@
       "origin": "FRED",
       "evidence_tier": "A",
       "frequency": "日频",
-      "latest": "2026-04-27",
+      "latest": "2026-04-28",
       "lag_days": 1,
       "covers": [
         "美元强弱",
@@ -146,7 +146,7 @@
       "evidence_tier": "A/C",
       "evidence_tier_note": "航运通行量为A层直接观测，油轮股价为C层市场代理，不得混用",
       "frequency": "日频",
-      "latest": "2026-04-28",
+      "latest": "2026-04-29",
       "lag_days": 0,
       "covers": [
         "霍尔木兹/曼德/苏伊士/马六甲通行趋势",
@@ -182,7 +182,7 @@
       "evidence_tier": "A",
       "frequency": "周频",
       "latest": "2026-04-17",
-      "lag_days": 11,
+      "lag_days": 12,
       "covers": [
         "美国产量趋势",
         "炼厂开工率",
@@ -258,7 +258,7 @@
           "weight": "primary",
           "check": "是否连续2-4周低于季节性均值",
           "status": "ok",
-          "lag_days": 11,
+          "lag_days": 12,
           "caveat": null
         },
         {
@@ -266,8 +266,8 @@
           "field": "裂解价差趋势",
           "weight": "primary",
           "check": "3-2-1裂解是否持续2-4周下行（单日不够）",
-          "status": "stale",
-          "lag_days": 8,
+          "status": "missing",
+          "lag_days": null,
           "caveat": null
         },
         {
@@ -276,7 +276,7 @@
           "weight": "supporting",
           "check": "汽油/馏分油库存是否异常累积",
           "status": "ok",
-          "lag_days": 11,
+          "lag_days": 12,
           "caveat": null
         },
         {
@@ -285,7 +285,7 @@
           "weight": "supporting",
           "check": "开工率是否主动下调",
           "status": "ok",
-          "lag_days": 11,
+          "lag_days": 12,
           "caveat": null
         }
       ],
@@ -357,8 +357,8 @@
           "field": "汽油/柴油裂解",
           "weight": "primary",
           "check": "裂解价差是否持续2-4周低于历史均值",
-          "status": "stale",
-          "lag_days": 8,
+          "status": "missing",
+          "lag_days": null,
           "caveat": null
         },
         {
@@ -367,7 +367,7 @@
           "weight": "primary",
           "check": "开工率是否开始下降",
           "status": "ok",
-          "lag_days": 11,
+          "lag_days": 12,
           "caveat": null
         },
         {
@@ -376,7 +376,7 @@
           "weight": "supporting",
           "check": "需求端是否同步走弱（交叉验证）",
           "status": "ok",
-          "lag_days": 11,
+          "lag_days": 12,
           "caveat": null
         },
         {
@@ -385,7 +385,7 @@
           "weight": "supporting",
           "check": "成品油是否累库（供大于求证据）",
           "status": "ok",
-          "lag_days": 11,
+          "lag_days": 12,
           "caveat": null
         }
       ],
@@ -408,7 +408,7 @@
           "weight": "primary",
           "check": "净多头变化由多头加仓还是空头回补驱动",
           "status": "ok",
-          "lag_days": 7,
+          "lag_days": 8,
           "caveat": null
         },
         {
@@ -467,7 +467,7 @@
           "weight": "supporting",
           "check": "交割库库存水平（直接影响近月定价）",
           "status": "ok",
-          "lag_days": 11,
+          "lag_days": 12,
           "caveat": null
         },
         {
@@ -476,7 +476,7 @@
           "weight": "supporting",
           "check": "是否有大量资金集中在近月",
           "status": "ok",
-          "lag_days": 7,
+          "lag_days": 8,
           "caveat": null
         }
       ],
@@ -499,7 +499,7 @@
           "weight": "primary",
           "check": "SPR当前水平和近期变化趋势",
           "status": "ok",
-          "lag_days": 11,
+          "lag_days": 12,
           "caveat": null
         },
         {
@@ -529,46 +529,45 @@
     }
   ],
   "temporal": {
-    "effective_window_days": 11,
-    "max_lag_days": 11,
+    "effective_window_days": 12,
+    "max_lag_days": 12,
     "reliability": "degraded",
     "high_volatility": true,
-    "ovx": 73.11,
+    "ovx": 70.5,
     "stale_sources": [
       {
         "source": "us_inventory",
-        "lag": 11,
+        "lag": 12,
         "desc": "美国商业库存 (原油/库欣/汽油/馏分油)"
       },
       {
         "source": "us_demand",
-        "lag": 11,
+        "lag": 12,
         "desc": "美国表观需求 (汽油/馏分油)"
       },
       {
-        "source": "crack_spread",
+        "source": "cftc_positioning",
         "lag": 8,
-        "desc": "裂解价差 (3-2-1, 汽油, 柴油)"
+        "desc": "CFTC 投机持仓"
       },
       {
         "source": "us_production",
-        "lag": 11,
+        "lag": 12,
         "desc": "美国产量/炼厂/进口"
       }
     ],
     "lag_map": {
       "spot_price": 0,
       "futures_curve": 0,
-      "us_inventory": 11,
-      "us_demand": 11,
-      "crack_spread": 8,
-      "cftc_positioning": 7,
+      "us_inventory": 12,
+      "us_demand": 12,
+      "cftc_positioning": 8,
       "financial": 1,
       "maritime": 0,
       "polymarket": 0,
-      "us_production": 11
+      "us_production": 12
     },
-    "warning": "当前OVX=73.1（高波动率环境），但数据最大滞后11天。高波动率下每天价格可能变动3-5%+，11天的数据差距意味着混合分析可能严重失真。建议：(1)优先依赖最新的数据源(期货/航运)；(2)滞后数据仅作为背景参考，不用于方向性判断。"
+    "warning": "当前OVX=70.5（高波动率环境），但数据最大滞后12天。高波动率下每天价格可能变动3-5%+，12天的数据差距意味着混合分析可能严重失真。建议：(1)优先依赖最新的数据源(期货/航运)；(2)滞后数据仅作为背景参考，不用于方向性判断。"
   },
   "gaps": {
     "total_gaps": 27,
@@ -691,5 +690,5 @@
       ]
     }
   },
-  "generated_at": "2026-04-28T16:09:00.401066"
+  "generated_at": "2026-04-29T15:52:12.253278"
 }
