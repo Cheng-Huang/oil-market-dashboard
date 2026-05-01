@@ -9670,7 +9670,7 @@
       "value": -7.152,
       "supply": 96.261,
       "demand": 103.414,
-      "type": "forecast"
+      "type": "actual"
     },
     {
       "date": "2026-05",

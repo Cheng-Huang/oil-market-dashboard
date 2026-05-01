@@ -15,10 +15,10 @@
     "evidence_note": "期货价格为直接市场观测",
     "label": "Backwardation",
     "source": "futures",
-    "m1_m2_spread": 5.84,
-    "m1_m6_spread": 22.52,
-    "curve_front": 104.16,
-    "curve_back": 73.92,
+    "m1_m2_spread": 5.15,
+    "m1_m6_spread": 20.42,
+    "curve_front": 101.29,
+    "curve_back": 74.31,
     "n_contracts": 12
   },
   "demand": {
@@ -57,20 +57,13 @@
   },
   "opec": {
     "name": "全球供需",
-    "signal": "bearish",
+    "signal": "bullish",
     "evidence_tier": "B",
     "evidence_note": "STEO实际值为B层二手确认",
-    "balance_avg_3m": 0.514,
+    "balance_avg_3m": -2.891,
     "opec_trend": "stable",
     "data_source": "actual",
     "supply_demand_detail": [
-      {
-        "date": "2026-01",
-        "balance": 3.062,
-        "supply": 105.993,
-        "demand": 102.931,
-        "type": "actual"
-      },
       {
         "date": "2026-02",
         "balance": 3.213,
@@ -84,18 +77,23 @@
         "supply": 98.16,
         "demand": 102.893,
         "type": "actual"
+      },
+      {
+        "date": "2026-04",
+        "balance": -7.152,
+        "supply": 96.261,
+        "demand": 103.414,
+        "type": "actual"
       }
     ],
-    "detail": "近3月平均平衡: +0.514 百万桶/日 (来源: actual)"
+    "detail": "近3月平均平衡: -2.891 百万桶/日 (来源: actual)"
   },
   "financial": {
     "name": "金融条件",
     "signal": "neutral",
     "evidence_tier": "A",
     "evidence_note": "DXY/OVX/实际利率为直接市场观测",
-    "dxy_vs_ma200": -1.23,
-    "real_rate": 1.92,
-    "ovx": 75.96
+    "ovx": 75.08
   },
   "positioning": {
     "name": "持仓拥挤度",
@@ -115,14 +113,8 @@
   },
   "cross_analysis": {
     "findings": [],
-    "contradictions": [
-      {
-        "type": "curve_vs_balance",
-        "severity": "medium",
-        "detail": "深度Backwardation与全球供需过剩(+0.5百万桶/日)并存。两者并非理论上不可共存——Backwardation反映短期供应风险/现货紧张预期（地缘溢价、库存结构、运输瓶颈等），而供需过剩反映中长期基本面压力。当前Backwardation主要由以下因素驱动：(1)地缘风险溢价；(2)库欣交割库结构；(3)近月资金做多。远月曲线更接近基本面均衡价格。"
-      }
-    ],
-    "n_contradictions": 1
+    "contradictions": [],
+    "n_contradictions": 0
   },
   "spr_policy": {
     "name": "SPR政策响应",
@@ -131,8 +123,8 @@
     "spr_low": false,
     "spr_4w_change": -17140.0,
     "spr_trend": "releasing",
-    "current_wti": 104.16,
-    "detail": "WTI $104 超过政策干预阈值，但当前供需仍为过剩，SPR 释放概率中等，需关注白宫/DOE 政策信号。",
+    "current_wti": 101.29,
+    "detail": "WTI $101 超过政策干预阈值，但当前供需仍为过剩，SPR 释放概率中等，需关注白宫/DOE 政策信号。",
     "release_likelihood": "moderate",
     "max_release_days": 90.0,
     "capacity_note": "SPR 当前 398 百万桶，按最大速率 4.4 百万桶/日可持续 90 天。"
@@ -161,17 +153,17 @@
     ]
   },
   "price_freshness": {
-    "spot_date": "2026-04-30",
-    "futures_date": "2026-04-30",
+    "spot_date": "2026-05-01",
+    "futures_date": "2026-05-01",
     "lag_days": 0,
     "temporal_risk": "low"
   },
   "score_summary": {
-    "bullish": 4,
+    "bullish": 5,
     "neutral": 3,
-    "bearish": 1,
+    "bearish": 0,
     "base_regime": "bullish_leaning",
     "regime": "bullish_leaning",
-    "summary": "看多4/中性3/看空1 — 信号偏多，但需检验是否由单一因素（如地缘风险）主导。"
+    "summary": "看多5/中性3/看空0 — 信号偏多，但需检验是否由单一因素（如地缘风险）主导。"
   }
 }
