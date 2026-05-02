@@ -15,10 +15,10 @@
     "evidence_note": "期货价格为直接市场观测",
     "label": "Backwardation",
     "source": "futures",
-    "m1_m2_spread": 5.15,
-    "m1_m6_spread": 20.42,
-    "curve_front": 101.29,
-    "curve_back": 74.31,
+    "m1_m2_spread": 5.4,
+    "m1_m6_spread": 20.52,
+    "curve_front": 101.94,
+    "curve_back": 74.38,
     "n_contracts": 12
   },
   "demand": {
@@ -93,6 +93,8 @@
     "signal": "neutral",
     "evidence_tier": "A",
     "evidence_note": "DXY/OVX/实际利率为直接市场观测",
+    "dxy_vs_ma200": -1.23,
+    "real_rate": 1.94,
     "ovx": 75.08
   },
   "positioning": {
@@ -100,16 +102,16 @@
     "signal": "neutral",
     "evidence_tier": "A",
     "evidence_note": "CFTC持仓为直接观测（周频，截至周二）",
-    "net_long": 99887.0,
-    "percentile": 33.5,
-    "net_change": 1519.0,
-    "long_change": 701.0,
-    "short_change": -818.0,
+    "net_long": 80331.0,
+    "percentile": 23.0,
+    "net_change": -19556.0,
+    "long_change": -7502.0,
+    "short_change": 12054.0,
     "driver": "mixed",
     "driver_note": "多空双边变动，方向信号不明确",
-    "hist_p25": 90956.0,
-    "hist_p75": 170605.0,
-    "context_note": "当前净多仓位于历史34%分位（P25=90956, P75=170605），接近中位水平"
+    "hist_p25": 87328.0,
+    "hist_p75": 169913.0,
+    "context_note": "当前净多仓位于历史23%分位（P25=87328, P75=169913），仍有较大上行空间"
   },
   "cross_analysis": {
     "findings": [],
@@ -123,8 +125,8 @@
     "spr_low": false,
     "spr_4w_change": -17140.0,
     "spr_trend": "releasing",
-    "current_wti": 101.29,
-    "detail": "WTI $101 超过政策干预阈值，但当前供需仍为过剩，SPR 释放概率中等，需关注白宫/DOE 政策信号。",
+    "current_wti": 101.94,
+    "detail": "WTI $102 超过政策干预阈值，但当前供需仍为过剩，SPR 释放概率中等，需关注白宫/DOE 政策信号。",
     "release_likelihood": "moderate",
     "max_release_days": 90.0,
     "capacity_note": "SPR 当前 398 百万桶，按最大速率 4.4 百万桶/日可持续 90 天。"
