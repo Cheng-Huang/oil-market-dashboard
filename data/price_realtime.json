@@ -4,12 +4,12 @@
     "unit": "$/bbl",
     "ticker": "CL=F",
     "latest": {
-      "date": "2026-05-01",
-      "open": 105.14,
-      "high": 106.65,
-      "low": 99.3,
-      "close": 101.94,
-      "volume": 241919
+      "date": "2026-05-04",
+      "open": 99.73,
+      "high": 107.46,
+      "low": 99.11,
+      "close": 105.33,
+      "volume": 214430
     },
     "history": [
       {
@@ -402,7 +402,15 @@
         "high": 106.65,
         "low": 99.3,
         "close": 101.94,
-        "volume": 241919
+        "volume": 341994
+      },
+      {
+        "date": "2026-05-04",
+        "open": 99.73,
+        "high": 107.46,
+        "low": 99.11,
+        "close": 105.33,
+        "volume": 214430
       }
     ]
   },
@@ -411,12 +419,12 @@
     "unit": "$/bbl",
     "ticker": "BZ=F",
     "latest": {
-      "date": "2026-05-01",
-      "open": 111.01,
-      "high": 112.43,
-      "low": 106.27,
-      "close": 108.17,
-      "volume": 37287
+      "date": "2026-05-04",
+      "open": 107.13,
+      "high": 114.45,
+      "low": 105.66,
+      "close": 113.93,
+      "volume": 42990
     },
     "history": [
       {
@@ -809,7 +817,15 @@
         "high": 112.43,
         "low": 106.27,
         "close": 108.17,
-        "volume": 37287
+        "volume": 58572
+      },
+      {
+        "date": "2026-05-04",
+        "open": 107.13,
+        "high": 114.45,
+        "low": 105.66,
+        "close": 113.93,
+        "volume": 42990
       }
     ]
   },
@@ -818,12 +834,12 @@
     "unit": "$/gal",
     "ticker": "HO=F",
     "latest": {
-      "date": "2026-05-01",
-      "open": 4.09,
-      "high": 4.15,
-      "low": 3.91,
-      "close": 3.95,
-      "volume": 36528
+      "date": "2026-05-04",
+      "open": 3.92,
+      "high": 4.08,
+      "low": 3.87,
+      "close": 4.06,
+      "volume": 22668
     },
     "history": [
       {
@@ -1216,7 +1232,15 @@
         "high": 4.15,
         "low": 3.91,
         "close": 3.95,
-        "volume": 36528
+        "volume": 47220
+      },
+      {
+        "date": "2026-05-04",
+        "open": 3.92,
+        "high": 4.08,
+        "low": 3.87,
+        "close": 4.06,
+        "volume": 22668
       }
     ]
   },
@@ -1225,12 +1249,12 @@
     "unit": "$/gal",
     "ticker": "RB=F",
     "latest": {
-      "date": "2026-05-01",
-      "open": 3.63,
-      "high": 3.68,
+      "date": "2026-05-04",
+      "open": 3.57,
+      "high": 3.74,
       "low": 3.54,
-      "close": 3.6,
-      "volume": 47318
+      "close": 3.73,
+      "volume": 26000
     },
     "history": [
       {
@@ -1623,7 +1647,15 @@
         "high": 3.68,
         "low": 3.54,
         "close": 3.6,
-        "volume": 47318
+        "volume": 71871
+      },
+      {
+        "date": "2026-05-04",
+        "open": 3.57,
+        "high": 3.74,
+        "low": 3.54,
+        "close": 3.73,
+        "volume": 26000
       }
     ]
   },
@@ -1632,12 +1664,12 @@
     "unit": "$/MMBtu",
     "ticker": "NG=F",
     "latest": {
-      "date": "2026-05-01",
-      "open": 2.76,
-      "high": 2.82,
+      "date": "2026-05-04",
+      "open": 2.78,
+      "high": 2.88,
       "low": 2.75,
-      "close": 2.78,
-      "volume": 107096
+      "close": 2.86,
+      "volume": 82433
     },
     "history": [
       {
@@ -2030,7 +2062,15 @@
         "high": 2.82,
         "low": 2.75,
         "close": 2.78,
-        "volume": 107096
+        "volume": 172760
+      },
+      {
+        "date": "2026-05-04",
+        "open": 2.78,
+        "high": 2.88,
+        "low": 2.75,
+        "close": 2.86,
+        "volume": 82433
       }
     ]
   },
@@ -2230,6 +2270,10 @@
     {
       "date": "2026-05-01",
       "value": -6.23
+    },
+    {
+      "date": "2026-05-04",
+      "value": -8.6
     }
   ],
   "crack_321_realtime": [
@@ -2428,23 +2472,27 @@
     {
       "date": "2026-05-01",
       "value": 54.16
+    },
+    {
+      "date": "2026-05-04",
+      "value": 55.95
     }
   ],
-  "snapshot_time": "2026-05-03T14:40:52",
+  "snapshot_time": "2026-05-04T15:54:18",
   "freshness": {
     "wti": {
-      "realtime": "2026-05-01",
+      "realtime": "2026-05-04",
       "fred": "2026-04-27",
-      "fred_lag_days": 4,
+      "fred_lag_days": 7,
       "eia": "2026-04-27",
-      "eia_lag_days": 4
+      "eia_lag_days": 7
     },
     "brent": {
-      "realtime": "2026-05-01",
+      "realtime": "2026-05-04",
       "fred": "2026-04-27",
-      "fred_lag_days": 4,
+      "fred_lag_days": 7,
       "eia": "2026-04-27",
-      "eia_lag_days": 4
+      "eia_lag_days": 7
     }
   }
 }
