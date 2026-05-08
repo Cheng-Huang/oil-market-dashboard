@@ -9272,6 +9272,10 @@
       {
         "date": "2025-12",
         "value": 10.06
+      },
+      {
+        "date": "2026-01",
+        "value": 10.11
       }
     ],
     "iran": [
@@ -11773,51 +11777,55 @@
       },
       {
         "date": "2025-01",
-        "value": 4.22
+        "value": 4.08
       },
       {
         "date": "2025-02",
-        "value": 4.27
+        "value": 4.13
       },
       {
         "date": "2025-03",
-        "value": 4.17
-      },
-      {
-        "date": "2025-04",
-        "value": 4.22
-      },
-      {
-        "date": "2025-05",
-        "value": 4.27
-      },
-      {
-        "date": "2025-06",
         "value": 4.03
       },
       {
+        "date": "2025-04",
+        "value": 4.08
+      },
+      {
+        "date": "2025-05",
+        "value": 4.13
+      },
+      {
+        "date": "2025-06",
+        "value": 3.89
+      },
+      {
         "date": "2025-07",
-        "value": 4.17
+        "value": 4.0
       },
       {
         "date": "2025-08",
-        "value": 4.12
+        "value": 3.98
       },
       {
         "date": "2025-09",
-        "value": 4.2
+        "value": 4.06
       },
       {
         "date": "2025-10",
-        "value": 4.27
+        "value": 4.13
       },
       {
         "date": "2025-11",
-        "value": 4.17
+        "value": 4.03
       },
       {
         "date": "2025-12",
-        "value": 4.22
+        "value": 4.08
+      },
+      {
+        "date": "2026-01",
+        "value": 4.03
       }
     ],
     "iraq": [
@@ -14079,243 +14087,243 @@
       },
       {
         "date": "2020-01",
-        "value": 4.575
+        "value": 4.598
       },
       {
         "date": "2020-02",
-        "value": 4.675
+        "value": 4.698
       },
       {
         "date": "2020-03",
-        "value": 4.525
+        "value": 4.548
       },
       {
         "date": "2020-04",
-        "value": 4.525
+        "value": 4.548
       },
       {
         "date": "2020-05",
-        "value": 4.242
+        "value": 4.268
       },
       {
         "date": "2020-06",
-        "value": 3.772
+        "value": 3.798
       },
       {
         "date": "2020-07",
-        "value": 3.722
+        "value": 3.748
       },
       {
         "date": "2020-08",
-        "value": 3.713
+        "value": 3.738
       },
       {
         "date": "2020-09",
-        "value": 3.733
+        "value": 3.758
       },
       {
         "date": "2020-10",
-        "value": 3.873
+        "value": 3.898
       },
       {
         "date": "2020-11",
-        "value": 3.843
+        "value": 3.868
       },
       {
         "date": "2020-12",
-        "value": 3.883
+        "value": 3.908
       },
       {
         "date": "2021-01",
-        "value": 3.885
+        "value": 3.913
       },
       {
         "date": "2021-02",
-        "value": 3.975
+        "value": 4.003
       },
       {
         "date": "2021-03",
-        "value": 4.025
+        "value": 4.053
       },
       {
         "date": "2021-04",
-        "value": 4.025
+        "value": 4.053
       },
       {
         "date": "2021-05",
-        "value": 4.025
+        "value": 4.053
       },
       {
         "date": "2021-06",
-        "value": 3.975
+        "value": 4.003
       },
       {
         "date": "2021-07",
-        "value": 4.025
+        "value": 4.053
       },
       {
         "date": "2021-08",
-        "value": 4.1
+        "value": 4.128
       },
       {
         "date": "2021-09",
-        "value": 4.15
+        "value": 4.178
       },
       {
         "date": "2021-10",
-        "value": 4.225
+        "value": 4.253
       },
       {
         "date": "2021-11",
-        "value": 4.275
+        "value": 4.303
       },
       {
         "date": "2021-12",
-        "value": 4.325
+        "value": 4.353
       },
       {
         "date": "2022-01",
-        "value": 4.275
+        "value": 4.308
       },
       {
         "date": "2022-02",
-        "value": 4.375
+        "value": 4.408
       },
       {
         "date": "2022-03",
-        "value": 4.325
+        "value": 4.358
       },
       {
         "date": "2022-04",
-        "value": 4.425
+        "value": 4.458
       },
       {
         "date": "2022-05",
-        "value": 4.425
+        "value": 4.458
       },
       {
         "date": "2022-06",
-        "value": 4.475
+        "value": 4.508
       },
       {
         "date": "2022-07",
-        "value": 4.575
+        "value": 4.608
       },
       {
         "date": "2022-08",
-        "value": 4.575
+        "value": 4.608
       },
       {
         "date": "2022-09",
-        "value": 4.575
+        "value": 4.608
       },
       {
         "date": "2022-10",
-        "value": 4.605
+        "value": 4.638
       },
       {
         "date": "2022-11",
-        "value": 4.505
+        "value": 4.538
       },
       {
         "date": "2022-12",
-        "value": 4.505
+        "value": 4.538
       },
       {
         "date": "2023-01",
-        "value": 4.455
+        "value": 4.491
       },
       {
         "date": "2023-02",
-        "value": 4.455
+        "value": 4.491
       },
       {
         "date": "2023-03",
-        "value": 4.405
+        "value": 4.441
       },
       {
         "date": "2023-04",
-        "value": 4.195
+        "value": 4.231
       },
       {
         "date": "2023-05",
-        "value": 4.225
+        "value": 4.261
       },
       {
         "date": "2023-06",
-        "value": 4.235
+        "value": 4.271
       },
       {
         "date": "2023-07",
-        "value": 4.305
+        "value": 4.341
       },
       {
         "date": "2023-08",
-        "value": 4.385
+        "value": 4.421
       },
       {
         "date": "2023-09",
-        "value": 4.375
+        "value": 4.411
       },
       {
         "date": "2023-10",
-        "value": 4.395
+        "value": 4.431
       },
       {
         "date": "2023-11",
-        "value": 4.365
+        "value": 4.401
       },
       {
         "date": "2023-12",
-        "value": 4.445
+        "value": 4.481
       },
       {
         "date": "2024-01",
-        "value": 4.425
+        "value": 4.461
       },
       {
         "date": "2024-02",
-        "value": 4.435
+        "value": 4.471
       },
       {
         "date": "2024-03",
-        "value": 4.515
+        "value": 4.551
       },
       {
         "date": "2024-04",
-        "value": 4.505
+        "value": 4.541
       },
       {
         "date": "2024-05",
-        "value": 4.495
+        "value": 4.531
       },
       {
         "date": "2024-06",
-        "value": 4.465
+        "value": 4.501
       },
       {
         "date": "2024-07",
-        "value": 4.575
+        "value": 4.611
       },
       {
         "date": "2024-08",
-        "value": 4.495
+        "value": 4.531
       },
       {
         "date": "2024-09",
-        "value": 4.345
+        "value": 4.381
       },
       {
         "date": "2024-10",
-        "value": 4.295
+        "value": 4.331
       },
       {
         "date": "2024-11",
-        "value": 4.275
+        "value": 4.311
       },
       {
         "date": "2024-12",
-        "value": 4.245
+        "value": 4.281
       },
       {
         "date": "2025-01",
@@ -14364,6 +14372,10 @@
       {
         "date": "2025-12",
         "value": 4.321
+      },
+      {
+        "date": "2026-01",
+        "value": 4.391
       }
     ],
     "uae": [
@@ -16910,6 +16922,10 @@
       {
         "date": "2025-12",
         "value": 3.99
+      },
+      {
+        "date": "2026-01",
+        "value": 4.01
       }
     ],
     "kuwait": [
@@ -19027,387 +19043,387 @@
       },
       {
         "date": "2017-01",
-        "value": 2.885
+        "value": 2.865
       },
       {
         "date": "2017-02",
-        "value": 2.825
+        "value": 2.805
       },
       {
         "date": "2017-03",
-        "value": 2.815
+        "value": 2.795
       },
       {
         "date": "2017-04",
-        "value": 2.815
+        "value": 2.795
       },
       {
         "date": "2017-05",
-        "value": 2.815
+        "value": 2.795
       },
       {
         "date": "2017-06",
-        "value": 2.825
+        "value": 2.805
       },
       {
         "date": "2017-07",
-        "value": 2.815
+        "value": 2.795
       },
       {
         "date": "2017-08",
-        "value": 2.815
+        "value": 2.795
       },
       {
         "date": "2017-09",
-        "value": 2.835
+        "value": 2.815
       },
       {
         "date": "2017-10",
-        "value": 2.845
+        "value": 2.825
       },
       {
         "date": "2017-11",
-        "value": 2.815
+        "value": 2.795
       },
       {
         "date": "2017-12",
-        "value": 2.805
+        "value": 2.785
       },
       {
         "date": "2018-01",
-        "value": 2.815
+        "value": 2.795
       },
       {
         "date": "2018-02",
-        "value": 2.815
+        "value": 2.795
       },
       {
         "date": "2018-03",
-        "value": 2.825
+        "value": 2.805
       },
       {
         "date": "2018-04",
-        "value": 2.815
+        "value": 2.795
       },
       {
         "date": "2018-05",
-        "value": 2.815
+        "value": 2.795
       },
       {
         "date": "2018-06",
-        "value": 2.825
+        "value": 2.805
       },
       {
         "date": "2018-07",
-        "value": 2.905
+        "value": 2.885
       },
       {
         "date": "2018-08",
-        "value": 2.905
+        "value": 2.885
       },
       {
         "date": "2018-09",
-        "value": 2.905
+        "value": 2.885
       },
       {
         "date": "2018-10",
-        "value": 2.905
+        "value": 2.885
       },
       {
         "date": "2018-11",
-        "value": 2.905
+        "value": 2.885
       },
       {
         "date": "2018-12",
-        "value": 2.905
+        "value": 2.885
       },
       {
         "date": "2019-01",
-        "value": 2.855
+        "value": 2.835
       },
       {
         "date": "2019-02",
-        "value": 2.855
+        "value": 2.835
       },
       {
         "date": "2019-03",
-        "value": 2.825
+        "value": 2.805
       },
       {
         "date": "2019-04",
-        "value": 2.825
+        "value": 2.805
       },
       {
         "date": "2019-05",
-        "value": 2.825
+        "value": 2.805
       },
       {
         "date": "2019-06",
-        "value": 2.825
+        "value": 2.805
       },
       {
         "date": "2019-07",
-        "value": 2.805
+        "value": 2.785
       },
       {
         "date": "2019-08",
-        "value": 2.805
+        "value": 2.785
       },
       {
         "date": "2019-09",
-        "value": 2.805
+        "value": 2.785
       },
       {
         "date": "2019-10",
-        "value": 2.805
+        "value": 2.785
       },
       {
         "date": "2019-11",
-        "value": 2.805
+        "value": 2.785
       },
       {
         "date": "2019-12",
-        "value": 2.815
+        "value": 2.795
       },
       {
         "date": "2020-01",
-        "value": 2.817
+        "value": 2.8
       },
       {
         "date": "2020-02",
-        "value": 2.817
+        "value": 2.8
       },
       {
         "date": "2020-03",
-        "value": 3.012
+        "value": 2.99
       },
       {
         "date": "2020-04",
-        "value": 3.119
+        "value": 3.09
       },
       {
         "date": "2020-05",
-        "value": 2.305
+        "value": 2.29
       },
       {
         "date": "2020-06",
-        "value": 2.195
+        "value": 2.18
       },
       {
         "date": "2020-07",
-        "value": 2.265
+        "value": 2.25
       },
       {
         "date": "2020-08",
-        "value": 2.4
+        "value": 2.38
       },
       {
         "date": "2020-09",
-        "value": 2.4
+        "value": 2.38
       },
       {
         "date": "2020-10",
-        "value": 2.4
+        "value": 2.38
       },
       {
         "date": "2020-11",
-        "value": 2.41
+        "value": 2.39
       },
       {
         "date": "2020-12",
-        "value": 2.41
+        "value": 2.39
       },
       {
         "date": "2021-01",
-        "value": 2.44
+        "value": 2.42
       },
       {
         "date": "2021-02",
-        "value": 2.44
+        "value": 2.42
       },
       {
         "date": "2021-03",
-        "value": 2.44
+        "value": 2.42
       },
       {
         "date": "2021-04",
-        "value": 2.44
+        "value": 2.42
       },
       {
         "date": "2021-05",
-        "value": 2.47
+        "value": 2.45
       },
       {
         "date": "2021-06",
-        "value": 2.493
+        "value": 2.473
       },
       {
         "date": "2021-07",
-        "value": 2.53
+        "value": 2.51
       },
       {
         "date": "2021-08",
-        "value": 2.56
+        "value": 2.54
       },
       {
         "date": "2021-09",
-        "value": 2.58
+        "value": 2.56
       },
       {
         "date": "2021-10",
-        "value": 2.61
+        "value": 2.59
       },
       {
         "date": "2021-11",
-        "value": 2.65
+        "value": 2.625
       },
       {
         "date": "2021-12",
-        "value": 2.666
+        "value": 2.64
       },
       {
         "date": "2022-01",
-        "value": 2.696
+        "value": 2.67
       },
       {
         "date": "2022-02",
-        "value": 2.726
+        "value": 2.7
       },
       {
         "date": "2022-03",
-        "value": 2.756
+        "value": 2.73
       },
       {
         "date": "2022-04",
-        "value": 2.776
+        "value": 2.75
       },
       {
         "date": "2022-05",
-        "value": 2.813
+        "value": 2.785
       },
       {
         "date": "2022-06",
-        "value": 2.841
+        "value": 2.81
       },
       {
         "date": "2022-07",
-        "value": 2.893
+        "value": 2.86
       },
       {
         "date": "2022-08",
-        "value": 2.934
+        "value": 2.9
       },
       {
         "date": "2022-09",
-        "value": 2.944
+        "value": 2.91
       },
       {
         "date": "2022-10",
-        "value": 2.924
+        "value": 2.89
       },
       {
         "date": "2022-11",
-        "value": 2.824
+        "value": 2.79
       },
       {
         "date": "2022-12",
-        "value": 2.774
+        "value": 2.74
       },
       {
         "date": "2023-01",
-        "value": 2.816
+        "value": 2.79
       },
       {
         "date": "2023-02",
-        "value": 2.796
+        "value": 2.77
       },
       {
         "date": "2023-03",
-        "value": 2.786
+        "value": 2.76
       },
       {
         "date": "2023-04",
-        "value": 2.746
+        "value": 2.72
       },
       {
         "date": "2023-05",
-        "value": 2.688
+        "value": 2.66
       },
       {
         "date": "2023-06",
-        "value": 2.691
+        "value": 2.66
       },
       {
         "date": "2023-07",
-        "value": 2.673
+        "value": 2.64
       },
       {
         "date": "2023-08",
-        "value": 2.664
+        "value": 2.63
       },
       {
         "date": "2023-09",
-        "value": 2.704
+        "value": 2.67
       },
       {
         "date": "2023-10",
-        "value": 2.644
+        "value": 2.61
       },
       {
         "date": "2023-11",
-        "value": 2.674
+        "value": 2.64
       },
       {
         "date": "2023-12",
-        "value": 2.644
+        "value": 2.61
       },
       {
         "date": "2024-01",
-        "value": 2.566
+        "value": 2.54
       },
       {
         "date": "2024-02",
-        "value": 2.566
+        "value": 2.54
       },
       {
         "date": "2024-03",
-        "value": 2.596
+        "value": 2.57
       },
       {
         "date": "2024-04",
-        "value": 2.616
+        "value": 2.59
       },
       {
         "date": "2024-05",
-        "value": 2.618
+        "value": 2.59
       },
       {
         "date": "2024-06",
-        "value": 2.601
+        "value": 2.57
       },
       {
         "date": "2024-07",
-        "value": 2.563
+        "value": 2.53
       },
       {
         "date": "2024-08",
-        "value": 2.564
+        "value": 2.53
       },
       {
         "date": "2024-09",
-        "value": 2.574
+        "value": 2.54
       },
       {
         "date": "2024-10",
-        "value": 2.574
+        "value": 2.54
       },
       {
         "date": "2024-11",
-        "value": 2.544
+        "value": 2.51
       },
       {
         "date": "2024-12",
-        "value": 2.574
+        "value": 2.54
       },
       {
         "date": "2025-01",
@@ -19447,15 +19463,19 @@
       },
       {
         "date": "2025-10",
-        "value": 2.6
+        "value": 2.595
       },
       {
         "date": "2025-11",
-        "value": 2.64
+        "value": 2.635
       },
       {
         "date": "2025-12",
-        "value": 2.69
+        "value": 2.685
+      },
+      {
+        "date": "2026-01",
+        "value": 2.66
       }
     ],
     "venezuela": [
@@ -22002,6 +22022,10 @@
       {
         "date": "2025-12",
         "value": 0.905
+      },
+      {
+        "date": "2026-01",
+        "value": 0.805
       }
     ],
     "nigeria": [
@@ -24548,6 +24572,10 @@
       {
         "date": "2025-12",
         "value": 1.57
+      },
+      {
+        "date": "2026-01",
+        "value": 1.548
       }
     ],
     "libya": [
@@ -27094,6 +27122,10 @@
       {
         "date": "2025-12",
         "value": 1.428
+      },
+      {
+        "date": "2026-01",
+        "value": 1.398
       }
     ],
     "algeria": [
@@ -29640,6 +29672,10 @@
       {
         "date": "2025-12",
         "value": 1.18
+      },
+      {
+        "date": "2026-01",
+        "value": 1.17
       }
     ],
     "angola": [
@@ -32186,6 +32222,10 @@
       {
         "date": "2025-12",
         "value": 1.005
+      },
+      {
+        "date": "2026-01",
+        "value": 0.954
       }
     ],
     "russia": [
@@ -33815,11 +33855,15 @@
       },
       {
         "date": "2025-11",
-        "value": 10.056
+        "value": 10.106
       },
       {
         "date": "2025-12",
-        "value": 9.977
+        "value": 10.027
+      },
+      {
+        "date": "2026-01",
+        "value": 10.027
       }
     ],
     "canada": [
@@ -36366,6 +36410,10 @@
       {
         "date": "2025-12",
         "value": 5.23
+      },
+      {
+        "date": "2026-01",
+        "value": 5.059
       }
     ],
     "brazil": [
@@ -38384,6 +38432,10 @@
       {
         "date": "2025-12",
         "value": 4.015
+      },
+      {
+        "date": "2026-01",
+        "value": 3.953
       }
     ],
     "norway": [
@@ -40913,7 +40965,7 @@
       },
       {
         "date": "2025-08",
-        "value": 1.974
+        "value": 1.973
       },
       {
         "date": "2025-09",
@@ -40930,6 +40982,10 @@
       {
         "date": "2025-12",
         "value": 1.984
+      },
+      {
+        "date": "2026-01",
+        "value": 1.994
       }
     ],
     "mexico": [
@@ -43476,6 +43532,10 @@
       {
         "date": "2025-12",
         "value": 1.75
+      },
+      {
+        "date": "2026-01",
+        "value": 1.745
       }
     ],
     "china": [
@@ -46022,6 +46082,10 @@
       {
         "date": "2025-12",
         "value": 4.19
+      },
+      {
+        "date": "2026-01",
+        "value": 4.42
       }
     ]
   },
@@ -46029,77 +46093,85 @@
     "by_country": {
       "saudi": {
         "quota_mbd": 9.0,
-        "actual_mbd": 10.06,
-        "deviation_mbd": 1.06,
-        "compliance_pct": -11.8,
-        "date": "2025-12",
+        "actual_mbd": 10.11,
+        "deviation_mbd": 1.11,
+        "compliance_pct": -12.3,
+        "date": "2026-01",
         "status": "under_cut"
       },
       "iraq": {
         "quota_mbd": 4.0,
-        "actual_mbd": 4.32,
-        "deviation_mbd": 0.32,
-        "compliance_pct": -8.0,
-        "date": "2025-12",
+        "actual_mbd": 4.39,
+        "deviation_mbd": 0.39,
+        "compliance_pct": -9.8,
+        "date": "2026-01",
         "status": "under_cut"
       },
       "uae": {
         "quota_mbd": 2.9,
-        "actual_mbd": 3.99,
-        "deviation_mbd": 1.09,
-        "compliance_pct": -37.6,
-        "date": "2025-12",
+        "actual_mbd": 4.01,
+        "deviation_mbd": 1.11,
+        "compliance_pct": -38.3,
+        "date": "2026-01",
         "status": "under_cut"
       },
       "kuwait": {
         "quota_mbd": 2.4,
-        "actual_mbd": 2.69,
-        "deviation_mbd": 0.29,
-        "compliance_pct": -12.1,
-        "date": "2025-12",
+        "actual_mbd": 2.66,
+        "deviation_mbd": 0.26,
+        "compliance_pct": -10.8,
+        "date": "2026-01",
         "status": "under_cut"
       },
       "algeria": {
         "quota_mbd": 0.9,
-        "actual_mbd": 1.18,
-        "deviation_mbd": 0.28,
-        "compliance_pct": -31.1,
-        "date": "2025-12",
+        "actual_mbd": 1.17,
+        "deviation_mbd": 0.27,
+        "compliance_pct": -30.0,
+        "date": "2026-01",
         "status": "under_cut"
       },
       "nigeria": {
         "quota_mbd": 1.4,
-        "actual_mbd": 1.57,
-        "deviation_mbd": 0.17,
-        "compliance_pct": -12.1,
-        "date": "2025-12",
+        "actual_mbd": 1.55,
+        "deviation_mbd": 0.15,
+        "compliance_pct": -10.6,
+        "date": "2026-01",
         "status": "under_cut"
       },
       "russia": {
         "quota_mbd": 9.0,
-        "actual_mbd": 9.98,
-        "deviation_mbd": 0.98,
-        "compliance_pct": -10.9,
-        "date": "2025-12",
+        "actual_mbd": 10.03,
+        "deviation_mbd": 1.03,
+        "compliance_pct": -11.4,
+        "date": "2026-01",
         "status": "under_cut"
       }
     },
     "overall": {
       "total_quota_mbd": 29.599999999999998,
-      "total_actual_mbd": 33.79,
-      "total_deviation_mbd": 4.19,
-      "overall_compliance_pct": -14.2
+      "total_actual_mbd": 33.92,
+      "total_deviation_mbd": 4.32,
+      "overall_compliance_pct": -14.6
     }
   },
   "quota_reference": "2024-06 OPEC+ 37th JMMC",
   "production_trends": [
     {
-      "country": "brazil",
-      "date": "2025-12",
-      "value_mbd": 4.01,
-      "mom_change_mbd": 0.242,
-      "mom_change_pct": 6.4,
-      "3m_change_mbd": -0.015
+      "country": "china",
+      "date": "2026-01",
+      "value_mbd": 4.42,
+      "mom_change_mbd": 0.23,
+      "mom_change_pct": 5.5,
+      "3m_change_mbd": 0.11
+    },
+    {
+      "country": "canada",
+      "date": "2026-01",
+      "value_mbd": 5.06,
+      "mom_change_mbd": -0.171,
+      "mom_change_pct": -3.3,
+      "3m_change_mbd": -0.175
     },
     {
       "country": "us_production",
@@ -46110,196 +46182,190 @@
       "3m_change_mbd": 0.07
     },
     {
-      "country": "saudi",
-      "date": "2025-12",
-      "value_mbd": 10.06,
-      "mom_change_mbd": 0.12,
-      "mom_change_pct": 1.2,
-      "3m_change_mbd": 0.07
-    },
-    {
-      "country": "china",
-      "date": "2025-12",
-      "value_mbd": 4.19,
-      "mom_change_mbd": -0.12,
-      "mom_change_pct": -2.8,
-      "3m_change_mbd": -0.05
-    },
-    {
       "country": "venezuela",
-      "date": "2025-12",
-      "value_mbd": 0.91,
+      "date": "2026-01",
+      "value_mbd": 0.81,
       "mom_change_mbd": -0.1,
-      "mom_change_pct": -10.0,
-      "3m_change_mbd": -0.1
-    },
-    {
-      "country": "norway",
-      "date": "2025-12",
-      "value_mbd": 1.98,
-      "mom_change_mbd": 0.085,
-      "mom_change_pct": 4.5,
-      "3m_change_mbd": 0.062
-    },
-    {
-      "country": "russia",
-      "date": "2025-12",
-      "value_mbd": 9.98,
-      "mom_change_mbd": -0.079,
-      "mom_change_pct": -0.8,
-      "3m_change_mbd": -0.097
+      "mom_change_pct": -11.0,
+      "3m_change_mbd": -0.2,
+      "anomaly": true,
+      "note": "产量骤降 0.10 mb/d (-11.0%)"
     },
     {
       "country": "iraq",
-      "date": "2025-12",
-      "value_mbd": 4.32,
-      "mom_change_mbd": -0.07,
-      "mom_change_pct": -1.6,
-      "3m_change_mbd": -0.14
-    },
-    {
-      "country": "libya",
-      "date": "2025-12",
-      "value_mbd": 1.43,
+      "date": "2026-01",
+      "value_mbd": 4.39,
       "mom_change_mbd": 0.07,
-      "mom_change_pct": 5.2,
-      "3m_change_mbd": 0.07
-    },
-    {
-      "country": "uae",
-      "date": "2025-12",
-      "value_mbd": 3.99,
-      "mom_change_mbd": -0.06,
-      "mom_change_pct": -1.5,
+      "mom_change_pct": 1.6,
       "3m_change_mbd": 0.0
     },
     {
-      "country": "iran",
-      "date": "2025-12",
-      "value_mbd": 4.22,
-      "mom_change_mbd": 0.05,
-      "mom_change_pct": 1.2,
-      "3m_change_mbd": -0.05
-    },
-    {
-      "country": "kuwait",
-      "date": "2025-12",
-      "value_mbd": 2.69,
-      "mom_change_mbd": 0.05,
-      "mom_change_pct": 1.9,
-      "3m_change_mbd": 0.09
+      "country": "brazil",
+      "date": "2026-01",
+      "value_mbd": 3.95,
+      "mom_change_mbd": -0.062,
+      "mom_change_pct": -1.5,
+      "3m_change_mbd": 0.18
     },
     {
       "country": "angola",
-      "date": "2025-12",
-      "value_mbd": 1.0,
-      "mom_change_mbd": -0.04,
-      "mom_change_pct": -3.8,
-      "3m_change_mbd": -0.02
+      "date": "2026-01",
+      "value_mbd": 0.95,
+      "mom_change_mbd": -0.051,
+      "mom_change_pct": -5.1,
+      "3m_change_mbd": -0.091
     },
     {
-      "country": "mexico",
-      "date": "2025-12",
-      "value_mbd": 1.75,
-      "mom_change_mbd": 0.02,
-      "mom_change_pct": 1.2,
-      "3m_change_mbd": 0.019
+      "country": "saudi",
+      "date": "2026-01",
+      "value_mbd": 10.11,
+      "mom_change_mbd": 0.05,
+      "mom_change_pct": 0.5,
+      "3m_change_mbd": 0.17
+    },
+    {
+      "country": "iran",
+      "date": "2026-01",
+      "value_mbd": 4.03,
+      "mom_change_mbd": -0.05,
+      "mom_change_pct": -1.2,
+      "3m_change_mbd": 0.0
+    },
+    {
+      "country": "libya",
+      "date": "2026-01",
+      "value_mbd": 1.4,
+      "mom_change_mbd": -0.03,
+      "mom_change_pct": -2.1,
+      "3m_change_mbd": 0.04
+    },
+    {
+      "country": "kuwait",
+      "date": "2026-01",
+      "value_mbd": 2.66,
+      "mom_change_mbd": -0.025,
+      "mom_change_pct": -0.9,
+      "3m_change_mbd": 0.025
     },
     {
       "country": "nigeria",
-      "date": "2025-12",
-      "value_mbd": 1.57,
-      "mom_change_mbd": 0.008,
-      "mom_change_pct": 0.5,
-      "3m_change_mbd": -0.054
+      "date": "2026-01",
+      "value_mbd": 1.55,
+      "mom_change_mbd": -0.022,
+      "mom_change_pct": -1.4,
+      "3m_change_mbd": -0.014
     },
     {
-      "country": "canada",
-      "date": "2025-12",
-      "value_mbd": 5.23,
-      "mom_change_mbd": -0.004,
-      "mom_change_pct": -0.1,
-      "3m_change_mbd": 0.248
+      "country": "uae",
+      "date": "2026-01",
+      "value_mbd": 4.01,
+      "mom_change_mbd": 0.02,
+      "mom_change_pct": 0.5,
+      "3m_change_mbd": -0.04
     },
     {
       "country": "algeria",
-      "date": "2025-12",
-      "value_mbd": 1.18,
+      "date": "2026-01",
+      "value_mbd": 1.17,
+      "mom_change_mbd": -0.01,
+      "mom_change_pct": -0.8,
+      "3m_change_mbd": -0.01
+    },
+    {
+      "country": "norway",
+      "date": "2026-01",
+      "value_mbd": 1.99,
+      "mom_change_mbd": 0.01,
+      "mom_change_pct": 0.5,
+      "3m_change_mbd": 0.095
+    },
+    {
+      "country": "mexico",
+      "date": "2026-01",
+      "value_mbd": 1.75,
+      "mom_change_mbd": -0.005,
+      "mom_change_pct": -0.3,
+      "3m_change_mbd": 0.015
+    },
+    {
+      "country": "russia",
+      "date": "2026-01",
+      "value_mbd": 10.03,
       "mom_change_mbd": 0.0,
       "mom_change_pct": 0.0,
-      "3m_change_mbd": 0.03
+      "3m_change_mbd": -0.079
     }
   ],
   "spare_capacity": {
     "by_country": {
       "saudi": {
-        "current_mbd": 10.06,
+        "current_mbd": 10.11,
         "estimated_peak_mbd": 11.23,
-        "spare_capacity_mbd": 1.17,
-        "date": "2025-12"
+        "spare_capacity_mbd": 1.12,
+        "date": "2026-01"
+      },
+      "iran": {
+        "current_mbd": 4.03,
+        "estimated_peak_mbd": 4.13,
+        "spare_capacity_mbd": 0.1,
+        "date": "2026-01"
       },
       "iraq": {
-        "current_mbd": 4.32,
-        "estimated_peak_mbd": 4.61,
-        "spare_capacity_mbd": 0.28,
-        "date": "2025-12"
-      },
-      "uae": {
-        "current_mbd": 3.99,
-        "estimated_peak_mbd": 4.05,
-        "spare_capacity_mbd": 0.06,
-        "date": "2025-12"
+        "current_mbd": 4.39,
+        "estimated_peak_mbd": 4.64,
+        "spare_capacity_mbd": 0.25,
+        "date": "2026-01"
       },
       "kuwait": {
-        "current_mbd": 2.69,
-        "estimated_peak_mbd": 2.94,
+        "current_mbd": 2.66,
+        "estimated_peak_mbd": 2.91,
         "spare_capacity_mbd": 0.25,
-        "date": "2025-12"
+        "date": "2026-01"
       },
       "venezuela": {
-        "current_mbd": 0.91,
+        "current_mbd": 0.81,
         "estimated_peak_mbd": 1.0,
-        "spare_capacity_mbd": 0.1,
-        "date": "2025-12"
+        "spare_capacity_mbd": 0.2,
+        "date": "2026-01"
       },
       "nigeria": {
-        "current_mbd": 1.57,
+        "current_mbd": 1.55,
         "estimated_peak_mbd": 1.69,
-        "spare_capacity_mbd": 0.12,
-        "date": "2025-12"
+        "spare_capacity_mbd": 0.14,
+        "date": "2026-01"
       },
       "algeria": {
-        "current_mbd": 1.18,
+        "current_mbd": 1.17,
         "estimated_peak_mbd": 1.24,
-        "spare_capacity_mbd": 0.06,
-        "date": "2025-12"
+        "spare_capacity_mbd": 0.07,
+        "date": "2026-01"
       },
       "angola": {
-        "current_mbd": 1.0,
+        "current_mbd": 0.95,
         "estimated_peak_mbd": 1.24,
-        "spare_capacity_mbd": 0.23,
-        "date": "2025-12"
+        "spare_capacity_mbd": 0.28,
+        "date": "2026-01"
       },
       "russia": {
-        "current_mbd": 9.98,
+        "current_mbd": 10.03,
         "estimated_peak_mbd": 10.69,
-        "spare_capacity_mbd": 0.71,
-        "date": "2025-12"
+        "spare_capacity_mbd": 0.66,
+        "date": "2026-01"
       },
       "mexico": {
         "current_mbd": 1.75,
         "estimated_peak_mbd": 1.97,
         "spare_capacity_mbd": 0.22,
-        "date": "2025-12"
+        "date": "2026-01"
       },
       "china": {
-        "current_mbd": 4.19,
+        "current_mbd": 4.42,
         "estimated_peak_mbd": 4.5,
-        "spare_capacity_mbd": 0.31,
-        "date": "2025-12"
+        "spare_capacity_mbd": 0.08,
+        "date": "2026-01"
       }
     },
-    "total_spare_mbd": 3.51
+    "total_spare_mbd": 3.37
   },
-  "updated": "2026-05-07T15:58:16Z"
+  "updated": "2026-05-08T15:13:26Z"
 }

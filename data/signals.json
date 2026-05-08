@@ -15,10 +15,10 @@
     "evidence_note": "期货价格为直接市场观测",
     "label": "Backwardation",
     "source": "futures",
-    "m1_m2_spread": 3.24,
-    "m1_m6_spread": 14.23,
-    "curve_front": 92.28,
-    "curve_back": 72.27,
+    "m1_m2_spread": 3.57,
+    "m1_m6_spread": 14.82,
+    "curve_front": 95.42,
+    "curve_back": 74.1,
     "n_contracts": 12
   },
   "demand": {
@@ -94,8 +94,8 @@
     "evidence_tier": "A",
     "evidence_note": "DXY/OVX/实际利率为直接市场观测",
     "dxy_vs_ma200": -1.53,
-    "real_rate": 1.96,
-    "ovx": 72.34
+    "real_rate": 1.94,
+    "ovx": 72.25
   },
   "positioning": {
     "name": "持仓拥挤度",
@@ -125,9 +125,9 @@
     "spr_low": false,
     "spr_4w_change": -20625.0,
     "spr_trend": "releasing",
-    "current_wti": 92.28,
-    "detail": "当前无明显触发 SPR 释放的条件。",
-    "release_likelihood": "low",
+    "current_wti": 95.42,
+    "detail": "WTI $95 超过政策干预阈值，但当前供需仍为过剩，SPR 释放概率中等，需关注白宫/DOE 政策信号。",
+    "release_likelihood": "moderate",
     "max_release_days": 89.0,
     "capacity_note": "SPR 当前 393 百万桶，按最大速率 4.4 百万桶/日可持续 89 天。"
   },
@@ -155,8 +155,8 @@
     ]
   },
   "price_freshness": {
-    "spot_date": "2026-05-07",
-    "futures_date": "2026-05-07",
+    "spot_date": "2026-05-08",
+    "futures_date": "2026-05-08",
     "lag_days": 0,
     "temporal_risk": "low"
   },
