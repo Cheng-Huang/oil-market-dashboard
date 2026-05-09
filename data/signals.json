@@ -15,10 +15,10 @@
     "evidence_note": "期货价格为直接市场观测",
     "label": "Backwardation",
     "source": "futures",
-    "m1_m2_spread": 3.57,
-    "m1_m6_spread": 14.82,
+    "m1_m2_spread": 3.63,
+    "m1_m6_spread": 14.47,
     "curve_front": 95.42,
-    "curve_back": 74.1,
+    "curve_back": 74.77,
     "n_contracts": 12
   },
   "demand": {
@@ -94,7 +94,7 @@
     "evidence_tier": "A",
     "evidence_note": "DXY/OVX/实际利率为直接市场观测",
     "dxy_vs_ma200": -1.53,
-    "real_rate": 1.94,
+    "real_rate": 1.96,
     "ovx": 72.25
   },
   "positioning": {
@@ -102,16 +102,16 @@
     "signal": "neutral",
     "evidence_tier": "A",
     "evidence_note": "CFTC持仓为直接观测（周频，截至周二）",
-    "net_long": 80331.0,
-    "percentile": 23.0,
-    "net_change": -19556.0,
-    "long_change": -7502.0,
-    "short_change": 12054.0,
+    "net_long": 70791.0,
+    "percentile": 17.5,
+    "net_change": -9540.0,
+    "long_change": -7574.0,
+    "short_change": 1966.0,
     "driver": "mixed",
     "driver_note": "多空双边变动，方向信号不明确",
-    "hist_p25": 87328.0,
-    "hist_p75": 169913.0,
-    "context_note": "当前净多仓位于历史23%分位（P25=87328, P75=169913），仍有较大上行空间"
+    "hist_p25": 84929.0,
+    "hist_p75": 169413.0,
+    "context_note": "当前净多仓位于历史18%分位（P25=84929, P75=169413），仍有较大上行空间"
   },
   "cross_analysis": {
     "findings": [],

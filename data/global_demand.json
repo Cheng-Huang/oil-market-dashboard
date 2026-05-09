@@ -18818,18 +18818,18 @@
   "refinery_proxies": {
     "MPC": {
       "name": "Marathon Petroleum (US refiner)",
-      "price": 246.13,
-      "change_20d_pct": 9.3
+      "price": 244.87,
+      "change_20d_pct": 8.7
     },
     "VLO": {
       "name": "Valero Energy (US refiner)",
-      "price": 240.7,
-      "change_20d_pct": -0.6
+      "price": 241.06,
+      "change_20d_pct": -0.4
     },
     "PSX": {
       "name": "Phillips 66 (US refiner)",
-      "price": 170.17,
-      "change_20d_pct": 6.1
+      "price": 171.56,
+      "change_20d_pct": 7.0
     }
   },
   "demand_share": {
@@ -18864,5 +18864,5 @@
       "change_pct": -5.5
     }
   ],
-  "updated": "2026-05-08T15:13:19Z"
+  "updated": "2026-05-09T14:42:17Z"
 }
