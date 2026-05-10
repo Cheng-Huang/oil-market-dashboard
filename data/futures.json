@@ -22,13 +22,6 @@
       "date": "2026-05-08"
     },
     {
-      "month": "2026-09",
-      "label": "Sep 2026",
-      "ticker": "CLU26.NYM",
-      "price": 85.26,
-      "date": "2026-05-08"
-    },
-    {
       "month": "2026-10",
       "label": "Oct 2026",
       "ticker": "CLV26.NYM",
@@ -86,7 +79,7 @@
     }
   ],
   "m1_m2_spread": 3.63,
-  "m1_m6_spread": 14.47,
+  "m1_m6_spread": 16.05,
   "structure": "backwardation",
   "spread_history": [
     {
@@ -1044,5 +1037,5 @@
       "m2": 91.85
     }
   ],
-  "updated": "2026-05-09T14:42:07.474229"
+  "updated": "2026-05-10T14:43:17.383497"
 }

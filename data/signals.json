@@ -16,10 +16,10 @@
     "label": "Backwardation",
     "source": "futures",
     "m1_m2_spread": 3.63,
-    "m1_m6_spread": 14.47,
+    "m1_m6_spread": 16.05,
     "curve_front": 95.42,
     "curve_back": 74.77,
-    "n_contracts": 12
+    "n_contracts": 11
   },
   "demand": {
     "name": "需求强度",
