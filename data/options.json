@@ -1,25 +1,175 @@
 {
   "options": {
-    "by_ticker": {},
-    "by_expiry": [],
-    "aggregate": {
-      "total_pc_ratio_volume": 0,
-      "total_pc_ratio_oi": 0,
-      "total_call_volume": 0,
-      "total_put_volume": 0,
-      "total_call_oi": 0,
-      "total_put_oi": 0
+    "by_ticker": {
+      "USO": {
+        "label": "United States Oil Fund ETF",
+        "pc_ratio_volume": 0.948,
+        "pc_ratio_oi": 1.126,
+        "total_call_volume": 28282,
+        "total_put_volume": 26802,
+        "total_call_oi": 221938,
+        "total_put_oi": 249933,
+        "expiries_analyzed": 4
+      },
+      "XLE": {
+        "label": "Energy Select Sector SPDR",
+        "pc_ratio_volume": 0.983,
+        "pc_ratio_oi": 1.154,
+        "total_call_volume": 9799,
+        "total_put_volume": 9632,
+        "total_call_oi": 302284,
+        "total_put_oi": 348909,
+        "expiries_analyzed": 4
+      }
     },
-    "sentiment": {}
+    "by_expiry": [
+      {
+        "ticker": "USO",
+        "expiry": "2026-05-13",
+        "pc_ratio_volume": 1.299,
+        "pc_ratio_oi": 0.698,
+        "total_call_volume": 9535,
+        "total_put_volume": 12389,
+        "total_call_oi": 26322,
+        "total_put_oi": 18376,
+        "max_call_oi_strike": 135.0,
+        "max_put_oi_strike": 125.0,
+        "avg_iv_calls": 0.8693,
+        "avg_iv_puts": 1.0919,
+        "iv_skew": 0.2226
+      },
+      {
+        "ticker": "USO",
+        "expiry": "2026-05-15",
+        "pc_ratio_volume": 0.742,
+        "pc_ratio_oi": 1.204,
+        "total_call_volume": 13731,
+        "total_put_volume": 10186,
+        "total_call_oi": 163273,
+        "total_put_oi": 196602,
+        "max_call_oi_strike": 145.0,
+        "max_put_oi_strike": 100.0,
+        "avg_iv_calls": 1.1802,
+        "avg_iv_puts": 1.3786,
+        "iv_skew": 0.1985
+      },
+      {
+        "ticker": "USO",
+        "expiry": "2026-05-20",
+        "pc_ratio_volume": 0.727,
+        "pc_ratio_oi": 0.927,
+        "total_call_volume": 2081,
+        "total_put_volume": 1512,
+        "total_call_oi": 8883,
+        "total_put_oi": 8232,
+        "max_call_oi_strike": 170.0,
+        "max_put_oi_strike": 130.0,
+        "avg_iv_calls": 0.6625,
+        "avg_iv_puts": 0.763,
+        "iv_skew": 0.1004
+      },
+      {
+        "ticker": "USO",
+        "expiry": "2026-05-22",
+        "pc_ratio_volume": 0.925,
+        "pc_ratio_oi": 1.139,
+        "total_call_volume": 2935,
+        "total_put_volume": 2715,
+        "total_call_oi": 23460,
+        "total_put_oi": 26723,
+        "max_call_oi_strike": 150.0,
+        "max_put_oi_strike": 100.0,
+        "avg_iv_calls": 0.8622,
+        "avg_iv_puts": 0.9127,
+        "iv_skew": 0.0505
+      },
+      {
+        "ticker": "XLE",
+        "expiry": "2026-05-15",
+        "pc_ratio_volume": 0.413,
+        "pc_ratio_oi": 1.16,
+        "total_call_volume": 7422,
+        "total_put_volume": 3067,
+        "total_call_oi": 269615,
+        "total_put_oi": 312839,
+        "max_call_oi_strike": 60.0,
+        "max_put_oi_strike": 55.0,
+        "avg_iv_calls": 0.7358,
+        "avg_iv_puts": 0.563,
+        "iv_skew": -0.1728
+      },
+      {
+        "ticker": "XLE",
+        "expiry": "2026-05-22",
+        "pc_ratio_volume": 1.247,
+        "pc_ratio_oi": 1.291,
+        "total_call_volume": 1269,
+        "total_put_volume": 1583,
+        "total_call_oi": 15879,
+        "total_put_oi": 20502,
+        "max_call_oi_strike": 58.0,
+        "max_put_oi_strike": 55.0,
+        "avg_iv_calls": 0.5029,
+        "avg_iv_puts": 0.4966,
+        "iv_skew": -0.0063
+      },
+      {
+        "ticker": "XLE",
+        "expiry": "2026-05-29",
+        "pc_ratio_volume": 6.748,
+        "pc_ratio_oi": 1.222,
+        "total_call_volume": 531,
+        "total_put_volume": 3583,
+        "total_call_oi": 10566,
+        "total_put_oi": 12911,
+        "max_call_oi_strike": 59.0,
+        "max_put_oi_strike": 55.0,
+        "avg_iv_calls": 0.3902,
+        "avg_iv_puts": 0.3673,
+        "iv_skew": -0.0229
+      },
+      {
+        "ticker": "XLE",
+        "expiry": "2026-06-05",
+        "pc_ratio_volume": 2.425,
+        "pc_ratio_oi": 0.427,
+        "total_call_volume": 577,
+        "total_put_volume": 1399,
+        "total_call_oi": 6224,
+        "total_put_oi": 2657,
+        "max_call_oi_strike": 58.0,
+        "max_put_oi_strike": 56.0,
+        "avg_iv_calls": 0.3414,
+        "avg_iv_puts": 0.353,
+        "iv_skew": 0.0116
+      }
+    ],
+    "aggregate": {
+      "total_pc_ratio_volume": 0.957,
+      "total_pc_ratio_oi": 1.142,
+      "total_call_volume": 38081,
+      "total_put_volume": 36434,
+      "total_call_oi": 524222,
+      "total_put_oi": 598842
+    },
+    "sentiment": {
+      "volume_signal": "bullish",
+      "volume_note": "P/C(vol)=0.96 偏多",
+      "oi_signal": "neutral",
+      "skew_signal": "put_premium",
+      "skew_note": "Put IV 显著高于 Call IV (skew=0.223) → 市场在积极买入下行保护",
+      "key_put_support": 130.0,
+      "key_call_resistance": 58.0
+    }
   },
   "ovx_enhanced": {
-    "latest": 72.25,
-    "date": "2026-05-07",
-    "avg_20d": 75.34,
-    "avg_60d": 79.78,
-    "percentile": 91.2,
-    "vol_of_vol_5d": 2.6,
+    "latest": 72.15,
+    "date": "2026-05-08",
+    "avg_20d": 75.05,
+    "avg_60d": 80.24,
+    "percentile": 90.8,
+    "vol_of_vol_5d": 2.5,
     "regime": "panic"
   },
-  "updated": "2026-05-10T14:43:39Z"
+  "updated": "2026-05-11T16:23:41Z"
 }
