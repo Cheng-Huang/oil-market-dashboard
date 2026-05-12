@@ -15,10 +15,10 @@
     "evidence_note": "期货价格为直接市场观测",
     "label": "Backwardation",
     "source": "futures",
-    "m1_m2_spread": 3.35,
-    "m1_m6_spread": 15.13,
-    "curve_front": 98.27,
-    "curve_back": 75.72,
+    "m1_m2_spread": 3.31,
+    "m1_m6_spread": 16.41,
+    "curve_front": 101.53,
+    "curve_back": 77.71,
     "n_contracts": 12
   },
   "demand": {
@@ -52,50 +52,50 @@
     "evidence_tier": "A",
     "evidence_note": "钻机数为直接观测",
     "source": "rig_count",
-    "recent_avg": 16.0,
-    "prev_avg": 16.4
+    "recent_avg": 16.1,
+    "prev_avg": 16.5
   },
   "opec": {
     "name": "全球供需",
     "signal": "bullish",
     "evidence_tier": "B",
     "evidence_note": "STEO实际值为B层二手确认",
-    "balance_avg_3m": -2.891,
+    "balance_avg_3m": -3.24,
     "opec_trend": "stable",
     "data_source": "actual",
     "supply_demand_detail": [
       {
         "date": "2026-02",
-        "balance": 3.213,
-        "supply": 107.967,
-        "demand": 104.754,
+        "balance": 4.175,
+        "supply": 108.86,
+        "demand": 104.685,
         "type": "actual"
       },
       {
         "date": "2026-03",
-        "balance": -4.733,
-        "supply": 98.16,
-        "demand": 102.893,
+        "balance": -5.275,
+        "supply": 97.057,
+        "demand": 102.332,
         "type": "actual"
       },
       {
         "date": "2026-04",
-        "balance": -7.152,
-        "supply": 96.261,
-        "demand": 103.414,
+        "balance": -8.62,
+        "supply": 94.548,
+        "demand": 103.168,
         "type": "actual"
       }
     ],
-    "detail": "近3月平均平衡: -2.891 百万桶/日 (来源: actual)"
+    "detail": "近3月平均平衡: -3.240 百万桶/日 (来源: actual)"
   },
   "financial": {
     "name": "金融条件",
     "signal": "neutral",
     "evidence_tier": "A",
     "evidence_note": "DXY/OVX/实际利率为直接市场观测",
-    "dxy_vs_ma200": -1.53,
-    "real_rate": 1.96,
-    "ovx": 72.15
+    "dxy_vs_ma200": -1.83,
+    "real_rate": 1.93,
+    "ovx": 75.66
   },
   "positioning": {
     "name": "持仓拥挤度",
@@ -125,8 +125,8 @@
     "spr_low": false,
     "spr_4w_change": -20625.0,
     "spr_trend": "releasing",
-    "current_wti": 98.27,
-    "detail": "WTI $98 超过政策干预阈值，但当前供需仍为过剩，SPR 释放概率中等，需关注白宫/DOE 政策信号。",
+    "current_wti": 101.53,
+    "detail": "WTI $102 超过政策干预阈值，但当前供需仍为过剩，SPR 释放概率中等，需关注白宫/DOE 政策信号。",
     "release_likelihood": "moderate",
     "max_release_days": 89.0,
     "capacity_note": "SPR 当前 393 百万桶，按最大速率 4.4 百万桶/日可持续 89 天。"
@@ -137,26 +137,26 @@
       {
         "date": "2020-05",
         "prev_date": "2020-04",
-        "supply_change": -11.318,
-        "prev_supply": 99.719,
-        "curr_supply": 88.401,
+        "supply_change": -11.301,
+        "prev_supply": 99.753,
+        "curr_supply": 88.452,
         "severity": "critical",
-        "detail": "2020-04→2020-05 供给变动 -11.32 百万桶/日，超过合理阈值 ±4.0。STEO供给=全球产量，产量不会因运输中断瞬间骤降——运输封锁影响的是贸易流向而非产量本身。可能原因：(1) STEO 月度数据修正/统计口径调整；(2) 实际减产（OPEC+主动减产或制裁导致关井）；(3) 数据发布时滞导致的暂时性异常。建议交叉验证 OPEC 月报和 IEA 月报数据。"
+        "detail": "2020-04→2020-05 供给变动 -11.30 百万桶/日，超过合理阈值 ±4.0。STEO供给=全球产量，产量不会因运输中断瞬间骤降——运输封锁影响的是贸易流向而非产量本身。可能原因：(1) STEO 月度数据修正/统计口径调整；(2) 实际减产（OPEC+主动减产或制裁导致关井）；(3) 数据发布时滞导致的暂时性异常。建议交叉验证 OPEC 月报和 IEA 月报数据。"
       },
       {
         "date": "2026-03",
         "prev_date": "2026-02",
-        "supply_change": -9.807,
-        "prev_supply": 107.967,
-        "curr_supply": 98.16,
+        "supply_change": -11.802,
+        "prev_supply": 108.86,
+        "curr_supply": 97.057,
         "severity": "critical",
-        "detail": "2026-02→2026-03 供给变动 -9.81 百万桶/日，超过合理阈值 ±4.0。STEO供给=全球产量，产量不会因运输中断瞬间骤降——运输封锁影响的是贸易流向而非产量本身。可能原因：(1) STEO 月度数据修正/统计口径调整；(2) 实际减产（OPEC+主动减产或制裁导致关井）；(3) 数据发布时滞导致的暂时性异常。建议交叉验证 OPEC 月报和 IEA 月报数据。"
+        "detail": "2026-02→2026-03 供给变动 -11.80 百万桶/日，超过合理阈值 ±4.0。STEO供给=全球产量，产量不会因运输中断瞬间骤降——运输封锁影响的是贸易流向而非产量本身。可能原因：(1) STEO 月度数据修正/统计口径调整；(2) 实际减产（OPEC+主动减产或制裁导致关井）；(3) 数据发布时滞导致的暂时性异常。建议交叉验证 OPEC 月报和 IEA 月报数据。"
       }
     ]
   },
   "price_freshness": {
-    "spot_date": "2026-05-11",
-    "futures_date": "2026-05-11",
+    "spot_date": "2026-05-12",
+    "futures_date": "2026-05-12",
     "lag_days": 0,
     "temporal_risk": "low"
   },
