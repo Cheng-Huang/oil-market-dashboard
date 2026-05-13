@@ -15,10 +15,10 @@
     "evidence_note": "期货价格为直接市场观测",
     "label": "Backwardation",
     "source": "futures",
-    "m1_m2_spread": 3.31,
-    "m1_m6_spread": 16.41,
-    "curve_front": 101.53,
-    "curve_back": 77.71,
+    "m1_m2_spread": 4.25,
+    "m1_m6_spread": 18.4,
+    "curve_front": 102.26,
+    "curve_back": 76.47,
     "n_contracts": 12
   },
   "demand": {
@@ -94,8 +94,8 @@
     "evidence_tier": "A",
     "evidence_note": "DXY/OVX/实际利率为直接市场观测",
     "dxy_vs_ma200": -1.83,
-    "real_rate": 1.93,
-    "ovx": 75.66
+    "real_rate": 1.95,
+    "ovx": 75.69
   },
   "positioning": {
     "name": "持仓拥挤度",
@@ -125,7 +125,7 @@
     "spr_low": false,
     "spr_4w_change": -20625.0,
     "spr_trend": "releasing",
-    "current_wti": 101.53,
+    "current_wti": 102.26,
     "detail": "WTI $102 超过政策干预阈值，但当前供需仍为过剩，SPR 释放概率中等，需关注白宫/DOE 政策信号。",
     "release_likelihood": "moderate",
     "max_release_days": 89.0,
@@ -155,8 +155,8 @@
     ]
   },
   "price_freshness": {
-    "spot_date": "2026-05-12",
-    "futures_date": "2026-05-12",
+    "spot_date": "2026-05-13",
+    "futures_date": "2026-05-13",
     "lag_days": 0,
     "temporal_risk": "low"
   },
