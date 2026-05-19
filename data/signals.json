@@ -15,10 +15,10 @@
     "evidence_note": "期货价格为直接市场观测",
     "label": "Backwardation",
     "source": "futures",
-    "m1_m2_spread": 4.05,
-    "m1_m6_spread": 20.17,
-    "curve_front": 107.25,
-    "curve_back": 78.09,
+    "m1_m2_spread": 4.75,
+    "m1_m6_spread": 21.64,
+    "curve_front": 108.61,
+    "curve_back": 77.98,
     "n_contracts": 12
   },
   "demand": {
@@ -90,12 +90,12 @@
   },
   "financial": {
     "name": "金融条件",
-    "signal": "neutral",
+    "signal": "bearish",
     "evidence_tier": "A",
     "evidence_note": "DXY/OVX/实际利率为直接市场观测",
-    "dxy_vs_ma200": -1.83,
-    "real_rate": 2.0,
-    "ovx": 72.35
+    "dxy_vs_ma200": -0.55,
+    "real_rate": 2.1,
+    "ovx": 72.07
   },
   "positioning": {
     "name": "持仓拥挤度",
@@ -125,8 +125,8 @@
     "spr_low": false,
     "spr_4w_change": -25086.0,
     "spr_trend": "releasing",
-    "current_wti": 107.25,
-    "detail": "WTI $107 超过政策干预阈值，但当前供需仍为过剩，SPR 释放概率中等，需关注白宫/DOE 政策信号。",
+    "current_wti": 108.61,
+    "detail": "WTI $109 超过政策干预阈值，但当前供需仍为过剩，SPR 释放概率中等，需关注白宫/DOE 政策信号。",
     "release_likelihood": "moderate",
     "max_release_days": 87.0,
     "capacity_note": "SPR 当前 384 百万桶，按最大速率 4.4 百万桶/日可持续 87 天。"
@@ -155,17 +155,17 @@
     ]
   },
   "price_freshness": {
-    "spot_date": "2026-05-18",
-    "futures_date": "2026-05-18",
+    "spot_date": "2026-05-19",
+    "futures_date": "2026-05-19",
     "lag_days": 0,
     "temporal_risk": "low"
   },
   "score_summary": {
     "bullish": 4,
-    "neutral": 3,
-    "bearish": 1,
+    "neutral": 2,
+    "bearish": 2,
     "base_regime": "bullish_leaning",
     "regime": "bullish_leaning",
-    "summary": "看多4/中性3/看空1 — 信号偏多，但需检验是否由单一因素（如地缘风险）主导。"
+    "summary": "看多4/中性2/看空2 — 信号偏多，但需检验是否由单一因素（如地缘风险）主导。"
   }
 }
