@@ -4,15 +4,11 @@
       "name": "Frontline (VLCC)",
       "segment": "crude",
       "weight": 0.3,
-      "price": 38.91,
-      "change_5d_pct": 5.0,
-      "change_20d_pct": 11.5,
-      "volume_spike_pct": -16.1,
+      "price": 39.53,
+      "change_5d_pct": 7.8,
+      "change_20d_pct": 11.1,
+      "volume_spike_pct": 2.7,
       "history": [
-        {
-          "date": "2026-04-09",
-          "close": 34.82
-        },
         {
           "date": "2026-04-10",
           "close": 34.34
@@ -127,7 +123,11 @@
         },
         {
           "date": "2026-05-20",
-          "close": 38.91
+          "close": 38.94
+        },
+        {
+          "date": "2026-05-21",
+          "close": 39.53
         }
       ]
     },
@@ -135,15 +135,11 @@
       "name": "DHT Holdings (VLCC)",
       "segment": "crude",
       "weight": 0.2,
-      "price": 18.4,
-      "change_5d_pct": 3.1,
-      "change_20d_pct": 3.4,
-      "volume_spike_pct": -0.6,
+      "price": 17.9,
+      "change_5d_pct": 1.4,
+      "change_20d_pct": -0.9,
+      "volume_spike_pct": -2.8,
       "history": [
-        {
-          "date": "2026-04-09",
-          "close": 17.8
-        },
         {
           "date": "2026-04-10",
           "close": 17.46
@@ -258,7 +254,11 @@
         },
         {
           "date": "2026-05-20",
-          "close": 18.4
+          "close": 18.32
+        },
+        {
+          "date": "2026-05-21",
+          "close": 17.9
         }
       ]
     },
@@ -266,15 +266,11 @@
       "name": "Intl Seaways",
       "segment": "mixed",
       "weight": 0.2,
-      "price": 86.76,
-      "change_5d_pct": 1.5,
-      "change_20d_pct": 13.0,
-      "volume_spike_pct": -22.6,
+      "price": 86.45,
+      "change_5d_pct": 2.2,
+      "change_20d_pct": 8.7,
+      "volume_spike_pct": -20.5,
       "history": [
-        {
-          "date": "2026-04-09",
-          "close": 74.95
-        },
         {
           "date": "2026-04-10",
           "close": 73.86
@@ -389,7 +385,11 @@
         },
         {
           "date": "2026-05-20",
-          "close": 86.76
+          "close": 86.67
+        },
+        {
+          "date": "2026-05-21",
+          "close": 86.45
         }
       ]
     },
@@ -397,15 +397,11 @@
       "name": "Scorpio Tankers",
       "segment": "product",
       "weight": 0.2,
-      "price": 81.86,
-      "change_5d_pct": -1.0,
-      "change_20d_pct": 6.0,
-      "volume_spike_pct": -45.4,
+      "price": 82.19,
+      "change_5d_pct": 0.1,
+      "change_20d_pct": 4.9,
+      "volume_spike_pct": -21.7,
       "history": [
-        {
-          "date": "2026-04-09",
-          "close": 76.01
-        },
         {
           "date": "2026-04-10",
           "close": 74.51
@@ -520,7 +516,11 @@
         },
         {
           "date": "2026-05-20",
-          "close": 81.86
+          "close": 81.68
+        },
+        {
+          "date": "2026-05-21",
+          "close": 82.19
         }
       ]
     },
@@ -528,15 +528,11 @@
       "name": "Breakwave Dry Bulk",
       "segment": "dry_bulk",
       "weight": 0.1,
-      "price": 12.15,
-      "change_5d_pct": -6.2,
-      "change_20d_pct": 7.1,
-      "volume_spike_pct": -36.3,
+      "price": 12.43,
+      "change_5d_pct": -5.7,
+      "change_20d_pct": 14.0,
+      "volume_spike_pct": -35.4,
       "history": [
-        {
-          "date": "2026-04-09",
-          "close": 10.3
-        },
         {
           "date": "2026-04-10",
           "close": 10.7
@@ -651,7 +647,11 @@
         },
         {
           "date": "2026-05-20",
-          "close": 12.15
+          "close": 12.11
+        },
+        {
+          "date": "2026-05-21",
+          "close": 12.43
         }
       ]
     }
@@ -661,7 +661,7 @@
   },
   "cross_validation": {
     "hormuz_tanker_wow": 0,
-    "crude_tanker_stock_5d": 3.5,
+    "crude_tanker_stock_5d": 4.4,
     "interpretation": "航运正常波动范围",
     "portwatch_confirmed": true
   },
@@ -676,5 +676,5 @@
     "level": "high",
     "issues": []
   },
-  "updated": "2026-05-20T16:43:26Z"
+  "updated": "2026-05-21T16:34:50Z"
 }
