@@ -4,10 +4,10 @@
     {
       "ticker": "FRO",
       "label": "Frontline (VLCC 原油)",
-      "price": 37.08,
-      "change_5d": -1.7,
-      "change_1m": 6.2,
-      "change_6m": 53.3,
+      "price": 37.12,
+      "change_5d": -1.6,
+      "change_1m": 6.4,
+      "change_6m": 53.4,
       "history": [
         {
           "date": "2025-11-24",
@@ -114,10 +114,10 @@
     {
       "ticker": "STNG",
       "label": "Scorpio Tankers (成品油)",
-      "price": 79.34,
-      "change_5d": -3.1,
-      "change_1m": 2.8,
-      "change_6m": 32.6,
+      "price": 80.21,
+      "change_5d": -2.0,
+      "change_1m": 3.9,
+      "change_6m": 34.0,
       "history": [
         {
           "date": "2025-11-24",
@@ -224,10 +224,10 @@
     {
       "ticker": "INSW",
       "label": "Intl Seaways (原油+成品油)",
-      "price": 84.15,
-      "change_5d": -1.3,
-      "change_1m": 9.6,
-      "change_6m": 61.9,
+      "price": 83.52,
+      "change_5d": -2.1,
+      "change_1m": 8.7,
+      "change_6m": 60.7,
       "history": [
         {
           "date": "2025-11-24",
@@ -334,10 +334,10 @@
     {
       "ticker": "DHT",
       "label": "DHT Holdings (VLCC 原油)",
-      "price": 17.41,
-      "change_5d": 0.7,
-      "change_1m": 1.4,
-      "change_6m": 38.9,
+      "price": 17.38,
+      "change_5d": 0.6,
+      "change_1m": 1.2,
+      "change_6m": 38.6,
       "history": [
         {
           "date": "2025-11-24",
@@ -448,5 +448,5 @@
       "message": "✅ 主要石油航运要道通行正常"
     }
   ],
-  "updated": "2026-05-22T16:13:47Z"
+  "updated": "2026-05-23T14:53:05Z"
 }
