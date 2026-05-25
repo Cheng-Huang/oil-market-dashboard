@@ -155,8 +155,8 @@
     ]
   },
   "price_freshness": {
-    "spot_date": "2026-05-22",
-    "futures_date": "2026-05-22",
+    "spot_date": "2026-05-25",
+    "futures_date": "2026-05-25",
     "lag_days": 0,
     "temporal_risk": "low"
   },
