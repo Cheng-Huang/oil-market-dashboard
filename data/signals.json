@@ -15,10 +15,10 @@
     "evidence_note": "期货价格为直接市场观测",
     "label": "Backwardation",
     "source": "futures",
-    "m1_m2_spread": 2.85,
-    "m1_m6_spread": 11.26,
-    "curve_front": 89.64,
-    "curve_back": 73.64,
+    "m1_m2_spread": 2.28,
+    "m1_m6_spread": 9.57,
+    "curve_front": 88.92,
+    "curve_back": 74.6,
     "n_contracts": 12
   },
   "demand": {
@@ -34,17 +34,17 @@
     "signal": "bullish",
     "evidence_tier": "A",
     "evidence_note": "裂解价差基于现货/期货价格计算，属直接观测",
-    "crack_321": 48.32,
-    "crack_321_20d_avg": 52.57,
-    "crack_321_60d_avg": 44.93,
-    "gasoline_crack": 46.05,
-    "diesel_crack": 52.85,
+    "crack_321": 44.2,
+    "crack_321_20d_avg": 51.78,
+    "crack_321_60d_avg": 46.82,
+    "gasoline_crack": 39.16,
+    "diesel_crack": 54.28,
     "trend": "rising",
     "level": "high",
     "cross_validation": "裂解价差处于高位，炼厂利润丰厚",
-    "detail": "3-2-1: $48.3 (20d均: $52.6, 60d均: $44.9), 趋势: rising",
-    "gasoline_crack_daily_drop_pct": 8.6,
-    "gas_diesel_divergence": 6.8
+    "detail": "3-2-1: $44.2 (20d均: $51.8, 60d均: $46.8), 趋势: rising",
+    "gasoline_crack_daily_drop_pct": 14.5,
+    "gas_diesel_divergence": 15.12
   },
   "drilling": {
     "name": "钻井活动",
@@ -94,8 +94,8 @@
     "evidence_tier": "A",
     "evidence_note": "DXY/OVX/实际利率为直接市场观测",
     "dxy_vs_ma200": -0.5,
-    "real_rate": 2.16,
-    "ovx": 65.06
+    "real_rate": 2.1,
+    "ovx": 59.97
   },
   "positioning": {
     "name": "持仓拥挤度",
@@ -125,7 +125,7 @@
     "spr_low": false,
     "spr_4w_change": -30870.0,
     "spr_trend": "releasing",
-    "current_wti": 89.64,
+    "current_wti": 88.92,
     "detail": "当前无明显触发 SPR 释放的条件。",
     "release_likelihood": "low",
     "max_release_days": 85.0,
@@ -155,8 +155,8 @@
     ]
   },
   "price_freshness": {
-    "spot_date": "2026-05-27",
-    "futures_date": "2026-05-27",
+    "spot_date": "2026-05-28",
+    "futures_date": "2026-05-28",
     "lag_days": 0,
     "temporal_risk": "low"
   },
