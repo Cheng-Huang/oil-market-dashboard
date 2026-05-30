@@ -15,10 +15,10 @@
     "evidence_note": "期货价格为直接市场观测",
     "label": "Backwardation",
     "source": "futures",
-    "m1_m2_spread": 1.92,
-    "m1_m6_spread": 8.64,
-    "curve_front": 86.89,
-    "curve_back": 73.92,
+    "m1_m2_spread": 2.06,
+    "m1_m6_spread": 9.07,
+    "curve_front": 87.36,
+    "curve_back": 73.84,
     "n_contracts": 12
   },
   "demand": {
@@ -31,20 +31,8 @@
   },
   "crack_spread": {
     "name": "裂解价差",
-    "signal": "bullish",
-    "evidence_tier": "A",
-    "evidence_note": "裂解价差基于现货/期货价格计算，属直接观测",
-    "crack_321": 44.2,
-    "crack_321_20d_avg": 51.78,
-    "crack_321_60d_avg": 46.82,
-    "gasoline_crack": 39.16,
-    "diesel_crack": 54.28,
-    "trend": "rising",
-    "level": "high",
-    "cross_validation": "需求强+裂解走高→确认需求旺盛",
-    "detail": "3-2-1: $44.2 (20d均: $51.8, 60d均: $46.8), 趋势: rising",
-    "gasoline_crack_daily_drop_pct": 14.5,
-    "gas_diesel_divergence": 15.12
+    "signal": "neutral",
+    "detail": "数据不足"
   },
   "drilling": {
     "name": "钻井活动",
@@ -90,28 +78,27 @@
   },
   "financial": {
     "name": "金融条件",
-    "signal": "bearish",
+    "signal": "neutral",
     "evidence_tier": "A",
     "evidence_note": "DXY/OVX/实际利率为直接市场观测",
     "dxy_vs_ma200": -0.5,
-    "real_rate": 2.09,
-    "ovx": 58.3
+    "real_rate": 2.06
   },
   "positioning": {
     "name": "持仓拥挤度",
     "signal": "neutral",
     "evidence_tier": "A",
     "evidence_note": "CFTC持仓为直接观测（周频，截至周二）",
-    "net_long": 98219.0,
-    "percentile": 33.0,
-    "net_change": 25418.0,
-    "long_change": 20233.0,
-    "short_change": -5185.0,
-    "driver": "new_longs",
-    "driver_note": "新多头入场驱动，看多信心较强",
-    "hist_p25": 81354.0,
-    "hist_p75": 166538.0,
-    "context_note": "当前净多仓位于历史33%分位（P25=81354, P75=166538），接近中位水平"
+    "net_long": 79924.0,
+    "percentile": 24.0,
+    "net_change": -18295.0,
+    "long_change": -6984.0,
+    "short_change": 11311.0,
+    "driver": "mixed",
+    "driver_note": "多空双边变动，方向信号不明确",
+    "hist_p25": 81337.0,
+    "hist_p75": 166291.0,
+    "context_note": "当前净多仓位于历史24%分位（P25=81337, P75=166291），仍有较大上行空间"
   },
   "cross_analysis": {
     "findings": [],
@@ -125,7 +112,7 @@
     "spr_low": false,
     "spr_4w_change": -32812.0,
     "spr_trend": "releasing",
-    "current_wti": 86.89,
+    "current_wti": 87.36,
     "detail": "当前无明显触发 SPR 释放的条件。",
     "release_likelihood": "low",
     "max_release_days": 83.0,
@@ -161,11 +148,11 @@
     "temporal_risk": "low"
   },
   "score_summary": {
-    "bullish": 6,
-    "neutral": 1,
-    "bearish": 1,
+    "bullish": 5,
+    "neutral": 3,
+    "bearish": 0,
     "base_regime": "bullish_leaning",
     "regime": "bullish_leaning",
-    "summary": "看多6/中性1/看空1 — 信号偏多，但需检验是否由单一因素（如地缘风险）主导。"
+    "summary": "看多5/中性3/看空0 — 信号偏多，但需检验是否由单一因素（如地缘风险）主导。"
   }
 }
