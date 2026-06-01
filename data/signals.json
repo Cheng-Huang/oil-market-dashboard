@@ -15,10 +15,10 @@
     "evidence_note": "期货价格为直接市场观测",
     "label": "Backwardation",
     "source": "futures",
-    "m1_m2_spread": 2.06,
-    "m1_m6_spread": 9.07,
-    "curve_front": 87.36,
-    "curve_back": 73.84,
+    "m1_m2_spread": 3.06,
+    "m1_m6_spread": 12.0,
+    "curve_front": 92.41,
+    "curve_back": 75.18,
     "n_contracts": 12
   },
   "demand": {
@@ -31,8 +31,20 @@
   },
   "crack_spread": {
     "name": "裂解价差",
-    "signal": "neutral",
-    "detail": "数据不足"
+    "signal": "bullish",
+    "evidence_tier": "A",
+    "evidence_note": "裂解价差基于现货/期货价格计算，属直接观测",
+    "crack_321": 43.64,
+    "crack_321_20d_avg": 50.16,
+    "crack_321_60d_avg": 45.04,
+    "gasoline_crack": 38.32,
+    "diesel_crack": 54.28,
+    "trend": "rising",
+    "level": "high",
+    "cross_validation": "需求强+裂解走高→确认需求旺盛",
+    "detail": "3-2-1: $43.6 (20d均: $50.2, 60d均: $45.0), 趋势: rising",
+    "gasoline_crack_daily_drop_pct": 15.2,
+    "gas_diesel_divergence": 15.96
   },
   "drilling": {
     "name": "钻井活动",
@@ -48,17 +60,10 @@
     "signal": "bullish",
     "evidence_tier": "B",
     "evidence_note": "STEO实际值为B层二手确认",
-    "balance_avg_3m": -3.24,
+    "balance_avg_3m": -7.631,
     "opec_trend": "stable",
     "data_source": "actual",
     "supply_demand_detail": [
-      {
-        "date": "2026-02",
-        "balance": 4.175,
-        "supply": 108.86,
-        "demand": 104.685,
-        "type": "actual"
-      },
       {
         "date": "2026-03",
         "balance": -5.275,
@@ -72,17 +77,25 @@
         "supply": 94.548,
         "demand": 103.168,
         "type": "actual"
+      },
+      {
+        "date": "2026-05",
+        "balance": -8.999,
+        "supply": 94.401,
+        "demand": 103.4,
+        "type": "actual"
       }
     ],
-    "detail": "近3月平均平衡: -3.240 百万桶/日 (来源: actual)"
+    "detail": "近3月平均平衡: -7.631 百万桶/日 (来源: actual)"
   },
   "financial": {
     "name": "金融条件",
-    "signal": "neutral",
+    "signal": "bearish",
     "evidence_tier": "A",
     "evidence_note": "DXY/OVX/实际利率为直接市场观测",
     "dxy_vs_ma200": -0.5,
-    "real_rate": 2.06
+    "real_rate": 2.06,
+    "ovx": 57.84
   },
   "positioning": {
     "name": "持仓拥挤度",
@@ -112,7 +125,7 @@
     "spr_low": false,
     "spr_4w_change": -32812.0,
     "spr_trend": "releasing",
-    "current_wti": 87.36,
+    "current_wti": 92.41,
     "detail": "当前无明显触发 SPR 释放的条件。",
     "release_likelihood": "low",
     "max_release_days": 83.0,
@@ -142,17 +155,17 @@
     ]
   },
   "price_freshness": {
-    "spot_date": "2026-05-29",
-    "futures_date": "2026-05-29",
+    "spot_date": "2026-06-01",
+    "futures_date": "2026-06-01",
     "lag_days": 0,
     "temporal_risk": "low"
   },
   "score_summary": {
-    "bullish": 5,
-    "neutral": 3,
-    "bearish": 0,
+    "bullish": 6,
+    "neutral": 1,
+    "bearish": 1,
     "base_regime": "bullish_leaning",
     "regime": "bullish_leaning",
-    "summary": "看多5/中性3/看空0 — 信号偏多，但需检验是否由单一因素（如地缘风险）主导。"
+    "summary": "看多6/中性1/看空1 — 信号偏多，但需检验是否由单一因素（如地缘风险）主导。"
   }
 }
