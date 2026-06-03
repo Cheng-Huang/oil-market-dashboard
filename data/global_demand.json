@@ -11680,6 +11680,10 @@
       {
         "date": "2026-01",
         "value": 4420.000000000001
+      },
+      {
+        "date": "2026-02",
+        "value": 4420.0
       }
     ],
     "india_production": [
@@ -13702,6 +13706,10 @@
       {
         "date": "2026-01",
         "value": 564.4503247283898
+      },
+      {
+        "date": "2026-02",
+        "value": 563.1167534904115
       }
     ],
     "japan_production": [
@@ -15724,6 +15732,10 @@
       {
         "date": "2026-01",
         "value": 3.283
+      },
+      {
+        "date": "2026-02",
+        "value": 3.298
       }
     ],
     "korea_production": [
@@ -16785,6 +16797,10 @@
       },
       {
         "date": "2026-01",
+        "value": 0.0
+      },
+      {
+        "date": "2026-02",
         "value": 0.0
       }
     ],
@@ -18808,6 +18824,10 @@
       {
         "date": "2026-01",
         "value": 3953.322806451613
+      },
+      {
+        "date": "2026-02",
+        "value": 4061.008
       }
     ]
   },
@@ -18818,18 +18838,18 @@
   "refinery_proxies": {
     "MPC": {
       "name": "Marathon Petroleum (US refiner)",
-      "price": 263.69,
-      "change_20d_pct": 1.6
+      "price": 269.92,
+      "change_20d_pct": 10.2
     },
     "VLO": {
       "name": "Valero Energy (US refiner)",
-      "price": 258.87,
-      "change_20d_pct": 2.6
+      "price": 262.8,
+      "change_20d_pct": 11.6
     },
     "PSX": {
       "name": "Phillips 66 (US refiner)",
-      "price": 182.25,
-      "change_20d_pct": 1.8
+      "price": 185.57,
+      "change_20d_pct": 8.9
     }
   },
   "demand_share": {
@@ -18864,5 +18884,5 @@
       "change_pct": -5.5
     }
   ],
-  "updated": "2026-06-02T17:59:31Z"
+  "updated": "2026-06-03T18:15:35Z"
 }

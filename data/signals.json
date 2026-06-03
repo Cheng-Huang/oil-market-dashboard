@@ -4,8 +4,8 @@
     "signal": "bullish",
     "evidence_tier": "A",
     "evidence_note": "EIA周度库存为直接观测数据",
-    "detail": "最近3周变化: [-4306.0, -7863.0, -3327.0]",
-    "last_change_mbbl": -3327.0,
+    "detail": "最近3周变化: [-7863.0, -3327.0, -7974.0]",
+    "last_change_mbbl": -7974.0,
     "cushing_warning": true
   },
   "curve": {
@@ -15,19 +15,19 @@
     "evidence_note": "期货价格为直接市场观测",
     "label": "Backwardation",
     "source": "futures",
-    "m1_m2_spread": 3.22,
-    "m1_m6_spread": 12.81,
-    "curve_front": 93.62,
-    "curve_back": 75.57,
+    "m1_m2_spread": 3.26,
+    "m1_m6_spread": 13.68,
+    "curve_front": 96.06,
+    "curve_back": 76.75,
     "n_contracts": 12
   },
   "demand": {
     "name": "需求强度",
-    "signal": "bullish",
+    "signal": "bearish",
     "evidence_tier": "A",
     "evidence_note": "EIA表观需求为直接观测（仅覆盖美国）",
-    "gasoline_trend": "bullish",
-    "distillate_trend": "bullish"
+    "gasoline_trend": "bearish",
+    "distillate_trend": "bearish"
   },
   "crack_spread": {
     "name": "裂解价差",
@@ -107,16 +107,16 @@
   },
   "spr_policy": {
     "name": "SPR政策响应",
-    "spr_level_kbbl": 365112.0,
-    "spr_date": "2026-05-22",
+    "spr_level_kbbl": 357119.0,
+    "spr_date": "2026-05-29",
     "spr_low": false,
-    "spr_4w_change": -32812.0,
+    "spr_4w_change": -35581.0,
     "spr_trend": "releasing",
-    "current_wti": 93.62,
-    "detail": "当前无明显触发 SPR 释放的条件。",
-    "release_likelihood": "low",
-    "max_release_days": 83.0,
-    "capacity_note": "SPR 当前 365 百万桶，按最大速率 4.4 百万桶/日可持续 83 天。"
+    "current_wti": 96.06,
+    "detail": "WTI $96 超过政策干预阈值，但当前供需仍为过剩，SPR 释放概率中等，需关注白宫/DOE 政策信号。",
+    "release_likelihood": "moderate",
+    "max_release_days": 81.0,
+    "capacity_note": "SPR 当前 357 百万桶，按最大速率 4.4 百万桶/日可持续 81 天。"
   },
   "steo_validation": {
     "has_anomaly": true,
@@ -142,17 +142,17 @@
     ]
   },
   "price_freshness": {
-    "spot_date": "2026-06-02",
-    "futures_date": "2026-06-02",
+    "spot_date": "2026-06-03",
+    "futures_date": "2026-06-03",
     "lag_days": 0,
     "temporal_risk": "low"
   },
   "score_summary": {
-    "bullish": 5,
+    "bullish": 4,
     "neutral": 3,
-    "bearish": 0,
+    "bearish": 1,
     "base_regime": "bullish_leaning",
     "regime": "bullish_leaning",
-    "summary": "看多5/中性3/看空0 — 信号偏多，但需检验是否由单一因素（如地缘风险）主导。"
+    "summary": "看多4/中性3/看空1 — 信号偏多，但需检验是否由单一因素（如地缘风险）主导。"
   }
 }
