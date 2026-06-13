@@ -15,10 +15,10 @@
     "evidence_note": "期货价格为直接市场观测",
     "label": "Backwardation",
     "source": "futures",
-    "m1_m2_spread": 1.57,
-    "m1_m6_spread": 7.44,
-    "curve_front": 84.73,
-    "curve_back": 73.57,
+    "m1_m2_spread": 1.53,
+    "m1_m6_spread": 7.47,
+    "curve_front": 84.88,
+    "curve_back": 73.66,
     "n_contracts": 12
   },
   "demand": {
@@ -94,7 +94,7 @@
     "evidence_tier": "A",
     "evidence_note": "DXY/OVX/实际利率为直接市场观测",
     "dxy_vs_ma200": 0.35,
-    "real_rate": 2.21,
+    "real_rate": 2.16,
     "ovx": 56.3
   },
   "positioning": {
@@ -102,16 +102,16 @@
     "signal": "neutral",
     "evidence_tier": "A",
     "evidence_note": "CFTC持仓为直接观测（周频，截至周二）",
-    "net_long": 90765.0,
-    "percentile": 27.0,
-    "net_change": 10841.0,
-    "long_change": 18206.0,
-    "short_change": 7365.0,
-    "driver": "new_longs",
-    "driver_note": "新多头入场驱动，看多信心较强",
+    "net_long": 94725.0,
+    "percentile": 31.5,
+    "net_change": 3960.0,
+    "long_change": -5304.0,
+    "short_change": -9264.0,
+    "driver": "mixed",
+    "driver_note": "多空双边变动，方向信号不明确",
     "hist_p25": 81337.0,
     "hist_p75": 166263.0,
-    "context_note": "当前净多仓位于历史27%分位（P25=81337, P75=166263），仍有较大上行空间"
+    "context_note": "当前净多仓位于历史32%分位（P25=81337, P75=166263），接近中位水平"
   },
   "cross_analysis": {
     "findings": [],
@@ -125,7 +125,7 @@
     "spr_low": true,
     "spr_4w_change": -34903.0,
     "spr_trend": "releasing",
-    "current_wti": 84.73,
+    "current_wti": 84.88,
     "detail": "当前无明显触发 SPR 释放的条件。",
     "release_likelihood": "low",
     "max_release_days": 79.0,
