@@ -15,10 +15,10 @@
     "evidence_note": "期货价格为直接市场观测",
     "label": "Backwardation",
     "source": "futures",
-    "m1_m2_spread": 0.81,
-    "m1_m6_spread": 4.34,
-    "curve_front": 77.47,
-    "curve_back": 70.22,
+    "m1_m2_spread": 0.92,
+    "m1_m6_spread": 4.28,
+    "curve_front": 76.54,
+    "curve_back": 69.73,
     "n_contracts": 12
   },
   "demand": {
@@ -125,7 +125,7 @@
     "spr_low": true,
     "spr_4w_change": -33924.0,
     "spr_trend": "releasing",
-    "current_wti": 77.47,
+    "current_wti": 76.54,
     "detail": "当前无明显触发 SPR 释放的条件。",
     "release_likelihood": "low",
     "max_release_days": 77.0,
