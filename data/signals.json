@@ -15,10 +15,10 @@
     "evidence_note": "期货价格为直接市场观测",
     "label": "Backwardation",
     "source": "futures",
-    "m1_m2_spread": 0.68,
-    "m1_m6_spread": 3.11,
-    "curve_front": 73.36,
-    "curve_back": 69.44,
+    "m1_m2_spread": 0.65,
+    "m1_m6_spread": 3.06,
+    "curve_front": 73.14,
+    "curve_back": 68.25,
     "n_contracts": 12
   },
   "demand": {
@@ -93,20 +93,20 @@
     "signal": "bearish",
     "evidence_tier": "A",
     "evidence_note": "DXY/OVX/实际利率为直接市场观测",
-    "dxy_vs_ma200": -0.21,
-    "real_rate": 2.23,
-    "ovx": 51.54
+    "dxy_vs_ma200": 0.7,
+    "real_rate": 2.21,
+    "ovx": 50.7
   },
   "positioning": {
     "name": "持仓拥挤度",
     "signal": "neutral",
     "evidence_tier": "A",
     "evidence_note": "CFTC持仓为直接观测（周频，截至周二）",
-    "net_long": 94725.0,
-    "percentile": 31.5,
-    "net_change": 3960.0,
-    "long_change": -5304.0,
-    "short_change": -9264.0,
+    "net_long": 96228.0,
+    "percentile": 32.5,
+    "net_change": 1503.0,
+    "long_change": 6690.0,
+    "short_change": 5187.0,
     "driver": "mixed",
     "driver_note": "多空双边变动，方向信号不明确",
     "hist_p25": 81337.0,
@@ -125,7 +125,7 @@
     "spr_low": true,
     "spr_4w_change": -33924.0,
     "spr_trend": "releasing",
-    "current_wti": 73.36,
+    "current_wti": 73.14,
     "detail": "当前无明显触发 SPR 释放的条件。",
     "release_likelihood": "low",
     "max_release_days": 77.0,
@@ -155,8 +155,8 @@
     ]
   },
   "price_freshness": {
-    "spot_date": "2026-06-22",
-    "futures_date": "2026-06-22",
+    "spot_date": "2026-06-23",
+    "futures_date": "2026-06-23",
     "lag_days": 0,
     "temporal_risk": "low"
   },

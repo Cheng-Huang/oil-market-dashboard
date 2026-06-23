@@ -4,15 +4,11 @@
       "name": "Frontline (VLCC)",
       "segment": "crude",
       "weight": 0.3,
-      "price": 41.78,
-      "change_5d_pct": 6.0,
-      "change_20d_pct": 17.5,
-      "volume_spike_pct": 23.5,
+      "price": 42.51,
+      "change_5d_pct": 7.8,
+      "change_20d_pct": 21.3,
+      "volume_spike_pct": 5.9,
       "history": [
-        {
-          "date": "2026-05-08",
-          "close": 37.86
-        },
         {
           "date": "2026-05-11",
           "close": 36.56
@@ -127,7 +123,11 @@
         },
         {
           "date": "2026-06-22",
-          "close": 41.78
+          "close": 41.58
+        },
+        {
+          "date": "2026-06-23",
+          "close": 42.51
         }
       ]
     },
@@ -135,15 +135,11 @@
       "name": "DHT Holdings (VLCC)",
       "segment": "crude",
       "weight": 0.2,
-      "price": 19.5,
-      "change_5d_pct": 5.5,
-      "change_20d_pct": 12.2,
-      "volume_spike_pct": 54.0,
+      "price": 19.89,
+      "change_5d_pct": 8.0,
+      "change_20d_pct": 14.3,
+      "volume_spike_pct": 27.8,
       "history": [
-        {
-          "date": "2026-05-08",
-          "close": 18.34
-        },
         {
           "date": "2026-05-11",
           "close": 18.08
@@ -258,7 +254,11 @@
         },
         {
           "date": "2026-06-22",
-          "close": 19.5
+          "close": 19.77
+        },
+        {
+          "date": "2026-06-23",
+          "close": 19.89
         }
       ]
     },
@@ -266,15 +266,11 @@
       "name": "Intl Seaways",
       "segment": "mixed",
       "weight": 0.2,
-      "price": 87.99,
+      "price": 88.64,
       "change_5d_pct": 8.1,
-      "change_20d_pct": 11.5,
-      "volume_spike_pct": 3.5,
+      "change_20d_pct": 13.4,
+      "volume_spike_pct": 3.9,
       "history": [
-        {
-          "date": "2026-05-08",
-          "close": 86.57
-        },
         {
           "date": "2026-05-11",
           "close": 84.77
@@ -389,7 +385,11 @@
         },
         {
           "date": "2026-06-22",
-          "close": 87.99
+          "close": 88.41
+        },
+        {
+          "date": "2026-06-23",
+          "close": 88.64
         }
       ]
     },
@@ -397,15 +397,11 @@
       "name": "Scorpio Tankers",
       "segment": "product",
       "weight": 0.2,
-      "price": 82.63,
-      "change_5d_pct": 4.9,
-      "change_20d_pct": 3.6,
-      "volume_spike_pct": 6.8,
+      "price": 81.71,
+      "change_5d_pct": 4.1,
+      "change_20d_pct": 2.3,
+      "volume_spike_pct": 5.6,
       "history": [
-        {
-          "date": "2026-05-08",
-          "close": 83.9
-        },
         {
           "date": "2026-05-11",
           "close": 84.64
@@ -520,7 +516,11 @@
         },
         {
           "date": "2026-06-22",
-          "close": 82.63
+          "close": 82.45
+        },
+        {
+          "date": "2026-06-23",
+          "close": 81.71
         }
       ]
     },
@@ -528,15 +528,11 @@
       "name": "Breakwave Dry Bulk",
       "segment": "dry_bulk",
       "weight": 0.1,
-      "price": 11.64,
-      "change_5d_pct": -2.9,
-      "change_20d_pct": -8.2,
-      "volume_spike_pct": 4.9,
+      "price": 11.8,
+      "change_5d_pct": -2.7,
+      "change_20d_pct": -8.4,
+      "volume_spike_pct": -35.1,
       "history": [
-        {
-          "date": "2026-05-08",
-          "close": 12.11
-        },
         {
           "date": "2026-05-11",
           "close": 12.65
@@ -651,7 +647,11 @@
         },
         {
           "date": "2026-06-22",
-          "close": 11.64
+          "close": 11.58
+        },
+        {
+          "date": "2026-06-23",
+          "close": 11.8
         }
       ]
     }
@@ -661,14 +661,14 @@
   },
   "cross_validation": {
     "hormuz_tanker_wow": 0,
-    "crude_tanker_stock_5d": 6.5,
+    "crude_tanker_stock_5d": 7.9,
     "interpretation": "航运正常波动范围",
     "portwatch_confirmed": true
   },
   "unctad": {
     "source": "UNCTAD LSCI",
     "status": "available",
-    "records": 785,
+    "records": 793,
     "note": "月度数据，仅供长期参考"
   },
   "overall_confidence": {
@@ -676,5 +676,5 @@
     "level": "high",
     "issues": []
   },
-  "updated": "2026-06-22T18:08:37Z"
+  "updated": "2026-06-23T16:19:24Z"
 }
