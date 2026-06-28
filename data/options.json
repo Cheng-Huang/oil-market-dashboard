@@ -34,9 +34,9 @@
         "total_put_oi": 2019,
         "max_call_oi_strike": 109.0,
         "max_put_oi_strike": 105.0,
-        "avg_iv_calls": 0.6296,
-        "avg_iv_puts": 0.7115,
-        "iv_skew": 0.0819
+        "avg_iv_calls": 0.7008,
+        "avg_iv_puts": 0.7706,
+        "iv_skew": 0.0698
       },
       {
         "ticker": "USO",
@@ -49,9 +49,9 @@
         "total_put_oi": 40928,
         "max_call_oi_strike": 200.0,
         "max_put_oi_strike": 110.0,
-        "avg_iv_calls": 1.5286,
-        "avg_iv_puts": 1.208,
-        "iv_skew": -0.3206
+        "avg_iv_calls": 1.6736,
+        "avg_iv_puts": 1.3211,
+        "iv_skew": -0.3524
       },
       {
         "ticker": "USO",
@@ -64,9 +64,9 @@
         "total_put_oi": 18199,
         "max_call_oi_strike": 110.0,
         "max_put_oi_strike": 105.0,
-        "avg_iv_calls": 1.0254,
-        "avg_iv_puts": 0.7868,
-        "iv_skew": -0.2385
+        "avg_iv_calls": 1.0627,
+        "avg_iv_puts": 0.8152,
+        "iv_skew": -0.2474
       },
       {
         "ticker": "USO",
@@ -79,9 +79,9 @@
         "total_put_oi": 284537,
         "max_call_oi_strike": 142.0,
         "max_put_oi_strike": 100.0,
-        "avg_iv_calls": 0.8602,
-        "avg_iv_puts": 0.8645,
-        "iv_skew": 0.0043
+        "avg_iv_calls": 0.8812,
+        "avg_iv_puts": 0.8828,
+        "iv_skew": 0.0016
       },
       {
         "ticker": "XLE",
@@ -94,9 +94,9 @@
         "total_put_oi": 107090,
         "max_call_oi_strike": 65.0,
         "max_put_oi_strike": 44.5,
-        "avg_iv_calls": 1.1887,
-        "avg_iv_puts": 0.8092,
-        "iv_skew": -0.3795
+        "avg_iv_calls": 1.3473,
+        "avg_iv_puts": 0.9162,
+        "iv_skew": -0.4312
       },
       {
         "ticker": "XLE",
@@ -109,9 +109,9 @@
         "total_put_oi": 37176,
         "max_call_oi_strike": 56.0,
         "max_put_oi_strike": 51.0,
-        "avg_iv_calls": 0.6938,
-        "avg_iv_puts": 0.7829,
-        "iv_skew": 0.089
+        "avg_iv_calls": 0.7494,
+        "avg_iv_puts": 0.8382,
+        "iv_skew": 0.0888
       },
       {
         "ticker": "XLE",
@@ -124,9 +124,9 @@
         "total_put_oi": 5275,
         "max_call_oi_strike": 58.5,
         "max_put_oi_strike": 50.0,
-        "avg_iv_calls": 0.5649,
-        "avg_iv_puts": 0.5369,
-        "iv_skew": -0.0281
+        "avg_iv_calls": 0.5776,
+        "avg_iv_puts": 0.5492,
+        "iv_skew": -0.0284
       },
       {
         "ticker": "XLE",
@@ -139,9 +139,9 @@
         "total_put_oi": 203866,
         "max_call_oi_strike": 60.0,
         "max_put_oi_strike": 55.0,
-        "avg_iv_calls": 0.6458,
-        "avg_iv_puts": 0.7766,
-        "iv_skew": 0.1308
+        "avg_iv_calls": 0.6448,
+        "avg_iv_puts": 0.7932,
+        "iv_skew": 0.1485
       }
     ],
     "aggregate": {
@@ -166,9 +166,9 @@
     "date": "2026-06-25",
     "avg_20d": 54.98,
     "avg_60d": 69.49,
-    "percentile": 73.8,
+    "percentile": 73.7,
     "vol_of_vol_5d": 3.4,
     "regime": "panic"
   },
-  "updated": "2026-06-27T15:08:02Z"
+  "updated": "2026-06-28T15:10:26Z"
 }

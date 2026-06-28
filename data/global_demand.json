@@ -18832,9 +18832,8 @@
     ]
   },
   "jodi": {
-    "status": "error",
-    "countries": {},
-    "error": "HTTPSConnectionPool(host='data.un.org', port=443): Max retries exceeded with url: /ws/rest/data/JODI,DF_WORLD_OILDATA,1.0/CHN+IND+JPN+KOR+BRA+SAU+ARE+DEU.TOTDEM.CR+CRUDE.KBBL.M?lastNObservations=12&detail=dataonly (Caused by ConnectTimeoutError(<HTTPSConnection(host='data.un.org', port=443) at 0x7f30c0318bd0>, 'Connection to data.un.org timed out. (connect timeout=30)'))"
+    "status": "http_500",
+    "countries": {}
   },
   "refinery_proxies": {
     "MPC": {
@@ -18885,5 +18884,5 @@
       "change_pct": -5.5
     }
   ],
-  "updated": "2026-06-27T15:07:50Z"
+  "updated": "2026-06-28T15:10:14Z"
 }

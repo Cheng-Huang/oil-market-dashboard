@@ -138,7 +138,7 @@
       "price": 17.65,
       "change_5d_pct": -10.7,
       "change_20d_pct": 8.1,
-      "volume_spike_pct": 53.7,
+      "volume_spike_pct": 53.6,
       "history": [
         {
           "date": "2026-05-14",
@@ -676,5 +676,5 @@
     "level": "high",
     "issues": []
   },
-  "updated": "2026-06-27T15:07:16Z"
+  "updated": "2026-06-28T15:10:08Z"
 }
