@@ -10,15 +10,15 @@
   },
   "curve": {
     "name": "曲线结构",
-    "signal": "bullish",
+    "signal": "neutral",
     "evidence_tier": "A",
     "evidence_note": "期货价格为直接市场观测",
-    "label": "Backwardation",
+    "label": "Flat",
     "source": "futures",
-    "m1_m2_spread": 0.2,
-    "m1_m6_spread": 1.56,
-    "curve_front": 69.87,
-    "curve_back": 66.66,
+    "m1_m2_spread": 0.07,
+    "m1_m6_spread": 0.69,
+    "curve_front": 68.07,
+    "curve_back": 66.85,
     "n_contracts": 12
   },
   "demand": {
@@ -60,17 +60,10 @@
     "signal": "bullish",
     "evidence_tier": "B",
     "evidence_note": "STEO实际值为B层二手确认",
-    "balance_avg_3m": -5.327,
+    "balance_avg_3m": -6.254,
     "opec_trend": "stable",
     "data_source": "actual",
     "supply_demand_detail": [
-      {
-        "date": "2026-03",
-        "balance": -4.574,
-        "supply": 97.316,
-        "demand": 101.89,
-        "type": "actual"
-      },
       {
         "date": "2026-04",
         "balance": -5.397,
@@ -84,9 +77,16 @@
         "supply": 93.719,
         "demand": 99.73,
         "type": "actual"
+      },
+      {
+        "date": "2026-06",
+        "balance": -7.353,
+        "supply": 94.195,
+        "demand": 101.548,
+        "type": "actual"
       }
     ],
-    "detail": "近3月平均平衡: -5.327 百万桶/日 (来源: actual)"
+    "detail": "近3月平均平衡: -6.254 百万桶/日 (来源: actual)"
   },
   "financial": {
     "name": "金融条件",
@@ -94,8 +94,8 @@
     "evidence_tier": "A",
     "evidence_note": "DXY/OVX/实际利率为直接市场观测",
     "dxy_vs_ma200": 1.18,
-    "real_rate": 2.18,
-    "ovx": 45.07
+    "real_rate": 2.16,
+    "ovx": 43.17
   },
   "positioning": {
     "name": "持仓拥挤度",
@@ -125,7 +125,7 @@
     "spr_low": true,
     "spr_4w_change": -33921.0,
     "spr_trend": "releasing",
-    "current_wti": 69.87,
+    "current_wti": 68.07,
     "detail": "当前无明显触发 SPR 释放的条件。",
     "release_likelihood": "low",
     "max_release_days": 75.0,
@@ -155,17 +155,17 @@
     ]
   },
   "price_freshness": {
-    "spot_date": "2026-06-30",
-    "futures_date": "2026-06-30",
+    "spot_date": "2026-07-01",
+    "futures_date": "2026-07-01",
     "lag_days": 0,
     "temporal_risk": "low"
   },
   "score_summary": {
-    "bullish": 5,
-    "neutral": 2,
+    "bullish": 4,
+    "neutral": 3,
     "bearish": 1,
     "base_regime": "bullish_leaning",
     "regime": "bullish_leaning",
-    "summary": "看多5/中性2/看空1 — 信号偏多，但需检验是否由单一因素（如地缘风险）主导。"
+    "summary": "看多4/中性3/看空1 — 信号偏多，但需检验是否由单一因素（如地缘风险）主导。"
   }
 }

@@ -41510,7 +41510,7 @@
       "stockchange_mbd": -7.353,
       "supply_mbd": 94.195,
       "demand_mbd": 101.548,
-      "type": "forecast"
+      "type": "actual"
     },
     {
       "date": "2026-07",
@@ -41640,7 +41640,7 @@
     }
   ],
   "floating_storage": {
-    "structure": "backwardation",
+    "structure": "flat",
     "m1_m6_spread": null,
     "contango_per_month": null,
     "floating_storage_economics": "unknown",
@@ -41693,5 +41693,5 @@
     "total_estimated_mb": 2101.0,
     "note": "除美国外均为行业估算值，非官方实时数据"
   },
-  "updated": "2026-06-30T16:15:11Z"
+  "updated": "2026-07-01T16:21:51Z"
 }
