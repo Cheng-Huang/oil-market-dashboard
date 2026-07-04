@@ -4,77 +4,77 @@
       "month": "2026-08",
       "label": "Aug 2026",
       "ticker": "CLQ26.NYM",
-      "price": 68.65,
+      "price": 68.78,
       "date": "2026-07-03"
     },
     {
       "month": "2026-09",
       "label": "Sep 2026",
       "ticker": "CLU26.NYM",
-      "price": 68.61,
+      "price": 68.73,
       "date": "2026-07-03"
     },
     {
       "month": "2026-10",
       "label": "Oct 2026",
       "ticker": "CLV26.NYM",
-      "price": 68.41,
+      "price": 68.58,
       "date": "2026-07-03"
     },
     {
       "month": "2026-11",
       "label": "Nov 2026",
       "ticker": "CLX26.NYM",
-      "price": 68.31,
+      "price": 68.46,
       "date": "2026-07-03"
     },
     {
       "month": "2026-12",
       "label": "Dec 2026",
       "ticker": "CLZ26.NYM",
-      "price": 68.14,
+      "price": 68.26,
       "date": "2026-07-03"
     },
     {
       "month": "2027-01",
       "label": "Jan 2027",
       "ticker": "CLF27.NYM",
-      "price": 67.95,
+      "price": 68.11,
       "date": "2026-07-03"
     },
     {
       "month": "2027-02",
       "label": "Feb 2027",
       "ticker": "CLG27.NYM",
-      "price": 67.79,
+      "price": 67.85,
       "date": "2026-07-03"
     },
     {
       "month": "2027-03",
       "label": "Mar 2027",
       "ticker": "CLH27.NYM",
-      "price": 67.46,
+      "price": 67.51,
       "date": "2026-07-03"
     },
     {
       "month": "2027-04",
       "label": "Apr 2027",
       "ticker": "CLJ27.NYM",
-      "price": 67.3,
+      "price": 67.33,
       "date": "2026-07-03"
     },
     {
       "month": "2027-05",
       "label": "May 2027",
       "ticker": "CLK27.NYM",
-      "price": 67.17,
+      "price": 67.19,
       "date": "2026-07-03"
     },
     {
       "month": "2027-06",
       "label": "Jun 2027",
       "ticker": "CLM27.NYM",
-      "price": 66.97,
+      "price": 67.08,
       "date": "2026-07-03"
     },
     {
@@ -85,8 +85,8 @@
       "date": "2026-07-02"
     }
   ],
-  "m1_m2_spread": 0.04,
-  "m1_m6_spread": 0.7,
+  "m1_m2_spread": 0.05,
+  "m1_m6_spread": 0.67,
   "structure": "flat",
   "spread_history": [
     {
@@ -1284,5 +1284,5 @@
       "m2": 68.61
     }
   ],
-  "updated": "2026-07-03T15:47:37.279490"
+  "updated": "2026-07-04T14:57:35.485715"
 }
