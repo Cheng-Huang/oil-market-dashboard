@@ -41680,7 +41680,7 @@
     }
   ],
   "floating_storage": {
-    "structure": "flat",
+    "structure": "backwardation",
     "m1_m6_spread": null,
     "contango_per_month": null,
     "floating_storage_economics": "unknown",
@@ -41733,5 +41733,5 @@
     "total_estimated_mb": 2090.0,
     "note": "除美国外均为行业估算值，非官方实时数据"
   },
-  "updated": "2026-07-12T14:46:47Z"
+  "updated": "2026-07-13T16:20:06Z"
 }

@@ -4,22 +4,14 @@
     "unit": "$/bbl",
     "ticker": "CL=F",
     "latest": {
-      "date": "2026-07-10",
-      "open": 71.86,
-      "high": 73.16,
-      "low": 70.77,
-      "close": 71.41,
-      "volume": 199285
+      "date": "2026-07-13",
+      "open": 73.69,
+      "high": 75.21,
+      "low": 72.61,
+      "close": 74.93,
+      "volume": 173995
     },
     "history": [
-      {
-        "date": "2026-04-30",
-        "open": 109.07,
-        "high": 110.93,
-        "low": 103.34,
-        "close": 105.07,
-        "volume": 341994
-      },
       {
         "date": "2026-05-01",
         "open": 105.14,
@@ -402,7 +394,15 @@
         "high": 73.16,
         "low": 70.77,
         "close": 71.41,
-        "volume": 199285
+        "volume": 264009
+      },
+      {
+        "date": "2026-07-13",
+        "open": 73.69,
+        "high": 75.21,
+        "low": 72.61,
+        "close": 74.93,
+        "volume": 173995
       }
     ]
   },
@@ -411,22 +411,14 @@
     "unit": "$/bbl",
     "ticker": "BZ=F",
     "latest": {
-      "date": "2026-07-10",
-      "open": 75.97,
-      "high": 77.56,
-      "low": 75.31,
-      "close": 76.01,
-      "volume": 38194
+      "date": "2026-07-13",
+      "open": 78.05,
+      "high": 80.03,
+      "low": 77.28,
+      "close": 79.78,
+      "volume": 35150
     },
     "history": [
-      {
-        "date": "2026-04-30",
-        "open": 119.98,
-        "high": 126.1,
-        "low": 113.0,
-        "close": 114.01,
-        "volume": 58572
-      },
       {
         "date": "2026-05-01",
         "open": 111.01,
@@ -809,7 +801,15 @@
         "high": 77.56,
         "low": 75.31,
         "close": 76.01,
-        "volume": 38194
+        "volume": 47817
+      },
+      {
+        "date": "2026-07-13",
+        "open": 78.05,
+        "high": 80.03,
+        "low": 77.28,
+        "close": 79.78,
+        "volume": 35150
       }
     ]
   },
@@ -818,22 +818,14 @@
     "unit": "$/gal",
     "ticker": "HO=F",
     "latest": {
-      "date": "2026-07-10",
-      "open": 3.56,
-      "high": 3.65,
-      "low": 3.5,
-      "close": 3.55,
-      "volume": 36244
+      "date": "2026-07-13",
+      "open": 3.61,
+      "high": 3.67,
+      "low": 3.53,
+      "close": 3.66,
+      "volume": 24740
     },
     "history": [
-      {
-        "date": "2026-04-30",
-        "open": 4.19,
-        "high": 4.3,
-        "low": 4.12,
-        "close": 4.14,
-        "volume": 47220
-      },
       {
         "date": "2026-05-01",
         "open": 4.09,
@@ -1216,7 +1208,15 @@
         "high": 3.65,
         "low": 3.5,
         "close": 3.55,
-        "volume": 36244
+        "volume": 44390
+      },
+      {
+        "date": "2026-07-13",
+        "open": 3.61,
+        "high": 3.67,
+        "low": 3.53,
+        "close": 3.66,
+        "volume": 24740
       }
     ]
   },
@@ -1225,22 +1225,14 @@
     "unit": "$/gal",
     "ticker": "RB=F",
     "latest": {
-      "date": "2026-07-10",
+      "date": "2026-07-13",
       "open": 2.87,
-      "high": 2.87,
-      "low": 2.79,
-      "close": 2.82,
-      "volume": 50438
+      "high": 2.92,
+      "low": 2.86,
+      "close": 2.91,
+      "volume": 34579
     },
     "history": [
-      {
-        "date": "2026-04-30",
-        "open": 3.75,
-        "high": 3.82,
-        "low": 3.68,
-        "close": 3.77,
-        "volume": 71871
-      },
       {
         "date": "2026-05-01",
         "open": 3.63,
@@ -1619,11 +1611,19 @@
       },
       {
         "date": "2026-07-10",
+        "open": 3.04,
+        "high": 3.04,
+        "low": 2.94,
+        "close": 2.98,
+        "volume": 60460
+      },
+      {
+        "date": "2026-07-13",
         "open": 2.87,
-        "high": 2.87,
-        "low": 2.79,
-        "close": 2.82,
-        "volume": 50438
+        "high": 2.92,
+        "low": 2.86,
+        "close": 2.91,
+        "volume": 34579
       }
     ]
   },
@@ -1632,22 +1632,14 @@
     "unit": "$/MMBtu",
     "ticker": "NG=F",
     "latest": {
-      "date": "2026-07-10",
-      "open": 3.02,
-      "high": 3.02,
-      "low": 2.87,
-      "close": 2.94,
-      "volume": 171498
+      "date": "2026-07-13",
+      "open": 2.93,
+      "high": 2.95,
+      "low": 2.85,
+      "close": 2.89,
+      "volume": 88979
     },
     "history": [
-      {
-        "date": "2026-04-30",
-        "open": 2.65,
-        "high": 2.79,
-        "low": 2.59,
-        "close": 2.77,
-        "volume": 172760
-      },
       {
         "date": "2026-05-01",
         "open": 2.76,
@@ -2030,15 +2022,19 @@
         "high": 3.02,
         "low": 2.87,
         "close": 2.94,
-        "volume": 171498
+        "volume": 240595
+      },
+      {
+        "date": "2026-07-13",
+        "open": 2.93,
+        "high": 2.95,
+        "low": 2.85,
+        "close": 2.89,
+        "volume": 88979
       }
     ]
   },
   "wti_brent_spread": [
-    {
-      "date": "2026-04-30",
-      "value": -8.94
-    },
     {
       "date": "2026-05-01",
       "value": -6.23
@@ -2230,13 +2226,13 @@
     {
       "date": "2026-07-10",
       "value": -4.6
+    },
+    {
+      "date": "2026-07-13",
+      "value": -4.85
     }
   ],
   "crack_321_realtime": [
-    {
-      "date": "2026-04-30",
-      "value": 58.45
-    },
     {
       "date": "2026-05-01",
       "value": 54.16
@@ -2427,24 +2423,28 @@
     },
     {
       "date": "2026-07-10",
-      "value": 57.25
+      "value": 61.73
+    },
+    {
+      "date": "2026-07-13",
+      "value": 57.79
     }
   ],
-  "snapshot_time": "2026-07-12T14:46:33",
+  "snapshot_time": "2026-07-13T16:19:46",
   "freshness": {
     "wti": {
-      "realtime": "2026-07-10",
+      "realtime": "2026-07-13",
       "fred": "2026-07-06",
-      "fred_lag_days": 4,
+      "fred_lag_days": 7,
       "eia": "2026-07-06",
-      "eia_lag_days": 4
+      "eia_lag_days": 7
     },
     "brent": {
-      "realtime": "2026-07-10",
+      "realtime": "2026-07-13",
       "fred": "2026-07-06",
-      "fred_lag_days": 4,
+      "fred_lag_days": 7,
       "eia": "2026-07-06",
-      "eia_lag_days": 4
+      "eia_lag_days": 7
     }
   }
 }
