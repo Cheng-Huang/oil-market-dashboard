@@ -20014,7 +20014,7 @@
     },
     {
       "date": "2026-07-17",
-      "value": 82.49
+      "value": 81.78
     }
   ],
   "brent": [
@@ -59754,8 +59754,8 @@
     },
     {
       "date": "2026-07-17",
-      "value": -5.61
+      "value": -6.32
     }
   ],
-  "_source_note": "FRED + EIA daily. Last EIA daily merge: 2026-07-18T14:43:22"
+  "_source_note": "FRED + EIA daily. Last EIA daily merge: 2026-07-19T14:46:42"
 }
