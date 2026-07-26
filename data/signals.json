@@ -4,9 +4,9 @@
     "signal": "neutral",
     "evidence_tier": "A",
     "evidence_note": "EIA周度库存为直接观测数据",
-    "detail": "最近3周变化: [2998.0, -1692.0, 2010.0]",
-    "last_change_mbbl": 2010.0,
-    "cushing_warning": true
+    "detail": "最近3周变化: []",
+    "last_change_mbbl": 0,
+    "cushing_warning": false
   },
   "curve": {
     "name": "曲线结构",
@@ -48,45 +48,13 @@
   },
   "drilling": {
     "name": "钻井活动",
-    "signal": "bullish",
-    "evidence_tier": "A",
-    "evidence_note": "钻机数为直接观测",
-    "source": "rig_count",
-    "recent_avg": 15.9,
-    "prev_avg": 16.3
+    "signal": "neutral",
+    "source": "none"
   },
   "opec": {
     "name": "全球供需",
-    "signal": "bullish",
-    "evidence_tier": "B",
-    "evidence_note": "STEO实际值为B层二手确认",
-    "balance_avg_3m": -5.081,
-    "opec_trend": "stable",
-    "data_source": "actual",
-    "supply_demand_detail": [
-      {
-        "date": "2026-04",
-        "balance": -5.009,
-        "supply": 94.901,
-        "demand": 99.91,
-        "type": "actual"
-      },
-      {
-        "date": "2026-05",
-        "balance": -6.287,
-        "supply": 93.478,
-        "demand": 99.764,
-        "type": "actual"
-      },
-      {
-        "date": "2026-06",
-        "balance": -3.948,
-        "supply": 97.46,
-        "demand": 101.407,
-        "type": "actual"
-      }
-    ],
-    "detail": "近3月平均平衡: -5.081 百万桶/日 (来源: actual)"
+    "signal": "neutral",
+    "source": "none"
   },
   "financial": {
     "name": "金融条件",
@@ -120,39 +88,13 @@
   },
   "spr_policy": {
     "name": "SPR政策响应",
-    "spr_level_kbbl": 311447.0,
-    "spr_date": "2026-07-17",
-    "spr_low": true,
-    "spr_4w_change": -19744.0,
-    "spr_trend": "releasing",
+    "spr_level_kbbl": null,
     "current_wti": 89.31,
     "detail": "当前无明显触发 SPR 释放的条件。",
-    "release_likelihood": "low",
-    "max_release_days": 71.0,
-    "capacity_note": "SPR 当前 311 百万桶，按最大速率 4.4 百万桶/日可持续 71 天。 ⚠️ SPR 低于 350 百万桶警戒线，释放空间有限，政策可能更审慎。"
+    "release_likelihood": "low"
   },
   "steo_validation": {
-    "has_anomaly": true,
-    "anomalies": [
-      {
-        "date": "2020-05",
-        "prev_date": "2020-04",
-        "supply_change": -11.351,
-        "prev_supply": 99.697,
-        "curr_supply": 88.345,
-        "severity": "critical",
-        "detail": "2020-04→2020-05 供给变动 -11.35 百万桶/日，超过合理阈值 ±4.0。STEO供给=全球产量，产量不会因运输中断瞬间骤降——运输封锁影响的是贸易流向而非产量本身。可能原因：(1) STEO 月度数据修正/统计口径调整；(2) 实际减产（OPEC+主动减产或制裁导致关井）；(3) 数据发布时滞导致的暂时性异常。建议交叉验证 OPEC 月报和 IEA 月报数据。"
-      },
-      {
-        "date": "2026-03",
-        "prev_date": "2026-02",
-        "supply_change": -11.313,
-        "prev_supply": 108.695,
-        "curr_supply": 97.382,
-        "severity": "critical",
-        "detail": "2026-02→2026-03 供给变动 -11.31 百万桶/日，超过合理阈值 ±4.0。STEO供给=全球产量，产量不会因运输中断瞬间骤降——运输封锁影响的是贸易流向而非产量本身。可能原因：(1) STEO 月度数据修正/统计口径调整；(2) 实际减产（OPEC+主动减产或制裁导致关井）；(3) 数据发布时滞导致的暂时性异常。建议交叉验证 OPEC 月报和 IEA 月报数据。"
-      }
-    ]
+    "has_anomaly": false
   },
   "price_freshness": {
     "spot_date": "2026-07-24",
@@ -161,11 +103,11 @@
     "temporal_risk": "low"
   },
   "score_summary": {
-    "bullish": 4,
-    "neutral": 3,
+    "bullish": 2,
+    "neutral": 5,
     "bearish": 1,
-    "base_regime": "bullish_leaning",
-    "regime": "bullish_leaning",
-    "summary": "看多4/中性3/看空1 — 信号偏多，但需检验是否由单一因素（如地缘风险）主导。"
+    "base_regime": "mixed",
+    "regime": "mixed",
+    "summary": "看多2/中性5/看空1 — 信号偏多，但需检验是否由单一因素（如地缘风险）主导。"
   }
 }
