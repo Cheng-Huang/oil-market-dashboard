@@ -15,10 +15,10 @@
     "evidence_note": "期货价格为直接市场观测",
     "label": "Backwardation",
     "source": "futures",
-    "m1_m2_spread": 3.25,
-    "m1_m6_spread": 11.0,
-    "curve_front": 84.9,
-    "curve_back": 70.45,
+    "m1_m2_spread": 3.18,
+    "m1_m6_spread": 10.93,
+    "curve_front": 84.67,
+    "curve_back": 70.27,
     "n_contracts": 12
   },
   "demand": {
@@ -60,17 +60,10 @@
     "signal": "bullish",
     "evidence_tier": "B",
     "evidence_note": "STEO实际值为B层二手确认",
-    "balance_avg_3m": -5.081,
+    "balance_avg_3m": -4.192,
     "opec_trend": "stable",
     "data_source": "actual",
     "supply_demand_detail": [
-      {
-        "date": "2026-04",
-        "balance": -5.009,
-        "supply": 94.901,
-        "demand": 99.91,
-        "type": "actual"
-      },
       {
         "date": "2026-05",
         "balance": -6.287,
@@ -84,9 +77,16 @@
         "supply": 97.46,
         "demand": 101.407,
         "type": "actual"
+      },
+      {
+        "date": "2026-07",
+        "balance": -2.342,
+        "supply": 99.232,
+        "demand": 101.574,
+        "type": "actual"
       }
     ],
-    "detail": "近3月平均平衡: -5.081 百万桶/日 (来源: actual)"
+    "detail": "近3月平均平衡: -4.192 百万桶/日 (来源: actual)"
   },
   "financial": {
     "name": "金融条件",
@@ -102,16 +102,16 @@
     "signal": "neutral",
     "evidence_tier": "A",
     "evidence_note": "CFTC持仓为直接观测（周频，截至周二）",
-    "net_long": 63979.0,
-    "percentile": 16.0,
-    "net_change": 2005.0,
-    "long_change": 6308.0,
-    "short_change": 4303.0,
-    "driver": "mixed",
-    "driver_note": "多空双边变动，方向信号不明确",
+    "net_long": 92943.0,
+    "percentile": 33.0,
+    "net_change": 28964.0,
+    "long_change": 6490.0,
+    "short_change": -22474.0,
+    "driver": "short_squeeze",
+    "driver_note": "空头回补驱动，非新多头入场，上涨持续性存疑",
     "hist_p25": 79913.0,
     "hist_p75": 166263.0,
-    "context_note": "当前净多仓位于历史16%分位（P25=79913, P75=166263），仍有较大上行空间"
+    "context_note": "当前净多仓位于历史33%分位（P25=79913, P75=166263），接近中位水平"
   },
   "cross_analysis": {
     "findings": [],
@@ -125,7 +125,7 @@
     "spr_low": true,
     "spr_4w_change": -18005.0,
     "spr_trend": "releasing",
-    "current_wti": 84.9,
+    "current_wti": 84.67,
     "detail": "当前无明显触发 SPR 释放的条件。",
     "release_likelihood": "low",
     "max_release_days": 70.0,
