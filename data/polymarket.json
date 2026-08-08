@@ -16,34 +16,34 @@
           "question": "Israel and Syria normalize relations by December 31, 2026?",
           "slug": "israel-and-syria-normalize-relations-by-december-31-2026-166",
           "yes_price": 0.125,
-          "volume": 680032.20658,
+          "volume": 680052.2065800001,
           "end_date": "2025-12-31",
           "url": "https://polymarket.com/event/israel-and-syria-normalize-relations-in-2025"
-        },
-        {
-          "id": "677358",
-          "question": "Ukraine election held by December 31, 2026?",
-          "slug": "ukraine-election-held-by-december-31-2026-344-142",
-          "yes_price": 0.07,
-          "volume": 230081.153799,
-          "end_date": "2026-12-31",
-          "url": "https://polymarket.com/event/ukraine-election-held-in-2025"
         },
         {
           "id": "2749367",
           "question": "Will Russia invade a NATO country by December 31, 2026?",
           "slug": "will-russia-invade-a-nato-country-by-december-31-2026",
           "yes_price": 0.06,
-          "volume": 224649.501112,
+          "volume": 246249.77197600002,
           "end_date": "2025-12-31",
           "url": "https://polymarket.com/event/will-russia-invade-a-nato-country-in-2025"
+        },
+        {
+          "id": "677358",
+          "question": "Ukraine election held by December 31, 2026?",
+          "slug": "ukraine-election-held-by-december-31-2026-344-142",
+          "yes_price": 0.07,
+          "volume": 230083.47379899988,
+          "end_date": "2026-12-31",
+          "url": "https://polymarket.com/event/ukraine-election-held-in-2025"
         },
         {
           "id": "677404",
           "question": "China x India military clash by December 31, 2026?",
           "slug": "china-x-india-military-clash-by-december-31-2026",
           "yes_price": 0.075,
-          "volume": 213951.98855000004,
+          "volume": 214593.18542100006,
           "end_date": "2026-12-31",
           "url": "https://polymarket.com/event/china-x-india-military-clash-by-december-31"
         },
@@ -52,7 +52,7 @@
           "question": "NATO/EU troops fighting in Ukraine by December 31, 2026?",
           "slug": "natoeu-troops-fighting-in-ukraine-by-december-31-2026",
           "yes_price": 0.08,
-          "volume": 151421.973873,
+          "volume": 151522.582458,
           "end_date": "2026-12-31",
           "url": "https://polymarket.com/event/natoeu-troops-fighting-in-ukraine-in-2025"
         }
@@ -65,34 +65,34 @@
       "question": "Israel and Syria normalize relations by December 31, 2026?",
       "slug": "israel-and-syria-normalize-relations-by-december-31-2026-166",
       "yes_price": 0.125,
-      "volume": 680032.20658,
+      "volume": 680052.2065800001,
       "end_date": "2025-12-31",
       "url": "https://polymarket.com/event/israel-and-syria-normalize-relations-in-2025"
-    },
-    {
-      "id": "677358",
-      "question": "Ukraine election held by December 31, 2026?",
-      "slug": "ukraine-election-held-by-december-31-2026-344-142",
-      "yes_price": 0.07,
-      "volume": 230081.153799,
-      "end_date": "2026-12-31",
-      "url": "https://polymarket.com/event/ukraine-election-held-in-2025"
     },
     {
       "id": "2749367",
       "question": "Will Russia invade a NATO country by December 31, 2026?",
       "slug": "will-russia-invade-a-nato-country-by-december-31-2026",
       "yes_price": 0.06,
-      "volume": 224649.501112,
+      "volume": 246249.77197600002,
       "end_date": "2025-12-31",
       "url": "https://polymarket.com/event/will-russia-invade-a-nato-country-in-2025"
+    },
+    {
+      "id": "677358",
+      "question": "Ukraine election held by December 31, 2026?",
+      "slug": "ukraine-election-held-by-december-31-2026-344-142",
+      "yes_price": 0.07,
+      "volume": 230083.47379899988,
+      "end_date": "2026-12-31",
+      "url": "https://polymarket.com/event/ukraine-election-held-in-2025"
     },
     {
       "id": "677404",
       "question": "China x India military clash by December 31, 2026?",
       "slug": "china-x-india-military-clash-by-december-31-2026",
       "yes_price": 0.075,
-      "volume": 213951.98855000004,
+      "volume": 214593.18542100006,
       "end_date": "2026-12-31",
       "url": "https://polymarket.com/event/china-x-india-military-clash-by-december-31"
     },
@@ -101,7 +101,7 @@
       "question": "NATO/EU troops fighting in Ukraine by December 31, 2026?",
       "slug": "natoeu-troops-fighting-in-ukraine-by-december-31-2026",
       "yes_price": 0.08,
-      "volume": 151421.973873,
+      "volume": 151522.582458,
       "end_date": "2026-12-31",
       "url": "https://polymarket.com/event/natoeu-troops-fighting-in-ukraine-in-2025"
     }

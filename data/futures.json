@@ -4,89 +4,89 @@
       "month": "2026-09",
       "label": "Sep 2026",
       "ticker": "CLU26.NYM",
-      "price": 77.58,
+      "price": 78.18,
       "date": "2026-08-07"
     },
     {
       "month": "2026-10",
       "label": "Oct 2026",
       "ticker": "CLV26.NYM",
-      "price": 76.37,
+      "price": 77.15,
       "date": "2026-08-07"
     },
     {
       "month": "2026-11",
       "label": "Nov 2026",
       "ticker": "CLX26.NYM",
-      "price": 75.1,
+      "price": 75.96,
       "date": "2026-08-07"
     },
     {
       "month": "2026-12",
       "label": "Dec 2026",
       "ticker": "CLZ26.NYM",
-      "price": 73.78,
+      "price": 74.64,
       "date": "2026-08-07"
     },
     {
       "month": "2027-01",
       "label": "Jan 2027",
       "ticker": "CLF27.NYM",
-      "price": 72.69,
+      "price": 73.5,
       "date": "2026-08-07"
     },
     {
       "month": "2027-02",
       "label": "Feb 2027",
       "ticker": "CLG27.NYM",
-      "price": 71.73,
+      "price": 72.54,
       "date": "2026-08-07"
     },
     {
       "month": "2027-03",
       "label": "Mar 2027",
       "ticker": "CLH27.NYM",
-      "price": 71.05,
+      "price": 71.78,
       "date": "2026-08-07"
     },
     {
       "month": "2027-04",
       "label": "Apr 2027",
       "ticker": "CLJ27.NYM",
-      "price": 70.44,
+      "price": 71.16,
       "date": "2026-08-07"
     },
     {
       "month": "2027-05",
       "label": "May 2027",
       "ticker": "CLK27.NYM",
-      "price": 70.06,
+      "price": 70.67,
       "date": "2026-08-07"
     },
     {
       "month": "2027-06",
       "label": "Jun 2027",
       "ticker": "CLM27.NYM",
-      "price": 69.59,
+      "price": 70.23,
       "date": "2026-08-07"
     },
     {
       "month": "2027-07",
       "label": "Jul 2027",
       "ticker": "CLN27.NYM",
-      "price": 69.26,
+      "price": 69.83,
       "date": "2026-08-07"
     },
     {
       "month": "2027-08",
       "label": "Aug 2027",
       "ticker": "CLQ27.NYM",
-      "price": 68.89,
-      "date": "2026-08-06"
+      "price": 69.45,
+      "date": "2026-08-07"
     }
   ],
-  "m1_m2_spread": 1.21,
-  "m1_m6_spread": 5.85,
+  "m1_m2_spread": 1.03,
+  "m1_m6_spread": 5.64,
   "structure": "backwardation",
   "spread_history": [
     {
@@ -1434,5 +1434,5 @@
       "m2": 76.37
     }
   ],
-  "updated": "2026-08-07T14:43:48.122176"
+  "updated": "2026-08-08T14:22:04.541526"
 }
