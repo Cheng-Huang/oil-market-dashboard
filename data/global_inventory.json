@@ -10978,6 +10978,10 @@
       {
         "date": "2026-07-31",
         "value": 406987.0
+      },
+      {
+        "date": "2026-08-07",
+        "value": 424410.0
       }
     ],
     "us_cushing_weekly": [
@@ -15640,6 +15644,10 @@
       {
         "date": "2026-07-31",
         "value": 20955.0
+      },
+      {
+        "date": "2026-08-07",
+        "value": 22566.0
       }
     ],
     "us_gasoline_weekly": [
@@ -23278,6 +23286,10 @@
       {
         "date": "2026-07-31",
         "value": 209658.0
+      },
+      {
+        "date": "2026-08-07",
+        "value": 208690.0
       }
     ],
     "us_distillate_weekly": [
@@ -32432,6 +32444,10 @@
       {
         "date": "2026-07-31",
         "value": 107159.0
+      },
+      {
+        "date": "2026-08-07",
+        "value": 107149.0
       }
     ],
     "us_spr_weekly": [
@@ -41586,6 +41602,10 @@
       {
         "date": "2026-07-31",
         "value": 304809.0
+      },
+      {
+        "date": "2026-08-07",
+        "value": 298694.0
       }
     ]
   },
@@ -41627,15 +41647,15 @@
     },
     {
       "date": "2026-06",
-      "stockchange_mbd": -2.748,
-      "supply_mbd": 98.974,
+      "stockchange_mbd": -2.736,
+      "supply_mbd": 98.986,
       "demand_mbd": 101.722,
       "type": "actual"
     },
     {
       "date": "2026-07",
-      "stockchange_mbd": -0.459,
-      "supply_mbd": 101.025,
+      "stockchange_mbd": -0.435,
+      "supply_mbd": 101.049,
       "demand_mbd": 101.484,
       "type": "actual"
     },
@@ -41780,8 +41800,8 @@
     "by_country": {
       "us": {
         "name": "美国",
-        "level_mb": 304.8,
-        "date": "2026-07-31",
+        "level_mb": 298.7,
+        "date": "2026-08-07",
         "max_release_kbd": 4400,
         "source": "EIA weekly"
       },
@@ -41810,8 +41830,8 @@
         "source": "IEA estimate"
       }
     },
-    "total_estimated_mb": 2075.0,
+    "total_estimated_mb": 2069.0,
     "note": "除美国外均为行业估算值，非官方实时数据"
   },
-  "updated": "2026-08-12T14:49:43Z"
+  "updated": "2026-08-13T14:49:54Z"
 }
