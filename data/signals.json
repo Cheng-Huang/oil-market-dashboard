@@ -15,11 +15,11 @@
     "evidence_note": "期货价格为直接市场观测",
     "label": "Backwardation",
     "source": "futures",
-    "m1_m2_spread": 1.78,
-    "m1_m6_spread": 8.61,
-    "curve_front": 86.48,
-    "curve_back": 73.39,
-    "n_contracts": 12
+    "m1_m2_spread": 1.9,
+    "m1_m6_spread": 10.23,
+    "curve_front": 87.06,
+    "curve_back": 73.42,
+    "n_contracts": 11
   },
   "demand": {
     "name": "需求强度",
@@ -102,16 +102,16 @@
     "signal": "neutral",
     "evidence_tier": "A",
     "evidence_note": "CFTC持仓为直接观测（周频，截至周二）",
-    "net_long": 79916.0,
-    "percentile": 25.5,
-    "net_change": -7042.0,
-    "long_change": 1036.0,
-    "short_change": 8078.0,
+    "net_long": 87479.0,
+    "percentile": 30.5,
+    "net_change": 7563.0,
+    "long_change": 4984.0,
+    "short_change": -2579.0,
     "driver": "mixed",
     "driver_note": "多空双边变动，方向信号不明确",
     "hist_p25": 79913.0,
     "hist_p75": 164387.0,
-    "context_note": "当前净多仓位于历史26%分位（P25=79913, P75=164387），仍有较大上行空间"
+    "context_note": "当前净多仓位于历史30%分位（P25=79913, P75=164387），接近中位水平"
   },
   "cross_analysis": {
     "findings": [],
@@ -125,7 +125,7 @@
     "spr_low": true,
     "spr_4w_change": -18021.0,
     "spr_trend": "releasing",
-    "current_wti": 86.48,
+    "current_wti": 87.06,
     "detail": "当前无明显触发 SPR 释放的条件。",
     "release_likelihood": "low",
     "max_release_days": 67.0,

@@ -8,8 +8,8 @@
       "open": 86.27,
       "high": 87.51,
       "low": 85.8,
-      "close": 86.49,
-      "volume": 103428
+      "close": 87.06,
+      "volume": 262550
     },
     "history": [
       {
@@ -402,15 +402,15 @@
         "high": 89.0,
         "low": 85.6,
         "close": 87.83,
-        "volume": 98764
+        "volume": 262550
       },
       {
         "date": "2026-08-21",
         "open": 86.27,
         "high": 87.51,
         "low": 85.8,
-        "close": 86.49,
-        "volume": 103428
+        "close": 87.06,
+        "volume": 262550
       }
     ]
   },
@@ -421,10 +421,10 @@
     "latest": {
       "date": "2026-08-21",
       "open": 93.33,
-      "high": 94.4,
+      "high": 94.81,
       "low": 92.77,
-      "close": 93.82,
-      "volume": 9967
+      "close": 94.39,
+      "volume": 27355
     },
     "history": [
       {
@@ -817,15 +817,15 @@
         "high": 94.72,
         "low": 91.35,
         "close": 93.78,
-        "volume": 28039
+        "volume": 27355
       },
       {
         "date": "2026-08-21",
         "open": 93.33,
-        "high": 94.4,
+        "high": 94.81,
         "low": 92.77,
-        "close": 93.82,
-        "volume": 9967
+        "close": 94.39,
+        "volume": 27355
       }
     ]
   },
@@ -835,11 +835,11 @@
     "ticker": "HO=F",
     "latest": {
       "date": "2026-08-21",
-      "open": 4.37,
-      "high": 4.44,
-      "low": 4.32,
-      "close": 4.39,
-      "volume": 13560
+      "open": 4.48,
+      "high": 4.56,
+      "low": 4.43,
+      "close": 4.49,
+      "volume": 24411
     },
     "history": [
       {
@@ -1232,15 +1232,15 @@
         "high": 4.51,
         "low": 4.41,
         "close": 4.48,
-        "volume": 28073
+        "volume": 24411
       },
       {
         "date": "2026-08-21",
-        "open": 4.37,
-        "high": 4.44,
-        "low": 4.32,
-        "close": 4.39,
-        "volume": 13560
+        "open": 4.48,
+        "high": 4.56,
+        "low": 4.43,
+        "close": 4.49,
+        "volume": 24411
       }
     ]
   },
@@ -1250,11 +1250,11 @@
     "ticker": "RB=F",
     "latest": {
       "date": "2026-08-21",
-      "open": 3.01,
-      "high": 3.08,
-      "low": 2.99,
-      "close": 3.04,
-      "volume": 24638
+      "open": 3.27,
+      "high": 3.37,
+      "low": 3.25,
+      "close": 3.35,
+      "volume": 34118
     },
     "history": [
       {
@@ -1647,15 +1647,15 @@
         "high": 3.29,
         "low": 3.19,
         "close": 3.26,
-        "volume": 36457
+        "volume": 34118
       },
       {
         "date": "2026-08-21",
-        "open": 3.01,
-        "high": 3.08,
-        "low": 2.99,
-        "close": 3.04,
-        "volume": 24638
+        "open": 3.27,
+        "high": 3.37,
+        "low": 3.25,
+        "close": 3.35,
+        "volume": 34118
       }
     ]
   },
@@ -1668,8 +1668,8 @@
       "open": 2.76,
       "high": 2.8,
       "low": 2.74,
-      "close": 2.81,
-      "volume": 53169
+      "close": 2.77,
+      "volume": 178527
     },
     "history": [
       {
@@ -2062,15 +2062,15 @@
         "high": 2.8,
         "low": 2.71,
         "close": 2.73,
-        "volume": 189364
+        "volume": 178527
       },
       {
         "date": "2026-08-21",
         "open": 2.76,
         "high": 2.8,
         "low": 2.74,
-        "close": 2.81,
-        "volume": 53169
+        "close": 2.77,
+        "volume": 178527
       }
     ]
   },
@@ -2475,10 +2475,10 @@
     },
     {
       "date": "2026-08-21",
-      "value": 60.09
+      "value": 69.6
     }
   ],
-  "snapshot_time": "2026-08-21T14:23:04",
+  "snapshot_time": "2026-08-22T14:10:38",
   "freshness": {
     "wti": {
       "realtime": "2026-08-21",
