@@ -15,10 +15,10 @@
     "evidence_note": "期货价格为直接市场观测",
     "label": "Backwardation",
     "source": "futures",
-    "m1_m2_spread": 1.72,
-    "m1_m6_spread": 8.41,
-    "curve_front": 85.16,
-    "curve_back": 72.57,
+    "m1_m2_spread": 1.46,
+    "m1_m6_spread": 7.13,
+    "curve_front": 82.47,
+    "curve_back": 71.81,
     "n_contracts": 12
   },
   "demand": {
@@ -90,11 +90,12 @@
   },
   "financial": {
     "name": "金融条件",
-    "signal": "neutral",
+    "signal": "bearish",
     "evidence_tier": "A",
     "evidence_note": "DXY/OVX/实际利率为直接市场观测",
-    "dxy_vs_ma200": -0.79,
-    "real_rate": 2.35
+    "dxy_vs_ma200": -1.57,
+    "real_rate": 2.4,
+    "ovx": 46.74
   },
   "positioning": {
     "name": "持仓拥挤度",
@@ -124,7 +125,7 @@
     "spr_low": true,
     "spr_4w_change": -18021.0,
     "spr_trend": "releasing",
-    "current_wti": 85.16,
+    "current_wti": 82.47,
     "detail": "当前无明显触发 SPR 释放的条件。",
     "release_likelihood": "low",
     "max_release_days": 67.0,
@@ -163,17 +164,17 @@
     ]
   },
   "price_freshness": {
-    "spot_date": "2026-08-24",
-    "futures_date": "2026-08-24",
+    "spot_date": "2026-08-25",
+    "futures_date": "2026-08-25",
     "lag_days": 0,
     "temporal_risk": "low"
   },
   "score_summary": {
     "bullish": 4,
-    "neutral": 3,
-    "bearish": 1,
+    "neutral": 2,
+    "bearish": 2,
     "base_regime": "bullish_leaning",
     "regime": "bullish_leaning",
-    "summary": "看多4/中性3/看空1 — 信号偏多，但需检验是否由单一因素（如地缘风险）主导。"
+    "summary": "看多4/中性2/看空2 — 信号偏多，但需检验是否由单一因素（如地缘风险）主导。"
   }
 }
