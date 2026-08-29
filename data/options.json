@@ -3,41 +3,26 @@
     "by_ticker": {
       "USO": {
         "label": "United States Oil Fund ETF",
-        "pc_ratio_volume": 0.405,
-        "pc_ratio_oi": 0.512,
-        "total_call_volume": 48978,
-        "total_put_volume": 19822,
-        "total_call_oi": 155782,
-        "total_put_oi": 79805,
+        "pc_ratio_volume": 0.345,
+        "pc_ratio_oi": 0.788,
+        "total_call_volume": 37835,
+        "total_put_volume": 13065,
+        "total_call_oi": 207255,
+        "total_put_oi": 163396,
         "expiries_analyzed": 4
       },
       "XLE": {
         "label": "Energy Select Sector SPDR",
-        "pc_ratio_volume": 1.499,
-        "pc_ratio_oi": 1.022,
-        "total_call_volume": 9230,
-        "total_put_volume": 13832,
-        "total_call_oi": 83046,
-        "total_put_oi": 84897,
+        "pc_ratio_volume": 0.878,
+        "pc_ratio_oi": 0.886,
+        "total_call_volume": 10924,
+        "total_put_volume": 9591,
+        "total_call_oi": 46570,
+        "total_put_oi": 41248,
         "expiries_analyzed": 4
       }
     },
     "by_expiry": [
-      {
-        "ticker": "USO",
-        "expiry": "2026-08-28",
-        "pc_ratio_volume": 0.617,
-        "pc_ratio_oi": 0.438,
-        "total_call_volume": 17838,
-        "total_put_volume": 11009,
-        "total_call_oi": 83123,
-        "total_put_oi": 36397,
-        "max_call_oi_strike": 200.0,
-        "max_put_oi_strike": 120.0,
-        "avg_iv_calls": 2.0192,
-        "avg_iv_puts": 1.9971,
-        "iv_skew": -0.0221
-      },
       {
         "ticker": "USO",
         "expiry": "2026-09-02",
@@ -49,9 +34,9 @@
         "total_put_oi": 14624,
         "max_call_oi_strike": 155.0,
         "max_put_oi_strike": 120.0,
-        "avg_iv_calls": 0.5289,
-        "avg_iv_puts": 0.4323,
-        "iv_skew": -0.0966
+        "avg_iv_calls": 0.5767,
+        "avg_iv_puts": 0.4715,
+        "iv_skew": -0.1052
       },
       {
         "ticker": "USO",
@@ -64,9 +49,9 @@
         "total_put_oi": 20034,
         "max_call_oi_strike": 155.0,
         "max_put_oi_strike": 118.0,
-        "avg_iv_calls": 0.7604,
-        "avg_iv_puts": 0.8827,
-        "iv_skew": 0.1223
+        "avg_iv_calls": 0.8129,
+        "avg_iv_puts": 0.9435,
+        "iv_skew": 0.1306
       },
       {
         "ticker": "USO",
@@ -79,24 +64,24 @@
         "total_put_oi": 8750,
         "max_call_oi_strike": 140.0,
         "max_put_oi_strike": 120.0,
-        "avg_iv_calls": 0.5653,
-        "avg_iv_puts": 0.6271,
-        "iv_skew": 0.0619
+        "avg_iv_calls": 0.5851,
+        "avg_iv_puts": 0.6492,
+        "iv_skew": 0.064
       },
       {
-        "ticker": "XLE",
-        "expiry": "2026-08-28",
-        "pc_ratio_volume": 2.349,
-        "pc_ratio_oi": 1.058,
-        "total_call_volume": 3484,
-        "total_put_volume": 8184,
-        "total_call_oi": 46815,
-        "total_put_oi": 49513,
-        "max_call_oi_strike": 62.0,
-        "max_put_oi_strike": 61.5,
-        "avg_iv_calls": 2.6056,
-        "avg_iv_puts": 1.2928,
-        "iv_skew": -1.3128
+        "ticker": "USO",
+        "expiry": "2026-09-18",
+        "pc_ratio_volume": 0.635,
+        "pc_ratio_oi": 0.891,
+        "total_call_volume": 6695,
+        "total_put_volume": 4252,
+        "total_call_oi": 134596,
+        "total_put_oi": 119988,
+        "max_call_oi_strike": 200.0,
+        "max_put_oi_strike": 100.0,
+        "avg_iv_calls": 0.8519,
+        "avg_iv_puts": 0.8578,
+        "iv_skew": 0.0059
       },
       {
         "ticker": "XLE",
@@ -109,9 +94,9 @@
         "total_put_oi": 8627,
         "max_call_oi_strike": 64.0,
         "max_put_oi_strike": 62.0,
-        "avg_iv_calls": 0.6479,
-        "avg_iv_puts": 0.5509,
-        "iv_skew": -0.097
+        "avg_iv_calls": 0.7314,
+        "avg_iv_puts": 0.6265,
+        "iv_skew": -0.105
       },
       {
         "ticker": "XLE",
@@ -124,9 +109,9 @@
         "total_put_oi": 2679,
         "max_call_oi_strike": 65.0,
         "max_put_oi_strike": 62.0,
-        "avg_iv_calls": 0.509,
-        "avg_iv_puts": 0.4216,
-        "iv_skew": -0.0874
+        "avg_iv_calls": 0.5575,
+        "avg_iv_puts": 0.4617,
+        "iv_skew": -0.0958
       },
       {
         "ticker": "XLE",
@@ -139,26 +124,42 @@
         "total_put_oi": 24078,
         "max_call_oi_strike": 63.0,
         "max_put_oi_strike": 60.5,
-        "avg_iv_calls": 0.6678,
-        "avg_iv_puts": 0.6317,
-        "iv_skew": -0.0361
+        "avg_iv_calls": 0.7139,
+        "avg_iv_puts": 0.6513,
+        "iv_skew": -0.0626
+      },
+      {
+        "ticker": "XLE",
+        "expiry": "2026-09-11",
+        "pc_ratio_volume": 0.761,
+        "pc_ratio_oi": 0.567,
+        "total_call_volume": 5178,
+        "total_put_volume": 3943,
+        "total_call_oi": 10339,
+        "total_put_oi": 5864,
+        "max_call_oi_strike": 66.0,
+        "max_put_oi_strike": 55.5,
+        "avg_iv_calls": 0.6542,
+        "avg_iv_puts": 0.5202,
+        "iv_skew": -0.1341
       }
     ],
     "aggregate": {
-      "total_pc_ratio_volume": 0.578,
-      "total_pc_ratio_oi": 0.69,
-      "total_call_volume": 58208,
-      "total_put_volume": 33654,
-      "total_call_oi": 238828,
-      "total_put_oi": 164702
+      "total_pc_ratio_volume": 0.465,
+      "total_pc_ratio_oi": 0.806,
+      "total_call_volume": 48759,
+      "total_put_volume": 22656,
+      "total_call_oi": 253825,
+      "total_put_oi": 204644
     },
     "sentiment": {
       "volume_signal": "extreme_bullish",
-      "volume_note": "P/C(vol)=0.58 极度看多，可能反转风险",
-      "oi_signal": "extreme_bullish",
-      "skew_signal": "balanced",
+      "volume_note": "P/C(vol)=0.47 极度看多，可能反转风险",
+      "oi_signal": "bullish",
+      "skew_signal": "call_premium",
+      "skew_note": "Call IV 偏高 → 投机性做多活跃",
       "key_put_support": 120.0,
-      "key_call_resistance": 62.0
+      "key_call_resistance": 63.0
     }
   },
   "ovx_enhanced": {
@@ -166,9 +167,9 @@
     "date": "2026-08-27",
     "avg_20d": 51.68,
     "avg_60d": 53.57,
-    "percentile": 65.5,
+    "percentile": 65.4,
     "vol_of_vol_5d": 2.0,
     "regime": "panic"
   },
-  "updated": "2026-08-28T23:16:23Z"
+  "updated": "2026-08-29T17:26:59Z"
 }
