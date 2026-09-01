@@ -9698,7 +9698,7 @@
       "value": -6.139,
       "supply": 98.291,
       "demand": 104.431,
-      "type": "forecast"
+      "type": "actual"
     },
     {
       "date": "2026-09",

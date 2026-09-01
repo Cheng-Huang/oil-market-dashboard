@@ -15,11 +15,11 @@
     "evidence_note": "期货价格为直接市场观测",
     "label": "Backwardation",
     "source": "futures",
-    "m1_m2_spread": 1.81,
-    "m1_m6_spread": 10.23,
-    "curve_front": 85.78,
-    "curve_back": 72.1,
-    "n_contracts": 11
+    "m1_m2_spread": 2.33,
+    "m1_m6_spread": 11.3,
+    "curve_front": 89.6,
+    "curve_back": 72.97,
+    "n_contracts": 12
   },
   "demand": {
     "name": "需求强度",
@@ -60,17 +60,10 @@
     "signal": "bullish",
     "evidence_tier": "B",
     "evidence_note": "STEO实际值为B层二手确认",
-    "balance_avg_3m": -2.9,
+    "balance_avg_3m": -3.103,
     "opec_trend": "stable",
     "data_source": "actual",
     "supply_demand_detail": [
-      {
-        "date": "2026-05",
-        "balance": -5.528,
-        "supply": 94.321,
-        "demand": 99.849,
-        "type": "actual"
-      },
       {
         "date": "2026-06",
         "balance": -2.736,
@@ -84,18 +77,25 @@
         "supply": 101.049,
         "demand": 101.484,
         "type": "actual"
+      },
+      {
+        "date": "2026-08",
+        "balance": -6.139,
+        "supply": 98.291,
+        "demand": 104.431,
+        "type": "actual"
       }
     ],
-    "detail": "近3月平均平衡: -2.900 百万桶/日 (来源: actual)"
+    "detail": "近3月平均平衡: -3.103 百万桶/日 (来源: actual)"
   },
   "financial": {
     "name": "金融条件",
     "signal": "bearish",
     "evidence_tier": "A",
     "evidence_note": "DXY/OVX/实际利率为直接市场观测",
-    "dxy_vs_ma200": -1.57,
-    "real_rate": 2.34,
-    "ovx": 43.49
+    "dxy_vs_ma200": -0.8,
+    "real_rate": 2.42,
+    "ovx": 44.91
   },
   "positioning": {
     "name": "持仓拥挤度",
@@ -125,7 +125,7 @@
     "spr_low": true,
     "spr_4w_change": -17924.0,
     "spr_trend": "releasing",
-    "current_wti": 85.78,
+    "current_wti": 89.6,
     "detail": "当前无明显触发 SPR 释放的条件。",
     "release_likelihood": "low",
     "max_release_days": 66.0,
@@ -164,8 +164,8 @@
     ]
   },
   "price_freshness": {
-    "spot_date": "2026-08-31",
-    "futures_date": "2026-08-31",
+    "spot_date": "2026-09-01",
+    "futures_date": "2026-09-01",
     "lag_days": 0,
     "temporal_risk": "low"
   },
