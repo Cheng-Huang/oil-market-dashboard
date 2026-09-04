@@ -11692,6 +11692,10 @@
       {
         "date": "2026-04",
         "value": 4370.0
+      },
+      {
+        "date": "2026-05",
+        "value": 4389.21043660167
       }
     ],
     "india_production": [
@@ -13726,6 +13730,10 @@
       {
         "date": "2026-04",
         "value": 566.0502001615359
+      },
+      {
+        "date": "2026-05",
+        "value": 561.021935483871
       }
     ],
     "japan_production": [
@@ -15760,6 +15768,10 @@
       {
         "date": "2026-04",
         "value": 3.135
+      },
+      {
+        "date": "2026-05",
+        "value": 2.724
       }
     ],
     "korea_production": [
@@ -16833,6 +16845,10 @@
       },
       {
         "date": "2026-04",
+        "value": 0.0
+      },
+      {
+        "date": "2026-05",
         "value": 0.0
       }
     ],
@@ -18855,19 +18871,23 @@
       },
       {
         "date": "2026-01",
-        "value": 3953.322806451613
+        "value": 3953.407596774611
       },
       {
         "date": "2026-02",
-        "value": 4061.008
+        "value": 4061.107161504919
       },
       {
         "date": "2026-03",
-        "value": 4247.344286699866
+        "value": 4247.433502785186
       },
       {
         "date": "2026-04",
-        "value": 4339.786766666666
+        "value": 4339.786777083828
+      },
+      {
+        "date": "2026-05",
+        "value": 4301.374970765064
       }
     ]
   },
@@ -18878,18 +18898,18 @@
   "refinery_proxies": {
     "MPC": {
       "name": "Marathon Petroleum (US refiner)",
-      "price": 392.38,
-      "change_20d_pct": 31.9
+      "price": 389.42,
+      "change_20d_pct": 21.9
     },
     "VLO": {
       "name": "Valero Energy (US refiner)",
-      "price": 371.3,
-      "change_20d_pct": 22.5
+      "price": 371.66,
+      "change_20d_pct": 18.0
     },
     "PSX": {
       "name": "Phillips 66 (US refiner)",
-      "price": 258.58,
-      "change_20d_pct": 27.5
+      "price": 256.25,
+      "change_20d_pct": 19.5
     }
   },
   "demand_share": {
@@ -18924,5 +18944,5 @@
       "change_pct": -5.5
     }
   ],
-  "updated": "2026-09-03T17:22:47Z"
+  "updated": "2026-09-04T17:14:33Z"
 }
