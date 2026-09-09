@@ -1751,79 +1751,79 @@
       },
       {
         "date": "2026-06",
-        "value": 1208.484165
+        "value": 1214.816724
       },
       {
         "date": "2026-07",
-        "value": 1223.78804
+        "value": 1223.305336
       },
       {
         "date": "2026-08",
-        "value": 1218.716
+        "value": 1238.574259
       },
       {
         "date": "2026-09",
-        "value": 1221.266
+        "value": 1239.565
       },
       {
         "date": "2026-10",
-        "value": 1219.038
+        "value": 1234.641
       },
       {
         "date": "2026-11",
-        "value": 1226.419
+        "value": 1241.688
       },
       {
         "date": "2026-12",
-        "value": 1217.268
+        "value": 1233.386
       },
       {
         "date": "2027-01",
-        "value": 1240.367
+        "value": 1255.568
       },
       {
         "date": "2027-02",
-        "value": 1226.419
+        "value": 1242.108
       },
       {
         "date": "2027-03",
-        "value": 1235.429
+        "value": 1251.994
       },
       {
         "date": "2027-04",
-        "value": 1256.02
+        "value": 1270.246
       },
       {
         "date": "2027-05",
-        "value": 1275.44
+        "value": 1292.021
       },
       {
         "date": "2027-06",
-        "value": 1280.97
+        "value": 1299.256
       },
       {
         "date": "2027-07",
-        "value": 1293.308
+        "value": 1312.728
       },
       {
         "date": "2027-08",
-        "value": 1298.495
+        "value": 1318.83
       },
       {
         "date": "2027-09",
-        "value": 1303.147
+        "value": 1324.233
       },
       {
         "date": "2027-10",
-        "value": 1300.101
+        "value": 1322.217
       },
       {
         "date": "2027-11",
-        "value": 1310.539
+        "value": 1333.319
       },
       {
         "date": "2027-12",
-        "value": 1303.645
+        "value": 1327.112
       }
     ],
     "us_crude_weekly": [
@@ -41672,170 +41672,170 @@
   "implied_stockchange": [
     {
       "date": "2026-01",
-      "stockchange_mbd": 3.682,
-      "supply_mbd": 105.957,
-      "demand_mbd": 102.276,
+      "stockchange_mbd": 3.472,
+      "supply_mbd": 105.956,
+      "demand_mbd": 102.483,
       "type": "actual"
     },
     {
       "date": "2026-02",
-      "stockchange_mbd": 4.455,
-      "supply_mbd": 108.695,
-      "demand_mbd": 104.241,
+      "stockchange_mbd": 4.229,
+      "supply_mbd": 108.709,
+      "demand_mbd": 104.48,
       "type": "actual"
     },
     {
       "date": "2026-03",
-      "stockchange_mbd": -4.599,
-      "supply_mbd": 97.41,
-      "demand_mbd": 102.009,
+      "stockchange_mbd": -5.237,
+      "supply_mbd": 96.904,
+      "demand_mbd": 102.141,
       "type": "actual"
     },
     {
       "date": "2026-04",
-      "stockchange_mbd": -4.314,
-      "supply_mbd": 95.126,
-      "demand_mbd": 99.439,
+      "stockchange_mbd": -4.161,
+      "supply_mbd": 95.458,
+      "demand_mbd": 99.619,
       "type": "actual"
     },
     {
       "date": "2026-05",
-      "stockchange_mbd": -5.528,
-      "supply_mbd": 94.321,
-      "demand_mbd": 99.849,
+      "stockchange_mbd": -4.757,
+      "supply_mbd": 94.411,
+      "demand_mbd": 99.168,
       "type": "actual"
     },
     {
       "date": "2026-06",
-      "stockchange_mbd": -2.736,
-      "supply_mbd": 98.986,
-      "demand_mbd": 101.722,
+      "stockchange_mbd": -2.633,
+      "supply_mbd": 99.414,
+      "demand_mbd": 102.047,
       "type": "actual"
     },
     {
       "date": "2026-07",
-      "stockchange_mbd": -0.435,
-      "supply_mbd": 101.049,
-      "demand_mbd": 101.484,
+      "stockchange_mbd": -0.091,
+      "supply_mbd": 101.727,
+      "demand_mbd": 101.818,
       "type": "actual"
     },
     {
       "date": "2026-08",
-      "stockchange_mbd": -6.139,
-      "supply_mbd": 98.291,
-      "demand_mbd": 104.431,
+      "stockchange_mbd": -4.065,
+      "supply_mbd": 99.632,
+      "demand_mbd": 103.697,
       "type": "actual"
     },
     {
       "date": "2026-09",
-      "stockchange_mbd": -4.938,
-      "supply_mbd": 99.678,
-      "demand_mbd": 104.616,
+      "stockchange_mbd": -4.797,
+      "supply_mbd": 99.413,
+      "demand_mbd": 104.21,
       "type": "forecast"
     },
     {
       "date": "2026-10",
-      "stockchange_mbd": -1.544,
-      "supply_mbd": 101.882,
-      "demand_mbd": 103.427,
+      "stockchange_mbd": -2.43,
+      "supply_mbd": 100.557,
+      "demand_mbd": 102.987,
       "type": "forecast"
     },
     {
       "date": "2026-11",
-      "stockchange_mbd": -0.226,
-      "supply_mbd": 103.934,
-      "demand_mbd": 104.16,
+      "stockchange_mbd": -1.471,
+      "supply_mbd": 102.266,
+      "demand_mbd": 103.737,
       "type": "forecast"
     },
     {
       "date": "2026-12",
-      "stockchange_mbd": -0.106,
-      "supply_mbd": 105.167,
-      "demand_mbd": 105.274,
+      "stockchange_mbd": -1.226,
+      "supply_mbd": 103.638,
+      "demand_mbd": 104.863,
       "type": "forecast"
     },
     {
       "date": "2027-01",
-      "stockchange_mbd": 3.713,
-      "supply_mbd": 106.134,
-      "demand_mbd": 102.421,
+      "stockchange_mbd": 2.589,
+      "supply_mbd": 104.965,
+      "demand_mbd": 102.376,
       "type": "forecast"
     },
     {
       "date": "2027-02",
-      "stockchange_mbd": 2.702,
-      "supply_mbd": 107.384,
-      "demand_mbd": 104.682,
+      "stockchange_mbd": 1.807,
+      "supply_mbd": 106.465,
+      "demand_mbd": 104.658,
       "type": "forecast"
     },
     {
       "date": "2027-03",
-      "stockchange_mbd": 4.978,
-      "supply_mbd": 108.474,
-      "demand_mbd": 103.496,
+      "stockchange_mbd": 4.52,
+      "supply_mbd": 107.995,
+      "demand_mbd": 103.475,
       "type": "forecast"
     },
     {
       "date": "2027-04",
-      "stockchange_mbd": 4.926,
-      "supply_mbd": 109.27,
-      "demand_mbd": 104.344,
+      "stockchange_mbd": 5.234,
+      "supply_mbd": 109.59,
+      "demand_mbd": 104.356,
       "type": "forecast"
     },
     {
       "date": "2027-05",
-      "stockchange_mbd": 5.144,
-      "supply_mbd": 109.668,
-      "demand_mbd": 104.524,
+      "stockchange_mbd": 5.73,
+      "supply_mbd": 110.245,
+      "demand_mbd": 104.515,
       "type": "forecast"
     },
     {
       "date": "2027-06",
-      "stockchange_mbd": 3.694,
-      "supply_mbd": 109.744,
-      "demand_mbd": 106.05,
+      "stockchange_mbd": 4.174,
+      "supply_mbd": 110.293,
+      "demand_mbd": 106.12,
       "type": "forecast"
     },
     {
       "date": "2027-07",
-      "stockchange_mbd": 4.699,
-      "supply_mbd": 110.467,
-      "demand_mbd": 105.768,
+      "stockchange_mbd": 5.129,
+      "supply_mbd": 110.955,
+      "demand_mbd": 105.827,
       "type": "forecast"
     },
     {
       "date": "2027-08",
-      "stockchange_mbd": 4.966,
-      "supply_mbd": 110.623,
-      "demand_mbd": 105.658,
+      "stockchange_mbd": 5.332,
+      "supply_mbd": 111.071,
+      "demand_mbd": 105.738,
       "type": "forecast"
     },
     {
       "date": "2027-09",
-      "stockchange_mbd": 4.865,
-      "supply_mbd": 110.704,
-      "demand_mbd": 105.839,
+      "stockchange_mbd": 5.22,
+      "supply_mbd": 111.093,
+      "demand_mbd": 105.873,
       "type": "forecast"
     },
     {
       "date": "2027-10",
-      "stockchange_mbd": 6.57,
-      "supply_mbd": 111.248,
-      "demand_mbd": 104.678,
+      "stockchange_mbd": 6.968,
+      "supply_mbd": 111.68,
+      "demand_mbd": 104.712,
       "type": "forecast"
     },
     {
       "date": "2027-11",
-      "stockchange_mbd": 6.222,
-      "supply_mbd": 111.68,
-      "demand_mbd": 105.458,
+      "stockchange_mbd": 6.648,
+      "supply_mbd": 112.14,
+      "demand_mbd": 105.492,
       "type": "forecast"
     },
     {
       "date": "2027-12",
-      "stockchange_mbd": 4.678,
-      "supply_mbd": 111.314,
-      "demand_mbd": 106.636,
+      "stockchange_mbd": 5.154,
+      "supply_mbd": 111.823,
+      "demand_mbd": 106.669,
       "type": "forecast"
     }
   ],
@@ -41848,12 +41848,12 @@
   },
   "oecd_deviation": {
     "latest_date": "2027-12",
-    "latest_value_mb": 1303.6,
-    "avg_5y_mb": 1255.5,
-    "deviation_mb": 48.2,
-    "deviation_pct": 3.8,
-    "seasonal_avg_mb": 1258.9,
-    "seasonal_deviation_mb": 44.7,
+    "latest_value_mb": 1327.1,
+    "avg_5y_mb": 1260.8,
+    "deviation_mb": 66.4,
+    "deviation_pct": 5.3,
+    "seasonal_avg_mb": 1266.8,
+    "seasonal_deviation_mb": 60.3,
     "assessment": "above"
   },
   "global_spr": {
@@ -41893,5 +41893,5 @@
     "total_estimated_mb": 2057.0,
     "note": "除美国外均为行业估算值，非官方实时数据"
   },
-  "updated": "2026-09-08T17:39:04Z"
+  "updated": "2026-09-09T17:24:25Z"
 }
