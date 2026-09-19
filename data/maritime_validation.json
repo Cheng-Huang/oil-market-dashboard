@@ -4,130 +4,130 @@
       "name": "Frontline (VLCC)",
       "segment": "crude",
       "weight": 0.3,
-      "price": 50.72,
-      "change_5d_pct": 0.4,
-      "change_20d_pct": 16.1,
-      "volume_spike_pct": 48.6,
+      "price": 51.42,
+      "change_5d_pct": 8.6,
+      "change_20d_pct": 25.7,
+      "volume_spike_pct": 55.2,
       "history": [
         {
           "date": "2026-08-07",
-          "close": 39.74
+          "close": 37.23
         },
         {
           "date": "2026-08-10",
-          "close": 38.45
+          "close": 36.02
         },
         {
           "date": "2026-08-11",
-          "close": 38.14
+          "close": 35.73
         },
         {
           "date": "2026-08-12",
-          "close": 39.57
+          "close": 37.07
         },
         {
           "date": "2026-08-13",
-          "close": 40.52
+          "close": 37.96
         },
         {
           "date": "2026-08-14",
-          "close": 41.21
+          "close": 38.61
         },
         {
           "date": "2026-08-17",
-          "close": 42.18
+          "close": 39.52
         },
         {
           "date": "2026-08-18",
-          "close": 43.5
+          "close": 40.75
         },
         {
           "date": "2026-08-19",
-          "close": 44.45
+          "close": 41.64
         },
         {
           "date": "2026-08-20",
-          "close": 43.56
+          "close": 40.81
         },
         {
           "date": "2026-08-21",
-          "close": 43.67
+          "close": 40.91
         },
         {
           "date": "2026-08-24",
-          "close": 44.05
+          "close": 41.27
         },
         {
           "date": "2026-08-25",
-          "close": 43.46
+          "close": 40.72
         },
         {
           "date": "2026-08-26",
-          "close": 41.2
+          "close": 38.6
         },
         {
           "date": "2026-08-27",
-          "close": 43.75
+          "close": 40.99
         },
         {
           "date": "2026-08-28",
-          "close": 44.19
+          "close": 41.4
         },
         {
           "date": "2026-08-31",
-          "close": 43.78
+          "close": 41.02
         },
         {
           "date": "2026-09-01",
-          "close": 44.32
+          "close": 41.52
         },
         {
           "date": "2026-09-02",
-          "close": 45.42
+          "close": 42.55
         },
         {
           "date": "2026-09-03",
-          "close": 45.42
+          "close": 42.55
         },
         {
           "date": "2026-09-04",
-          "close": 46.12
+          "close": 43.21
         },
         {
           "date": "2026-09-08",
-          "close": 46.62
+          "close": 43.68
         },
         {
           "date": "2026-09-09",
-          "close": 47.21
+          "close": 44.23
         },
         {
           "date": "2026-09-10",
-          "close": 48.4
+          "close": 45.35
         },
         {
           "date": "2026-09-11",
-          "close": 49.21
+          "close": 46.1
         },
         {
           "date": "2026-09-14",
-          "close": 50.52
+          "close": 47.33
         },
         {
           "date": "2026-09-15",
-          "close": 51.59
+          "close": 48.33
         },
         {
           "date": "2026-09-16",
-          "close": 53.67
+          "close": 50.28
         },
         {
           "date": "2026-09-17",
-          "close": 54.03
+          "close": 50.62
         },
         {
           "date": "2026-09-18",
-          "close": 50.72
+          "close": 51.42
         }
       ]
     },
@@ -135,10 +135,10 @@
       "name": "DHT Holdings (VLCC)",
       "segment": "crude",
       "weight": 0.2,
-      "price": 23.05,
-      "change_5d_pct": 4.0,
-      "change_20d_pct": 16.3,
-      "volume_spike_pct": 20.6,
+      "price": 23.27,
+      "change_5d_pct": 5.1,
+      "change_20d_pct": 17.4,
+      "volume_spike_pct": 30.8,
       "history": [
         {
           "date": "2026-08-07",
@@ -258,7 +258,7 @@
         },
         {
           "date": "2026-09-18",
-          "close": 23.05
+          "close": 23.27
         }
       ]
     },
@@ -266,10 +266,10 @@
       "name": "Intl Seaways",
       "segment": "mixed",
       "weight": 0.2,
-      "price": 110.57,
-      "change_5d_pct": 4.5,
-      "change_20d_pct": 16.7,
-      "volume_spike_pct": 16.3,
+      "price": 111.15,
+      "change_5d_pct": 5.0,
+      "change_20d_pct": 17.4,
+      "volume_spike_pct": 45.5,
       "history": [
         {
           "date": "2026-08-07",
@@ -389,7 +389,7 @@
         },
         {
           "date": "2026-09-18",
-          "close": 110.57
+          "close": 111.15
         }
       ]
     },
@@ -397,10 +397,10 @@
       "name": "Scorpio Tankers",
       "segment": "product",
       "weight": 0.2,
-      "price": 87.02,
-      "change_5d_pct": 1.8,
-      "change_20d_pct": 10.9,
-      "volume_spike_pct": 27.2,
+      "price": 87.16,
+      "change_5d_pct": 2.0,
+      "change_20d_pct": 11.0,
+      "volume_spike_pct": 45.8,
       "history": [
         {
           "date": "2026-08-07",
@@ -520,7 +520,7 @@
         },
         {
           "date": "2026-09-18",
-          "close": 87.02
+          "close": 87.16
         }
       ]
     },
@@ -528,10 +528,10 @@
       "name": "Breakwave Dry Bulk",
       "segment": "dry_bulk",
       "weight": 0.1,
-      "price": 15.79,
-      "change_5d_pct": 3.2,
-      "change_20d_pct": 7.0,
-      "volume_spike_pct": 2.3,
+      "price": 15.72,
+      "change_5d_pct": 2.7,
+      "change_20d_pct": 6.6,
+      "volume_spike_pct": 7.8,
       "history": [
         {
           "date": "2026-08-07",
@@ -651,7 +651,7 @@
         },
         {
           "date": "2026-09-18",
-          "close": 15.79
+          "close": 15.72
         }
       ]
     }
@@ -661,7 +661,7 @@
   },
   "cross_validation": {
     "hormuz_tanker_wow": 0,
-    "crude_tanker_stock_5d": 2.6,
+    "crude_tanker_stock_5d": 6.6,
     "interpretation": "航运正常波动范围",
     "portwatch_confirmed": true
   },
@@ -676,5 +676,5 @@
     "level": "high",
     "issues": []
   },
-  "updated": "2026-09-18T17:21:19Z"
+  "updated": "2026-09-19T16:52:15Z"
 }
