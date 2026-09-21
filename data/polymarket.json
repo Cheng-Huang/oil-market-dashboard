@@ -15,8 +15,8 @@
           "id": "677273",
           "question": "Israel and Syria normalize relations by December 31, 2026?",
           "slug": "israel-and-syria-normalize-relations-by-december-31-2026-166",
-          "yes_price": 0.07,
-          "volume": 687888.849054,
+          "yes_price": 0.075,
+          "volume": 687894.2790539999,
           "end_date": "2025-12-31",
           "url": "https://polymarket.com/event/israel-and-syria-normalize-relations-in-2025"
         },
@@ -25,7 +25,7 @@
           "question": "Will Russia invade a NATO country by December 31, 2026?",
           "slug": "will-russia-invade-a-nato-country-by-december-31-2026-793",
           "yes_price": 0.055,
-          "volume": 350493.785021,
+          "volume": 352384.991975,
           "end_date": "2025-12-31",
           "url": "https://polymarket.com/event/will-russia-invade-a-nato-country-in-2025"
         },
@@ -43,7 +43,7 @@
           "question": "China x India military clash by December 31, 2026?",
           "slug": "china-x-india-military-clash-by-december-31-2026",
           "yes_price": 0.065,
-          "volume": 220066.19390000007,
+          "volume": 220068.9439,
           "end_date": "2027-01-01",
           "url": "https://polymarket.com/event/china-x-india-military-clash-by-december-31"
         },
@@ -51,8 +51,8 @@
           "id": "2749382",
           "question": "NATO/EU troops fighting in Ukraine by December 31, 2026?",
           "slug": "natoeu-troops-fighting-in-ukraine-by-december-31-2026",
-          "yes_price": 0.0595,
-          "volume": 153684.547572,
+          "yes_price": 0.0575,
+          "volume": 153863.37606799998,
           "end_date": "2027-01-01",
           "url": "https://polymarket.com/event/natoeu-troops-fighting-in-ukraine-in-2025"
         },
@@ -60,8 +60,8 @@
           "id": "4713849",
           "question": "Will Russia invade a NATO country by September 30, 2026?",
           "slug": "will-russia-invade-a-nato-country-by-september-31-2026",
-          "yes_price": 0.0055,
-          "volume": 194.9005,
+          "yes_price": 0.004,
+          "volume": 887.7828989999999,
           "end_date": "2026-10-01",
           "url": "https://polymarket.com/event/will-russia-invade-a-nato-country-in-2025"
         }
@@ -73,8 +73,8 @@
       "id": "677273",
       "question": "Israel and Syria normalize relations by December 31, 2026?",
       "slug": "israel-and-syria-normalize-relations-by-december-31-2026-166",
-      "yes_price": 0.07,
-      "volume": 687888.849054,
+      "yes_price": 0.075,
+      "volume": 687894.2790539999,
       "end_date": "2025-12-31",
       "url": "https://polymarket.com/event/israel-and-syria-normalize-relations-in-2025"
     },
@@ -83,7 +83,7 @@
       "question": "Will Russia invade a NATO country by December 31, 2026?",
       "slug": "will-russia-invade-a-nato-country-by-december-31-2026-793",
       "yes_price": 0.055,
-      "volume": 350493.785021,
+      "volume": 352384.991975,
       "end_date": "2025-12-31",
       "url": "https://polymarket.com/event/will-russia-invade-a-nato-country-in-2025"
     },
@@ -101,7 +101,7 @@
       "question": "China x India military clash by December 31, 2026?",
       "slug": "china-x-india-military-clash-by-december-31-2026",
       "yes_price": 0.065,
-      "volume": 220066.19390000007,
+      "volume": 220068.9439,
       "end_date": "2027-01-01",
       "url": "https://polymarket.com/event/china-x-india-military-clash-by-december-31"
     },
@@ -109,8 +109,8 @@
       "id": "2749382",
       "question": "NATO/EU troops fighting in Ukraine by December 31, 2026?",
       "slug": "natoeu-troops-fighting-in-ukraine-by-december-31-2026",
-      "yes_price": 0.0595,
-      "volume": 153684.547572,
+      "yes_price": 0.0575,
+      "volume": 153863.37606799998,
       "end_date": "2027-01-01",
       "url": "https://polymarket.com/event/natoeu-troops-fighting-in-ukraine-in-2025"
     },
@@ -118,8 +118,8 @@
       "id": "4713849",
       "question": "Will Russia invade a NATO country by September 30, 2026?",
       "slug": "will-russia-invade-a-nato-country-by-september-31-2026",
-      "yes_price": 0.0055,
-      "volume": 194.9005,
+      "yes_price": 0.004,
+      "volume": 887.7828989999999,
       "end_date": "2026-10-01",
       "url": "https://polymarket.com/event/will-russia-invade-a-nato-country-in-2025"
     }
