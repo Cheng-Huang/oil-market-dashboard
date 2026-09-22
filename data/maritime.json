@@ -4,10 +4,10 @@
     {
       "ticker": "FRO",
       "label": "Frontline (VLCC 原油)",
-      "price": 49.79,
-      "change_5d": 3.0,
-      "change_1m": 22.0,
-      "change_6m": 64.0,
+      "price": 48.31,
+      "change_5d": -3.9,
+      "change_1m": 18.1,
+      "change_6m": 59.1,
       "history": [
         {
           "date": "2026-03-23",
@@ -111,17 +111,17 @@
         },
         {
           "date": "2026-09-21",
-          "close": 49.79
+          "close": 49.81
         }
       ]
     },
     {
       "ticker": "STNG",
       "label": "Scorpio Tankers (成品油)",
-      "price": 86.55,
-      "change_5d": 1.0,
-      "change_1m": 10.4,
-      "change_6m": 23.9,
+      "price": 83.02,
+      "change_5d": -3.1,
+      "change_1m": 5.8,
+      "change_6m": 18.8,
       "history": [
         {
           "date": "2026-03-23",
@@ -225,17 +225,17 @@
         },
         {
           "date": "2026-09-21",
-          "close": 86.55
+          "close": 86.21
         }
       ]
     },
     {
       "ticker": "INSW",
       "label": "Intl Seaways (原油+成品油)",
-      "price": 108.94,
-      "change_5d": 1.1,
-      "change_1m": 15.2,
-      "change_6m": 73.1,
+      "price": 104.91,
+      "change_5d": -4.1,
+      "change_1m": 10.8,
+      "change_6m": 66.7,
       "history": [
         {
           "date": "2026-03-23",
@@ -339,17 +339,17 @@
         },
         {
           "date": "2026-09-21",
-          "close": 108.94
+          "close": 109.1
         }
       ]
     },
     {
       "ticker": "DHT",
       "label": "DHT Holdings (VLCC 原油)",
-      "price": 22.41,
-      "change_5d": 1.2,
-      "change_1m": 13.2,
-      "change_6m": 39.4,
+      "price": 21.57,
+      "change_5d": -6.4,
+      "change_1m": 8.8,
+      "change_6m": 34.1,
       "history": [
         {
           "date": "2026-03-23",
@@ -453,7 +453,7 @@
         },
         {
           "date": "2026-09-21",
-          "close": 22.41
+          "close": 22.45
         }
       ]
     }
@@ -464,5 +464,5 @@
       "message": "✅ 主要石油航运要道通行正常"
     }
   ],
-  "updated": "2026-09-21T18:57:53Z"
+  "updated": "2026-09-22T17:48:55Z"
 }
