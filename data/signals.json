@@ -15,10 +15,10 @@
     "evidence_note": "期货价格为直接市场观测",
     "label": "Backwardation",
     "source": "futures",
-    "m1_m2_spread": 2.01,
-    "m1_m6_spread": 8.01,
-    "curve_front": 90.41,
-    "curve_back": 76.75,
+    "m1_m2_spread": 1.72,
+    "m1_m6_spread": 7.95,
+    "curve_front": 91.23,
+    "curve_back": 77.04,
     "n_contracts": 12
   },
   "demand": {
@@ -60,17 +60,10 @@
     "signal": "bullish",
     "evidence_tier": "B",
     "evidence_note": "STEO实际值为B层二手确认",
-    "balance_avg_3m": -2.263,
+    "balance_avg_3m": -2.984,
     "opec_trend": "stable",
     "data_source": "actual",
     "supply_demand_detail": [
-      {
-        "date": "2026-06",
-        "balance": -2.633,
-        "supply": 99.414,
-        "demand": 102.047,
-        "type": "actual"
-      },
       {
         "date": "2026-07",
         "balance": -0.091,
@@ -84,9 +77,16 @@
         "supply": 99.632,
         "demand": 103.697,
         "type": "actual"
+      },
+      {
+        "date": "2026-09",
+        "balance": -4.797,
+        "supply": 99.413,
+        "demand": 104.21,
+        "type": "actual"
       }
     ],
-    "detail": "近3月平均平衡: -2.263 百万桶/日 (来源: actual)"
+    "detail": "近3月平均平衡: -2.984 百万桶/日 (来源: actual)"
   },
   "financial": {
     "name": "金融条件",
@@ -94,8 +94,8 @@
     "evidence_tier": "A",
     "evidence_note": "DXY/OVX/实际利率为直接市场观测",
     "dxy_vs_ma200": 0.99,
-    "real_rate": 2.9,
-    "ovx": 53.74
+    "real_rate": 2.93,
+    "ovx": 51.69
   },
   "positioning": {
     "name": "持仓拥挤度",
@@ -125,7 +125,7 @@
     "spr_low": true,
     "spr_4w_change": -2837.0,
     "spr_trend": "releasing",
-    "current_wti": 90.41,
+    "current_wti": 91.23,
     "detail": "当前无明显触发 SPR 释放的条件。",
     "release_likelihood": "low",
     "max_release_days": 64.0,
@@ -164,8 +164,8 @@
     ]
   },
   "price_freshness": {
-    "spot_date": "2026-09-30",
-    "futures_date": "2026-09-30",
+    "spot_date": "2026-10-02",
+    "futures_date": "2026-10-02",
     "lag_days": 0,
     "temporal_risk": "low"
   },
