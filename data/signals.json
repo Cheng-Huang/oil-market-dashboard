@@ -15,10 +15,10 @@
     "evidence_note": "期货价格为直接市场观测",
     "label": "Backwardation",
     "source": "futures",
-    "m1_m2_spread": 1.33,
-    "m1_m6_spread": 5.83,
-    "curve_front": 89.3,
-    "curve_back": 77.6,
+    "m1_m2_spread": 1.04,
+    "m1_m6_spread": 5.68,
+    "curve_front": 89.62,
+    "curve_back": 77.8,
     "n_contracts": 12
   },
   "demand": {
@@ -53,40 +53,40 @@
     "evidence_note": "钻机数为直接观测",
     "source": "rig_count",
     "recent_avg": 16.2,
-    "prev_avg": 16.5
+    "prev_avg": 16.6
   },
   "opec": {
     "name": "全球供需",
     "signal": "bullish",
     "evidence_tier": "B",
     "evidence_note": "STEO实际值为B层二手确认",
-    "balance_avg_3m": -2.984,
+    "balance_avg_3m": -1.883,
     "opec_trend": "stable",
     "data_source": "actual",
     "supply_demand_detail": [
       {
         "date": "2026-07",
-        "balance": -0.091,
-        "supply": 101.727,
-        "demand": 101.818,
+        "balance": 0.265,
+        "supply": 102.039,
+        "demand": 101.773,
         "type": "actual"
       },
       {
         "date": "2026-08",
-        "balance": -4.065,
-        "supply": 99.632,
-        "demand": 103.697,
+        "balance": -2.975,
+        "supply": 100.413,
+        "demand": 103.388,
         "type": "actual"
       },
       {
         "date": "2026-09",
-        "balance": -4.797,
-        "supply": 99.413,
-        "demand": 104.21,
+        "balance": -2.938,
+        "supply": 101.304,
+        "demand": 104.241,
         "type": "actual"
       }
     ],
-    "detail": "近3月平均平衡: -2.984 百万桶/日 (来源: actual)"
+    "detail": "近3月平均平衡: -1.883 百万桶/日 (来源: actual)"
   },
   "financial": {
     "name": "金融条件",
@@ -95,7 +95,7 @@
     "evidence_note": "DXY/OVX/实际利率为直接市场观测",
     "dxy_vs_ma200": 2.02,
     "real_rate": 2.92,
-    "ovx": 51.0
+    "ovx": 48.65
   },
   "positioning": {
     "name": "持仓拥挤度",
@@ -125,7 +125,7 @@
     "spr_low": true,
     "spr_4w_change": -2837.0,
     "spr_trend": "releasing",
-    "current_wti": 89.3,
+    "current_wti": 89.62,
     "detail": "当前无明显触发 SPR 释放的条件。",
     "release_likelihood": "low",
     "max_release_days": 64.0,
@@ -137,35 +137,35 @@
       {
         "date": "2020-05",
         "prev_date": "2020-04",
-        "supply_change": -11.354,
-        "prev_supply": 99.694,
-        "curr_supply": 88.34,
+        "supply_change": -11.323,
+        "prev_supply": 99.759,
+        "curr_supply": 88.436,
         "severity": "critical",
-        "detail": "2020-04→2020-05 供给变动 -11.35 百万桶/日，超过合理阈值 ±4.0。STEO供给=全球产量，产量不会因运输中断瞬间骤降——运输封锁影响的是贸易流向而非产量本身。可能原因：(1) STEO 月度数据修正/统计口径调整；(2) 实际减产（OPEC+主动减产或制裁导致关井）；(3) 数据发布时滞导致的暂时性异常。建议交叉验证 OPEC 月报和 IEA 月报数据。"
+        "detail": "2020-04→2020-05 供给变动 -11.32 百万桶/日，超过合理阈值 ±4.0。STEO供给=全球产量，产量不会因运输中断瞬间骤降——运输封锁影响的是贸易流向而非产量本身。可能原因：(1) STEO 月度数据修正/统计口径调整；(2) 实际减产（OPEC+主动减产或制裁导致关井）；(3) 数据发布时滞导致的暂时性异常。建议交叉验证 OPEC 月报和 IEA 月报数据。"
       },
       {
         "date": "2026-03",
         "prev_date": "2026-02",
-        "supply_change": -11.805,
+        "supply_change": -11.924,
         "prev_supply": 108.709,
-        "curr_supply": 96.904,
+        "curr_supply": 96.786,
         "severity": "critical",
-        "detail": "2026-02→2026-03 供给变动 -11.81 百万桶/日，超过合理阈值 ±4.0。STEO供给=全球产量，产量不会因运输中断瞬间骤降——运输封锁影响的是贸易流向而非产量本身。可能原因：(1) STEO 月度数据修正/统计口径调整；(2) 实际减产（OPEC+主动减产或制裁导致关井）；(3) 数据发布时滞导致的暂时性异常。建议交叉验证 OPEC 月报和 IEA 月报数据。"
+        "detail": "2026-02→2026-03 供给变动 -11.92 百万桶/日，超过合理阈值 ±4.0。STEO供给=全球产量，产量不会因运输中断瞬间骤降——运输封锁影响的是贸易流向而非产量本身。可能原因：(1) STEO 月度数据修正/统计口径调整；(2) 实际减产（OPEC+主动减产或制裁导致关井）；(3) 数据发布时滞导致的暂时性异常。建议交叉验证 OPEC 月报和 IEA 月报数据。"
       },
       {
         "date": "2026-06",
         "prev_date": "2026-05",
-        "supply_change": 5.003,
-        "prev_supply": 94.411,
-        "curr_supply": 99.414,
-        "severity": "critical",
-        "detail": "2026-05→2026-06 供给变动 +5.00 百万桶/日，超过合理阈值 ±4.0。STEO供给=全球产量，产量不会因运输中断瞬间骤降——运输封锁影响的是贸易流向而非产量本身。可能原因：(1) STEO 月度数据修正/统计口径调整；(2) 实际减产（OPEC+主动减产或制裁导致关井）；(3) 数据发布时滞导致的暂时性异常。建议交叉验证 OPEC 月报和 IEA 月报数据。"
+        "supply_change": 4.939,
+        "prev_supply": 94.583,
+        "curr_supply": 99.523,
+        "severity": "warning",
+        "detail": "2026-05→2026-06 供给变动 +4.94 百万桶/日，超过合理阈值 ±4.0。STEO供给=全球产量，产量不会因运输中断瞬间骤降——运输封锁影响的是贸易流向而非产量本身。可能原因：(1) STEO 月度数据修正/统计口径调整；(2) 实际减产（OPEC+主动减产或制裁导致关井）；(3) 数据发布时滞导致的暂时性异常。建议交叉验证 OPEC 月报和 IEA 月报数据。"
       }
     ]
   },
   "price_freshness": {
-    "spot_date": "2026-10-05",
-    "futures_date": "2026-10-05",
+    "spot_date": "2026-10-06",
+    "futures_date": "2026-10-06",
     "lag_days": 0,
     "temporal_risk": "low"
   },
