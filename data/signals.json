@@ -15,10 +15,10 @@
     "evidence_note": "期货价格为直接市场观测",
     "label": "Backwardation",
     "source": "futures",
-    "m1_m2_spread": 0.75,
-    "m1_m6_spread": 5.02,
-    "curve_front": 91.3,
-    "curve_back": 79.06,
+    "m1_m2_spread": 0.8,
+    "m1_m6_spread": 5.25,
+    "curve_front": 91.21,
+    "curve_back": 78.83,
     "n_contracts": 12
   },
   "demand": {
@@ -48,12 +48,12 @@
   },
   "drilling": {
     "name": "钻井活动",
-    "signal": "neutral",
-    "evidence_tier": "C",
-    "evidence_note": "使用产量作为代理指标",
-    "source": "production_proxy",
-    "recent_avg": 13954.2,
-    "prev_avg": 13870.5
+    "signal": "bullish",
+    "evidence_tier": "A",
+    "evidence_note": "钻机数为直接观测",
+    "source": "rig_count",
+    "recent_avg": 16.2,
+    "prev_avg": 16.6
   },
   "opec": {
     "name": "全球供需",
@@ -66,8 +66,8 @@
     "evidence_tier": "A",
     "evidence_note": "DXY/OVX/实际利率为直接市场观测",
     "dxy_vs_ma200": 2.02,
-    "real_rate": 2.91,
-    "ovx": 48.61
+    "real_rate": 2.92,
+    "ovx": 48.4
   },
   "positioning": {
     "name": "持仓拥挤度",
@@ -97,7 +97,7 @@
     "spr_low": true,
     "spr_4w_change": -2377.0,
     "spr_trend": "releasing",
-    "current_wti": 91.3,
+    "current_wti": 91.21,
     "detail": "当前无明显触发 SPR 释放的条件。",
     "release_likelihood": "low",
     "max_release_days": 64.0,
@@ -136,17 +136,17 @@
     ]
   },
   "price_freshness": {
-    "spot_date": "2026-10-08",
-    "futures_date": "2026-10-08",
+    "spot_date": "2026-10-09",
+    "futures_date": "2026-10-09",
     "lag_days": 0,
     "temporal_risk": "low"
   },
   "score_summary": {
-    "bullish": 2,
-    "neutral": 5,
+    "bullish": 3,
+    "neutral": 4,
     "bearish": 1,
-    "base_regime": "mixed",
-    "regime": "mixed",
-    "summary": "看多2/中性5/看空1 — 信号偏多，但需检验是否由单一因素（如地缘风险）主导。"
+    "base_regime": "bullish_leaning",
+    "regime": "bullish_leaning",
+    "summary": "看多3/中性4/看空1 — 信号偏多，但需检验是否由单一因素（如地缘风险）主导。"
   }
 }
