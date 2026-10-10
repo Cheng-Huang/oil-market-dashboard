@@ -41769,7 +41769,176 @@
       }
     ]
   },
-  "implied_stockchange": [],
+  "implied_stockchange": [
+    {
+      "date": "2026-01",
+      "stockchange_mbd": 3.587,
+      "supply_mbd": 105.965,
+      "demand_mbd": 102.377,
+      "type": "actual"
+    },
+    {
+      "date": "2026-02",
+      "stockchange_mbd": 4.334,
+      "supply_mbd": 108.709,
+      "demand_mbd": 104.376,
+      "type": "actual"
+    },
+    {
+      "date": "2026-03",
+      "stockchange_mbd": -5.213,
+      "supply_mbd": 96.786,
+      "demand_mbd": 101.999,
+      "type": "actual"
+    },
+    {
+      "date": "2026-04",
+      "stockchange_mbd": -4.044,
+      "supply_mbd": 95.428,
+      "demand_mbd": 99.472,
+      "type": "actual"
+    },
+    {
+      "date": "2026-05",
+      "stockchange_mbd": -4.421,
+      "supply_mbd": 94.583,
+      "demand_mbd": 99.005,
+      "type": "actual"
+    },
+    {
+      "date": "2026-06",
+      "stockchange_mbd": -2.161,
+      "supply_mbd": 99.523,
+      "demand_mbd": 101.684,
+      "type": "actual"
+    },
+    {
+      "date": "2026-07",
+      "stockchange_mbd": 0.265,
+      "supply_mbd": 102.039,
+      "demand_mbd": 101.773,
+      "type": "actual"
+    },
+    {
+      "date": "2026-08",
+      "stockchange_mbd": -2.975,
+      "supply_mbd": 100.413,
+      "demand_mbd": 103.388,
+      "type": "actual"
+    },
+    {
+      "date": "2026-09",
+      "stockchange_mbd": -2.938,
+      "supply_mbd": 101.304,
+      "demand_mbd": 104.241,
+      "type": "actual"
+    },
+    {
+      "date": "2026-10",
+      "stockchange_mbd": -0.671,
+      "supply_mbd": 102.105,
+      "demand_mbd": 102.776,
+      "type": "forecast"
+    },
+    {
+      "date": "2026-11",
+      "stockchange_mbd": -0.471,
+      "supply_mbd": 103.092,
+      "demand_mbd": 103.563,
+      "type": "forecast"
+    },
+    {
+      "date": "2026-12",
+      "stockchange_mbd": -0.926,
+      "supply_mbd": 103.709,
+      "demand_mbd": 104.635,
+      "type": "forecast"
+    },
+    {
+      "date": "2027-01",
+      "stockchange_mbd": 2.78,
+      "supply_mbd": 104.762,
+      "demand_mbd": 101.982,
+      "type": "forecast"
+    },
+    {
+      "date": "2027-02",
+      "stockchange_mbd": 2.012,
+      "supply_mbd": 106.317,
+      "demand_mbd": 104.305,
+      "type": "forecast"
+    },
+    {
+      "date": "2027-03",
+      "stockchange_mbd": 4.188,
+      "supply_mbd": 107.267,
+      "demand_mbd": 103.079,
+      "type": "forecast"
+    },
+    {
+      "date": "2027-04",
+      "stockchange_mbd": 4.587,
+      "supply_mbd": 108.569,
+      "demand_mbd": 103.981,
+      "type": "forecast"
+    },
+    {
+      "date": "2027-05",
+      "stockchange_mbd": 5.719,
+      "supply_mbd": 109.836,
+      "demand_mbd": 104.117,
+      "type": "forecast"
+    },
+    {
+      "date": "2027-06",
+      "stockchange_mbd": 4.52,
+      "supply_mbd": 110.229,
+      "demand_mbd": 105.71,
+      "type": "forecast"
+    },
+    {
+      "date": "2027-07",
+      "stockchange_mbd": 5.15,
+      "supply_mbd": 110.75,
+      "demand_mbd": 105.6,
+      "type": "forecast"
+    },
+    {
+      "date": "2027-08",
+      "stockchange_mbd": 5.47,
+      "supply_mbd": 110.904,
+      "demand_mbd": 105.434,
+      "type": "forecast"
+    },
+    {
+      "date": "2027-09",
+      "stockchange_mbd": 5.531,
+      "supply_mbd": 111.103,
+      "demand_mbd": 105.572,
+      "type": "forecast"
+    },
+    {
+      "date": "2027-10",
+      "stockchange_mbd": 6.943,
+      "supply_mbd": 111.358,
+      "demand_mbd": 104.415,
+      "type": "forecast"
+    },
+    {
+      "date": "2027-11",
+      "stockchange_mbd": 6.589,
+      "supply_mbd": 111.819,
+      "demand_mbd": 105.23,
+      "type": "forecast"
+    },
+    {
+      "date": "2027-12",
+      "stockchange_mbd": 5.161,
+      "supply_mbd": 111.491,
+      "demand_mbd": 106.33,
+      "type": "forecast"
+    }
+  ],
   "floating_storage": {
     "structure": "backwardation",
     "m1_m6_spread": null,
@@ -41824,5 +41993,5 @@
     "total_estimated_mb": 2053.0,
     "note": "除美国外均为行业估算值，非官方实时数据"
   },
-  "updated": "2026-10-09T19:11:10Z"
+  "updated": "2026-10-10T18:07:12Z"
 }
