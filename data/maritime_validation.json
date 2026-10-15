@@ -4,15 +4,11 @@
       "name": "Frontline (VLCC)",
       "segment": "crude",
       "weight": 0.3,
-      "price": 56.46,
-      "change_5d_pct": 0.4,
-      "change_20d_pct": 11.5,
-      "volume_spike_pct": 7.9,
+      "price": 53.2,
+      "change_5d_pct": -5.2,
+      "change_20d_pct": 3.5,
+      "volume_spike_pct": 6.3,
       "history": [
-        {
-          "date": "2026-09-02",
-          "close": 42.55
-        },
         {
           "date": "2026-09-03",
           "close": 42.55
@@ -127,7 +123,11 @@
         },
         {
           "date": "2026-10-14",
-          "close": 56.46
+          "close": 56.27
+        },
+        {
+          "date": "2026-10-15",
+          "close": 53.2
         }
       ]
     },
@@ -135,15 +135,11 @@
       "name": "DHT Holdings (VLCC)",
       "segment": "crude",
       "weight": 0.2,
-      "price": 25.08,
-      "change_5d_pct": 0.6,
-      "change_20d_pct": 9.9,
-      "volume_spike_pct": 22.1,
+      "price": 23.87,
+      "change_5d_pct": -3.1,
+      "change_20d_pct": 2.6,
+      "volume_spike_pct": 25.5,
       "history": [
-        {
-          "date": "2026-09-02",
-          "close": 20.07
-        },
         {
           "date": "2026-09-03",
           "close": 20.19
@@ -258,7 +254,11 @@
         },
         {
           "date": "2026-10-14",
-          "close": 25.08
+          "close": 24.95
+        },
+        {
+          "date": "2026-10-15",
+          "close": 23.87
         }
       ]
     },
@@ -266,15 +266,11 @@
       "name": "Intl Seaways",
       "segment": "mixed",
       "weight": 0.2,
-      "price": 119.13,
-      "change_5d_pct": -2.2,
-      "change_20d_pct": 7.8,
-      "volume_spike_pct": -11.9,
+      "price": 114.39,
+      "change_5d_pct": -4.5,
+      "change_20d_pct": 2.9,
+      "volume_spike_pct": -21.5,
       "history": [
-        {
-          "date": "2026-09-02",
-          "close": 96.31
-        },
         {
           "date": "2026-09-03",
           "close": 97.3
@@ -389,7 +385,11 @@
         },
         {
           "date": "2026-10-14",
-          "close": 119.13
+          "close": 118.74
+        },
+        {
+          "date": "2026-10-15",
+          "close": 114.39
         }
       ]
     },
@@ -397,15 +397,11 @@
       "name": "Scorpio Tankers",
       "segment": "product",
       "weight": 0.2,
-      "price": 85.78,
-      "change_5d_pct": -2.7,
-      "change_20d_pct": -2.4,
-      "volume_spike_pct": -5.0,
+      "price": 83.57,
+      "change_5d_pct": -1.8,
+      "change_20d_pct": -4.1,
+      "volume_spike_pct": -17.4,
       "history": [
-        {
-          "date": "2026-09-02",
-          "close": 81.42
-        },
         {
           "date": "2026-09-03",
           "close": 80.11
@@ -520,7 +516,11 @@
         },
         {
           "date": "2026-10-14",
-          "close": 85.78
+          "close": 85.98
+        },
+        {
+          "date": "2026-10-15",
+          "close": 83.57
         }
       ]
     },
@@ -528,15 +528,11 @@
       "name": "Breakwave Dry Bulk",
       "segment": "dry_bulk",
       "weight": 0.1,
-      "price": 12.52,
-      "change_5d_pct": -13.5,
-      "change_20d_pct": -20.7,
-      "volume_spike_pct": -69.3,
+      "price": 12.18,
+      "change_5d_pct": -12.3,
+      "change_20d_pct": -22.5,
+      "volume_spike_pct": -54.4,
       "history": [
-        {
-          "date": "2026-09-02",
-          "close": 16.58
-        },
         {
           "date": "2026-09-03",
           "close": 16.14
@@ -651,7 +647,11 @@
         },
         {
           "date": "2026-10-14",
-          "close": 12.52
+          "close": 12.58
+        },
+        {
+          "date": "2026-10-15",
+          "close": 12.18
         }
       ]
     }
@@ -661,7 +661,7 @@
   },
   "cross_validation": {
     "hormuz_tanker_wow": 0,
-    "crude_tanker_stock_5d": -0.3,
+    "crude_tanker_stock_5d": -4.4,
     "interpretation": "航运正常波动范围",
     "portwatch_confirmed": true
   },
@@ -675,5 +675,5 @@
     "level": "high",
     "issues": []
   },
-  "updated": "2026-10-14T18:13:28Z"
+  "updated": "2026-10-15T17:56:10Z"
 }
