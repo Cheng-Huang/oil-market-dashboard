@@ -15,11 +15,11 @@
     "evidence_note": "期货价格为直接市场观测",
     "label": "Backwardation",
     "source": "futures",
-    "m1_m2_spread": 2.18,
-    "m1_m6_spread": 9.68,
-    "curve_front": 100.84,
-    "curve_back": 82.42,
-    "n_contracts": 11
+    "m1_m2_spread": 1.86,
+    "m1_m6_spread": 8.76,
+    "curve_front": 97.56,
+    "curve_back": 82.04,
+    "n_contracts": 12
   },
   "demand": {
     "name": "需求强度",
@@ -93,25 +93,25 @@
     "signal": "bearish",
     "evidence_tier": "A",
     "evidence_note": "DXY/OVX/实际利率为直接市场观测",
-    "dxy_vs_ma200": 2.21,
-    "real_rate": 2.84,
-    "ovx": 49.13
+    "dxy_vs_ma200": 1.97,
+    "real_rate": 2.74,
+    "ovx": 50.22
   },
   "positioning": {
     "name": "持仓拥挤度",
     "signal": "neutral",
     "evidence_tier": "A",
     "evidence_note": "CFTC持仓为直接观测（周频，截至周二）",
-    "net_long": 53598.0,
-    "percentile": 13.5,
-    "net_change": -25994.0,
-    "long_change": -30675.0,
-    "short_change": -4681.0,
+    "net_long": 40574.0,
+    "percentile": 10.5,
+    "net_change": -13024.0,
+    "long_change": -6380.0,
+    "short_change": 6644.0,
     "driver": "mixed",
     "driver_note": "多空双边变动，方向信号不明确",
-    "hist_p25": 79146.0,
+    "hist_p25": 78700.0,
     "hist_p75": 162672.0,
-    "context_note": "当前净多仓位于历史14%分位（P25=79146, P75=162672），仍有较大上行空间"
+    "context_note": "当前净多仓位于历史10%分位（P25=78700, P75=162672），仍有较大上行空间"
   },
   "cross_analysis": {
     "findings": [],
@@ -125,8 +125,8 @@
     "spr_low": true,
     "spr_4w_change": -1974.0,
     "spr_trend": "stable",
-    "current_wti": 100.84,
-    "detail": "WTI $101 超过政策干预阈值，但当前供需仍为过剩，SPR 释放概率中等，需关注白宫/DOE 政策信号。",
+    "current_wti": 97.56,
+    "detail": "WTI $98 超过政策干预阈值，但当前供需仍为过剩，SPR 释放概率中等，需关注白宫/DOE 政策信号。",
     "release_likelihood": "moderate",
     "max_release_days": 64.0,
     "capacity_note": "SPR 当前 283 百万桶，按最大速率 4.4 百万桶/日可持续 64 天。 ⚠️ SPR 低于 350 百万桶警戒线，释放空间有限，政策可能更审慎。"
@@ -164,8 +164,8 @@
     ]
   },
   "price_freshness": {
-    "spot_date": "2026-10-16",
-    "futures_date": "2026-10-16",
+    "spot_date": "2026-10-20",
+    "futures_date": "2026-10-20",
     "lag_days": 0,
     "temporal_risk": "low"
   },
