@@ -20014,7 +20014,11 @@
     },
     {
       "date": "2026-10-26",
-      "value": 102.33
+      "value": 101.76
+    },
+    {
+      "date": "2026-10-27",
+      "value": 100.0
     }
   ],
   "brent": [
@@ -40036,7 +40040,11 @@
     },
     {
       "date": "2026-10-26",
-      "value": 111.22
+      "value": 115.81
+    },
+    {
+      "date": "2026-10-27",
+      "value": 109.56
     }
   ],
   "spread": [
@@ -59774,8 +59782,12 @@
     },
     {
       "date": "2026-10-26",
-      "value": -8.89
+      "value": -14.05
+    },
+    {
+      "date": "2026-10-27",
+      "value": -9.56
     }
   ],
-  "_source_note": "FRED + EIA daily. Last EIA daily merge: 2026-10-26T19:38:25"
+  "_source_note": "FRED + EIA daily. Last EIA daily merge: 2026-10-27T19:02:54"
 }
