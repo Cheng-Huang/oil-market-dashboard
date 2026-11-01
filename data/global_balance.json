@@ -9712,7 +9712,7 @@
       "value": -0.671,
       "supply": 102.105,
       "demand": 102.776,
-      "type": "forecast"
+      "type": "actual"
     },
     {
       "date": "2026-11",

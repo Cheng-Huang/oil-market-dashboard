@@ -40028,7 +40028,7 @@
     },
     {
       "date": "2026-10-30",
-      "value": 117.64
+      "value": 113.43
     }
   ],
   "spread": [
@@ -59762,8 +59762,8 @@
     },
     {
       "date": "2026-10-30",
-      "value": -13.52
+      "value": -9.31
     }
   ],
-  "_source_note": "FRED + EIA daily. Last EIA daily merge: 2026-10-31T18:04:22"
+  "_source_note": "FRED + EIA daily. Last EIA daily merge: 2026-11-01T18:41:26"
 }

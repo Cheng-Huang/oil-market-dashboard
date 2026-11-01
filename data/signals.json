@@ -19,7 +19,7 @@
     "m1_m6_spread": 11.16,
     "curve_front": 104.12,
     "curve_back": 83.01,
-    "n_contracts": 12
+    "n_contracts": 11
   },
   "demand": {
     "name": "需求强度",
@@ -60,17 +60,10 @@
     "signal": "bullish",
     "evidence_tier": "B",
     "evidence_note": "STEO实际值为B层二手确认",
-    "balance_avg_3m": -1.883,
+    "balance_avg_3m": -2.195,
     "opec_trend": "stable",
     "data_source": "actual",
     "supply_demand_detail": [
-      {
-        "date": "2026-07",
-        "balance": 0.265,
-        "supply": 102.039,
-        "demand": 101.773,
-        "type": "actual"
-      },
       {
         "date": "2026-08",
         "balance": -2.975,
@@ -84,9 +77,16 @@
         "supply": 101.304,
         "demand": 104.241,
         "type": "actual"
+      },
+      {
+        "date": "2026-10",
+        "balance": -0.671,
+        "supply": 102.105,
+        "demand": 102.776,
+        "type": "actual"
       }
     ],
-    "detail": "近3月平均平衡: -1.883 百万桶/日 (来源: actual)"
+    "detail": "近3月平均平衡: -2.195 百万桶/日 (来源: actual)"
   },
   "financial": {
     "name": "金融条件",
