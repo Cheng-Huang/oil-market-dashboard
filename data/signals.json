@@ -4,8 +4,8 @@
     "signal": "bullish",
     "evidence_tier": "A",
     "evidence_note": "EIA周度库存为直接观测数据",
-    "detail": "最近3周变化: [-8557.0, -3060.0, -1892.0]",
-    "last_change_mbbl": -1892.0,
+    "detail": "最近3周变化: [-3060.0, -1892.0, -865.0]",
+    "last_change_mbbl": -865.0,
     "cushing_warning": false
   },
   "curve": {
@@ -15,18 +15,18 @@
     "evidence_note": "期货价格为直接市场观测",
     "label": "Backwardation",
     "source": "futures",
-    "m1_m2_spread": 1.32,
-    "m1_m6_spread": 8.45,
-    "curve_front": 96.65,
-    "curve_back": 80.16,
+    "m1_m2_spread": 1.09,
+    "m1_m6_spread": 6.65,
+    "curve_front": 88.61,
+    "curve_back": 75.45,
     "n_contracts": 12
   },
   "demand": {
     "name": "需求强度",
-    "signal": "neutral",
+    "signal": "bullish",
     "evidence_tier": "A",
     "evidence_note": "EIA表观需求为直接观测（仅覆盖美国）",
-    "gasoline_trend": "bearish",
+    "gasoline_trend": "bullish",
     "distillate_trend": "bullish"
   },
   "crack_spread": {
@@ -34,17 +34,17 @@
     "signal": "bullish",
     "evidence_tier": "A",
     "evidence_note": "裂解价差基于现货/期货价格计算，属直接观测",
-    "crack_321": 40.9,
-    "crack_321_20d_avg": 50.77,
-    "crack_321_60d_avg": 60.22,
-    "gasoline_crack": 15.03,
-    "diesel_crack": 92.64,
+    "crack_321": 39.32,
+    "crack_321_20d_avg": 45.12,
+    "crack_321_60d_avg": 58.79,
+    "gasoline_crack": 14.94,
+    "diesel_crack": 88.1,
     "trend": "falling",
     "level": "high",
     "cross_validation": "裂解价差处于高位，炼厂利润丰厚",
-    "detail": "3-2-1: $40.9 (20d均: $50.8, 60d均: $60.2), 趋势: falling",
-    "gasoline_crack_daily_drop_pct": 9.9,
-    "gas_diesel_divergence": 77.62
+    "detail": "3-2-1: $39.3 (20d均: $45.1, 60d均: $58.8), 趋势: falling",
+    "gasoline_crack_daily_drop_pct": -33.4,
+    "gas_diesel_divergence": 73.16
   },
   "drilling": {
     "name": "钻井活动",
@@ -94,8 +94,8 @@
     "evidence_tier": "A",
     "evidence_note": "DXY/OVX/实际利率为直接市场观测",
     "dxy_vs_ma200": 2.15,
-    "real_rate": 2.6,
-    "ovx": 62.69
+    "real_rate": 2.62,
+    "ovx": 61.69
   },
   "positioning": {
     "name": "持仓拥挤度",
@@ -120,16 +120,16 @@
   },
   "spr_policy": {
     "name": "SPR政策响应",
-    "spr_level_kbbl": 282583.0,
-    "spr_date": "2026-10-23",
+    "spr_level_kbbl": 282184.0,
+    "spr_date": "2026-10-30",
     "spr_low": true,
-    "spr_4w_change": -1184.0,
+    "spr_4w_change": -799.0,
     "spr_trend": "stable",
-    "current_wti": 96.65,
-    "detail": "WTI $97 超过政策干预阈值，但当前供需仍为过剩，SPR 释放概率中等，需关注白宫/DOE 政策信号。",
-    "release_likelihood": "moderate",
+    "current_wti": 88.61,
+    "detail": "当前无明显触发 SPR 释放的条件。",
+    "release_likelihood": "low",
     "max_release_days": 64.0,
-    "capacity_note": "SPR 当前 283 百万桶，按最大速率 4.4 百万桶/日可持续 64 天。 ⚠️ SPR 低于 350 百万桶警戒线，释放空间有限，政策可能更审慎。"
+    "capacity_note": "SPR 当前 282 百万桶，按最大速率 4.4 百万桶/日可持续 64 天。 ⚠️ SPR 低于 350 百万桶警戒线，释放空间有限，政策可能更审慎。"
   },
   "steo_validation": {
     "has_anomaly": true,
@@ -164,17 +164,17 @@
     ]
   },
   "price_freshness": {
-    "spot_date": "2026-11-03",
-    "futures_date": "2026-11-03",
+    "spot_date": "2026-11-04",
+    "futures_date": "2026-11-04",
     "lag_days": 0,
     "temporal_risk": "low"
   },
   "score_summary": {
-    "bullish": 5,
-    "neutral": 2,
+    "bullish": 6,
+    "neutral": 1,
     "bearish": 1,
     "base_regime": "bullish_leaning",
     "regime": "bullish_leaning",
-    "summary": "看多5/中性2/看空1 — 信号偏多，但需检验是否由单一因素（如地缘风险）主导。"
+    "summary": "看多6/中性1/看空1 — 信号偏多，但需检验是否由单一因素（如地缘风险）主导。"
   }
 }
