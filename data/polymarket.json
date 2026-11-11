@@ -24,8 +24,8 @@
           "id": "2749367",
           "question": "Will Russia invade a NATO country by December 31, 2026?",
           "slug": "will-russia-invade-a-nato-country-by-december-31-2026-793",
-          "yes_price": 0.0205,
-          "volume": 513242.212807,
+          "yes_price": 0.017,
+          "volume": 515730.402097,
           "end_date": "2027-01-01",
           "url": "https://polymarket.com/event/will-russia-invade-a-nato-country-in-2025"
         },
@@ -42,8 +42,8 @@
           "id": "677404",
           "question": "China x India military clash by December 31, 2026?",
           "slug": "china-x-india-military-clash-by-december-31-2026",
-          "yes_price": 0.055,
-          "volume": 232930.99272,
+          "yes_price": 0.045,
+          "volume": 233256.43272000004,
           "end_date": "2027-01-01",
           "url": "https://polymarket.com/event/china-x-india-military-clash-by-december-31"
         },
@@ -51,8 +51,8 @@
           "id": "2749382",
           "question": "NATO/EU troops fighting in Ukraine by December 31, 2026?",
           "slug": "natoeu-troops-fighting-in-ukraine-by-december-31-2026",
-          "yes_price": 0.0355,
-          "volume": 159722.417433,
+          "yes_price": 0.034,
+          "volume": 159747.911643,
           "end_date": "2027-01-01",
           "url": "https://polymarket.com/event/natoeu-troops-fighting-in-ukraine-in-2025"
         }
@@ -73,8 +73,8 @@
       "id": "2749367",
       "question": "Will Russia invade a NATO country by December 31, 2026?",
       "slug": "will-russia-invade-a-nato-country-by-december-31-2026-793",
-      "yes_price": 0.0205,
-      "volume": 513242.212807,
+      "yes_price": 0.017,
+      "volume": 515730.402097,
       "end_date": "2027-01-01",
       "url": "https://polymarket.com/event/will-russia-invade-a-nato-country-in-2025"
     },
@@ -91,8 +91,8 @@
       "id": "677404",
       "question": "China x India military clash by December 31, 2026?",
       "slug": "china-x-india-military-clash-by-december-31-2026",
-      "yes_price": 0.055,
-      "volume": 232930.99272,
+      "yes_price": 0.045,
+      "volume": 233256.43272000004,
       "end_date": "2027-01-01",
       "url": "https://polymarket.com/event/china-x-india-military-clash-by-december-31"
     },
@@ -100,8 +100,8 @@
       "id": "2749382",
       "question": "NATO/EU troops fighting in Ukraine by December 31, 2026?",
       "slug": "natoeu-troops-fighting-in-ukraine-by-december-31-2026",
-      "yes_price": 0.0355,
-      "volume": 159722.417433,
+      "yes_price": 0.034,
+      "volume": 159747.911643,
       "end_date": "2027-01-01",
       "url": "https://polymarket.com/event/natoeu-troops-fighting-in-ukraine-in-2025"
     }

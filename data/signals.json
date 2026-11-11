@@ -15,10 +15,10 @@
     "evidence_note": "期货价格为直接市场观测",
     "label": "Backwardation",
     "source": "futures",
-    "m1_m2_spread": 1.2,
-    "m1_m6_spread": 6.52,
+    "m1_m2_spread": 1.15,
+    "m1_m6_spread": 6.01,
     "curve_front": 86.36,
-    "curve_back": 74.01,
+    "curve_back": 74.79,
     "n_contracts": 12
   },
   "demand": {
@@ -94,8 +94,8 @@
     "evidence_tier": "A",
     "evidence_note": "DXY/OVX/实际利率为直接市场观测",
     "dxy_vs_ma200": 2.31,
-    "real_rate": 2.63,
-    "ovx": 57.2
+    "real_rate": 2.66,
+    "ovx": 53.1
   },
   "positioning": {
     "name": "持仓拥挤度",
@@ -164,8 +164,8 @@
     ]
   },
   "price_freshness": {
-    "spot_date": "2026-11-10",
-    "futures_date": "2026-11-10",
+    "spot_date": "2026-11-11",
+    "futures_date": "2026-11-11",
     "lag_days": 0,
     "temporal_risk": "low"
   },

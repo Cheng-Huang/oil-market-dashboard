@@ -4,22 +4,14 @@
     "unit": "$/bbl",
     "ticker": "CL=F",
     "latest": {
-      "date": "2026-11-10",
+      "date": "2026-11-11",
       "open": 86.43,
-      "high": 86.93,
-      "low": 83.88,
+      "high": 88.73,
+      "low": 85.81,
       "close": 86.36,
-      "volume": 255919
+      "volume": 205549
     },
     "history": [
-      {
-        "date": "2026-09-01",
-        "open": 86.31,
-        "high": 90.97,
-        "low": 86.13,
-        "close": 90.22,
-        "volume": 331106
-      },
       {
         "date": "2026-09-02",
         "open": 90.65,
@@ -402,15 +394,23 @@
         "high": 91.42,
         "low": 85.02,
         "close": 86.85,
-        "volume": 288175
+        "volume": 337279
       },
       {
         "date": "2026-11-10",
         "open": 86.43,
         "high": 86.93,
         "low": 83.88,
+        "close": 86.04,
+        "volume": 337279
+      },
+      {
+        "date": "2026-11-11",
+        "open": 86.43,
+        "high": 88.73,
+        "low": 85.81,
         "close": 86.36,
-        "volume": 255919
+        "volume": 205549
       }
     ]
   },
@@ -419,22 +419,14 @@
     "unit": "$/bbl",
     "ticker": "BZ=F",
     "latest": {
-      "date": "2026-11-10",
+      "date": "2026-11-11",
       "open": 92.39,
-      "high": 92.82,
-      "low": 89.15,
-      "close": 91.96,
-      "volume": 36472
+      "high": 94.73,
+      "low": 91.48,
+      "close": 92.5,
+      "volume": 24562
     },
     "history": [
-      {
-        "date": "2026-09-01",
-        "open": 90.85,
-        "high": 95.45,
-        "low": 90.73,
-        "close": 94.65,
-        "volume": 38404
-      },
       {
         "date": "2026-09-02",
         "open": 95.23,
@@ -817,15 +809,23 @@
         "high": 98.42,
         "low": 90.63,
         "close": 92.57,
-        "volume": 39623
+        "volume": 49221
       },
       {
         "date": "2026-11-10",
         "open": 92.39,
         "high": 92.82,
         "low": 89.15,
-        "close": 91.96,
-        "volume": 36472
+        "close": 91.49,
+        "volume": 49221
+      },
+      {
+        "date": "2026-11-11",
+        "open": 92.39,
+        "high": 94.73,
+        "low": 91.48,
+        "close": 92.5,
+        "volume": 24562
       }
     ]
   },
@@ -834,22 +834,14 @@
     "unit": "$/gal",
     "ticker": "HO=F",
     "latest": {
-      "date": "2026-11-10",
+      "date": "2026-11-11",
       "open": 4.18,
-      "high": 4.22,
-      "low": 3.99,
-      "close": 4.15,
-      "volume": 42329
+      "high": 4.31,
+      "low": 4.13,
+      "close": 4.2,
+      "volume": 37747
     },
     "history": [
-      {
-        "date": "2026-09-01",
-        "open": 4.43,
-        "high": 4.73,
-        "low": 4.4,
-        "close": 4.68,
-        "volume": 54360
-      },
       {
         "date": "2026-09-02",
         "open": 4.7,
@@ -1232,15 +1224,23 @@
         "high": 4.38,
         "low": 4.15,
         "close": 4.21,
-        "volume": 47582
+        "volume": 56550
       },
       {
         "date": "2026-11-10",
         "open": 4.18,
         "high": 4.22,
         "low": 3.99,
-        "close": 4.15,
-        "volume": 42329
+        "close": 4.13,
+        "volume": 56550
+      },
+      {
+        "date": "2026-11-11",
+        "open": 4.18,
+        "high": 4.31,
+        "low": 4.13,
+        "close": 4.2,
+        "volume": 37747
       }
     ]
   },
@@ -1249,22 +1249,14 @@
     "unit": "$/gal",
     "ticker": "RB=F",
     "latest": {
-      "date": "2026-11-10",
+      "date": "2026-11-11",
       "open": 2.63,
-      "high": 2.66,
-      "low": 2.57,
-      "close": 2.62,
-      "volume": 43932
+      "high": 2.62,
+      "low": 2.56,
+      "close": 2.57,
+      "volume": 38797
     },
     "history": [
-      {
-        "date": "2026-09-01",
-        "open": 3.11,
-        "high": 3.16,
-        "low": 3.08,
-        "close": 3.14,
-        "volume": 63856
-      },
       {
         "date": "2026-09-02",
         "open": 3.16,
@@ -1647,15 +1639,23 @@
         "high": 2.79,
         "low": 2.61,
         "close": 2.65,
-        "volume": 51051
+        "volume": 61804
       },
       {
         "date": "2026-11-10",
         "open": 2.63,
         "high": 2.66,
         "low": 2.57,
-        "close": 2.62,
-        "volume": 43932
+        "close": 2.61,
+        "volume": 61804
+      },
+      {
+        "date": "2026-11-11",
+        "open": 2.63,
+        "high": 2.62,
+        "low": 2.56,
+        "close": 2.57,
+        "volume": 38797
       }
     ]
   },
@@ -1664,22 +1664,14 @@
     "unit": "$/MMBtu",
     "ticker": "NG=F",
     "latest": {
-      "date": "2026-11-10",
-      "open": 3.21,
-      "high": 3.33,
-      "low": 3.2,
-      "close": 3.32,
-      "volume": 254458
+      "date": "2026-11-11",
+      "open": 3.3,
+      "high": 3.4,
+      "low": 3.18,
+      "close": 3.24,
+      "volume": 227998
     },
     "history": [
-      {
-        "date": "2026-09-01",
-        "open": 2.93,
-        "high": 2.95,
-        "low": 2.85,
-        "close": 2.9,
-        "volume": 148990
-      },
       {
         "date": "2026-09-02",
         "open": 2.95,
@@ -2062,23 +2054,27 @@
         "high": 3.24,
         "low": 2.99,
         "close": 3.22,
-        "volume": 183409
+        "volume": 245546
       },
       {
         "date": "2026-11-10",
         "open": 3.21,
         "high": 3.33,
         "low": 3.2,
-        "close": 3.32,
-        "volume": 254458
+        "close": 3.3,
+        "volume": 245546
+      },
+      {
+        "date": "2026-11-11",
+        "open": 3.3,
+        "high": 3.4,
+        "low": 3.18,
+        "close": 3.24,
+        "volume": 227998
       }
     ]
   },
   "wti_brent_spread": [
-    {
-      "date": "2026-09-01",
-      "value": -4.43
-    },
     {
       "date": "2026-09-02",
       "value": -4.62
@@ -2273,14 +2269,14 @@
     },
     {
       "date": "2026-11-10",
-      "value": -5.6
+      "value": -5.45
+    },
+    {
+      "date": "2026-11-11",
+      "value": -6.14
     }
   ],
   "crack_321_realtime": [
-    {
-      "date": "2026-09-01",
-      "value": 63.22
-    },
     {
       "date": "2026-09-02",
       "value": 61.31
@@ -2475,24 +2471,28 @@
     },
     {
       "date": "2026-11-10",
-      "value": 45.1
+      "value": 44.86
+    },
+    {
+      "date": "2026-11-11",
+      "value": 44.4
     }
   ],
-  "snapshot_time": "2026-11-10T20:39:11",
+  "snapshot_time": "2026-11-11T20:57:55",
   "freshness": {
     "wti": {
-      "realtime": "2026-11-10",
+      "realtime": "2026-11-11",
       "fred": "2026-11-03",
-      "fred_lag_days": 7,
+      "fred_lag_days": 8,
       "eia": "2026-11-03",
-      "eia_lag_days": 7
+      "eia_lag_days": 8
     },
     "brent": {
-      "realtime": "2026-11-10",
+      "realtime": "2026-11-11",
       "fred": "2026-11-03",
-      "fred_lag_days": 7,
+      "fred_lag_days": 8,
       "eia": "2026-11-03",
-      "eia_lag_days": 7
+      "eia_lag_days": 8
     }
   }
 }
