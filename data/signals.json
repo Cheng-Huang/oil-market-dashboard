@@ -1,11 +1,11 @@
 {
   "inventory": {
     "name": "库存趋势",
-    "signal": "bullish",
+    "signal": "neutral",
     "evidence_tier": "A",
     "evidence_note": "EIA周度库存为直接观测数据",
-    "detail": "最近3周变化: [-3060.0, -1892.0, -865.0]",
-    "last_change_mbbl": -865.0,
+    "detail": "最近3周变化: [-1892.0, -865.0, 4657.0]",
+    "last_change_mbbl": 4657.0,
     "cushing_warning": false
   },
   "curve": {
@@ -15,19 +15,19 @@
     "evidence_note": "期货价格为直接市场观测",
     "label": "Backwardation",
     "source": "futures",
-    "m1_m2_spread": 1.15,
-    "m1_m6_spread": 6.01,
-    "curve_front": 86.36,
-    "curve_back": 74.79,
+    "m1_m2_spread": 1.03,
+    "m1_m6_spread": 6.43,
+    "curve_front": 88.98,
+    "curve_back": 76.4,
     "n_contracts": 12
   },
   "demand": {
     "name": "需求强度",
-    "signal": "bullish",
+    "signal": "neutral",
     "evidence_tier": "A",
     "evidence_note": "EIA表观需求为直接观测（仅覆盖美国）",
-    "gasoline_trend": "bullish",
-    "distillate_trend": "bullish"
+    "gasoline_trend": "neutral",
+    "distillate_trend": "bearish"
   },
   "crack_spread": {
     "name": "裂解价差",
@@ -95,7 +95,7 @@
     "evidence_note": "DXY/OVX/实际利率为直接市场观测",
     "dxy_vs_ma200": 2.31,
     "real_rate": 2.66,
-    "ovx": 53.1
+    "ovx": 51.26
   },
   "positioning": {
     "name": "持仓拥挤度",
@@ -120,16 +120,16 @@
   },
   "spr_policy": {
     "name": "SPR政策响应",
-    "spr_level_kbbl": 282184.0,
-    "spr_date": "2026-10-30",
+    "spr_level_kbbl": 279535.0,
+    "spr_date": "2026-11-06",
     "spr_low": true,
-    "spr_4w_change": -799.0,
-    "spr_trend": "stable",
-    "current_wti": 86.36,
+    "spr_4w_change": -3448.0,
+    "spr_trend": "releasing",
+    "current_wti": 88.98,
     "detail": "当前无明显触发 SPR 释放的条件。",
     "release_likelihood": "low",
     "max_release_days": 64.0,
-    "capacity_note": "SPR 当前 282 百万桶，按最大速率 4.4 百万桶/日可持续 64 天。 ⚠️ SPR 低于 350 百万桶警戒线，释放空间有限，政策可能更审慎。"
+    "capacity_note": "SPR 当前 280 百万桶，按最大速率 4.4 百万桶/日可持续 64 天。 ⚠️ SPR 低于 350 百万桶警戒线，释放空间有限，政策可能更审慎。"
   },
   "steo_validation": {
     "has_anomaly": true,
@@ -164,17 +164,17 @@
     ]
   },
   "price_freshness": {
-    "spot_date": "2026-11-11",
-    "futures_date": "2026-11-11",
+    "spot_date": "2026-11-12",
+    "futures_date": "2026-11-12",
     "lag_days": 0,
     "temporal_risk": "low"
   },
   "score_summary": {
-    "bullish": 7,
-    "neutral": 0,
+    "bullish": 5,
+    "neutral": 2,
     "bearish": 1,
     "base_regime": "bullish_leaning",
     "regime": "bullish_leaning",
-    "summary": "看多7/中性0/看空1 — 信号偏多，但需检验是否由单一因素（如地缘风险）主导。"
+    "summary": "看多5/中性2/看空1 — 信号偏多，但需检验是否由单一因素（如地缘风险）主导。"
   }
 }
