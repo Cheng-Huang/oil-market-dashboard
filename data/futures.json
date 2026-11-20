@@ -1,92 +1,92 @@
 {
   "curve": [
     {
-      "month": "2026-12",
-      "label": "Dec 2026",
-      "ticker": "CLZ26.NYM",
-      "price": 83.85,
-      "date": "2026-11-19"
-    },
-    {
       "month": "2027-01",
       "label": "Jan 2027",
       "ticker": "CLF27.NYM",
-      "price": 83.2,
-      "date": "2026-11-19"
+      "price": 83.71,
+      "date": "2026-11-20"
     },
     {
       "month": "2027-02",
       "label": "Feb 2027",
       "ticker": "CLG27.NYM",
-      "price": 82.29,
-      "date": "2026-11-19"
+      "price": 82.48,
+      "date": "2026-11-20"
     },
     {
       "month": "2027-03",
       "label": "Mar 2027",
       "ticker": "CLH27.NYM",
-      "price": 81.17,
-      "date": "2026-11-19"
+      "price": 81.19,
+      "date": "2026-11-20"
     },
     {
       "month": "2027-04",
       "label": "Apr 2027",
       "ticker": "CLJ27.NYM",
-      "price": 79.99,
-      "date": "2026-11-19"
+      "price": 79.94,
+      "date": "2026-11-20"
     },
     {
       "month": "2027-05",
       "label": "May 2027",
       "ticker": "CLK27.NYM",
-      "price": 78.85,
-      "date": "2026-11-19"
+      "price": 78.79,
+      "date": "2026-11-20"
     },
     {
       "month": "2027-06",
       "label": "Jun 2027",
       "ticker": "CLM27.NYM",
-      "price": 77.8,
-      "date": "2026-11-19"
+      "price": 77.62,
+      "date": "2026-11-20"
     },
     {
       "month": "2027-07",
       "label": "Jul 2027",
       "ticker": "CLN27.NYM",
-      "price": 76.68,
-      "date": "2026-11-19"
+      "price": 76.58,
+      "date": "2026-11-20"
     },
     {
       "month": "2027-08",
       "label": "Aug 2027",
       "ticker": "CLQ27.NYM",
-      "price": 75.78,
-      "date": "2026-11-19"
+      "price": 75.6,
+      "date": "2026-11-20"
     },
     {
       "month": "2027-09",
       "label": "Sep 2027",
       "ticker": "CLU27.NYM",
       "price": 74.82,
-      "date": "2026-11-19"
+      "date": "2026-11-20"
     },
     {
       "month": "2027-10",
       "label": "Oct 2027",
       "ticker": "CLV27.NYM",
-      "price": 73.54,
-      "date": "2026-11-19"
+      "price": 73.99,
+      "date": "2026-11-20"
     },
     {
       "month": "2027-11",
       "label": "Nov 2027",
       "ticker": "CLX27.NYM",
-      "price": 73.13,
-      "date": "2026-11-19"
+      "price": 73.28,
+      "date": "2026-11-20"
+    },
+    {
+      "month": "2027-12",
+      "label": "Dec 2027",
+      "ticker": "CLZ27.NYM",
+      "price": 72.59,
+      "date": "2026-11-20"
     }
   ],
-  "m1_m2_spread": 0.65,
-  "m1_m6_spread": 5.0,
+  "m1_m2_spread": 1.23,
+  "m1_m6_spread": 6.09,
   "structure": "backwardation",
   "spread_history": [
     {
@@ -1846,7 +1846,13 @@
       "value": 0.65,
       "m1": 83.85,
       "m2": 83.2
+    },
+    {
+      "date": "2026-11-20",
+      "value": 1.23,
+      "m1": 83.71,
+      "m2": 82.48
     }
   ],
-  "updated": "2026-11-19T21:54:19.768973"
+  "updated": "2026-11-20T21:36:48.883072"
 }
